@@ -1,0 +1,89 @@
+[gd_scene load_steps=5 format=3 uid="uid://brr5bb1e0oh6s"]
+
+[ext_resource type="Script" uid="uid://dqx4sinj8b0yh" path="res://dialogue/standard_balloon/new_standard_balloon.gd" id="1_wopkj"]
+[ext_resource type="Theme" uid="uid://deuac1eygl4i6" path="res://assets/overworld/themes/standard.tres" id="2_40fhp"]
+[ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="3_n6q07"]
+[ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="4_uoxsu"]
+
+[node name="StandardBalloon" type="CanvasLayer" node_paths=PackedStringArray("top_black_bar", "bottom_black_bar")]
+layer = 100
+script = ExtResource("1_wopkj")
+top_black_bar = NodePath("Balloon/TopBlackBar")
+bottom_black_bar = NodePath("Balloon/BottomBlackBar")
+
+[node name="Balloon" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_40fhp")
+
+[node name="TopBlackBar" type="ColorRect" parent="Balloon"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -90.0
+grow_horizontal = 2
+color = Color(0, 0, 0, 1)
+
+[node name="BottomBlackBar" type="ColorRect" parent="Balloon"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0, 0, 0, 1)
+
+[node name="DialogueLabel" parent="Balloon" instance=ExtResource("3_n6q07")]
+unique_name_in_owner = true
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+offset_left = 51.0
+offset_top = 500.0
+offset_right = 1231.0
+offset_bottom = 634.0
+size_flags_vertical = 3
+text = "Dialogue..."
+horizontal_alignment = 1
+
+[node name="Responses" type="MarginContainer" parent="Balloon"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -110.0
+offset_right = 320.0
+offset_bottom = 294.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ResponsesMenu" type="VBoxContainer" parent="Balloon/Responses" node_paths=PackedStringArray("response_template")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 2
+script = ExtResource("4_uoxsu")
+response_template = NodePath("ResponseExample")
+
+[node name="ResponseExample" type="Button" parent="Balloon/Responses/ResponsesMenu"]
+layout_mode = 2
+text = "Yes"
+
+[node name="ResponseExample2" type="Button" parent="Balloon/Responses/ResponsesMenu"]
+layout_mode = 2
+text = "No"
+
+[connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
+[connection signal="response_selected" from="Balloon/Responses/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]

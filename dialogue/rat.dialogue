@@ -1,0 +1,22 @@
+~ rat_talk_1
+
+Rat: That was a close one. You need to be more careful from now on, okay?
+Rat: Ever since they arrived, the raiders have been [color=red]hunting[/color] us down and [color=red]stealing[/color] our food.
+	[i]Despicable...[/i]
+Rat: Even I'm struggling to just get by with them messing everything up.
+Rat: Like, I've got a family to feed, man! You feel me?
+
+=> END
+
+~ rat_talk_2
+
+Rat: ...Didn't know slimes can eat corpses like that. Impressive...
+Rat: Did you get a bit bigger as well? [i]Must have been really nutritious, huh...[/i]
+	You look quite a bit [color=yellow]stronger[/color] than before...
+Rat: Hey, wait a minute. I've got a [color=green]brilliant[/color] idea.
+Rat: You and I, if we work together... we might be able to take down a few raiders.
+Rat: Then, you can [color=red]devour[/color] their corpses to grow even bigger and stronger.
+	Eventually, [color=orange]you'll become fearsome enough to chase them all away![/color]
+Rat: Come on, let me join you! Let's take back our home!
+
+=> END

@@ -1,0 +1,38 @@
+~ gob_rejection
+Gob: Hmm? Go somewhere else, squirt.
+Gob: I don't have anything to sell to weaklings like you.
+	Magic items and elixirs aren't toys.
+Rat: Aw, dangit.
+Gob: Come back when you're a little, mmm, [color=cyan]bigger.[/color]
+
+=> END
+
+~ gob_assess
+if Global.gob_rejection:
+	Gob: Huh... did you go through a training arc or something?
+else:
+	Gob: Hmm? Looking for something?
+Gob: Well, looks like you can handle [i]some[/i] magic, at least...
+Gob: I've got a grimoire that might be a good fit for ya.
+	It's only [color=gold]5 moneys.[/color] Talk to me again if you want it.
+Gob: To be frank though, if you can't afford it,
+	the rest of my catalog is probably not for you.
+
+=> END
+
+~ gob_sells_grimoire
+Gob: So you want the grimoire, right?
+- Yes
+	if Global.money < 5:
+		Gob: Wha-you're broke?
+		Gob: Just get the hell out of my sight already.
+	else:
+		#do SoundManager play coin sound effect or something
+		do! Methods.buy_grimoire()
+		Gob: Pleasure doing business with ya.
+		Gob: From now on, you're welcome to check out the rest of my shop.
+			Talk to me any time.
+- No
+	Gob: [i]Sigh...[/i]
+	
+=> END

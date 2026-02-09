@@ -1,0 +1,10 @@
+~ tutorial
+Knight: W-WHAT DID YOU DO TO HIM??
+do Methods.current_scene.cam.shake()
+Knight: NOOOOOOOOOO!!!
+do Methods.current_scene.cam.shake()
+Knight: WE WERE SO CLOSE TO REVIVING HIM!!!
+Slime: blob
+#Rat: Oops.
+Knight: I'LL [color=red]DESECREATE[/color] YOUR BODIES.
+=> END

@@ -1,0 +1,134 @@
+[gd_scene load_steps=18 format=3 uid="uid://b5xej74g16j4a"]
+
+[ext_resource type="PackedScene" uid="uid://cs6sa16vx7mf7" path="res://ui/overworld/overworld_ui.tscn" id="1_gon5r"]
+[ext_resource type="Script" uid="uid://but1vaoxh587q" path="res://main/overworld/overworld_main.gd" id="1_vn6as"]
+[ext_resource type="FontFile" uid="uid://cmmltma2gsu3a" path="res://addons/command-terminal/ast/windows_command_prompt.ttf" id="3_c6k2t"]
+[ext_resource type="Script" uid="uid://dmieq82eqdhx3" path="res://main/overworld/camera_3d.gd" id="3_l7jqc"]
+[ext_resource type="Environment" uid="uid://btl4ptewvgyxp" path="res://assets/overworld/effects/sky/sewers_sky.tres" id="4_kefms"]
+
+[sub_resource type="Animation" id="Animation_8b7gr"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r5lmc"]
+_data = {
+&"RESET": SubResource("Animation_8b7gr")
+}
+
+[sub_resource type="Animation" id="Animation_sfy5n"]
+resource_name = "1"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4b0bh"]
+_data = {
+&"1": SubResource("Animation_sfy5n")
+}
+
+[sub_resource type="Curve" id="Curve_utq4w"]
+_limits = [0.0, 0.25, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.496324, 0.25), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_dtwe1"]
+curve = SubResource("Curve_utq4w")
+
+[sub_resource type="Curve" id="Curve_1gpvs"]
+_data = [Vector2(0, 0), 0.0, 5.0, 0, 0, Vector2(0.485507, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -5.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_67ov0"]
+curve = SubResource("Curve_1gpvs")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_700mc"]
+emission_shape_scale = Vector3(13, 6, 5)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+initial_velocity_min = -1.0
+initial_velocity_max = 1.0
+orbit_velocity_min = -5.0
+orbit_velocity_max = 5.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.05
+scale_max = 0.05
+scale_curve = SubResource("CurveTexture_67ov0")
+alpha_curve = SubResource("CurveTexture_dtwe1")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_t7grl"]
+load_path = "res://.godot/imported/dust.png-38e6b4baae02e7ea8dadf5b7a74ab4ab.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4qf4i"]
+transparency = 1
+blend_mode = 1
+depth_draw_mode = 1
+no_depth_test = true
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("CompressedTexture2D_t7grl")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_lu5pe"]
+material = SubResource("StandardMaterial3D_4qf4i")
+orientation = 2
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_vn6as")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_r5lmc"),
+&"cutscenes": SubResource("AnimationLibrary_4b0bh")
+}
+
+[node name="OverworldUI" parent="." instance=ExtResource("1_gon5r")]
+
+[node name="AUTOCOMPLETE-PANEL" parent="OverworldUI/Terminal/__guts__/AutocompleteControl" index="0"]
+offset_top = -40.0
+offset_right = 74.0
+offset_bottom = -20.0
+
+[node name="AUTOCOMPLETE-RICH-LABEL" parent="OverworldUI/Terminal/__guts__/AutocompleteControl/AUTOCOMPLETE-PANEL/MarginContainer" index="0"]
+theme_override_fonts/normal_font = ExtResource("3_c6k2t")
+theme_override_font_sizes/normal_font_size = 12
+
+[node name="TERMINAL-RICH-LABEL" parent="OverworldUI/Terminal/__guts__/TerminalControl/TERMINAL-PANEL/MarginContainer/Control" index="0"]
+offset_top = -6.0
+offset_bottom = 6.0
+theme_override_fonts/normal_font = ExtResource("3_c6k2t")
+theme_override_font_sizes/normal_font_size = 12
+
+[node name="TERMINAL-LINE-EDIT" parent="OverworldUI/Terminal/__guts__/TerminalControl/TERMINAL-PANEL/MarginContainer/Control" index="1"]
+offset_top = -6.0
+offset_bottom = 6.0
+theme_override_fonts/font = ExtResource("3_c6k2t")
+theme_override_font_sizes/font_size = 12
+
+[node name="Camera" type="Camera3D" parent="."]
+current = true
+script = ExtResource("3_l7jqc")
+
+[node name="OmniLight3D" type="SpotLight3D" parent="Camera"]
+light_color = Color(0.4104, 0.526933, 0.76, 1)
+light_energy = 16.0
+shadow_enabled = true
+spot_range = 30.0
+spot_angle = 60.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("4_kefms")
+
+[node name="DustParticles" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.42168)
+amount = 100
+lifetime = 5.0
+process_material = SubResource("ParticleProcessMaterial_700mc")
+draw_pass_1 = SubResource("PlaneMesh_lu5pe")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="mouse_entered" from="OverworldUI/Left" to="Camera" method="_on_left_mouse_entered"]
+[connection signal="mouse_exited" from="OverworldUI/Left" to="Camera" method="_on_left_mouse_exited"]
+[connection signal="mouse_entered" from="OverworldUI/Right" to="Camera" method="_on_right_mouse_entered"]
+[connection signal="mouse_exited" from="OverworldUI/Right" to="Camera" method="_on_right_mouse_exited"]
+
+[editable path="OverworldUI"]
+[editable path="OverworldUI/Terminal/__guts__"]

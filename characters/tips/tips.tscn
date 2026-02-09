@@ -1,0 +1,72 @@
+[gd_scene load_steps=8 format=3 uid="uid://bsce3vhrswx5m"]
+
+[ext_resource type="Script" uid="uid://cnbltkgwelf8g" path="res://characters/tips/tips.gd" id="1_4airb"]
+[ext_resource type="Texture2D" uid="uid://dyc76368cugic" path="res://characters/tips/TIPS.png" id="1_pb6su"]
+[ext_resource type="Resource" uid="uid://cac75hbjygug" path="res://dialogue/tips.dialogue" id="2_5eyjv"]
+[ext_resource type="Shader" uid="uid://ce3e5bbugj1q7" path="res://assets/overworld/effects/highlight.gdshader" id="2_he13e"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_icia6"]
+viewport_path = NodePath("Sprite/SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_60hqs"]
+resource_local_to_scene = true
+shader = ExtResource("2_he13e")
+shader_parameter/Line_Smoothness = 0.1
+shader_parameter/Line_Width = 0.1
+shader_parameter/Brightness = 3.0
+shader_parameter/Rotation_deg = 30.0
+shader_parameter/Distortion = 1.0
+shader_parameter/Speed = 1.0
+shader_parameter/Position = 0.0
+shader_parameter/Position_Min = 0.25
+shader_parameter/Position_Max = 0.5
+shader_parameter/Alpha = 1.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jxc8l"]
+size = Vector3(2.13825, 5.89926, 0.0842896)
+
+[node name="Tips" type="StaticBody3D"]
+script = ExtResource("1_4airb")
+dialogue = ExtResource("2_5eyjv")
+zoom = -3
+offset = 2
+
+[node name="Sprite" type="Sprite3D" parent="."]
+shaded = true
+double_sided = false
+render_priority = 1
+texture = SubResource("ViewportTexture_icia6")
+
+[node name="SubViewport" type="SubViewport" parent="Sprite"]
+disable_3d = true
+transparent_bg = true
+size = Vector2i(220, 607)
+
+[node name="Sprite2D" type="TextureRect" parent="Sprite/SubViewport"]
+clip_children = 2
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_pb6su")
+
+[node name="Highlight" type="ColorRect" parent="Sprite/SubViewport/Sprite2D"]
+visible = false
+material = SubResource("ShaderMaterial_60hqs")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Brighten" type="ColorRect" parent="Sprite/SubViewport/Sprite2D"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.196078)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_jxc8l")

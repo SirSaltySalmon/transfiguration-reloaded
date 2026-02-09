@@ -1,0 +1,187 @@
+[gd_scene load_steps=13 format=3 uid="uid://c0t5y6y88n7s8"]
+
+[ext_resource type="Script" uid="uid://ly6ukblf5cpa" path="res://main/battle/character/character_components/character_visual.gd" id="1_sf4d5"]
+[ext_resource type="Script" uid="uid://dbdifjem6wnue" path="res://addons/shaker/src/Vector3/shaker_component3D.gd" id="1_vff47"]
+[ext_resource type="Script" uid="uid://65nhallgxu6i" path="res://addons/shaker/data/Vector3/BaseShakerType3D.gd" id="2_nuu67"]
+[ext_resource type="Script" uid="uid://bso4njx2ubaat" path="res://addons/shaker/data/Vector3/ShakerTypeRandom3D.gd" id="3_pgls8"]
+[ext_resource type="Script" uid="uid://bx74dlp2h8v6b" path="res://addons/shaker/data/Vector3/ShakerPreset3D.gd" id="4_b0myr"]
+[ext_resource type="Texture2D" uid="uid://6u5cryb5a4y2" path="res://assets/battle/ui/circle.png" id="6_5n6ys"]
+
+[sub_resource type="Resource" id="Resource_5qicv"]
+script = ExtResource("3_pgls8")
+seed = 0
+amplitude = Vector3(0.5, 0.5, 0.5)
+offset = Vector3(0, 0, 0)
+BlendingMode = 0
+fade_in = 0.0
+fade_out = 0.0
+start_percent = 0.0
+end_percent = 1.0
+_temp_graph = false
+bake_internal = 64
+
+[sub_resource type="Resource" id="Resource_hy7sp"]
+script = ExtResource("4_b0myr")
+PositionShake = Array[ExtResource("2_nuu67")]([SubResource("Resource_5qicv")])
+RotationShake = Array[ExtResource("2_nuu67")]([])
+ScaleShake = Array[ExtResource("2_nuu67")]([])
+bake_internal = 64
+__follow_timeline = false
+
+[sub_resource type="Animation" id="Animation_xlx7x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(8.1882e-08, 6.11007e-08, 5.51983e-08)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.5708, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_5n6ys"]
+resource_name = "death_anim"
+length = 0.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(0.3, 3, 1),
+"update": 0,
+"values": [Vector3(8.1882e-08, 6.11007e-08, 5.51983e-08), Vector3(0, 2, 0), Vector3(8.1882e-08, 6.11007e-08, 5.51983e-08)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [Vector3(-1.5708, 1.5708, -1.5708), Vector3(1.5708, 1.5708, -1.5708)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 0.862745)]
+}
+
+[sub_resource type="Animation" id="Animation_0230t"]
+resource_name = "revive_anim"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 0.584314, 0.27451), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [Vector3(0, 1, 0), Vector3(8.1882e-08, 6.11007e-08, 5.51983e-08)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.5708, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0230t"]
+_data = {
+&"RESET": SubResource("Animation_xlx7x"),
+&"death_anim": SubResource("Animation_5n6ys"),
+&"revive_anim": SubResource("Animation_0230t")
+}
+
+[node name="CharacterVisual" type="Node3D" node_paths=PackedStringArray("shaker", "turn_indicator", "anim")]
+script = ExtResource("1_sf4d5")
+shaker = NodePath("Sprite/ImpactShake")
+turn_indicator = NodePath("TurnIndicator")
+anim = NodePath("Sprite/AdditionalAnim")
+
+[node name="Sprite" type="Sprite3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, -7.23998e-07, 0.2, 0, -0.2, -7.23998e-07, 8.1882e-08, 6.11007e-08, 5.51983e-08)
+shaded = true
+alpha_cut = 2
+alpha_scissor_threshold = 1.0
+
+[node name="ImpactShake" type="Node3D" parent="Sprite"]
+script = ExtResource("1_vff47")
+intensity = 0.5
+duration = 0.5
+fade_in = 1e-05
+fade_out = 2.0
+shakerPreset = SubResource("Resource_hy7sp")
+
+[node name="AdditionalAnim" type="AnimationPlayer" parent="Sprite"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_0230t")
+}
+
+[node name="TurnIndicator" type="Sprite3D" parent="."]
+transform = Transform3D(0.6, 0, 0, 0, 0.0104714, 0.599909, 0, -0.599909, 0.0104714, 0, -0.01, 0)
+modulate = Color(0, 1, 0, 0.156863)
+texture = ExtResource("6_5n6ys")

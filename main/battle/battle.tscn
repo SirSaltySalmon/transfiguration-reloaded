@@ -1,0 +1,1596 @@
+[gd_scene load_steps=77 format=3 uid="uid://cjjtnb1vihmx4"]
+
+[ext_resource type="Texture2D" uid="uid://cnnqjj4cw4wy8" path="res://assets/battle/wood texture.jpg" id="1_asbqr"]
+[ext_resource type="Script" uid="uid://bqyaopp0ha8gp" path="res://main/battle/battle.gd" id="1_lyi2j"]
+[ext_resource type="Script" uid="uid://dhkahq1wmdhv7" path="res://ui/battle/main_ui.gd" id="2_2d74e"]
+[ext_resource type="Resource" uid="uid://dhxmfplf2tq0i" path="res://dialogue/battle.dialogue" id="2_b1lf2"]
+[ext_resource type="Script" uid="uid://dkhq8t747qydx" path="res://main/battle/battle_cam.gd" id="2_g1d0u"]
+[ext_resource type="Shader" uid="uid://bgow03cl41uj8" path="res://assets/battle/ui/vignette.gdshader" id="3_18tdr"]
+[ext_resource type="Script" uid="uid://dbdifjem6wnue" path="res://addons/shaker/src/Vector3/shaker_component3D.gd" id="3_bdusq"]
+[ext_resource type="Script" uid="uid://s0gh6np63pog" path="res://ui/battle/move_display_label.gd" id="3_cgja1"]
+[ext_resource type="PackedScene" uid="uid://h70eg1of2m12" path="res://dialogue/standard_balloon/combat_balloon.tscn" id="3_dgfw6"]
+[ext_resource type="Environment" uid="uid://btl4ptewvgyxp" path="res://assets/overworld/effects/sky/sewers_sky.tres" id="3_rdbxm"]
+[ext_resource type="Script" uid="uid://qid4vwjxu53i" path="res://ui/battle/vignette.gd" id="4_keope"]
+[ext_resource type="Script" uid="uid://bpbdpnfxa75gv" path="res://main/battle/skills/skills_center.gd" id="4_nidv2"]
+[ext_resource type="Script" uid="uid://65nhallgxu6i" path="res://addons/shaker/data/Vector3/BaseShakerType3D.gd" id="4_w10i8"]
+[ext_resource type="Script" uid="uid://ugfbchubfgh3" path="res://addons/shaker/data/Vector3/ShakerTypeSineWave3D.gd" id="5_o6t1s"]
+[ext_resource type="Theme" uid="uid://bvemkf2eq2avn" path="res://ui/battle/ui_font.tres" id="6_ksl0e"]
+[ext_resource type="Script" uid="uid://bx74dlp2h8v6b" path="res://addons/shaker/data/Vector3/ShakerPreset3D.gd" id="6_wiji8"]
+[ext_resource type="Script" uid="uid://dh4y8axusfwns" path="res://main/battle/left_panel.gd" id="7_40ifd"]
+[ext_resource type="Script" uid="uid://bso4njx2ubaat" path="res://addons/shaker/data/Vector3/ShakerTypeRandom3D.gd" id="7_oukdn"]
+[ext_resource type="Shader" uid="uid://15wlgeg7fpdf" path="res://assets/battle/ui/textwave.gdshader" id="7_x50yd"]
+[ext_resource type="Texture2D" uid="uid://50e56k0bhj1t" path="res://assets/battle/ui/quillpaper.png" id="8_3nk04"]
+[ext_resource type="Script" uid="uid://1ka4463tp65m" path="res://main/battle/flavor_text_label.gd" id="8_65f83"]
+[ext_resource type="Script" uid="uid://b52avqj47vt4n" path="res://main/battle/battle_menu_button.gd" id="8_aprkc"]
+[ext_resource type="Script" uid="uid://dpek805ng200o" path="res://main/battle/right_panel.gd" id="8_ngbqi"]
+[ext_resource type="Script" uid="uid://u0qti81tkywv" path="res://main/battle/attack_button.gd" id="9_bplng"]
+[ext_resource type="Texture2D" uid="uid://cgq4rccq0jpqo" path="res://assets/battle/ui/magic_circle.png" id="9_vfxhe"]
+[ext_resource type="Texture2D" uid="uid://ccw46a84edw1k" path="res://assets/battle/ui/quill.png" id="10_aprkc"]
+[ext_resource type="Texture2D" uid="uid://by1h5j21xgyx4" path="res://assets/battle/ui/items_sheet.png" id="10_fo1wp"]
+[ext_resource type="Script" uid="uid://c7ypgr08upmib" path="res://main/battle/defend_button.gd" id="10_q5wjj"]
+[ext_resource type="Texture2D" uid="uid://51rqi5s4gayc" path="res://assets/battle/ui/escape.png" id="11_40ifd"]
+[ext_resource type="Script" uid="uid://srjksy26d41r" path="res://main/battle/escape_chance_display.gd" id="12_g0v2f"]
+[ext_resource type="Script" uid="uid://btr38wtkqopp8" path="res://main/battle/items/cured_ham.gd" id="14_q1t4l"]
+[ext_resource type="Script" uid="uid://x6r16oyoykmx" path="res://main/battle/skills_description_handler.gd" id="15_h3la1"]
+[ext_resource type="Script" uid="uid://bsdoomwfldqfc" path="res://main/battle/items/flesh.gd" id="16_d2bh2"]
+[ext_resource type="Script" uid="uid://dv8gyfa47657e" path="res://main/battle/items/goats_blood.gd" id="17_ceix2"]
+[ext_resource type="Script" uid="uid://bglewu1lpfh8a" path="res://main/battle/items/money.gd" id="18_a8nkt"]
+[ext_resource type="Script" uid="uid://d0km0h5j8gdx6" path="res://main/battle/escape_yes.gd" id="19_ceix2"]
+[ext_resource type="Script" uid="uid://cms74qm8kulvx" path="res://main/battle/escape_no.gd" id="20_a8nkt"]
+[ext_resource type="Script" uid="uid://d3nqa1ukamd56" path="res://main/battle/skill_node_connector.gd" id="22_fvn33"]
+[ext_resource type="Script" uid="uid://bvt8cw3q01vd8" path="res://main/battle/skill_button.gd" id="22_nidv2"]
+[ext_resource type="Script" uid="uid://c5tyt6py1i62o" path="res://main/battle/target_selection.gd" id="24_314eb"]
+
+[sub_resource type="Animation" id="Animation_aprkc"]
+length = 0.001
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RightPanel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RightPanel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(832, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LeftPanel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LeftPanel:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("InputBlocker:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("LeftPanel:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("RightPanel:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_p7lmq"]
+resource_name = "ui_open"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RightPanel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.2, 0.2),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RightPanel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Vector2(832, 0), Vector2(1032, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LeftPanel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.2, 0.2),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LeftPanel:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-200, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("InputBlocker:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("LeftPanel:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("RightPanel:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"toggle_closed"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ngbqi"]
+resource_name = "ui_open"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RightPanel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RightPanel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Vector2(1032, 0), Vector2(832, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LeftPanel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LeftPanel:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Vector2(-200, 0), Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("InputBlocker:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("RightPanel:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("LeftPanel:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"toggle_open"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p7lmq"]
+_data = {
+&"RESET": SubResource("Animation_aprkc"),
+&"ui_close": SubResource("Animation_p7lmq"),
+&"ui_open": SubResource("Animation_ngbqi")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_keope"]
+shader = ExtResource("3_18tdr")
+shader_parameter/alpha = 0.5
+shader_parameter/inner_radius = 0.7
+shader_parameter/outer_radius = 1.0
+
+[sub_resource type="Theme" id="Theme_rsn1y"]
+default_font_size = 30
+MarginContainer/constants/margin_bottom = 10
+MarginContainer/constants/margin_left = 10
+MarginContainer/constants/margin_right = 10
+MarginContainer/constants/margin_top = 10
+RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 0.501961)
+RichTextLabel/constants/outline_size = 10
+RichTextLabel/constants/shadow_offset_x = 4
+RichTextLabel/constants/shadow_offset_y = 4
+RichTextLabel/constants/shadow_outline_size = 5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3nk04"]
+shader = ExtResource("7_x50yd")
+shader_parameter/height = 3.0
+shader_parameter/frequency = 25.0
+shader_parameter/speed = 6.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kw4tk"]
+shader = ExtResource("7_x50yd")
+shader_parameter/height = 3.0
+shader_parameter/frequency = 10.0
+shader_parameter/speed = 5.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x50yd"]
+shader = ExtResource("7_x50yd")
+shader_parameter/height = 5.0
+shader_parameter/frequency = 10.0
+shader_parameter/speed = 5.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3fv4m"]
+shader = ExtResource("7_x50yd")
+shader_parameter/height = 10.0
+shader_parameter/frequency = 20.0
+shader_parameter/speed = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ngbqi"]
+shader = ExtResource("7_x50yd")
+shader_parameter/height = 3.0
+shader_parameter/frequency = 20.0
+shader_parameter/speed = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aprkc"]
+shader = ExtResource("7_x50yd")
+shader_parameter/height = 1.5
+shader_parameter/frequency = 30.0
+shader_parameter/speed = 25.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p7lmq"]
+shader = ExtResource("7_x50yd")
+shader_parameter/height = 1.5
+shader_parameter/frequency = 20.0
+shader_parameter/speed = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vfxhe"]
+shader = ExtResource("7_x50yd")
+shader_parameter/height = 1.5
+shader_parameter/frequency = 20.0
+shader_parameter/speed = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q1t4l"]
+shader = ExtResource("7_x50yd")
+shader_parameter/height = 1.5
+shader_parameter/frequency = 20.0
+shader_parameter/speed = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fo1wp"]
+shader = ExtResource("7_x50yd")
+shader_parameter/height = 1.5
+shader_parameter/frequency = 20.0
+shader_parameter/speed = 3.0
+
+[sub_resource type="Animation" id="Animation_314eb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainUI/SolidColor:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainUI/IntroFIGHT:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MainUI/IntroFIGHT:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BattleCam:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(4.1902, 18, 0.0259711)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MainUI/IntroFIGHT:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MainUI/IntroFIGHT:z_index")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-1]
+}
+
+[sub_resource type="Animation" id="Animation_g0v2f"]
+resource_name = "start_anim"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainUI/SolidColor:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainUI/IntroFIGHT:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(2, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MainUI/IntroFIGHT:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(5, 5), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BattleCam:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Vector3(10, 70, 0), Vector3(4, 18, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MainUI/IntroFIGHT:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MainUI/IntroFIGHT:z_index")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bplng"]
+_data = {
+&"RESET": SubResource("Animation_314eb"),
+&"start_anim": SubResource("Animation_g0v2f")
+}
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_x50yd"]
+dof_blur_far_enabled = true
+dof_blur_far_distance = 20.0
+dof_blur_near_enabled = true
+
+[sub_resource type="Resource" id="Resource_2k2jr"]
+script = ExtResource("5_o6t1s")
+frequency = Vector3(0.2, 0, 0.7)
+phase = Vector3(1, 1, 1)
+amplitude = Vector3(0.1, 0, 0.1)
+offset = Vector3(0, 0, 0)
+BlendingMode = 0
+fade_in = 0.0
+fade_out = 0.0
+start_percent = 0.0
+end_percent = 1.0
+_temp_graph = false
+bake_internal = 64
+
+[sub_resource type="Resource" id="Resource_yns20"]
+script = ExtResource("6_wiji8")
+PositionShake = Array[ExtResource("4_w10i8")]([SubResource("Resource_2k2jr")])
+RotationShake = Array[ExtResource("4_w10i8")]([])
+ScaleShake = Array[ExtResource("4_w10i8")]([])
+bake_internal = 64
+__follow_timeline = false
+
+[sub_resource type="Resource" id="Resource_5qicv"]
+script = ExtResource("7_oukdn")
+seed = 0
+amplitude = Vector3(0.5, 0.5, 0.5)
+offset = Vector3(0, 0, 0)
+BlendingMode = 0
+fade_in = 0.0
+fade_out = 0.0
+start_percent = 0.0
+end_percent = 1.0
+_temp_graph = false
+bake_internal = 64
+
+[sub_resource type="Resource" id="Resource_g8sry"]
+script = ExtResource("6_wiji8")
+PositionShake = Array[ExtResource("4_w10i8")]([SubResource("Resource_5qicv")])
+RotationShake = Array[ExtResource("4_w10i8")]([])
+ScaleShake = Array[ExtResource("4_w10i8")]([])
+bake_internal = 64
+__follow_timeline = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yxox2"]
+albedo_texture = ExtResource("1_asbqr")
+metallic = 0.5
+roughness = 0.75
+uv1_scale = Vector3(2, 2, 2)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_jg8lh"]
+material = SubResource("StandardMaterial3D_yxox2")
+top_radius = 20.0
+bottom_radius = 20.0
+height = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_il4ka"]
+albedo_color = Color(0, 0, 0, 1)
+roughness = 0.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_go5df"]
+material = SubResource("StandardMaterial3D_il4ka")
+top_radius = 2.0
+bottom_radius = 2.0
+height = 0.2
+
+[sub_resource type="Curve" id="Curve_epriu"]
+_limits = [0.0, 0.25, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.496894, 0.126374), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_rco3v"]
+curve = SubResource("Curve_epriu")
+
+[sub_resource type="Curve" id="Curve_0vaki"]
+_data = [Vector2(0, 0), 0.0, 5.0, 0, 0, Vector2(0.485507, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -5.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_003jo"]
+curve = SubResource("Curve_0vaki")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_y8qc7"]
+emission_shape_scale = Vector3(40, 20, 40)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+initial_velocity_min = -1.0
+initial_velocity_max = 1.0
+orbit_velocity_min = -5.0
+orbit_velocity_max = 5.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.2
+scale_max = 0.4
+scale_curve = SubResource("CurveTexture_003jo")
+alpha_curve = SubResource("CurveTexture_rco3v")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xygk7"]
+load_path = "res://.godot/imported/dust.png-38e6b4baae02e7ea8dadf5b7a74ab4ab.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nqvru"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("CompressedTexture2D_xygk7")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_tx0yf"]
+material = SubResource("StandardMaterial3D_nqvru")
+orientation = 2
+
+[node name="Battle" type="Node3D" node_paths=PackedStringArray("ui", "cam", "anim", "skills", "target")]
+script = ExtResource("1_lyi2j")
+ui = NodePath("MainUI")
+cam = NodePath("BattleCam")
+anim = NodePath("MainAnim")
+skills = NodePath("SkillsCenter")
+target = NodePath("TargetSelection")
+dialogue = ExtResource("2_b1lf2")
+combat_balloon = ExtResource("3_dgfw6")
+
+[node name="SkillsCenter" type="Node3D" parent="." node_paths=PackedStringArray("main")]
+script = ExtResource("4_nidv2")
+main = NodePath("..")
+
+[node name="MainUI" type="Control" parent="." node_paths=PackedStringArray("anim", "vignette", "move_displayer", "move_container", "left_panel", "right_panel", "solid_color", "intro_fight", "skill_desc_handler", "skill_node_connector", "item_sprite", "item_description", "escape_chance_display", "flavor_text")]
+z_index = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_2d74e")
+anim = NodePath("UIAnim")
+vignette = NodePath("Vignette")
+move_displayer = NodePath("MoveContainer/MoveDisplayLabel")
+move_container = NodePath("MoveContainer")
+left_panel = NodePath("LeftPanel")
+right_panel = NodePath("RightPanel")
+solid_color = NodePath("SolidColor")
+intro_fight = NodePath("IntroFIGHT")
+skill_desc_handler = NodePath("LeftPanel/Skills")
+skill_node_connector = NodePath("RightPanel/Skills")
+item_sprite = NodePath("LeftPanel/Items/ItemSprites")
+item_description = NodePath("LeftPanel/Items/ItemDescription")
+escape_chance_display = NodePath("LeftPanel/Escape/EscapeChanceDisplay")
+flavor_text = NodePath("FlavorContainer/FlavorTextLabel")
+
+[node name="UIAnim" type="AnimationPlayer" parent="MainUI"]
+libraries = {
+&"": SubResource("AnimationLibrary_p7lmq")
+}
+
+[node name="Vignette" type="ColorRect" parent="MainUI"]
+material = SubResource("ShaderMaterial_keope")
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+script = ExtResource("4_keope")
+unfocused_alpha = 0.5
+unfocused_inner_rad = 0.7
+unfocused_outer_rad = 1.0
+focused_alpha = 0.5
+focused_inner_rad = 0.8
+
+[node name="MoveContainer" type="MarginContainer" parent="MainUI"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -600.0
+offset_right = 600.0
+offset_bottom = 70.0
+grow_horizontal = 2
+theme = SubResource("Theme_rsn1y")
+
+[node name="MoveDisplayLabel" type="RichTextLabel" parent="MainUI/MoveContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+bbcode_enabled = true
+text = "Eternal Pyre's Embrace"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+script = ExtResource("3_cgja1")
+
+[node name="FlavorContainer" type="MarginContainer" parent="MainUI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -600.0
+offset_top = -70.0
+offset_right = 600.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = SubResource("Theme_rsn1y")
+
+[node name="FlavorTextLabel" type="RichTextLabel" parent="MainUI/FlavorContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+bbcode_enabled = true
+text = "[i]* Tastes like rat poison."
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+script = ExtResource("8_65f83")
+
+[node name="LeftPanel" type="Control" parent="MainUI" node_paths=PackedStringArray("return_button", "options", "skills", "items", "escape")]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -360.0
+offset_right = 448.0
+offset_bottom = 360.0
+grow_vertical = 2
+theme = ExtResource("6_ksl0e")
+script = ExtResource("7_40ifd")
+return_button = NodePath("ReturnButton")
+options = NodePath("Options")
+skills = NodePath("Skills")
+items = NodePath("Items")
+escape = NodePath("Escape")
+
+[node name="Options" type="Control" parent="MainUI/LeftPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AttackButton" type="Button" parent="MainUI/LeftPanel/Options" node_paths=PackedStringArray("main")]
+material = SubResource("ShaderMaterial_3nk04")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -224.0
+offset_top = -184.0
+offset_right = 136.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 80
+text = "Attack"
+script = ExtResource("9_bplng")
+main = NodePath("../../../..")
+
+[node name="DefendButton" type="Button" parent="MainUI/LeftPanel/Options" node_paths=PackedStringArray("main")]
+material = SubResource("ShaderMaterial_kw4tk")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = 40.0
+offset_right = 112.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 50
+text = "Defend"
+script = ExtResource("10_q5wjj")
+main = NodePath("../../../..")
+
+[node name="Skills" type="Control" parent="MainUI/LeftPanel" node_paths=PackedStringArray("magic_circle_sprite", "skill_desc")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("15_h3la1")
+magic_circle_sprite = NodePath("MagicCircle")
+skill_desc = NodePath("SkillDescription")
+
+[node name="MagicCircle" type="Sprite2D" parent="MainUI/LeftPanel/Skills"]
+position = Vector2(224, 396)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("9_vfxhe")
+
+[node name="Label" type="RichTextLabel" parent="MainUI/LeftPanel/Skills"]
+material = SubResource("ShaderMaterial_x50yd")
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -208.0
+offset_top = 80.0
+offset_right = 208.0
+offset_bottom = 201.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/normal_font_size = 100
+text = "SKILLS"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SkillDescription" type="RichTextLabel" parent="MainUI/LeftPanel/Skills"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.589
+anchor_right = 0.5
+anchor_bottom = 0.589
+offset_left = -160.0
+offset_top = -136.08
+offset_right = 160.0
+offset_bottom = 127.92
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.392157)
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/shadow_offset_x = -5
+theme_override_constants/shadow_outline_size = 10
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "Deals [color=red]15 Damage[/color] to the target, and if they have [color=orange]20% remaining or less,[/color] [color=cyan]Devours[/color] and instantly kill the target."
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="Items" type="Control" parent="MainUI/LeftPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemSprites" type="Sprite2D" parent="MainUI/LeftPanel/Items"]
+position = Vector2(224, 365)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("10_fo1wp")
+hframes = 5
+
+[node name="Label" type="RichTextLabel" parent="MainUI/LeftPanel/Items"]
+material = SubResource("ShaderMaterial_x50yd")
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -208.0
+offset_top = 81.0
+offset_right = 208.0
+offset_bottom = 202.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/normal_font_size = 100
+text = "ITEMS"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ItemDescription" type="RichTextLabel" parent="MainUI/LeftPanel/Items"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.589
+anchor_right = 0.5
+anchor_bottom = 0.589
+offset_left = -160.0
+offset_top = 122.92
+offset_right = 160.0
+offset_bottom = 159.92
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.392157)
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/shadow_offset_x = -5
+theme_override_constants/shadow_outline_size = 10
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "Select an item"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="Escape" type="Control" parent="MainUI/LeftPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EscapeSprite" type="Sprite2D" parent="MainUI/LeftPanel/Escape"]
+position = Vector2(216, 368)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("11_40ifd")
+
+[node name="Label" type="RichTextLabel" parent="MainUI/LeftPanel/Escape"]
+material = SubResource("ShaderMaterial_x50yd")
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -208.0
+offset_top = 80.0
+offset_right = 208.0
+offset_bottom = 201.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/normal_font_size = 100
+text = "ESCAPE"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EscapeChanceDisplay" type="RichTextLabel" parent="MainUI/LeftPanel/Escape"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.589
+anchor_right = 0.5
+anchor_bottom = 0.589
+offset_left = -160.0
+offset_top = 122.92
+offset_right = 160.0
+offset_bottom = 159.92
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.392157)
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/shadow_offset_x = -5
+theme_override_constants/shadow_outline_size = 10
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "Escape chance - [color=green]70%"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+script = ExtResource("12_g0v2f")
+
+[node name="ReturnButton" type="Button" parent="MainUI/LeftPanel" node_paths=PackedStringArray("main_ui")]
+visible = false
+material = SubResource("ShaderMaterial_kw4tk")
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -96.0
+offset_top = -112.0
+offset_right = 96.0
+offset_bottom = -46.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "Return"
+script = ExtResource("8_aprkc")
+main_ui = NodePath("../..")
+id = "options"
+
+[node name="RightPanel" type="Control" parent="MainUI" node_paths=PackedStringArray("scroll", "quill", "options", "skills", "items", "escape")]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -448.0
+offset_top = -360.0
+offset_bottom = 360.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("6_ksl0e")
+script = ExtResource("8_ngbqi")
+scroll = NodePath("Scroll")
+quill = NodePath("Quill")
+options = NodePath("Options")
+skills = NodePath("Skills")
+items = NodePath("Items")
+escape = NodePath("Escape")
+
+[node name="Scroll" type="Sprite2D" parent="MainUI/RightPanel"]
+visible = false
+position = Vector2(216, 376)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_3nk04")
+
+[node name="Options" type="Control" parent="MainUI/RightPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SkillsButton" type="Button" parent="MainUI/RightPanel/Options" node_paths=PackedStringArray("main_ui")]
+material = SubResource("ShaderMaterial_3fv4m")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -264.0
+offset_right = 160.0
+offset_bottom = -136.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 100
+text = "Skills"
+script = ExtResource("8_aprkc")
+main_ui = NodePath("../../..")
+id = "skills"
+
+[node name="ItemsButton" type="Button" parent="MainUI/RightPanel/Options" node_paths=PackedStringArray("main_ui")]
+material = SubResource("ShaderMaterial_ngbqi")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -40.0
+offset_right = 200.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 40
+text = "Items"
+script = ExtResource("8_aprkc")
+main_ui = NodePath("../../..")
+id = "items"
+
+[node name="EscapeButton" type="Button" parent="MainUI/RightPanel/Options" node_paths=PackedStringArray("main_ui")]
+material = SubResource("ShaderMaterial_aprkc")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -144.0
+offset_top = 160.0
+offset_right = 112.0
+offset_bottom = 248.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 60
+text = "Escape"
+script = ExtResource("8_aprkc")
+main_ui = NodePath("../../..")
+id = "escape"
+
+[node name="Skills" type="Control" parent="MainUI/RightPanel" node_paths=PackedStringArray("main")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("22_fvn33")
+main = NodePath("../../..")
+
+[node name="Skill 1" type="Button" parent="MainUI/RightPanel/Skills" node_paths=PackedStringArray("main", "skill_desc", "parent")]
+material = SubResource("ShaderMaterial_p7lmq")
+layout_mode = 0
+offset_left = 56.0
+offset_top = 176.0
+offset_right = 312.0
+offset_bottom = 250.0
+focus_mode = 0
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 30
+text = "Devour"
+autowrap_mode = 2
+script = ExtResource("22_nidv2")
+main = NodePath("../../../..")
+skill_desc = NodePath("../../../LeftPanel/Skills")
+parent = NodePath("../..")
+
+[node name="Skill 2" type="Button" parent="MainUI/RightPanel/Skills" node_paths=PackedStringArray("main", "skill_desc", "parent")]
+material = SubResource("ShaderMaterial_vfxhe")
+layout_mode = 0
+offset_left = 56.0
+offset_top = 272.0
+offset_right = 312.0
+offset_bottom = 346.0
+focus_mode = 0
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 30
+text = "Eternal Pyre's Embrace"
+autowrap_mode = 2
+script = ExtResource("22_nidv2")
+main = NodePath("../../../..")
+skill_desc = NodePath("../../../LeftPanel/Skills")
+index = 1
+parent = NodePath("../..")
+
+[node name="Skill 3" type="Button" parent="MainUI/RightPanel/Skills" node_paths=PackedStringArray("main", "skill_desc", "parent")]
+material = SubResource("ShaderMaterial_q1t4l")
+layout_mode = 0
+offset_left = 72.0
+offset_top = 368.0
+offset_right = 328.0
+offset_bottom = 442.0
+focus_mode = 0
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 30
+text = "- Empty -"
+autowrap_mode = 2
+script = ExtResource("22_nidv2")
+main = NodePath("../../../..")
+skill_desc = NodePath("../../../LeftPanel/Skills")
+index = 2
+parent = NodePath("../..")
+
+[node name="Skill 4" type="Button" parent="MainUI/RightPanel/Skills" node_paths=PackedStringArray("main", "skill_desc", "parent")]
+material = SubResource("ShaderMaterial_fo1wp")
+layout_mode = 0
+offset_left = 88.0
+offset_top = 456.0
+offset_right = 344.0
+offset_bottom = 530.0
+focus_mode = 0
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 30
+text = "- Empty -"
+autowrap_mode = 2
+script = ExtResource("22_nidv2")
+main = NodePath("../../../..")
+skill_desc = NodePath("../../../LeftPanel/Skills")
+index = 3
+parent = NodePath("../..")
+
+[node name="Items" type="Control" parent="MainUI/RightPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CuredHam" type="Button" parent="MainUI/RightPanel/Items" node_paths=PackedStringArray("item_sprite", "item_desc_display", "main", "parent")]
+material = SubResource("ShaderMaterial_p7lmq")
+layout_mode = 0
+offset_left = 56.0
+offset_top = 176.0
+offset_right = 312.0
+offset_bottom = 250.0
+focus_mode = 0
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 30
+text = "Devour"
+autowrap_mode = 2
+script = ExtResource("14_q1t4l")
+item_sprite = NodePath("../../../LeftPanel/Items/ItemSprites")
+item_desc_display = NodePath("../../../LeftPanel/Items/ItemDescription")
+item_name = "Cured Ham"
+item_id = "cured_ham"
+sprite_id = 1
+item_desc = "Restore [color=green]25 HP[/color] to all allies"
+main = NodePath("../../../..")
+parent = NodePath("../..")
+
+[node name="Flesh" type="Button" parent="MainUI/RightPanel/Items" node_paths=PackedStringArray("item_sprite", "item_desc_display", "main", "parent")]
+material = SubResource("ShaderMaterial_vfxhe")
+layout_mode = 0
+offset_left = 56.0
+offset_top = 272.0
+offset_right = 312.0
+offset_bottom = 346.0
+focus_mode = 0
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 30
+text = "Eternal Pyre's Embrace"
+autowrap_mode = 2
+script = ExtResource("16_d2bh2")
+item_sprite = NodePath("../../../LeftPanel/Items/ItemSprites")
+item_desc_display = NodePath("../../../LeftPanel/Items/ItemDescription")
+item_name = "Flesh"
+item_id = "flesh"
+sprite_id = 2
+item_desc = "Restore [color=green]80 HP[/color] to one ally"
+main = NodePath("../../../..")
+parent = NodePath("../..")
+
+[node name="Goat\'sBlood" type="Button" parent="MainUI/RightPanel/Items" node_paths=PackedStringArray("item_sprite", "item_desc_display", "main", "parent")]
+material = SubResource("ShaderMaterial_q1t4l")
+layout_mode = 0
+offset_left = 72.0
+offset_top = 368.0
+offset_right = 328.0
+offset_bottom = 442.0
+focus_mode = 0
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 30
+text = "- Empty -"
+autowrap_mode = 2
+script = ExtResource("17_ceix2")
+item_sprite = NodePath("../../../LeftPanel/Items/ItemSprites")
+item_desc_display = NodePath("../../../LeftPanel/Items/ItemDescription")
+item_name = "Goat's Blood"
+item_id = "goats_blood"
+sprite_id = 3
+item_desc = "Revives an ally"
+main = NodePath("../../../..")
+parent = NodePath("../..")
+
+[node name="Money" type="Button" parent="MainUI/RightPanel/Items" node_paths=PackedStringArray("item_sprite", "item_desc_display", "main", "parent")]
+material = SubResource("ShaderMaterial_fo1wp")
+layout_mode = 0
+offset_left = 88.0
+offset_top = 456.0
+offset_right = 344.0
+offset_bottom = 530.0
+focus_mode = 0
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 30
+text = "- Empty -"
+autowrap_mode = 2
+script = ExtResource("18_a8nkt")
+item_sprite = NodePath("../../../LeftPanel/Items/ItemSprites")
+item_desc_display = NodePath("../../../LeftPanel/Items/ItemDescription")
+item_name = "Money"
+item_id = "money"
+sprite_id = 4
+item_desc = "Guaranteed escape"
+main = NodePath("../../../..")
+parent = NodePath("../..")
+
+[node name="Escape" type="Control" parent="MainUI/RightPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Yes" type="Button" parent="MainUI/RightPanel/Escape" node_paths=PackedStringArray("parent")]
+material = SubResource("ShaderMaterial_vfxhe")
+layout_mode = 0
+offset_left = 56.0
+offset_top = 272.0
+offset_right = 312.0
+offset_bottom = 346.0
+focus_mode = 0
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 30
+text = "Yes"
+autowrap_mode = 2
+script = ExtResource("19_ceix2")
+parent = NodePath("../..")
+
+[node name="No" type="Button" parent="MainUI/RightPanel/Escape" node_paths=PackedStringArray("main_ui", "parent")]
+material = SubResource("ShaderMaterial_q1t4l")
+layout_mode = 0
+offset_left = 72.0
+offset_top = 368.0
+offset_right = 328.0
+offset_bottom = 442.0
+focus_mode = 0
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 30
+text = "No"
+autowrap_mode = 2
+script = ExtResource("20_a8nkt")
+main_ui = NodePath("../../..")
+parent = NodePath("../..")
+
+[node name="Quill" type="Sprite2D" parent="MainUI/RightPanel"]
+visible = false
+position = Vector2(272, 216)
+rotation = 0.437178
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("10_aprkc")
+offset = Vector2(170, -350)
+
+[node name="InputBlocker" type="ColorRect" parent="MainUI"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="SolidColor" type="ColorRect" parent="MainUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="IntroFIGHT" type="RichTextLabel" parent="MainUI"]
+z_index = -1
+material = SubResource("ShaderMaterial_x50yd")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -181.5
+offset_right = 400.0
+offset_bottom = 182.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(400, 182)
+theme = ExtResource("6_ksl0e")
+theme_override_colors/font_outline_color = Color(0.5, 0.5, 0.5, 1)
+theme_override_constants/outline_size = 30
+theme_override_font_sizes/normal_font_size = 250
+text = "FIGHT"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TargetSelection" type="Node" parent="." node_paths=PackedStringArray("main")]
+script = ExtResource("24_314eb")
+main = NodePath("..")
+
+[node name="MainAnim" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_bplng")
+}
+
+[node name="BattleCam" type="Camera3D" parent="." node_paths=PackedStringArray("main")]
+transform = Transform3D(-4.37114e-08, -0.984808, 0.173648, 0, 0.173648, 0.984808, -1, 4.30473e-08, -7.5904e-09, 4.1902, 18, 0.0259711)
+attributes = SubResource("CameraAttributesPractical_x50yd")
+script = ExtResource("2_g1d0u")
+main = NodePath("..")
+
+[node name="HandheldShake" type="Node3D" parent="BattleCam"]
+script = ExtResource("3_bdusq")
+AutoPlay = true
+intensity = 0.5
+shake_speed = 0.5
+shakerPreset = SubResource("Resource_yns20")
+
+[node name="ImpactShake" type="Node3D" parent="BattleCam"]
+script = ExtResource("3_bdusq")
+duration = 0.5
+fade_in = 1e-05
+fade_out = 2.0
+shakerPreset = SubResource("Resource_g8sry")
+
+[node name="Table" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Table"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = SubResource("CylinderMesh_jg8lh")
+
+[node name="Holders" type="Node3D" parent="."]
+
+[node name="AllyHolders1" type="Node3D" parent="Holders"]
+unique_name_in_owner = true
+visible = false
+
+[node name="1" type="StaticBody3D" parent="Holders/AllyHolders1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.3, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Holders/AllyHolders1/1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+mesh = SubResource("CylinderMesh_go5df")
+
+[node name="AllyHolders2" type="Node3D" parent="Holders"]
+unique_name_in_owner = true
+
+[node name="1" type="StaticBody3D" parent="Holders/AllyHolders2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.3, -5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Holders/AllyHolders2/1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+visible = false
+mesh = SubResource("CylinderMesh_go5df")
+
+[node name="2" type="StaticBody3D" parent="Holders/AllyHolders2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.3, 5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Holders/AllyHolders2/2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+visible = false
+mesh = SubResource("CylinderMesh_go5df")
+
+[node name="AllyHolders3" type="Node3D" parent="Holders"]
+unique_name_in_owner = true
+visible = false
+
+[node name="1" type="StaticBody3D" parent="Holders/AllyHolders3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.3, -8)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Holders/AllyHolders3/1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+mesh = SubResource("CylinderMesh_go5df")
+
+[node name="2" type="StaticBody3D" parent="Holders/AllyHolders3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.3, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Holders/AllyHolders3/2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+mesh = SubResource("CylinderMesh_go5df")
+
+[node name="3" type="StaticBody3D" parent="Holders/AllyHolders3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.3, 8)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Holders/AllyHolders3/3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+mesh = SubResource("CylinderMesh_go5df")
+
+[node name="EnemyHolders1" type="Node3D" parent="Holders"]
+unique_name_in_owner = true
+
+[node name="1" type="StaticBody3D" parent="Holders/EnemyHolders1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.3, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Holders/EnemyHolders1/1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+visible = false
+mesh = SubResource("CylinderMesh_go5df")
+
+[node name="EnemyHolders2" type="Node3D" parent="Holders"]
+unique_name_in_owner = true
+visible = false
+
+[node name="2" type="StaticBody3D" parent="Holders/EnemyHolders2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.3, -5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Holders/EnemyHolders2/2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+mesh = SubResource("CylinderMesh_go5df")
+
+[node name="1" type="StaticBody3D" parent="Holders/EnemyHolders2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.3, 5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Holders/EnemyHolders2/1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+mesh = SubResource("CylinderMesh_go5df")
+
+[node name="EnemyHolders3" type="Node3D" parent="Holders"]
+unique_name_in_owner = true
+visible = false
+
+[node name="1" type="StaticBody3D" parent="Holders/EnemyHolders3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.3, 8)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Holders/EnemyHolders3/1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+mesh = SubResource("CylinderMesh_go5df")
+
+[node name="2" type="StaticBody3D" parent="Holders/EnemyHolders3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.3, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Holders/EnemyHolders3/2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+mesh = SubResource("CylinderMesh_go5df")
+
+[node name="3" type="StaticBody3D" parent="Holders/EnemyHolders3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.3, -8)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Holders/EnemyHolders3/3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+mesh = SubResource("CylinderMesh_go5df")
+
+[node name="DustParticles" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+amount = 200
+lifetime = 5.0
+process_material = SubResource("ParticleProcessMaterial_y8qc7")
+draw_pass_1 = SubResource("PlaneMesh_tx0yf")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("3_rdbxm")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 2.14352, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20, 0)
+light_energy = 16.0
+spot_range = 30.0
+
+[connection signal="pressed" from="MainUI/LeftPanel/Options/AttackButton" to="MainUI/LeftPanel/Options/AttackButton" method="_on_pressed"]
+[connection signal="pressed" from="MainUI/LeftPanel/Options/DefendButton" to="MainUI/LeftPanel/Options/DefendButton" method="_on_pressed"]

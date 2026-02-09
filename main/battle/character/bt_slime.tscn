@@ -1,0 +1,39 @@
+[gd_scene load_steps=9 format=3 uid="uid://i12nd2m0btsw"]
+
+[ext_resource type="Script" uid="uid://wj28hb5nba7u" path="res://main/battle/character/battle_character.gd" id="1_7ukig"]
+[ext_resource type="PackedScene" uid="uid://bs2xq80dv1ueu" path="res://main/battle/character/character_components/turn_component.tscn" id="2_1uqte"]
+[ext_resource type="PackedScene" uid="uid://c0t5y6y88n7s8" path="res://main/battle/character/character_components/character_visual.tscn" id="2_r418q"]
+[ext_resource type="Texture2D" uid="uid://bps28arvfbu63" path="res://characters/slime/slime_1.png" id="3_bt417"]
+[ext_resource type="PackedScene" uid="uid://ccuw8vpu5w10y" path="res://main/battle/character/character_components/health_component.tscn" id="4_1tbn0"]
+[ext_resource type="PackedScene" uid="uid://r2yku07du05q" path="res://main/battle/character/character_components/skill_component.tscn" id="6_14e27"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_2vf37"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_8iaid"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Slime" type="StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+script = ExtResource("1_7ukig")
+battle_id = "slime"
+ally = true
+
+[node name="CharacterVisual" parent="." instance=ExtResource("2_r418q")]
+
+[node name="Sprite" parent="CharacterVisual" index="0"]
+texture = ExtResource("3_bt417")
+
+[node name="HealthComponent" parent="." instance=ExtResource("4_1tbn0")]
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, -5.40592e-08, 0, 1.23673)
+render_priority = 1
+texture = SubResource("ViewportTexture_2vf37")
+
+[node name="TurnComponent" parent="." instance=ExtResource("2_1uqte")]
+transform = Transform3D(1.5, 0, 0, 0, -6.55671e-08, 1.5, 0, -1.5, -6.55671e-08, -7.93525e-08, 0, 1.81538)
+texture = SubResource("ViewportTexture_8iaid")
+
+[node name="SkillComponent" parent="." instance=ExtResource("6_14e27")]
+
+[editable path="CharacterVisual"]
+[editable path="HealthComponent"]

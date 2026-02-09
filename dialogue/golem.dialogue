@@ -1,0 +1,14 @@
+~ golem_talk
+Golem: go[wait=1.0]			lem
+
+=> END
+
+~ golem_forget
+Golem: [i]It seems to have forgotten what it should be doing.[/i]
+Golem: [i]Maybe it will remember once you get [color=cyan]bigger.[/color][/i]
+
+=> END 
+
+~ golem_remember
+Golem: [i]It seems to have remembered what it should be doing.[/i]
+Golem: [i]Maybe it will forget once you get [color=cyan]bigger.[/color][/i]

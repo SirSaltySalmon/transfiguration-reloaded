@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://cofv6hjk51ptu"]
+
+[ext_resource type="Script" uid="uid://cuj6u2wg8clkd" path="res://ui/overworld/ArrowManager.gd" id="1_734ld"]
+[ext_resource type="PackedScene" uid="uid://w033ku2wxb4u" path="res://ui/overworld/arrow.tscn" id="2_fix13"]
+
+[node name="ArrowManager" type="Node3D"]
+script = ExtResource("1_734ld")
+
+[node name="UpArrow" parent="." instance=ExtResource("2_fix13")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -7.5)
+direction = "up"
+destination = "library"
+show_condition = "Global.size == 3"
+
+[node name="DownArrow" parent="." instance=ExtResource("2_fix13")]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, -5, -7.5)
+direction = "down"
+destination = "dragon_cave"
+show_condition = "Global.size == 6"
+
+[node name="LeftArrow" parent="." instance=ExtResource("2_fix13")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -12, 0, -7.5)
+direction = "left"
+destination = "shop"
+resource = "res://main/overworld/areas/shop.tscn"
+show_condition = "Global.size >= 2"
+
+[node name="RightArrow" parent="." instance=ExtResource("2_fix13")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 12, 0, -7.5)
+direction = "right"
+destination = "prison"
+resource = "res://main/overworld/areas/prison.tscn"
+show_condition = "Global.size >= 1"

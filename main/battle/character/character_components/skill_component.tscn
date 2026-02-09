@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://r2yku07du05q"]
+
+[ext_resource type="Script" uid="uid://dunroc37tciaw" path="res://main/battle/character/character_components/skill_component.gd" id="1_68fti"]
+
+[node name="SkillComponent" type="Node"]
+script = ExtResource("1_68fti")

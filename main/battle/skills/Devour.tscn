@@ -1,0 +1,112 @@
+[gd_scene load_steps=16 format=3 uid="uid://cym6k0p4inexh"]
+
+[ext_resource type="Script" uid="uid://cx2d4d64bie0r" path="res://main/battle/skills/devour.gd" id="1_8n8fc"]
+[ext_resource type="Texture2D" uid="uid://o4ensyun5o3l" path="res://assets/battle/effects/sprite_sheets/bite.png" id="2_kth0g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kth0g"]
+atlas = ExtResource("2_kth0g")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l20x3"]
+atlas = ExtResource("2_kth0g")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjhh6"]
+atlas = ExtResource("2_kth0g")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q6etc"]
+atlas = ExtResource("2_kth0g")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tveph"]
+atlas = ExtResource("2_kth0g")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_658n4"]
+atlas = ExtResource("2_kth0g")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rlo4t"]
+atlas = ExtResource("2_kth0g")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rnqgn"]
+atlas = ExtResource("2_kth0g")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uq6nb"]
+atlas = ExtResource("2_kth0g")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8gx3b"]
+atlas = ExtResource("2_kth0g")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r68sh"]
+atlas = ExtResource("2_kth0g")
+region = Rect2(640, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_58cds"]
+atlas = ExtResource("2_kth0g")
+region = Rect2(704, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0d3cj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kth0g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l20x3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sjhh6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q6etc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tveph")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_658n4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rlo4t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rnqgn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uq6nb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8gx3b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r68sh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_58cds")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"devour",
+"speed": 16.0
+}]
+
+[node name="Devour" type="Node3D" node_paths=PackedStringArray("effect_base")]
+script = ExtResource("1_8n8fc")
+id = "Devour"
+effect_base = NodePath("Effect")
+
+[node name="Effect" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, -4.37114e-07, 10, 0, -10, -4.37114e-07, 0, 0, 0)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_0d3cj")
+animation = &"devour"
+frame = 12
+frame_progress = 1.0

@@ -1,0 +1,119 @@
+[gd_scene load_steps=11 format=3 uid="uid://h1poi1wqxoap"]
+
+[ext_resource type="Script" uid="uid://sj2vqd5disv6" path="res://characters/rat/rat.gd" id="1_ij113"]
+[ext_resource type="Resource" uid="uid://dns0p0rxy6f1d" path="res://dialogue/rat.dialogue" id="2_era3q"]
+[ext_resource type="Texture2D" uid="uid://dwo8d6vai3126" path="res://characters/rat/rat.png" id="2_oloyq"]
+[ext_resource type="Shader" uid="uid://ce3e5bbugj1q7" path="res://assets/overworld/effects/highlight.gdshader" id="3_jfk6p"]
+
+[sub_resource type="Animation" id="Animation_2prk7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_be4wq"]
+resource_name = "jump"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(0.3, 2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.5, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qr2xb"]
+_data = {
+&"RESET": SubResource("Animation_2prk7"),
+&"jump": SubResource("Animation_be4wq")
+}
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_c6g11"]
+viewport_path = NodePath("Sprite/SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cbcqg"]
+resource_local_to_scene = true
+shader = ExtResource("3_jfk6p")
+shader_parameter/Line_Smoothness = 0.045
+shader_parameter/Line_Width = 0.2
+shader_parameter/Brightness = 3.0
+shader_parameter/Rotation_deg = 30.0
+shader_parameter/Distortion = 1.8
+shader_parameter/Speed = 1.0
+shader_parameter/Position = 0.0
+shader_parameter/Position_Min = 0.25
+shader_parameter/Position_Max = 0.5
+shader_parameter/Alpha = 1.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1vldl"]
+size = Vector3(1.66205, 1.50894, 0.0842896)
+
+[node name="Rat" type="StaticBody3D"]
+script = ExtResource("1_ij113")
+dialogue = ExtResource("2_era3q")
+zoom = -4
+
+[node name="JumpPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_qr2xb")
+}
+
+[node name="IdleActionTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Sprite" type="Sprite3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+shaded = true
+render_priority = 1
+texture = SubResource("ViewportTexture_c6g11")
+
+[node name="SubViewport" type="SubViewport" parent="Sprite"]
+disable_3d = true
+transparent_bg = true
+size = Vector2i(1772, 1772)
+
+[node name="Sprite2D" type="TextureRect" parent="Sprite/SubViewport"]
+clip_children = 2
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_oloyq")
+
+[node name="Highlight" type="ColorRect" parent="Sprite/SubViewport/Sprite2D"]
+visible = false
+material = SubResource("ShaderMaterial_cbcqg")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Brighten" type="ColorRect" parent="Sprite/SubViewport/Sprite2D"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.196078)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_1vldl")
+
+[connection signal="timeout" from="IdleActionTimer" to="." method="idle"]

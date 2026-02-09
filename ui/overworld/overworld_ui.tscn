@@ -1,0 +1,84 @@
+[gd_scene load_steps=9 format=3 uid="uid://cs6sa16vx7mf7"]
+
+[ext_resource type="Script" uid="uid://wxpxeo0h0csi" path="res://ui/overworld/overworld_ui.gd" id="1_5xfhc"]
+[ext_resource type="Script" uid="uid://dfa1jxoh0hyu6" path="res://ui/overworld/money_counter.gd" id="2_0adr3"]
+[ext_resource type="Theme" uid="uid://deuac1eygl4i6" path="res://assets/overworld/themes/standard.tres" id="2_vfsxj"]
+[ext_resource type="Script" uid="uid://by5frv70mlk2g" path="res://ui/overworld/size_counter.gd" id="3_wwcxx"]
+[ext_resource type="PackedScene" uid="uid://b5b8i4p40f5ua" path="res://addons/command-terminal/scn/command_terminal_guts.tscn" id="5_3rsc8"]
+[ext_resource type="Script" uid="uid://c6n2mop2jrb3x" path="res://addons/command-terminal/src/CommandTerminal.gd" id="5_dyeyc"]
+[ext_resource type="FontFile" uid="uid://cmmltma2gsu3a" path="res://addons/command-terminal/ast/windows_command_prompt.ttf" id="6_p548d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qnqr2"]
+size = Vector2(250, 720)
+
+[node name="OverworldUI" type="CanvasLayer"]
+layer = 128
+script = ExtResource("1_5xfhc")
+
+[node name="Left" type="Area2D" parent="."]
+
+[node name="CollisionObj" type="CollisionShape2D" parent="Left"]
+position = Vector2(125, 360)
+shape = SubResource("RectangleShape2D_qnqr2")
+
+[node name="Right" type="Area2D" parent="."]
+
+[node name="CollisionObj" type="CollisionShape2D" parent="Right"]
+position = Vector2(1155, 360)
+shape = SubResource("RectangleShape2D_qnqr2")
+
+[node name="Stats" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("2_vfsxj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Stats"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 15.0
+offset_right = 175.0
+offset_bottom = 85.0
+theme_override_constants/separation = -5
+
+[node name="MoneyCounter" type="RichTextLabel" parent="Stats/VBoxContainer"]
+custom_minimum_size = Vector2(150, 45)
+layout_mode = 2
+bbcode_enabled = true
+text = " [color=gold]Money:[/color] -1"
+scroll_active = false
+script = ExtResource("2_0adr3")
+
+[node name="SizeCounter" type="RichTextLabel" parent="Stats/VBoxContainer"]
+custom_minimum_size = Vector2(150, 45)
+layout_mode = 2
+bbcode_enabled = true
+text = " [color=cyan]Size:[/color] -1"
+scroll_active = false
+script = ExtResource("3_wwcxx")
+
+[node name="Cover" type="ColorRect" parent="."]
+z_index = 1
+offset_right = 1280.0
+offset_bottom = 720.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Terminal" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("5_dyeyc")
+font = ExtResource("6_p548d")
+
+[node name="__guts__" parent="Terminal" instance=ExtResource("5_3rsc8")]
+layout_mode = 1

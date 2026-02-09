@@ -1,0 +1,159 @@
+[gd_scene load_steps=13 format=3 uid="uid://ccuw8vpu5w10y"]
+
+[ext_resource type="StyleBox" uid="uid://clnpy50ecxi08" path="res://assets/battle/ui/healthbar_bg.tres" id="1_gf1uj"]
+[ext_resource type="Script" uid="uid://bwn3tdlxp478a" path="res://main/battle/character/character_components/health_component.gd" id="1_y7bym"]
+[ext_resource type="StyleBox" uid="uid://d228aqxv5hdbd" path="res://assets/battle/ui/healthbar_healthy.tres" id="2_jd75v"]
+[ext_resource type="FontFile" uid="uid://ds86gfffkp1bv" path="res://assets/fonts/Moderniz.otf" id="4_mcc4u"]
+[ext_resource type="Texture2D" uid="uid://duh655unleuy8" path="res://assets/battle/ui/DefendIcon.png" id="5_76eet"]
+[ext_resource type="Texture2D" uid="uid://g27uyb8r7jr0" path="res://assets/battle/ui/PoisonIcon.png" id="5_dvg4k"]
+[ext_resource type="Texture2D" uid="uid://qr0ls4q3w7cp" path="res://assets/battle/ui/GoopIcon.png" id="6_0ut8i"]
+[ext_resource type="Texture2D" uid="uid://dyxcmqcjugxc6" path="res://assets/battle/ui/VulnerableIcon.png" id="6_nauc6"]
+[ext_resource type="Texture2D" uid="uid://2kbuujh6y7gm" path="res://assets/battle/ui/HasteIcon.png" id="7_j6hcm"]
+[ext_resource type="Texture2D" uid="uid://bfqdn4yw2v7hh" path="res://assets/battle/ui/BurnIcon.png" id="7_q6bx5"]
+[ext_resource type="Texture2D" uid="uid://2kklyqhvljhh" path="res://assets/battle/ui/FrostbiteIcon.png" id="8_1wvb0"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_4poig"]
+viewport_path = NodePath("SubViewport")
+
+[node name="HealthComponent" type="Sprite3D"]
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, 0, 0, 0)
+no_depth_test = true
+texture = SubResource("ViewportTexture_4poig")
+script = ExtResource("1_y7bym")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(1028, 256)
+
+[node name="ProgressBar" type="ProgressBar" parent="SubViewport"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -15.0
+offset_right = 128.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme_override_styles/background = ExtResource("1_gf1uj")
+theme_override_styles/fill = ExtResource("2_jd75v")
+value = 50.0
+show_percentage = false
+
+[node name="ValueDisplay" type="Label" parent="SubViewport/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.0
+offset_top = -11.5
+offset_right = 26.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "50/100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ChangeDisplay" type="RichTextLabel" parent="SubViewport"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -7.0
+offset_top = 0.5
+offset_right = 293.0
+offset_bottom = 123.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 20
+theme_override_fonts/normal_font = ExtResource("4_mcc4u")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = " -50 HP"
+fit_content = true
+scroll_active = false
+
+[node name="StatusIcons" type="HBoxContainer" parent="SubViewport"]
+texture_filter = 1
+offset_left = 386.0
+offset_top = 35.925
+offset_right = 756.0
+offset_bottom = 105.925
+theme_override_constants/separation = 5
+
+[node name="Defend" type="Panel" parent="SubViewport/StatusIcons"]
+visible = false
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="SubViewport/StatusIcons/Defend"]
+position = Vector2(3, 3)
+texture = ExtResource("5_76eet")
+centered = false
+
+[node name="Goop" type="Panel" parent="SubViewport/StatusIcons"]
+visible = false
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="SubViewport/StatusIcons/Goop"]
+position = Vector2(3, 3)
+texture = ExtResource("6_0ut8i")
+centered = false
+
+[node name="Haste" type="Panel" parent="SubViewport/StatusIcons"]
+visible = false
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="SubViewport/StatusIcons/Haste"]
+position = Vector2(3, 3)
+texture = ExtResource("7_j6hcm")
+centered = false
+
+[node name="Poison" type="Panel" parent="SubViewport/StatusIcons"]
+visible = false
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="SubViewport/StatusIcons/Poison"]
+position = Vector2(3, 3)
+texture = ExtResource("5_dvg4k")
+centered = false
+
+[node name="Vulnerable" type="Panel" parent="SubViewport/StatusIcons"]
+visible = false
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="SubViewport/StatusIcons/Vulnerable"]
+position = Vector2(3, 3)
+texture = ExtResource("6_nauc6")
+centered = false
+
+[node name="Burn" type="Panel" parent="SubViewport/StatusIcons"]
+visible = false
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="SubViewport/StatusIcons/Burn"]
+position = Vector2(3, 3)
+texture = ExtResource("7_q6bx5")
+centered = false
+
+[node name="Frostbite" type="Panel" parent="SubViewport/StatusIcons"]
+visible = false
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="SubViewport/StatusIcons/Frostbite"]
+position = Vector2(3, 3)
+texture = ExtResource("8_1wvb0")
+centered = false

@@ -1,0 +1,98 @@
+[gd_scene load_steps=14 format=3 uid="uid://cq8a03hyva7pd"]
+
+[ext_resource type="Script" uid="uid://j8ihfcb0jwxn" path="res://main/battle/skills/goop.gd" id="1_0kh5g"]
+[ext_resource type="Texture2D" uid="uid://j7viv43ml86d" path="res://assets/battle/effects/sprite_sheets/goop.png" id="2_0kh5g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yicxk"]
+atlas = ExtResource("2_0kh5g")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8hg4"]
+atlas = ExtResource("2_0kh5g")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0xfe"]
+atlas = ExtResource("2_0kh5g")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8kq1o"]
+atlas = ExtResource("2_0kh5g")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqj0q"]
+atlas = ExtResource("2_0kh5g")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q6x4x"]
+atlas = ExtResource("2_0kh5g")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l73as"]
+atlas = ExtResource("2_0kh5g")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5gpof"]
+atlas = ExtResource("2_0kh5g")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2yng3"]
+atlas = ExtResource("2_0kh5g")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bvw2i"]
+atlas = ExtResource("2_0kh5g")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0d3cj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yicxk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8hg4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e0xfe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8kq1o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fqj0q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q6x4x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l73as")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5gpof")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2yng3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bvw2i")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"goop",
+"speed": 15.0
+}]
+
+[node name="Goop" type="Node3D" node_paths=PackedStringArray("effect_base")]
+script = ExtResource("1_0kh5g")
+id = "Goop"
+effect_base = NodePath("Effect")
+
+[node name="Effect" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, -4.37114e-07, 10, 0, -10, -4.37114e-07, 0, 0, 0)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_0d3cj")
+animation = &"goop"
+frame = 10
+frame_progress = 1.0

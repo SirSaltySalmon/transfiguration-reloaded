@@ -1,0 +1,87 @@
+[gd_scene load_steps=14 format=3 uid="uid://b5xej74g16j4a"]
+
+[ext_resource type="PackedScene" uid="uid://cs6sa16vx7mf7" path="res://ui/overworld/overworld_ui.tscn" id="1_gon5r"]
+[ext_resource type="Script" path="res://main/overworld/overworld_main.gd" id="1_vn6as"]
+[ext_resource type="PackedScene" uid="uid://cchysi600i2u2" path="res://main/overworld/sewers.tscn" id="1_ws5jf"]
+[ext_resource type="Texture2D" uid="uid://cyjumqgekdd0r" path="res://assets/overworld/effects/dust.png" id="3_gcvwq"]
+[ext_resource type="Script" path="res://main/overworld/camera_3d.gd" id="3_l7jqc"]
+
+[sub_resource type="Environment" id="Environment_qbfa0"]
+tonemap_mode = 2
+glow_enabled = true
+glow_bloom = 1.0
+
+[sub_resource type="Curve" id="Curve_utq4w"]
+max_value = 0.25
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.496324, 0.25), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_fityy"]
+curve = SubResource("Curve_utq4w")
+
+[sub_resource type="Curve" id="Curve_1gpvs"]
+_data = [Vector2(0, 0), 0.0, 5.0, 0, 0, Vector2(0.485507, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -5.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_7bs8j"]
+curve = SubResource("Curve_1gpvs")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_n77fa"]
+emission_shape_scale = Vector3(13, 6, 5)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+initial_velocity_min = -1.0
+initial_velocity_max = 1.0
+orbit_velocity_min = -5.0
+orbit_velocity_max = 5.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.1
+scale_max = 0.1
+scale_curve = SubResource("CurveTexture_7bs8j")
+alpha_curve = SubResource("CurveTexture_fityy")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bqyfj"]
+transparency = 1
+blend_mode = 1
+depth_draw_mode = 1
+no_depth_test = true
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_gcvwq")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_sh2yj"]
+material = SubResource("StandardMaterial3D_bqyfj")
+orientation = 2
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_vn6as")
+
+[node name="OverworldUI" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_gon5r")]
+camera = NodePath("../Camera3D")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+current = true
+script = ExtResource("3_l7jqc")
+
+[node name="OmniLight3D" type="SpotLight3D" parent="Camera3D"]
+light_color = Color(0.4104, 0.526933, 0.76, 1)
+light_energy = 16.0
+shadow_enabled = true
+spot_range = 30.0
+spot_angle = 60.0
+
+[node name="Node3D" parent="." instance=ExtResource("1_ws5jf")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_qbfa0")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.42168)
+amount = 100
+lifetime = 5.0
+process_material = SubResource("ParticleProcessMaterial_n77fa")
+draw_pass_1 = SubResource("PlaneMesh_sh2yj")

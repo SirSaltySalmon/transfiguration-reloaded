@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://c7a4l68t02l0h"
+path="res://.godot/imported/golem.dialogue-c003ad01d569146301975d3267d4b04f.tres"
+
+[deps]
+
+source_file="res://dialogue/golem.dialogue"
+dest_files=["res://.godot/imported/golem.dialogue-c003ad01d569146301975d3267d4b04f.tres"]
+
+[params]
+
+defaults=true

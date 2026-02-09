@@ -1,0 +1,27 @@
+Salmon - Director, Programmer
+Salmon's Brother - Character Designer, Sprite & Background Artist
+
+MUSIC
+-tba-
+
+SOUND EFFECTS
+-tba-
+
+ADDITIONAL ASSETS
+RPG Effects 64x64 by BDragon1727
+Pixel VFX Packs by Frostwindz on itch.io
+
+FONTS
+Roboto by Google Android Design
+Coolvetica by Typodermic Fonts
+BelgianoSerif by Fajarisha Phonna
+Moderniz by Eko Bimantara
+
+PLUGINS USED
+DialogueManager by Nathan Hoad
+SoundManager by Nathan Hoad
+CommandTerminal by 20ml
+Shaker by Eneskp
+
+DEDICATED TO
+My lovely patient friends and families who supported me through the hardest of times

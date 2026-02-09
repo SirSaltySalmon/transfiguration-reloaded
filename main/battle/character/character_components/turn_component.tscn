@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://bs2xq80dv1ueu"]
+
+[ext_resource type="Script" uid="uid://dm7cc2y3y8qnu" path="res://main/battle/character/character_components/turn_component.gd" id="1_0pads"]
+[ext_resource type="StyleBox" uid="uid://5hwoktup7vgo" path="res://assets/battle/ui/turnbar_bg.tres" id="2_5hldc"]
+[ext_resource type="StyleBox" uid="uid://4x7in8qiks4d" path="res://assets/battle/ui/turnbar_waiting.tres" id="3_k1f1u"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_4poig"]
+viewport_path = NodePath("SubViewport")
+
+[node name="TurnComponent" type="Sprite3D" node_paths=PackedStringArray("bar", "speed_label")]
+transform = Transform3D(1.5, 0, 0, 0, -6.55671e-08, 1.5, 0, -1.5, -6.55671e-08, 0, 0, 0)
+no_depth_test = true
+texture = SubResource("ViewportTexture_4poig")
+script = ExtResource("1_0pads")
+bar = NodePath("SubViewport/ProgressBar")
+speed_label = NodePath("SubViewport/ProgressBar/Label")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(1028, 256)
+
+[node name="ProgressBar" type="ProgressBar" parent="SubViewport"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -15.0
+offset_right = 128.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme_override_styles/background = ExtResource("2_5hldc")
+theme_override_styles/fill = ExtResource("3_k1f1u")
+value = 50.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="SubViewport/ProgressBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "SPD 50"
+horizontal_alignment = 1
+vertical_alignment = 1

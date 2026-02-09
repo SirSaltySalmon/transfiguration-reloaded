@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=3 uid="uid://ig8v77r388b"]
+
+[ext_resource type="Script" uid="uid://8cyqrodpkc1c" path="res://main/overworld/areas/area.gd" id="1_ilr64"]
+[ext_resource type="Texture2D" uid="uid://3wsdbfmwx7nn" path="res://assets/overworld/areas/SHOP.png" id="2_ovq1p"]
+[ext_resource type="PackedScene" uid="uid://h1poi1wqxoap" path="res://characters/rat/rat.tscn" id="3_8rluo"]
+[ext_resource type="Texture2D" uid="uid://bgljp5ckmha8o" path="res://assets/overworld/areas/SHOP_INSIDE.png" id="3_b8emr"]
+[ext_resource type="PackedScene" uid="uid://cofv6hjk51ptu" path="res://ui/overworld/arrow_manager.tscn" id="4_jeymx"]
+[ext_resource type="PackedScene" uid="uid://d3c7hfp0qwt6c" path="res://characters/gob/gob.tscn" id="5_xy5dt"]
+[ext_resource type="PackedScene" uid="uid://bsce3vhrswx5m" path="res://characters/tips/tips.tscn" id="6_8evj3"]
+
+[node name="shop" type="Node3D"]
+script = ExtResource("1_ilr64")
+area_id = "sewers"
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.443713, 0.896169, 0, -0.896169, 0.443713, 0.178, 4.70876, -6.3519)
+light_energy = 16.0
+spot_range = 15.0
+spot_angle = 46.27
+
+[node name="PreviewCam" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.495, 0, 0)
+
+[node name="Background" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+shaded = true
+double_sided = false
+texture = ExtResource("2_ovq1p")
+
+[node name="InsideShop" type="Sprite3D" parent="Background"]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0.925, -0.275, -0.5)
+shaded = true
+render_priority = -2
+texture = ExtResource("3_b8emr")
+
+[node name="Rat" parent="." instance=ExtResource("3_8rluo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.81881, -2.73, -6.98861)
+
+[node name="Gob" parent="." instance=ExtResource("5_xy5dt")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -5.525, 0.731, -8.1)
+
+[node name="Tips" parent="." instance=ExtResource("6_8evj3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8884, 0.23253, -8)
+
+[node name="ArrowManager" parent="." instance=ExtResource("4_jeymx")]
+
+[node name="UpArrow" parent="ArrowManager" index="0"]
+destination = ""
+show_condition = ""
+
+[node name="DownArrow" parent="ArrowManager" index="1"]
+destination = ""
+show_condition = ""
+
+[node name="LeftArrow" parent="ArrowManager" index="2"]
+destination = ""
+show_condition = ""
+
+[node name="RightArrow" parent="ArrowManager" index="3"]
+destination = "sewers"
+resource = "res://main/overworld/areas/sewers.tscn"
+
+[editable path="ArrowManager"]

@@ -1,0 +1,13 @@
+[gd_resource type="Environment" load_steps=3 format=3 uid="uid://btl4ptewvgyxp"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_royf7"]
+
+[sub_resource type="Sky" id="Sky_8xc2e"]
+sky_material = SubResource("PhysicalSkyMaterial_royf7")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_8xc2e")
+tonemap_mode = 2
+glow_enabled = true
+glow_bloom = 1.0

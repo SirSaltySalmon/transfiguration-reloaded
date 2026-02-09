@@ -1,0 +1,118 @@
+[gd_scene load_steps=8 format=3 uid="uid://b5b8i4p40f5ua"]
+
+[ext_resource type="Script" uid="uid://bts700wiehvd4" path="res://addons/command-terminal/src/CommandTerminalGuts.gd" id="1_monnh"]
+[ext_resource type="Script" uid="uid://cyr1skwcprgf8" path="res://addons/command-terminal/src/CommandTerminalAutocompletePanel.gd" id="2_urubn"]
+[ext_resource type="Script" uid="uid://b4bryd0orxh0i" path="res://addons/command-terminal/src/CommandTerminalTerminalPanel.gd" id="3_bbpiv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3nmgc"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_if72k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1sgd6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cdo78"]
+
+[node name="__guts__" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3nmgc")
+script = ExtResource("1_monnh")
+metadata/_edit_lock_ = true
+
+[node name="AutocompleteControl" type="Control" parent="."]
+layout_mode = 2
+
+[node name="AUTOCOMPLETE-PANEL" type="PanelContainer" parent="AutocompleteControl"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -59.0
+offset_right = 467.0
+offset_bottom = -32.0
+grow_vertical = 0
+script = ExtResource("2_urubn")
+
+[node name="MarginContainer" type="MarginContainer" parent="AutocompleteControl/AUTOCOMPLETE-PANEL"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 2
+
+[node name="AUTOCOMPLETE-RICH-LABEL" type="RichTextLabel" parent="AutocompleteControl/AUTOCOMPLETE-PANEL/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+bbcode_enabled = true
+text = "autocomplete"
+fit_content = true
+autowrap_mode = 0
+
+[node name="TerminalControl" type="Control" parent="."]
+clip_contents = true
+layout_mode = 2
+
+[node name="TERMINAL-PANEL" type="PanelContainer" parent="TerminalControl"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_bbpiv")
+
+[node name="MarginContainer" type="MarginContainer" parent="TerminalControl/TERMINAL-PANEL"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="Control" type="Control" parent="TerminalControl/TERMINAL-PANEL/MarginContainer"]
+layout_mode = 2
+
+[node name="TERMINAL-RICH-LABEL" type="RichTextLabel" parent="TerminalControl/TERMINAL-PANEL/MarginContainer/Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "terminal"
+fit_content = true
+
+[node name="TERMINAL-LINE-EDIT" type="LineEdit" parent="TerminalControl/TERMINAL-PANEL/MarginContainer/Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 0)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_if72k")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_1sgd6")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_cdo78")
+context_menu_enabled = false
+middle_mouse_paste_enabled = false
+drag_and_drop_selection_enabled = false
+flat = true
+caret_blink = true
+caret_blink_interval = 0.5
+
+[node name="EditorPropertyUpdater" type="Node" parent="."]
+
+[connection signal="focus_exited" from="TerminalControl/TERMINAL-PANEL/MarginContainer/Control/TERMINAL-LINE-EDIT" to="TerminalControl/TERMINAL-PANEL" method="_on_terminallineedit_focus_exited"]

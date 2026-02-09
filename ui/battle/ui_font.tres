@@ -1,0 +1,63 @@
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://bvemkf2eq2avn"]
+
+[ext_resource type="FontFile" uid="uid://0lfejob7te8f" path="res://assets/fonts/Belgiano Serif 2.ttf" id="1_mnp70"]
+[ext_resource type="Texture2D" uid="uid://cewy6p1p17yje" path="res://assets/battle/ui/circle2.png" id="2_ika3b"]
+[ext_resource type="Texture2D" uid="uid://bkj5j1tyt1jao" path="res://assets/battle/ui/circle1.png" id="3_hwrq0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8eb04"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nocvi"]
+texture = ExtResource("2_ika3b")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2wxuv"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nk034"]
+texture = ExtResource("3_hwrq0")
+
+[resource]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_disabled_color = Color(0.501407, 0.501406, 0.501406, 1)
+Button/colors/font_focus_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_pressed_color = Color(0.804743, 0.804743, 0.804743, 1)
+Button/colors/font_outline_color = Color(1, 1, 1, 0.392157)
+Button/colors/font_pressed_color = Color(0.8, 0.8, 0.8, 0.784314)
+Button/constants/align_to_largest_stylebox = 0
+Button/constants/h_separation = 0
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 10
+Button/fonts/font = ExtResource("1_mnp70")
+Button/styles/disabled = null
+Button/styles/focus = SubResource("StyleBoxEmpty_8eb04")
+Button/styles/hover = SubResource("StyleBoxTexture_nocvi")
+Button/styles/normal = SubResource("StyleBoxEmpty_2wxuv")
+Button/styles/pressed = SubResource("StyleBoxTexture_nk034")
+RichTextLabel/colors/default_color = Color(1, 1, 1, 1)
+RichTextLabel/colors/font_outline_color = Color(1, 1, 1, 0.235294)
+RichTextLabel/colors/font_selected_color = Color(0, 0, 0, 1)
+RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 1)
+RichTextLabel/colors/selection_color = Color(0, 0, 0, 1)
+RichTextLabel/colors/table_border = Color(0, 0, 0, 1)
+RichTextLabel/colors/table_even_row_bg = Color(0, 0, 0, 1)
+RichTextLabel/colors/table_odd_row_bg = Color(0, 0, 0, 1)
+RichTextLabel/constants/line_separation = 0
+RichTextLabel/constants/outline_size = 0
+RichTextLabel/constants/shadow_offset_x = 0
+RichTextLabel/constants/shadow_offset_y = 0
+RichTextLabel/constants/shadow_outline_size = 0
+RichTextLabel/constants/table_h_separation = 0
+RichTextLabel/constants/table_v_separation = 0
+RichTextLabel/constants/text_highlight_h_padding = 0
+RichTextLabel/constants/text_highlight_v_padding = 0
+RichTextLabel/font_sizes/bold_font_size = 16
+RichTextLabel/font_sizes/bold_italics_font_size = 16
+RichTextLabel/font_sizes/italics_font_size = 16
+RichTextLabel/font_sizes/mono_font_size = 16
+RichTextLabel/font_sizes/normal_font_size = 16
+RichTextLabel/fonts/bold_font = null
+RichTextLabel/fonts/bold_italics_font = null
+RichTextLabel/fonts/italics_font = null
+RichTextLabel/fonts/mono_font = null
+RichTextLabel/fonts/normal_font = ExtResource("1_mnp70")
+RichTextLabel/styles/focus = null
+RichTextLabel/styles/normal = null
