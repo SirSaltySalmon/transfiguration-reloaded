@@ -14,7 +14,7 @@ warnings/check_invalid_track_paths=false
 
 [application]
 
-config/name="Transfiguration Reloaded 4.4"
+config/name="Transfiguration Reloaded"
 run/main_scene="res://main/title/title.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
