@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://epe3smgsf0jh"]
+[gd_scene format=3 uid="uid://epe3smgsf0jh"]
 
 [ext_resource type="Script" uid="uid://8cyqrodpkc1c" path="res://main/overworld/areas/area.gd" id="1_k0ghv"]
 [ext_resource type="Texture2D" uid="uid://ok3tun67o5e7" path="res://assets/overworld/areas/PRISON.png" id="2_biss2"]
@@ -8,29 +8,29 @@
 [ext_resource type="PackedScene" uid="uid://caqf04g6pdks6" path="res://characters/dead_guy/dead_guy.tscn" id="5_igimx"]
 [ext_resource type="PackedScene" uid="uid://dlfguy7fwyy6r" path="res://characters/slime/slime.tscn" id="6_66aq6"]
 
-[node name="Prison" type="Node3D"]
+[node name="Prison" type="Node3D" unique_id=993638934]
 script = ExtResource("1_k0ghv")
 area_id = "sewers"
 
-[node name="PreviewCam" type="Camera3D" parent="."]
+[node name="PreviewCam" type="Camera3D" parent="." unique_id=978909525]
 
-[node name="Background" type="Sprite3D" parent="."]
+[node name="Background" type="Sprite3D" parent="." unique_id=1626310626]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
 transparent = false
 shaded = true
 double_sided = false
 texture = ExtResource("2_biss2")
 
-[node name="Rat" parent="." instance=ExtResource("3_806ke")]
+[node name="Rat" parent="." unique_id=1160790682 instance=ExtResource("3_806ke")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.08753, -2.23324, -7)
 
-[node name="Golem" parent="." instance=ExtResource("4_lp1ty")]
+[node name="Golem" parent="." unique_id=471742519 instance=ExtResource("4_lp1ty")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -7.31081, -0.474005, -7.57225)
 
-[node name="DeadGuy" parent="." instance=ExtResource("5_igimx")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -1.18389, -2.42809, -7.22653)
+[node name="DeadGuy" parent="." unique_id=1759360251 instance=ExtResource("5_igimx")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -1.18389, -2.056707, -7.22653)
 
-[node name="ArrowManager" parent="." instance=ExtResource("4_unyr1")]
+[node name="ArrowManager" parent="." unique_id=903147584 instance=ExtResource("4_unyr1")]
 
 [node name="UpArrow" parent="ArrowManager" index="0"]
 destination = ""
@@ -50,7 +50,7 @@ destination = ""
 resource = ""
 show_condition = ""
 
-[node name="Slime" parent="." groups=["cutscenes1"] instance=ExtResource("6_66aq6")]
+[node name="Slime" parent="." unique_id=798157087 groups=["cutscenes1"] instance=ExtResource("6_66aq6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.971711, -1.43002, -6.99845)
 
 [editable path="ArrowManager"]

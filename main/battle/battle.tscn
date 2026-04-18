@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://cjjtnb1vihmx4"]
+[gd_scene format=3 uid="uid://cjjtnb1vihmx4"]
 
 [ext_resource type="Texture2D" uid="uid://cnnqjj4cw4wy8" path="res://assets/battle/wood texture.jpg" id="1_asbqr"]
 [ext_resource type="Script" uid="uid://bqyaopp0ha8gp" path="res://main/battle/battle.gd" id="1_lyi2j"]
@@ -585,45 +585,19 @@ dof_blur_near_enabled = true
 [sub_resource type="Resource" id="Resource_2k2jr"]
 script = ExtResource("5_o6t1s")
 frequency = Vector3(0.2, 0, 0.7)
-phase = Vector3(1, 1, 1)
 amplitude = Vector3(0.1, 0, 0.1)
-offset = Vector3(0, 0, 0)
-BlendingMode = 0
-fade_in = 0.0
-fade_out = 0.0
-start_percent = 0.0
-end_percent = 1.0
-_temp_graph = false
-bake_internal = 64
 
 [sub_resource type="Resource" id="Resource_yns20"]
 script = ExtResource("6_wiji8")
 PositionShake = Array[ExtResource("4_w10i8")]([SubResource("Resource_2k2jr")])
-RotationShake = Array[ExtResource("4_w10i8")]([])
-ScaleShake = Array[ExtResource("4_w10i8")]([])
-bake_internal = 64
-__follow_timeline = false
 
 [sub_resource type="Resource" id="Resource_5qicv"]
 script = ExtResource("7_oukdn")
-seed = 0
 amplitude = Vector3(0.5, 0.5, 0.5)
-offset = Vector3(0, 0, 0)
-BlendingMode = 0
-fade_in = 0.0
-fade_out = 0.0
-start_percent = 0.0
-end_percent = 1.0
-_temp_graph = false
-bake_internal = 64
 
 [sub_resource type="Resource" id="Resource_g8sry"]
 script = ExtResource("6_wiji8")
 PositionShake = Array[ExtResource("4_w10i8")]([SubResource("Resource_5qicv")])
-RotationShake = Array[ExtResource("4_w10i8")]([])
-ScaleShake = Array[ExtResource("4_w10i8")]([])
-bake_internal = 64
-__follow_timeline = false
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yxox2"]
 albedo_texture = ExtResource("1_asbqr")
@@ -694,7 +668,7 @@ particles_anim_loop = false
 material = SubResource("StandardMaterial3D_nqvru")
 orientation = 2
 
-[node name="Battle" type="Node3D" node_paths=PackedStringArray("ui", "cam", "anim", "skills", "target")]
+[node name="Battle" type="Node3D" unique_id=938752914 node_paths=PackedStringArray("ui", "cam", "anim", "skills", "target")]
 script = ExtResource("1_lyi2j")
 ui = NodePath("MainUI")
 cam = NodePath("BattleCam")
@@ -704,11 +678,11 @@ target = NodePath("TargetSelection")
 dialogue = ExtResource("2_b1lf2")
 combat_balloon = ExtResource("3_dgfw6")
 
-[node name="SkillsCenter" type="Node3D" parent="." node_paths=PackedStringArray("main")]
+[node name="SkillsCenter" type="Node3D" parent="." unique_id=202295259 node_paths=PackedStringArray("main")]
 script = ExtResource("4_nidv2")
 main = NodePath("..")
 
-[node name="MainUI" type="Control" parent="." node_paths=PackedStringArray("anim", "vignette", "move_displayer", "move_container", "left_panel", "right_panel", "solid_color", "intro_fight", "skill_desc_handler", "skill_node_connector", "item_sprite", "item_description", "escape_chance_display", "flavor_text")]
+[node name="MainUI" type="Control" parent="." unique_id=1532482426 node_paths=PackedStringArray("anim", "vignette", "move_displayer", "move_container", "left_panel", "right_panel", "solid_color", "intro_fight", "skill_desc_handler", "skill_node_connector", "item_sprite", "item_description", "escape_chance_display", "flavor_text")]
 z_index = 1
 layout_mode = 3
 anchors_preset = 15
@@ -732,12 +706,10 @@ item_description = NodePath("LeftPanel/Items/ItemDescription")
 escape_chance_display = NodePath("LeftPanel/Escape/EscapeChanceDisplay")
 flavor_text = NodePath("FlavorContainer/FlavorTextLabel")
 
-[node name="UIAnim" type="AnimationPlayer" parent="MainUI"]
-libraries = {
-&"": SubResource("AnimationLibrary_p7lmq")
-}
+[node name="UIAnim" type="AnimationPlayer" parent="MainUI" unique_id=426428779]
+libraries/ = SubResource("AnimationLibrary_p7lmq")
 
-[node name="Vignette" type="ColorRect" parent="MainUI"]
+[node name="Vignette" type="ColorRect" parent="MainUI" unique_id=1633823175]
 material = SubResource("ShaderMaterial_keope")
 layout_mode = 0
 offset_right = 1280.0
@@ -749,7 +721,7 @@ unfocused_outer_rad = 1.0
 focused_alpha = 0.5
 focused_inner_rad = 0.8
 
-[node name="MoveContainer" type="MarginContainer" parent="MainUI"]
+[node name="MoveContainer" type="MarginContainer" parent="MainUI" unique_id=1304381446]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -760,7 +732,7 @@ offset_bottom = 70.0
 grow_horizontal = 2
 theme = SubResource("Theme_rsn1y")
 
-[node name="MoveDisplayLabel" type="RichTextLabel" parent="MainUI/MoveContainer"]
+[node name="MoveDisplayLabel" type="RichTextLabel" parent="MainUI/MoveContainer" unique_id=588247899]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 bbcode_enabled = true
@@ -770,7 +742,7 @@ scroll_active = false
 horizontal_alignment = 1
 script = ExtResource("3_cgja1")
 
-[node name="FlavorContainer" type="MarginContainer" parent="MainUI"]
+[node name="FlavorContainer" type="MarginContainer" parent="MainUI" unique_id=1251401865]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -784,7 +756,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme = SubResource("Theme_rsn1y")
 
-[node name="FlavorTextLabel" type="RichTextLabel" parent="MainUI/FlavorContainer"]
+[node name="FlavorTextLabel" type="RichTextLabel" parent="MainUI/FlavorContainer" unique_id=300999820]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 bbcode_enabled = true
@@ -794,7 +766,7 @@ scroll_active = false
 horizontal_alignment = 1
 script = ExtResource("8_65f83")
 
-[node name="LeftPanel" type="Control" parent="MainUI" node_paths=PackedStringArray("return_button", "options", "skills", "items", "escape")]
+[node name="LeftPanel" type="Control" parent="MainUI" unique_id=546542965 node_paths=PackedStringArray("return_button", "options", "skills", "items", "escape")]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -811,7 +783,7 @@ skills = NodePath("Skills")
 items = NodePath("Items")
 escape = NodePath("Escape")
 
-[node name="Options" type="Control" parent="MainUI/LeftPanel"]
+[node name="Options" type="Control" parent="MainUI/LeftPanel" unique_id=141211709]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -819,7 +791,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="AttackButton" type="Button" parent="MainUI/LeftPanel/Options" node_paths=PackedStringArray("main")]
+[node name="AttackButton" type="Button" parent="MainUI/LeftPanel/Options" unique_id=1258098120 node_paths=PackedStringArray("main")]
 material = SubResource("ShaderMaterial_3nk04")
 layout_mode = 1
 anchors_preset = 8
@@ -839,7 +811,7 @@ text = "Attack"
 script = ExtResource("9_bplng")
 main = NodePath("../../../..")
 
-[node name="DefendButton" type="Button" parent="MainUI/LeftPanel/Options" node_paths=PackedStringArray("main")]
+[node name="DefendButton" type="Button" parent="MainUI/LeftPanel/Options" unique_id=2123577283 node_paths=PackedStringArray("main")]
 material = SubResource("ShaderMaterial_kw4tk")
 layout_mode = 1
 anchors_preset = 8
@@ -859,7 +831,7 @@ text = "Defend"
 script = ExtResource("10_q5wjj")
 main = NodePath("../../../..")
 
-[node name="Skills" type="Control" parent="MainUI/LeftPanel" node_paths=PackedStringArray("magic_circle_sprite", "skill_desc")]
+[node name="Skills" type="Control" parent="MainUI/LeftPanel" unique_id=192721233 node_paths=PackedStringArray("magic_circle_sprite", "skill_desc")]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -871,12 +843,12 @@ script = ExtResource("15_h3la1")
 magic_circle_sprite = NodePath("MagicCircle")
 skill_desc = NodePath("SkillDescription")
 
-[node name="MagicCircle" type="Sprite2D" parent="MainUI/LeftPanel/Skills"]
+[node name="MagicCircle" type="Sprite2D" parent="MainUI/LeftPanel/Skills" unique_id=1822183910]
 position = Vector2(224, 396)
 scale = Vector2(0.35, 0.35)
 texture = ExtResource("9_vfxhe")
 
-[node name="Label" type="RichTextLabel" parent="MainUI/LeftPanel/Skills"]
+[node name="Label" type="RichTextLabel" parent="MainUI/LeftPanel/Skills" unique_id=625460630]
 material = SubResource("ShaderMaterial_x50yd")
 layout_mode = 1
 anchors_preset = 5
@@ -895,7 +867,7 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SkillDescription" type="RichTextLabel" parent="MainUI/LeftPanel/Skills"]
+[node name="SkillDescription" type="RichTextLabel" parent="MainUI/LeftPanel/Skills" unique_id=368740432]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -909,10 +881,10 @@ offset_bottom = 127.92
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.392157)
-theme_override_constants/outline_size = 5
-theme_override_constants/shadow_offset_y = 5
-theme_override_constants/shadow_offset_x = -5
 theme_override_constants/shadow_outline_size = 10
+theme_override_constants/shadow_offset_x = -5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "Deals [color=red]15 Damage[/color] to the target, and if they have [color=orange]20% remaining or less,[/color] [color=cyan]Devours[/color] and instantly kill the target."
@@ -920,7 +892,7 @@ fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 
-[node name="Items" type="Control" parent="MainUI/LeftPanel"]
+[node name="Items" type="Control" parent="MainUI/LeftPanel" unique_id=269778255]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -929,13 +901,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ItemSprites" type="Sprite2D" parent="MainUI/LeftPanel/Items"]
+[node name="ItemSprites" type="Sprite2D" parent="MainUI/LeftPanel/Items" unique_id=2088988534]
 position = Vector2(224, 365)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("10_fo1wp")
 hframes = 5
 
-[node name="Label" type="RichTextLabel" parent="MainUI/LeftPanel/Items"]
+[node name="Label" type="RichTextLabel" parent="MainUI/LeftPanel/Items" unique_id=1980028676]
 material = SubResource("ShaderMaterial_x50yd")
 layout_mode = 1
 anchors_preset = 5
@@ -954,7 +926,7 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ItemDescription" type="RichTextLabel" parent="MainUI/LeftPanel/Items"]
+[node name="ItemDescription" type="RichTextLabel" parent="MainUI/LeftPanel/Items" unique_id=12139476]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -968,10 +940,10 @@ offset_bottom = 159.92
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.392157)
-theme_override_constants/outline_size = 5
-theme_override_constants/shadow_offset_y = 5
-theme_override_constants/shadow_offset_x = -5
 theme_override_constants/shadow_outline_size = 10
+theme_override_constants/shadow_offset_x = -5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "Select an item"
@@ -979,7 +951,7 @@ fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 
-[node name="Escape" type="Control" parent="MainUI/LeftPanel"]
+[node name="Escape" type="Control" parent="MainUI/LeftPanel" unique_id=448929681]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -988,12 +960,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="EscapeSprite" type="Sprite2D" parent="MainUI/LeftPanel/Escape"]
+[node name="EscapeSprite" type="Sprite2D" parent="MainUI/LeftPanel/Escape" unique_id=184355366]
 position = Vector2(216, 368)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("11_40ifd")
 
-[node name="Label" type="RichTextLabel" parent="MainUI/LeftPanel/Escape"]
+[node name="Label" type="RichTextLabel" parent="MainUI/LeftPanel/Escape" unique_id=491648876]
 material = SubResource("ShaderMaterial_x50yd")
 layout_mode = 1
 anchors_preset = 5
@@ -1012,7 +984,7 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="EscapeChanceDisplay" type="RichTextLabel" parent="MainUI/LeftPanel/Escape"]
+[node name="EscapeChanceDisplay" type="RichTextLabel" parent="MainUI/LeftPanel/Escape" unique_id=1043708197]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -1026,10 +998,10 @@ offset_bottom = 159.92
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.392157)
-theme_override_constants/outline_size = 5
-theme_override_constants/shadow_offset_y = 5
-theme_override_constants/shadow_offset_x = -5
 theme_override_constants/shadow_outline_size = 10
+theme_override_constants/shadow_offset_x = -5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "Escape chance - [color=green]70%"
@@ -1038,7 +1010,7 @@ scroll_active = false
 horizontal_alignment = 1
 script = ExtResource("12_g0v2f")
 
-[node name="ReturnButton" type="Button" parent="MainUI/LeftPanel" node_paths=PackedStringArray("main_ui")]
+[node name="ReturnButton" type="Button" parent="MainUI/LeftPanel" unique_id=112961574 node_paths=PackedStringArray("main_ui")]
 visible = false
 material = SubResource("ShaderMaterial_kw4tk")
 layout_mode = 1
@@ -1059,7 +1031,7 @@ script = ExtResource("8_aprkc")
 main_ui = NodePath("../..")
 id = "options"
 
-[node name="RightPanel" type="Control" parent="MainUI" node_paths=PackedStringArray("scroll", "quill", "options", "skills", "items", "escape")]
+[node name="RightPanel" type="Control" parent="MainUI" unique_id=1672621969 node_paths=PackedStringArray("scroll", "quill", "options", "skills", "items", "escape")]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -1080,13 +1052,13 @@ skills = NodePath("Skills")
 items = NodePath("Items")
 escape = NodePath("Escape")
 
-[node name="Scroll" type="Sprite2D" parent="MainUI/RightPanel"]
+[node name="Scroll" type="Sprite2D" parent="MainUI/RightPanel" unique_id=1686992695]
 visible = false
 position = Vector2(216, 376)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("8_3nk04")
 
-[node name="Options" type="Control" parent="MainUI/RightPanel"]
+[node name="Options" type="Control" parent="MainUI/RightPanel" unique_id=420225883]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1094,7 +1066,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SkillsButton" type="Button" parent="MainUI/RightPanel/Options" node_paths=PackedStringArray("main_ui")]
+[node name="SkillsButton" type="Button" parent="MainUI/RightPanel/Options" unique_id=1553715213 node_paths=PackedStringArray("main_ui")]
 material = SubResource("ShaderMaterial_3fv4m")
 layout_mode = 1
 anchors_preset = 8
@@ -1115,7 +1087,7 @@ script = ExtResource("8_aprkc")
 main_ui = NodePath("../../..")
 id = "skills"
 
-[node name="ItemsButton" type="Button" parent="MainUI/RightPanel/Options" node_paths=PackedStringArray("main_ui")]
+[node name="ItemsButton" type="Button" parent="MainUI/RightPanel/Options" unique_id=1500575781 node_paths=PackedStringArray("main_ui")]
 material = SubResource("ShaderMaterial_ngbqi")
 layout_mode = 1
 anchors_preset = 8
@@ -1136,7 +1108,7 @@ script = ExtResource("8_aprkc")
 main_ui = NodePath("../../..")
 id = "items"
 
-[node name="EscapeButton" type="Button" parent="MainUI/RightPanel/Options" node_paths=PackedStringArray("main_ui")]
+[node name="EscapeButton" type="Button" parent="MainUI/RightPanel/Options" unique_id=587439558 node_paths=PackedStringArray("main_ui")]
 material = SubResource("ShaderMaterial_aprkc")
 layout_mode = 1
 anchors_preset = 8
@@ -1157,7 +1129,7 @@ script = ExtResource("8_aprkc")
 main_ui = NodePath("../../..")
 id = "escape"
 
-[node name="Skills" type="Control" parent="MainUI/RightPanel" node_paths=PackedStringArray("main")]
+[node name="Skills" type="Control" parent="MainUI/RightPanel" unique_id=1744538831 node_paths=PackedStringArray("main")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1167,7 +1139,7 @@ grow_vertical = 2
 script = ExtResource("22_fvn33")
 main = NodePath("../../..")
 
-[node name="Skill 1" type="Button" parent="MainUI/RightPanel/Skills" node_paths=PackedStringArray("main", "skill_desc", "parent")]
+[node name="Skill 1" type="Button" parent="MainUI/RightPanel/Skills" unique_id=267168826 node_paths=PackedStringArray("main", "skill_desc", "parent")]
 material = SubResource("ShaderMaterial_p7lmq")
 layout_mode = 0
 offset_left = 56.0
@@ -1184,7 +1156,7 @@ main = NodePath("../../../..")
 skill_desc = NodePath("../../../LeftPanel/Skills")
 parent = NodePath("../..")
 
-[node name="Skill 2" type="Button" parent="MainUI/RightPanel/Skills" node_paths=PackedStringArray("main", "skill_desc", "parent")]
+[node name="Skill 2" type="Button" parent="MainUI/RightPanel/Skills" unique_id=1815897950 node_paths=PackedStringArray("main", "skill_desc", "parent")]
 material = SubResource("ShaderMaterial_vfxhe")
 layout_mode = 0
 offset_left = 56.0
@@ -1202,7 +1174,7 @@ skill_desc = NodePath("../../../LeftPanel/Skills")
 index = 1
 parent = NodePath("../..")
 
-[node name="Skill 3" type="Button" parent="MainUI/RightPanel/Skills" node_paths=PackedStringArray("main", "skill_desc", "parent")]
+[node name="Skill 3" type="Button" parent="MainUI/RightPanel/Skills" unique_id=784687872 node_paths=PackedStringArray("main", "skill_desc", "parent")]
 material = SubResource("ShaderMaterial_q1t4l")
 layout_mode = 0
 offset_left = 72.0
@@ -1220,7 +1192,7 @@ skill_desc = NodePath("../../../LeftPanel/Skills")
 index = 2
 parent = NodePath("../..")
 
-[node name="Skill 4" type="Button" parent="MainUI/RightPanel/Skills" node_paths=PackedStringArray("main", "skill_desc", "parent")]
+[node name="Skill 4" type="Button" parent="MainUI/RightPanel/Skills" unique_id=1945117527 node_paths=PackedStringArray("main", "skill_desc", "parent")]
 material = SubResource("ShaderMaterial_fo1wp")
 layout_mode = 0
 offset_left = 88.0
@@ -1238,7 +1210,7 @@ skill_desc = NodePath("../../../LeftPanel/Skills")
 index = 3
 parent = NodePath("../..")
 
-[node name="Items" type="Control" parent="MainUI/RightPanel"]
+[node name="Items" type="Control" parent="MainUI/RightPanel" unique_id=1548432335]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -1247,7 +1219,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CuredHam" type="Button" parent="MainUI/RightPanel/Items" node_paths=PackedStringArray("item_sprite", "item_desc_display", "main", "parent")]
+[node name="CuredHam" type="Button" parent="MainUI/RightPanel/Items" unique_id=1152982108 node_paths=PackedStringArray("item_sprite", "item_desc_display", "main", "parent")]
 material = SubResource("ShaderMaterial_p7lmq")
 layout_mode = 0
 offset_left = 56.0
@@ -1269,7 +1241,7 @@ item_desc = "Restore [color=green]25 HP[/color] to all allies"
 main = NodePath("../../../..")
 parent = NodePath("../..")
 
-[node name="Flesh" type="Button" parent="MainUI/RightPanel/Items" node_paths=PackedStringArray("item_sprite", "item_desc_display", "main", "parent")]
+[node name="Flesh" type="Button" parent="MainUI/RightPanel/Items" unique_id=25021399 node_paths=PackedStringArray("item_sprite", "item_desc_display", "main", "parent")]
 material = SubResource("ShaderMaterial_vfxhe")
 layout_mode = 0
 offset_left = 56.0
@@ -1291,7 +1263,7 @@ item_desc = "Restore [color=green]80 HP[/color] to one ally"
 main = NodePath("../../../..")
 parent = NodePath("../..")
 
-[node name="Goat\'sBlood" type="Button" parent="MainUI/RightPanel/Items" node_paths=PackedStringArray("item_sprite", "item_desc_display", "main", "parent")]
+[node name="Goat\'sBlood" type="Button" parent="MainUI/RightPanel/Items" unique_id=468521049 node_paths=PackedStringArray("item_sprite", "item_desc_display", "main", "parent")]
 material = SubResource("ShaderMaterial_q1t4l")
 layout_mode = 0
 offset_left = 72.0
@@ -1313,7 +1285,7 @@ item_desc = "Revives an ally"
 main = NodePath("../../../..")
 parent = NodePath("../..")
 
-[node name="Money" type="Button" parent="MainUI/RightPanel/Items" node_paths=PackedStringArray("item_sprite", "item_desc_display", "main", "parent")]
+[node name="Money" type="Button" parent="MainUI/RightPanel/Items" unique_id=852212867 node_paths=PackedStringArray("item_sprite", "item_desc_display", "main", "parent")]
 material = SubResource("ShaderMaterial_fo1wp")
 layout_mode = 0
 offset_left = 88.0
@@ -1335,7 +1307,7 @@ item_desc = "Guaranteed escape"
 main = NodePath("../../../..")
 parent = NodePath("../..")
 
-[node name="Escape" type="Control" parent="MainUI/RightPanel"]
+[node name="Escape" type="Control" parent="MainUI/RightPanel" unique_id=2026142477]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -1344,7 +1316,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Yes" type="Button" parent="MainUI/RightPanel/Escape" node_paths=PackedStringArray("parent")]
+[node name="Yes" type="Button" parent="MainUI/RightPanel/Escape" unique_id=725691518 node_paths=PackedStringArray("parent")]
 material = SubResource("ShaderMaterial_vfxhe")
 layout_mode = 0
 offset_left = 56.0
@@ -1359,7 +1331,7 @@ autowrap_mode = 2
 script = ExtResource("19_ceix2")
 parent = NodePath("../..")
 
-[node name="No" type="Button" parent="MainUI/RightPanel/Escape" node_paths=PackedStringArray("main_ui", "parent")]
+[node name="No" type="Button" parent="MainUI/RightPanel/Escape" unique_id=1252886374 node_paths=PackedStringArray("main_ui", "parent")]
 material = SubResource("ShaderMaterial_q1t4l")
 layout_mode = 0
 offset_left = 72.0
@@ -1375,7 +1347,7 @@ script = ExtResource("20_a8nkt")
 main_ui = NodePath("../../..")
 parent = NodePath("../..")
 
-[node name="Quill" type="Sprite2D" parent="MainUI/RightPanel"]
+[node name="Quill" type="Sprite2D" parent="MainUI/RightPanel" unique_id=275873598]
 visible = false
 position = Vector2(272, 216)
 rotation = 0.437178
@@ -1383,7 +1355,7 @@ scale = Vector2(0.3, 0.3)
 texture = ExtResource("10_aprkc")
 offset = Vector2(170, -350)
 
-[node name="InputBlocker" type="ColorRect" parent="MainUI"]
+[node name="InputBlocker" type="ColorRect" parent="MainUI" unique_id=573069875]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -1393,7 +1365,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
 
-[node name="SolidColor" type="ColorRect" parent="MainUI"]
+[node name="SolidColor" type="ColorRect" parent="MainUI" unique_id=1021301046]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1402,7 +1374,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="IntroFIGHT" type="RichTextLabel" parent="MainUI"]
+[node name="IntroFIGHT" type="RichTextLabel" parent="MainUI" unique_id=1163791566]
 z_index = -1
 material = SubResource("ShaderMaterial_x50yd")
 layout_mode = 1
@@ -1428,166 +1400,164 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TargetSelection" type="Node" parent="." node_paths=PackedStringArray("main")]
+[node name="TargetSelection" type="Node" parent="." unique_id=228789731 node_paths=PackedStringArray("main")]
 script = ExtResource("24_314eb")
 main = NodePath("..")
 
-[node name="MainAnim" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_bplng")
-}
+[node name="MainAnim" type="AnimationPlayer" parent="." unique_id=1602434553]
+libraries/ = SubResource("AnimationLibrary_bplng")
 
-[node name="BattleCam" type="Camera3D" parent="." node_paths=PackedStringArray("main")]
+[node name="BattleCam" type="Camera3D" parent="." unique_id=1394033273 node_paths=PackedStringArray("main")]
 transform = Transform3D(-4.37114e-08, -0.984808, 0.173648, 0, 0.173648, 0.984808, -1, 4.30473e-08, -7.5904e-09, 4.1902, 18, 0.0259711)
 attributes = SubResource("CameraAttributesPractical_x50yd")
 script = ExtResource("2_g1d0u")
 main = NodePath("..")
 
-[node name="HandheldShake" type="Node3D" parent="BattleCam"]
+[node name="HandheldShake" type="Node3D" parent="BattleCam" unique_id=1561607957]
 script = ExtResource("3_bdusq")
 AutoPlay = true
 intensity = 0.5
 shake_speed = 0.5
 shakerPreset = SubResource("Resource_yns20")
 
-[node name="ImpactShake" type="Node3D" parent="BattleCam"]
+[node name="ImpactShake" type="Node3D" parent="BattleCam" unique_id=1133391440]
 script = ExtResource("3_bdusq")
 duration = 0.5
 fade_in = 1e-05
 fade_out = 2.0
 shakerPreset = SubResource("Resource_g8sry")
 
-[node name="Table" type="StaticBody3D" parent="."]
+[node name="Table" type="StaticBody3D" parent="." unique_id=1064849543]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Table"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Table" unique_id=1266004120]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 mesh = SubResource("CylinderMesh_jg8lh")
 
-[node name="Holders" type="Node3D" parent="."]
+[node name="Holders" type="Node3D" parent="." unique_id=1393188613]
 
-[node name="AllyHolders1" type="Node3D" parent="Holders"]
+[node name="AllyHolders1" type="Node3D" parent="Holders" unique_id=1078777892]
 unique_name_in_owner = true
 visible = false
 
-[node name="1" type="StaticBody3D" parent="Holders/AllyHolders1"]
+[node name="1" type="StaticBody3D" parent="Holders/AllyHolders1" unique_id=51528059]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.3, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Holders/AllyHolders1/1"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Holders/AllyHolders1/1" unique_id=113280393]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
 mesh = SubResource("CylinderMesh_go5df")
 
-[node name="AllyHolders2" type="Node3D" parent="Holders"]
+[node name="AllyHolders2" type="Node3D" parent="Holders" unique_id=1938925594]
 unique_name_in_owner = true
 
-[node name="1" type="StaticBody3D" parent="Holders/AllyHolders2"]
+[node name="1" type="StaticBody3D" parent="Holders/AllyHolders2" unique_id=1310589522]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.3, -5)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Holders/AllyHolders2/1"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Holders/AllyHolders2/1" unique_id=323095728]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
 visible = false
 mesh = SubResource("CylinderMesh_go5df")
 
-[node name="2" type="StaticBody3D" parent="Holders/AllyHolders2"]
+[node name="2" type="StaticBody3D" parent="Holders/AllyHolders2" unique_id=206302135]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.3, 5)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Holders/AllyHolders2/2"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Holders/AllyHolders2/2" unique_id=1797762033]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
 visible = false
 mesh = SubResource("CylinderMesh_go5df")
 
-[node name="AllyHolders3" type="Node3D" parent="Holders"]
+[node name="AllyHolders3" type="Node3D" parent="Holders" unique_id=1360896721]
 unique_name_in_owner = true
 visible = false
 
-[node name="1" type="StaticBody3D" parent="Holders/AllyHolders3"]
+[node name="1" type="StaticBody3D" parent="Holders/AllyHolders3" unique_id=727108629]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.3, -8)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Holders/AllyHolders3/1"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Holders/AllyHolders3/1" unique_id=1510396029]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
 mesh = SubResource("CylinderMesh_go5df")
 
-[node name="2" type="StaticBody3D" parent="Holders/AllyHolders3"]
+[node name="2" type="StaticBody3D" parent="Holders/AllyHolders3" unique_id=1911166599]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.3, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Holders/AllyHolders3/2"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Holders/AllyHolders3/2" unique_id=306980268]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
 mesh = SubResource("CylinderMesh_go5df")
 
-[node name="3" type="StaticBody3D" parent="Holders/AllyHolders3"]
+[node name="3" type="StaticBody3D" parent="Holders/AllyHolders3" unique_id=207730929]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.3, 8)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Holders/AllyHolders3/3"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Holders/AllyHolders3/3" unique_id=1531301087]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
 mesh = SubResource("CylinderMesh_go5df")
 
-[node name="EnemyHolders1" type="Node3D" parent="Holders"]
+[node name="EnemyHolders1" type="Node3D" parent="Holders" unique_id=1946412159]
 unique_name_in_owner = true
 
-[node name="1" type="StaticBody3D" parent="Holders/EnemyHolders1"]
+[node name="1" type="StaticBody3D" parent="Holders/EnemyHolders1" unique_id=88942553]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.3, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Holders/EnemyHolders1/1"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Holders/EnemyHolders1/1" unique_id=1334788415]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
 visible = false
 mesh = SubResource("CylinderMesh_go5df")
 
-[node name="EnemyHolders2" type="Node3D" parent="Holders"]
+[node name="EnemyHolders2" type="Node3D" parent="Holders" unique_id=183185273]
 unique_name_in_owner = true
 visible = false
 
-[node name="2" type="StaticBody3D" parent="Holders/EnemyHolders2"]
+[node name="2" type="StaticBody3D" parent="Holders/EnemyHolders2" unique_id=722397581]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.3, -5)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Holders/EnemyHolders2/2"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Holders/EnemyHolders2/2" unique_id=551032344]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
 mesh = SubResource("CylinderMesh_go5df")
 
-[node name="1" type="StaticBody3D" parent="Holders/EnemyHolders2"]
+[node name="1" type="StaticBody3D" parent="Holders/EnemyHolders2" unique_id=747280865]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.3, 5)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Holders/EnemyHolders2/1"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Holders/EnemyHolders2/1" unique_id=826478524]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
 mesh = SubResource("CylinderMesh_go5df")
 
-[node name="EnemyHolders3" type="Node3D" parent="Holders"]
+[node name="EnemyHolders3" type="Node3D" parent="Holders" unique_id=258703026]
 unique_name_in_owner = true
 visible = false
 
-[node name="1" type="StaticBody3D" parent="Holders/EnemyHolders3"]
+[node name="1" type="StaticBody3D" parent="Holders/EnemyHolders3" unique_id=513272213]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.3, 8)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Holders/EnemyHolders3/1"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Holders/EnemyHolders3/1" unique_id=1679937139]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
 mesh = SubResource("CylinderMesh_go5df")
 
-[node name="2" type="StaticBody3D" parent="Holders/EnemyHolders3"]
+[node name="2" type="StaticBody3D" parent="Holders/EnemyHolders3" unique_id=1858123681]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.3, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Holders/EnemyHolders3/2"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Holders/EnemyHolders3/2" unique_id=1383284304]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
 mesh = SubResource("CylinderMesh_go5df")
 
-[node name="3" type="StaticBody3D" parent="Holders/EnemyHolders3"]
+[node name="3" type="StaticBody3D" parent="Holders/EnemyHolders3" unique_id=1229686493]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.3, -8)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Holders/EnemyHolders3/3"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Holders/EnemyHolders3/3" unique_id=2084024829]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
 mesh = SubResource("CylinderMesh_go5df")
 
-[node name="DustParticles" type="GPUParticles3D" parent="."]
+[node name="DustParticles" type="GPUParticles3D" parent="." unique_id=809171170]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
 amount = 200
 lifetime = 5.0
 process_material = SubResource("ParticleProcessMaterial_y8qc7")
 draw_pass_1 = SubResource("PlaneMesh_tx0yf")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=73518027]
 environment = ExtResource("3_rdbxm")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1524702004]
 transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 2.14352, 0)
 
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=923801013]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20, 0)
 light_energy = 16.0
 spot_range = 30.0

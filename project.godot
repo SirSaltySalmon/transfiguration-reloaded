@@ -11,12 +11,13 @@ config_version=5
 [animation]
 
 warnings/check_invalid_track_paths=false
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
 config/name="Transfiguration Reloaded"
 run/main_scene="res://main/title/title.tscn"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -24,10 +25,10 @@ config/icon="res://icon.svg"
 Global="*res://scripts/autoload/global.gd"
 Broadcaster="*res://scripts/autoload/broadcaster.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
-SoundManager="*res://addons/sound_manager/sound_manager.gd"
+SoundManager="*uid://2ef01mf08lpu"
 Methods="*res://scripts/autoload/methods.gd"
 CommandServer="*res://addons/command-terminal/src/CommandServer.gd"
-Shaker="*res://addons/shaker/src/Shaker.gd"
+Shaker="*uid://c631f4s0ofe3h"
 
 [dialogue_manager]
 
