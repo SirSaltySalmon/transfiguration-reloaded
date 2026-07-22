@@ -22,35 +22,34 @@ double_sided = false
 texture = ExtResource("2_biss2")
 
 [node name="Rat" parent="." unique_id=1160790682 instance=ExtResource("3_806ke")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.08753, -2.23324, -7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.088, -2.546, -7)
 
 [node name="Golem" parent="." unique_id=471742519 instance=ExtResource("4_lp1ty")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -7.31081, -0.474005, -7.57225)
 
 [node name="DeadGuy" parent="." unique_id=1759360251 instance=ExtResource("5_igimx")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -1.18389, -2.056707, -7.22653)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -1.18389, -3.4584053, -7.22653)
 
 [node name="ArrowManager" parent="." unique_id=903147584 instance=ExtResource("4_unyr1")]
 
-[node name="UpArrow" parent="ArrowManager" index="0"]
+[node name="UpArrow" parent="ArrowManager" index="0" unique_id=462240817]
 destination = ""
 show_condition = ""
 
-[node name="DownArrow" parent="ArrowManager" index="1"]
+[node name="DownArrow" parent="ArrowManager" index="1" unique_id=1785677814]
 destination = ""
 show_condition = ""
 
-[node name="LeftArrow" parent="ArrowManager" index="2"]
+[node name="LeftArrow" parent="ArrowManager" index="2" unique_id=612731789]
 destination = "sewers"
 resource = "res://main/overworld/areas/sewers.tscn"
-show_condition = "Global.size >= 1"
 
-[node name="RightArrow" parent="ArrowManager" index="3"]
+[node name="RightArrow" parent="ArrowManager" index="3" unique_id=2000443815]
 destination = ""
 resource = ""
 show_condition = ""
 
 [node name="Slime" parent="." unique_id=798157087 groups=["cutscenes1"] instance=ExtResource("6_66aq6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.971711, -1.43002, -6.99845)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.971711, -2.8317184, -6.99845)
 
 [editable path="ArrowManager"]

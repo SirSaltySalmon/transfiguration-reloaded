@@ -21,6 +21,7 @@ var all_enemies: Array[BattleCharacter] = []
 var all_chars: Array[BattleCharacter] = []
 
 var devoured_count := 0
+var kill_count := 0
 
 var current_char: BattleCharacter = null
 
@@ -42,6 +43,7 @@ func handle_char_loading():
 
 func _ready() -> void:
 	Methods.current_scene = self
+	Methods.last_fight_won = false 
 	await initialize_chars()
 	await initialize_misc()
 	await start_anim()
@@ -182,16 +184,25 @@ func _on_action_over():
 	current_char.visual.hide_indicator()
 	current_char = null
 	if get_alive_allies().is_empty():
-		#play lose animation
-		pass
-	#reset camera to idle state
+		lose()
+		return
 	if get_alive_enemies().is_empty():
-		#play win animation
-		pass
+		await cam.return_to_idle()
+		win()
+		return
 	#else, next turn
 	ui.hide_move()
 	cam.return_to_idle()
 	action()
+
+func lose():
+	ui.anim.stop()
+	ui.anim.play("death")
+	await ui.anim.animation_finished
+	Methods.return_to_overworld(false  )
+
+func win():
+	anim.play("win_anim")
 
 func wait_for_turn_ready():
 	while current_char == null:
@@ -227,8 +238,10 @@ func dialogue_check():
 	await DialogueManager.dialogue_ended
 
 func flavor_text_add():
-	if Global.battle_type == 2 and first_player_turn:
-		flavor_queue = "Now let's see what he tastes like."
+	if Global.battle_type == 2:
+		if first_player_turn:
+			flavor_queue = "Now let's see what he tastes like."
+		
 
 func flavor_text_check():
 	if flavor_queue.is_empty():

@@ -52,6 +52,7 @@ var translation_source: DMConstants.TranslationSource = DMConstants.TranslationS
 
 ### CUSTOM: If is active, will not start a new balloon
 var is_active = false
+var active_balloon
 
 ## Used to resolve the current scene. Override if your game manages the current scene itself.
 var get_current_scene: Callable = func():
@@ -481,6 +482,8 @@ func _start_balloon(balloon: Node, resource: DialogueResource, title: String, ex
 
 	dialogue_started.emit(resource)
 	bridge_dialogue_started.emit(resource)
+	
+	active_balloon = balloon
 
 
 # Get the path to the example balloon

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cchysi600i2u2"]
+[gd_scene format=3 uid="uid://cchysi600i2u2"]
 
 [ext_resource type="Script" uid="uid://8cyqrodpkc1c" path="res://main/overworld/areas/area.gd" id="1_cbq5p"]
 [ext_resource type="Texture2D" uid="uid://bnkdgrehat8sd" path="res://assets/overworld/areas/SEWERS.png" id="1_lf7ej"]
@@ -24,18 +24,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_nghmr"]
 resource_name = "idle"
@@ -54,18 +42,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(0, -0.1, 0), Vector3(0, 0.1, 0), Vector3(0, -0.1, 0)]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
-"transitions": PackedFloat32Array(-2, -2, -2, -2, -2),
-"update": 0,
-"values": [Vector3(0.174533, -0.174533, 0), Vector3(-0.174533, 0.174533, 0), Vector3(-0.174533, -0.174533, 0), Vector3(0.174533, 0.174533, 0), Vector3(0.174533, -0.174533, 0)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ffdfv"]
 _data = {
@@ -73,92 +49,88 @@ _data = {
 &"idle": SubResource("Animation_nghmr")
 }
 
-[node name="Sewers" type="Node3D"]
+[node name="Sewers" type="Node3D" unique_id=1628032535]
 script = ExtResource("1_cbq5p")
 area_id = "sewers"
 
-[node name="PreviewCam" type="Camera3D" parent="."]
-
-[node name="Background" type="Sprite3D" parent="."]
+[node name="Background" type="Sprite3D" parent="." unique_id=1115190439]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
 transparent = false
 shaded = true
 double_sided = false
 texture = ExtResource("1_lf7ej")
 
-[node name="Rat" parent="." groups=["cutscenes1"] instance=ExtResource("3_i50qk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.1497, -2.91626, -7)
+[node name="Rat" parent="." unique_id=953603744 groups=["cutscene_1"] instance=ExtResource("3_i50qk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.15, -2.546, -7)
 
-[node name="Slime" parent="." groups=["cutscenes1"] instance=ExtResource("4_4n0qt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.32034, -2.9125, -7)
+[node name="Slime" parent="." unique_id=959136789 instance=ExtResource("4_4n0qt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.971711, -2.8317184, -6.99845)
 
-[node name="ArrowManager" parent="." instance=ExtResource("4_de0hd")]
+[node name="ArrowManager" parent="." unique_id=271098037 instance=ExtResource("4_de0hd")]
 
-[node name="UpArrow" parent="ArrowManager" index="0"]
+[node name="UpArrow" parent="ArrowManager" index="0" unique_id=462240817]
 show_condition = "Global.size >= 3"
 
-[node name="DownArrow" parent="ArrowManager" index="1"]
+[node name="DownArrow" parent="ArrowManager" index="1" unique_id=1785677814]
 show_condition = "Global.size >= 6"
 
-[node name="LeftArrow" parent="ArrowManager" index="2"]
+[node name="LeftArrow" parent="ArrowManager" index="2" unique_id=612731789]
 show_condition = "Global.size >= 1"
 
-[node name="Humans" type="Node3D" parent="." groups=["cutscenes1"]]
+[node name="RightArrow" parent="ArrowManager" index="3" unique_id=2000443815]
+show_condition = "Global.size >= 1 and Global.rat_talk_1"
 
-[node name="Knight" type="Node3D" parent="Humans"]
+[node name="Humans" type="Node3D" parent="." unique_id=1127703196 groups=["cutscene_1"]]
+visible = false
+
+[node name="Knight" type="Node3D" parent="Humans" unique_id=2129286248]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.429, -0.228, -7.2)
 script = ExtResource("5_hlnnv")
 
-[node name="Sprite" type="Sprite3D" parent="Humans/Knight"]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+[node name="Sprite" type="Sprite3D" parent="Humans/Knight" unique_id=1460971617]
+transform = Transform3D(0.098480776, -0.0030153717, -0.017101014, 0, 0.098480776, -0.017364826, 0.017364826, 0.017101014, 0.096984625, 0, 0, 0)
 shaded = true
 double_sided = false
 texture = ExtResource("5_4ydsj")
 
-[node name="Idle" type="AnimationPlayer" parent="Humans/Knight"]
+[node name="Idle" type="AnimationPlayer" parent="Humans/Knight" unique_id=1372779759]
 root_node = NodePath("../Sprite")
-libraries = {
-&"": SubResource("AnimationLibrary_ffdfv")
-}
+libraries/ = SubResource("AnimationLibrary_ffdfv")
 speed_scale = 0.7
 
-[node name="Elf" type="Node3D" parent="Humans"]
+[node name="Elf" type="Node3D" parent="Humans" unique_id=335008385]
 transform = Transform3D(0.938493, 0, 0.345298, 0, 1, 0, -0.345298, 0, 0.938493, -2.254, 0, -7)
 script = ExtResource("5_hlnnv")
 
-[node name="Sprite" type="Sprite3D" parent="Humans/Elf"]
+[node name="Sprite" type="Sprite3D" parent="Humans/Elf" unique_id=1276267139]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 shaded = true
 double_sided = false
 texture = ExtResource("6_h25jm")
 
-[node name="Idle" type="AnimationPlayer" parent="Humans/Elf"]
+[node name="Idle" type="AnimationPlayer" parent="Humans/Elf" unique_id=484000748]
 root_node = NodePath("../Sprite")
-libraries = {
-&"": SubResource("AnimationLibrary_ffdfv")
-}
+libraries/ = SubResource("AnimationLibrary_ffdfv")
 
-[node name="Wizard" type="Node3D" parent="Humans"]
+[node name="Wizard" type="Node3D" parent="Humans" unique_id=654316214]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.61351, 0, -6.8)
 script = ExtResource("5_hlnnv")
 
-[node name="Sprite" type="Sprite3D" parent="Humans/Wizard"]
+[node name="Sprite" type="Sprite3D" parent="Humans/Wizard" unique_id=183624277]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 shaded = true
 double_sided = false
 texture = ExtResource("7_hui2p")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Humans/Wizard/Sprite"]
+[node name="OmniLight3D" type="OmniLight3D" parent="Humans/Wizard/Sprite" unique_id=1270462309]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.562, 6.966, 1)
 light_color = Color(1, 0.858824, 0.756863, 1)
 light_energy = 7.0
 shadow_enabled = true
 
-[node name="Idle" type="AnimationPlayer" parent="Humans/Wizard"]
+[node name="Idle" type="AnimationPlayer" parent="Humans/Wizard" unique_id=584062733]
 root_node = NodePath("../Sprite")
-libraries = {
-&"": SubResource("AnimationLibrary_ffdfv")
-}
+libraries/ = SubResource("AnimationLibrary_ffdfv")
 speed_scale = 0.5
 
 [editable path="ArrowManager"]

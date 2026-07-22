@@ -34,7 +34,7 @@ func unhighlight():
 	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 	
 func interact():
-	if not Global.cutscene_playing and not Global.dialogue_active and visible:
+	if not Methods.is_cutscene_playing() and not DialogueManager.is_active and visible:
 		Broadcaster.bc_move_to_area(destination, resource, direction)
 	
 # Function that takes a string condition and evaluates it as a boolean expression

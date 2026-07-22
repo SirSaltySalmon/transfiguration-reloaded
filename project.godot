@@ -29,6 +29,7 @@ SoundManager="*uid://2ef01mf08lpu"
 Methods="*res://scripts/autoload/methods.gd"
 CommandServer="*res://addons/command-terminal/src/CommandServer.gd"
 Shaker="*uid://c631f4s0ofe3h"
+SceneLoader="*uid://cpehcs7n5c62p"
 
 [dialogue_manager]
 
@@ -43,12 +44,12 @@ window/vsync/vsync_mode=2
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/command-terminal/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/shaker/plugin.cfg", "res://addons/sound_manager/plugin.cfg")
+enabled=PackedStringArray("res://addons/command-terminal/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/maaacks_scene_loader/plugin.cfg", "res://addons/shaker/plugin.cfg", "res://addons/sound_manager/plugin.cfg")
 
 [global_group]
 
 cutscenes/1=""
-cutscenes1=""
+cutscene_1=""
 
 [gui]
 
@@ -85,6 +86,10 @@ speed_up={
 [internationalization]
 
 locale/translations_pot_files=PackedStringArray("res://dialogue/cutscene1.dialogue", "res://dialogue/rat.dialogue", "res://dialogue/gob.dialogue", "res://dialogue/tips.dialogue", "res://dialogue/golem.dialogue", "res://dialogue/battle.dialogue")
+
+[maaacks_scene_loader]
+
+disable_update_check=false
 
 [plugins]
 

@@ -64,6 +64,7 @@ func devour(damage: int):
 	take_damage(damage)
 	if bar.value <= devouring_threshold:
 		execute()
+		main.ui.anim.play("devour")
 		change_display.text = " -DEVOURED"
 		main.devoured_count += 1
 		main.ui.display_move("Devoured! Gained bonus action!")
@@ -161,7 +162,7 @@ func manage_stylebox_color():
 
 func _on_health_changed() -> void:
 	if bar.value > 0:
-		value_display.text = str(bar.value) + "/" + str(bar.max_value)
+		value_display.text = str(int(bar.value)) + "/" + str(int(bar.max_value))
 		manage_stylebox_color()
 	elif not dead:
 		death()
@@ -174,6 +175,9 @@ func death():
 		damage_anim_tween.kill()
 	parent.turn.bar.value = 0
 	parent.visual.death_anim()
+	
+	if not parent.ally:
+		main.kill_count += 1
 	## modifying in alive chars arrays have been refactored
 
 func revive():

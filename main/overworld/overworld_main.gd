@@ -1,22 +1,33 @@
+class_name OverworldMain
 extends Node3D
 
 @onready var camera = $Camera
 @onready var ui = $OverworldUI
+@onready var skip_button = $SkipButton
 @onready var light = $Camera/OmniLight3D
 @onready var env = $WorldEnvironment
-@onready var anim = $AnimationPlayer
+@onready var vfx = $Effects/EffectsPlayer
+@onready var cover = $Effects/Cover
 
-var area
+@export var anim: AnimationPlayer
+
+var area: Area
 
 var loading_new_area = false
 var area_load_status = 0
 signal finished_loading
 
+var active_cutscene_name = ""
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Broadcaster.connect("move_to_area", move_to_area)
 	Methods.current_scene = self
-	reload()
+	skip_button.hide()
+	if Methods.last_fight_won:
+		finalize_move_to_area()
+	else:
+		reload()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -45,7 +56,8 @@ func manage_battles():
 		Global.battle_type = 2
 		return true
 	
-	# Handle shadow wizards separately
+	# No shadow wizards code here, handle separately
+	
 	if Global.size == 7 and Global.destination_area_id == "dining_hall":
 		Global.battle_type = 4
 		return true
@@ -60,7 +72,7 @@ func manage_battles():
 func finalize_move_to_area():
 	Global.current_area_id = Global.destination_area_id
 	#prefetch cutscene, a name will be returned if cutscene conditions are met
-	var cutscene_name = cutscene_manager()
+	var cutscene_name = manage_cutscenes()
 	
 	Global.transitioning = true #in case the ui still bugging during the load
 	get_sky_and_light()
@@ -70,11 +82,14 @@ func finalize_move_to_area():
 	
 	await finished_loading
 	
-	area = ResourceLoader.load_threaded_get(Global.destination_resource)
-	area = area.instantiate()
+	if is_instance_valid(area):
+		area.queue_free()
+	var area_res = ResourceLoader.load_threaded_get(Global.destination_resource)
+	area = area_res.instantiate()
 	add_child(area)
 	
 	if cutscene_name:
+		Global.transitioning = false
 		play_cutscene(cutscene_name)
 	else:
 		enter_area()
@@ -82,6 +97,7 @@ func finalize_move_to_area():
 func enter_area():
 	area.normal_init_all()
 	await enter_transition()
+	area.show_arrows()
 	
 	Global.current_resource = Global.destination_resource
 	Global.move_direction = ""
@@ -98,16 +114,17 @@ func get_sky_and_light():
 		light.light_color = Color("ccb47a")
 
 func enter_battle():
-	pass
+	Methods.enter_battle()
 
 func exit_transition():
+	Global.transitioning = true
 	start_transition(true)
 	await Methods.wait(1)
-	area.queue_free()
 	Global.transitioning = false
 	return
 
 func enter_transition():
+	Global.transitioning = true
 	start_transition(false)
 	await Methods.wait(1)
 	Global.transitioning = false
@@ -146,19 +163,41 @@ func start_transition(is_exit: bool):
 	# Set up the camera movement tween
 	if axis == "position:z" and !is_exit:
 		tween.tween_property(camera, axis, 0, 1).from(position_value)
+		camera.position.x = 0
+		camera.position.y = 0
 	elif !is_exit:
 		tween.tween_property(camera, axis, 0, 1).from(position_value)
+		fix_camera(axis)
 	else:
 		tween.tween_property(camera, axis, position_value, 1)
+		fix_camera(axis)
 	
 	# Set up the color fade tween
 	var from_color = Color(Color.BLACK, 0) if is_exit else Color.BLACK
 	var to_color = Color.BLACK if is_exit else Color(Color.BLACK, 0)
 	
+	color_transition(is_exit)
+
+func color_transition(is_exit: bool):
+	var from_color = Color(Color.BLACK, 0) if is_exit else Color.BLACK
+	var to_color = Color.BLACK if is_exit else Color(Color.BLACK, 0)
+	var tween = get_tree().create_tween()
+	tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
+	tween.set_ease(Tween.EASE_IN if is_exit else Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_EXPO)
+	tween.set_parallel(true)
+	
 	if is_exit:
-		tween.tween_property(ui.cover, "color", to_color, 1)
+		tween.tween_property(cover, "color", to_color, 1).from(from_color)
 	else:
-		tween.tween_property(ui.cover, "color", to_color, 1).from(from_color)
+		tween.tween_property(cover, "color", to_color, 1).from(from_color)
+
+func fix_camera(axis):
+		if axis == "position:x":
+			camera.position.y = 0
+		else:
+			camera.position.x = 0
+		camera.position.z     = 0
 
 func reload():
 	Global.destination_area_id = Global.current_area_id
@@ -166,29 +205,45 @@ func reload():
 	
 	finalize_move_to_area()
 
-func cutscene_manager():
+func manage_cutscenes():
 	if not Global.cutscene_1 and Global.current_area_id == "sewers":
-		#return "cutscenes/1"
-		pass
+		return "cutscene_1"
 	return null
 
 func play_cutscene(cutscene_name: String):
+	ui.hide()
+	skip_button.show()
 	anim.play(cutscene_name)
-	var name_fixed = cutscene_name.replace("/","")
+	active_cutscene_name = cutscene_name
 	for child in area.get_children():
-		if child.is_in_group(name_fixed) or child.name == "Background":
+		if child.is_in_group(cutscene_name) or child.name == "Background":
 			child.show()
 		else:
 			child.hide()
 
-func end_cutscene(cutscene_name: String):
-	if cutscene_name == "cutscenes/1":
-		Global.cutscene_1 = true
-	enter_area()
+func end_cutscene():
+	if is_instance_valid(DialogueManager.active_balloon):
+		DialogueManager.active_balloon.queue_free()
+	anim.stop()
+	Global.set(active_cutscene_name, true)
+	for child in area.get_children():
+		if child.is_in_group(active_cutscene_name) and child.name != "Background":
+			child.hide()
+	var continue_in_normal_play = perform_end_of_cutscene_function(active_cutscene_name)
+	active_cutscene_name = ""
+	if continue_in_normal_play:
+		ui.show()
+		skip_button.hide()
+		finalize_move_to_area()
+
+func perform_end_of_cutscene_function(cutscene_name):
+	if cutscene_name == "cutscene_1":
+		#No special function
+		return true
+
+func play_fx(fx_name: String):
+	vfx.stop()
+	vfx.play(fx_name)
 
 func get_talker(talker_name: String):
 	return area.find_child(talker_name)
-
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	if "cutscenes" in anim_name:
-		end_cutscene(anim_name)

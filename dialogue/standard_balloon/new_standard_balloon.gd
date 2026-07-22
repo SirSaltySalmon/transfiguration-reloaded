@@ -16,6 +16,9 @@ var temporary_game_states: Array = []
 ## See if we are waiting for the player
 var is_waiting_for_input: bool = false
 
+## See if the end animation is being played
+var is_ending: bool = false
+
 ## See if we are running a long mutation and should hide the balloon
 var will_hide_balloon: bool = false
 
@@ -25,8 +28,7 @@ var locals: Dictionary = {}
 var _locale: String = TranslationServer.get_locale()
 
 #region CUSTOM VARIABLES THAT GIVE THE WORLD FORM
-var tween_time: float = 0.5
-var custom_cam_end: Vector3 = Vector3(-1, -1, -1)
+const TWEEN_TIME: float = 0.5
 var started := false
 @export var top_black_bar: ColorRect
 @export var bottom_black_bar: ColorRect
@@ -41,7 +43,8 @@ var dialogue_line: DialogueLine:
 		else:
 			# The dialogue has finished, close
 			dialogue_label.text = ""
-			await end_anim()
+			if not is_ending:
+				await end_anim()
 			DialogueManager.is_active = false
 			queue_free()
 	get:
@@ -88,13 +91,10 @@ func _notification(what: int) -> void:
 
 
 ## Start some dialogue
-func start(dialogue_resource: DialogueResource, title: String, extra_game_states: Array = [],
-			tween_time = self.tween_time, custom_cam_end = self.custom_cam_end,) -> void:
+func start(dialogue_resource: DialogueResource, title: String, extra_game_states: Array = []) -> void:
 	temporary_game_states =  [self] + extra_game_states
 	is_waiting_for_input = false
 	resource = dialogue_resource
-	self.tween_time = tween_time
-	self.custom_cam_end = custom_cam_end
 	
 	dialogue_label.hide()
 	responses_menu.hide()
@@ -116,7 +116,7 @@ func apply_dialogue_line() -> void:
 	balloon.grab_focus()
 	
 	if not dialogue_line.character.is_empty():
-		Methods.tween_to_talker(tr(dialogue_line.character, "dialogue"), tween_time)
+		Methods.tween_to_talker(tr(dialogue_line.character, "dialogue"), TWEEN_TIME)
 		
 	if not started:
 		await start_anim()
@@ -162,22 +162,24 @@ func start_anim():
 	tween.set_trans(Tween.TRANS_EXPO)
 	tween.set_parallel(true)
 	
-	tween.tween_property(top_black_bar, "position:y", 0, tween_time).from(-90)
-	tween.tween_property(bottom_black_bar, "position:y", 630, tween_time).from(720)
-	await Methods.wait(tween_time / 2)
+	tween.tween_property(top_black_bar, "position:y", 0, TWEEN_TIME).from(-90)
+	tween.tween_property(bottom_black_bar, "position:y", 630, TWEEN_TIME).from(720)
+	await Methods.wait(TWEEN_TIME / 2)
 	return
 
 func end_anim():
-	Methods.tween_to_normal(custom_cam_end, tween_time)
+	is_ending = true
+	Methods.tween_to_normal(TWEEN_TIME)
 	var tween = get_tree().create_tween()
 	tween.set_ease(Tween.EASE_OUT)
 	tween.set_trans(Tween.TRANS_EXPO)
 	tween.set_parallel(true)
 	
-	tween.tween_property(top_black_bar, "position:y", -90, tween_time).from(0)
-	tween.tween_property(bottom_black_bar, "position:y", 720, tween_time).from(630)
+	tween.tween_property(top_black_bar, "position:y", -90, TWEEN_TIME).from(0)
+	tween.tween_property(bottom_black_bar, "position:y", 720, TWEEN_TIME).from(630)
 	
-	await Methods.wait(tween_time)
+	await Methods.wait(TWEEN_TIME)
+	is_ending = false
 	return
 
 #endregion

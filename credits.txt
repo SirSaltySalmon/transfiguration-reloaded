@@ -21,6 +21,7 @@ PLUGINS USED
 DialogueManager by Nathan Hoad
 SoundManager by Nathan Hoad
 CommandTerminal by 20ml
+Maaack's Scene Loader by Maaack
 Shaker by Eneskp
 
 DEDICATED TO

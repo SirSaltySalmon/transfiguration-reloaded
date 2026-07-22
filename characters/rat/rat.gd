@@ -5,6 +5,7 @@ extends Character
 var flip_last_action : bool = false
 
 func normal_init():
+	show()
 	idle()
 
 func idle() -> void:
@@ -43,4 +44,9 @@ func interact():
 		Global.rat_talk_2 = true
 	
 	if title:
-		DialogueManager.show_dialogue_balloon(dialogue, title)
+		trigger_dialogue(title)
+	
+	Methods.flags_changed.emit()
+
+func trigger_dialogue(title):
+	DialogueManager.show_dialogue_balloon(dialogue, title)

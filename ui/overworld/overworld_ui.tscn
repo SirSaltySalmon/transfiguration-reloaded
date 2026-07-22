@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cs6sa16vx7mf7"]
+[gd_scene format=3 uid="uid://cs6sa16vx7mf7"]
 
 [ext_resource type="Script" uid="uid://wxpxeo0h0csi" path="res://ui/overworld/overworld_ui.gd" id="1_5xfhc"]
 [ext_resource type="Script" uid="uid://dfa1jxoh0hyu6" path="res://ui/overworld/money_counter.gd" id="2_0adr3"]
@@ -11,23 +11,23 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qnqr2"]
 size = Vector2(250, 720)
 
-[node name="OverworldUI" type="CanvasLayer"]
+[node name="OverworldUI" type="CanvasLayer" unique_id=413115182]
 layer = 128
 script = ExtResource("1_5xfhc")
 
-[node name="Left" type="Area2D" parent="."]
+[node name="Left" type="Area2D" parent="." unique_id=38793409]
 
-[node name="CollisionObj" type="CollisionShape2D" parent="Left"]
+[node name="CollisionObj" type="CollisionShape2D" parent="Left" unique_id=1108708418]
 position = Vector2(125, 360)
 shape = SubResource("RectangleShape2D_qnqr2")
 
-[node name="Right" type="Area2D" parent="."]
+[node name="Right" type="Area2D" parent="." unique_id=371873153]
 
-[node name="CollisionObj" type="CollisionShape2D" parent="Right"]
+[node name="CollisionObj" type="CollisionShape2D" parent="Right" unique_id=1852772169]
 position = Vector2(1155, 360)
 shape = SubResource("RectangleShape2D_qnqr2")
 
-[node name="Stats" type="Control" parent="."]
+[node name="Stats" type="Control" parent="." unique_id=1224911418]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -37,7 +37,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("2_vfsxj")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Stats"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Stats" unique_id=908357476]
 layout_mode = 0
 offset_left = 25.0
 offset_top = 15.0
@@ -45,7 +45,7 @@ offset_right = 175.0
 offset_bottom = 85.0
 theme_override_constants/separation = -5
 
-[node name="MoneyCounter" type="RichTextLabel" parent="Stats/VBoxContainer"]
+[node name="MoneyCounter" type="RichTextLabel" parent="Stats/VBoxContainer" unique_id=1661290034]
 custom_minimum_size = Vector2(150, 45)
 layout_mode = 2
 bbcode_enabled = true
@@ -53,7 +53,7 @@ text = " [color=gold]Money:[/color] -1"
 scroll_active = false
 script = ExtResource("2_0adr3")
 
-[node name="SizeCounter" type="RichTextLabel" parent="Stats/VBoxContainer"]
+[node name="SizeCounter" type="RichTextLabel" parent="Stats/VBoxContainer" unique_id=1046175767]
 custom_minimum_size = Vector2(150, 45)
 layout_mode = 2
 bbcode_enabled = true
@@ -61,14 +61,7 @@ text = " [color=cyan]Size:[/color] -1"
 scroll_active = false
 script = ExtResource("3_wwcxx")
 
-[node name="Cover" type="ColorRect" parent="."]
-z_index = 1
-offset_right = 1280.0
-offset_bottom = 720.0
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
-
-[node name="Terminal" type="Control" parent="."]
+[node name="Terminal" type="Control" parent="." unique_id=798508180]
 layout_mode = 3
 anchors_preset = 12
 anchor_top = 1.0
@@ -80,5 +73,5 @@ grow_vertical = 0
 script = ExtResource("5_dyeyc")
 font = ExtResource("6_p548d")
 
-[node name="__guts__" parent="Terminal" instance=ExtResource("5_3rsc8")]
+[node name="__guts__" parent="Terminal" unique_id=1539303486 instance=ExtResource("5_3rsc8")]
 layout_mode = 1

@@ -18,3 +18,5 @@ func interact():
 	
 	if title:
 		DialogueManager.show_dialogue_balloon(dialogue, title)
+		
+	Methods.flags_changed.emit()

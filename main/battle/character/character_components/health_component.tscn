@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ccuw8vpu5w10y"]
+[gd_scene format=3 uid="uid://ccuw8vpu5w10y"]
 
 [ext_resource type="StyleBox" uid="uid://clnpy50ecxi08" path="res://assets/battle/ui/healthbar_bg.tres" id="1_gf1uj"]
 [ext_resource type="Script" uid="uid://bwn3tdlxp478a" path="res://main/battle/character/character_components/health_component.gd" id="1_y7bym"]
@@ -15,17 +15,17 @@
 [sub_resource type="ViewportTexture" id="ViewportTexture_4poig"]
 viewport_path = NodePath("SubViewport")
 
-[node name="HealthComponent" type="Sprite3D"]
+[node name="HealthComponent" type="Sprite3D" unique_id=77961012]
 transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, 0, 0, 0)
 no_depth_test = true
 texture = SubResource("ViewportTexture_4poig")
 script = ExtResource("1_y7bym")
 
-[node name="SubViewport" type="SubViewport" parent="."]
+[node name="SubViewport" type="SubViewport" parent="." unique_id=181542628]
 transparent_bg = true
 size = Vector2i(1028, 256)
 
-[node name="ProgressBar" type="ProgressBar" parent="SubViewport"]
+[node name="ProgressBar" type="ProgressBar" parent="SubViewport" unique_id=772653601]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -43,7 +43,7 @@ theme_override_styles/fill = ExtResource("2_jd75v")
 value = 50.0
 show_percentage = false
 
-[node name="ValueDisplay" type="Label" parent="SubViewport/ProgressBar"]
+[node name="ValueDisplay" type="Label" parent="SubViewport/ProgressBar" unique_id=1905009926]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -60,7 +60,7 @@ text = "50/100"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ChangeDisplay" type="RichTextLabel" parent="SubViewport"]
+[node name="ChangeDisplay" type="RichTextLabel" parent="SubViewport" unique_id=704962363]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -80,7 +80,7 @@ text = " -50 HP"
 fit_content = true
 scroll_active = false
 
-[node name="StatusIcons" type="HBoxContainer" parent="SubViewport"]
+[node name="StatusIcons" type="HBoxContainer" parent="SubViewport" unique_id=356447974]
 texture_filter = 1
 offset_left = 386.0
 offset_top = 35.925
@@ -88,72 +88,72 @@ offset_right = 756.0
 offset_bottom = 105.925
 theme_override_constants/separation = 5
 
-[node name="Defend" type="Panel" parent="SubViewport/StatusIcons"]
+[node name="Defend" type="Panel" parent="SubViewport/StatusIcons" unique_id=1530787527]
 visible = false
 custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="SubViewport/StatusIcons/Defend"]
+[node name="Sprite2D" type="Sprite2D" parent="SubViewport/StatusIcons/Defend" unique_id=310406654]
 position = Vector2(3, 3)
 texture = ExtResource("5_76eet")
 centered = false
 
-[node name="Goop" type="Panel" parent="SubViewport/StatusIcons"]
+[node name="Goop" type="Panel" parent="SubViewport/StatusIcons" unique_id=1192856059]
 visible = false
 custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="SubViewport/StatusIcons/Goop"]
+[node name="Sprite2D" type="Sprite2D" parent="SubViewport/StatusIcons/Goop" unique_id=1077794823]
 position = Vector2(3, 3)
 texture = ExtResource("6_0ut8i")
 centered = false
 
-[node name="Haste" type="Panel" parent="SubViewport/StatusIcons"]
+[node name="Haste" type="Panel" parent="SubViewport/StatusIcons" unique_id=1943701654]
 visible = false
 custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="SubViewport/StatusIcons/Haste"]
+[node name="Sprite2D" type="Sprite2D" parent="SubViewport/StatusIcons/Haste" unique_id=832114239]
 position = Vector2(3, 3)
 texture = ExtResource("7_j6hcm")
 centered = false
 
-[node name="Poison" type="Panel" parent="SubViewport/StatusIcons"]
+[node name="Poison" type="Panel" parent="SubViewport/StatusIcons" unique_id=1599217905]
 visible = false
 custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="SubViewport/StatusIcons/Poison"]
+[node name="Sprite2D" type="Sprite2D" parent="SubViewport/StatusIcons/Poison" unique_id=498208808]
 position = Vector2(3, 3)
 texture = ExtResource("5_dvg4k")
 centered = false
 
-[node name="Vulnerable" type="Panel" parent="SubViewport/StatusIcons"]
+[node name="Vulnerable" type="Panel" parent="SubViewport/StatusIcons" unique_id=1876534727]
 visible = false
 custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="SubViewport/StatusIcons/Vulnerable"]
+[node name="Sprite2D" type="Sprite2D" parent="SubViewport/StatusIcons/Vulnerable" unique_id=1801542884]
 position = Vector2(3, 3)
 texture = ExtResource("6_nauc6")
 centered = false
 
-[node name="Burn" type="Panel" parent="SubViewport/StatusIcons"]
+[node name="Burn" type="Panel" parent="SubViewport/StatusIcons" unique_id=1776328299]
 visible = false
 custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="SubViewport/StatusIcons/Burn"]
+[node name="Sprite2D" type="Sprite2D" parent="SubViewport/StatusIcons/Burn" unique_id=436266034]
 position = Vector2(3, 3)
 texture = ExtResource("7_q6bx5")
 centered = false
 
-[node name="Frostbite" type="Panel" parent="SubViewport/StatusIcons"]
+[node name="Frostbite" type="Panel" parent="SubViewport/StatusIcons" unique_id=1790000642]
 visible = false
 custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="SubViewport/StatusIcons/Frostbite"]
+[node name="Sprite2D" type="Sprite2D" parent="SubViewport/StatusIcons/Frostbite" unique_id=1923626501]
 position = Vector2(3, 3)
 texture = ExtResource("8_1wvb0")
 centered = false

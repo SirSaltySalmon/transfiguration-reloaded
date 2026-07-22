@@ -1,6 +1,8 @@
 extends Camera3D
 
-@export var MAX_DISTANCE = 2
+@export var main: OverworldMain
+
+@export var MAX_DISTANCE = 0.8
 @export var MAX_SCROLLING_SPEED = 0.1
 @export var ACCEL = 0.005
 
@@ -68,7 +70,7 @@ func _input(event):
 		pass
 
 func can_interact():
-	return !Global.transitioning
+	return not Global.transitioning and not main.active_cutscene_name != "" and not DialogueManager.is_active
 
 func shoot_ray():
 	var mouse_pos = get_viewport().get_mouse_position()
@@ -91,23 +93,25 @@ func shoot_ray():
 	return raycast_results
 
 func highlight_interactables():
-	if Global.dialogue_active or Global.transitioning:
+	if DialogueManager.is_active or Global.transitioning or main.active_cutscene_name != "":
 		if previous_collider.has_method("unhighlight"):
 			previous_collider.unhighlight()
 			previous_collider = self
 		current_collider = self
 		return
 	
-	var raycast = shoot_ray()
+	var raycast = shoot_ray() 
 	if !raycast.is_empty():
 		current_collider = raycast["collider"]
-		previous_collider = current_collider
-		if current_collider.has_method("highlight"):
-			current_collider.highlight()
+		if is_instance_valid(current_collider):
+			previous_collider = current_collider
+			if current_collider.has_method("highlight"):
+				current_collider.highlight()
 	else:
-		if previous_collider.has_method("unhighlight"):
-			previous_collider.unhighlight()
-			previous_collider = self
+		if is_instance_valid(previous_collider):
+			if previous_collider.has_method("unhighlight"):
+				previous_collider.unhighlight()
+				previous_collider = self
 		current_collider = self
 
 func _on_left_mouse_entered() -> void:

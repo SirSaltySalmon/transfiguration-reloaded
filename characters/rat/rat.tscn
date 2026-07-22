@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://h1poi1wqxoap"]
+[gd_scene format=3 uid="uid://h1poi1wqxoap"]
 
 [ext_resource type="Script" uid="uid://sj2vqd5disv6" path="res://characters/rat/rat.gd" id="1_ij113"]
 [ext_resource type="Resource" uid="uid://dns0p0rxy6f1d" path="res://dialogue/rat.dialogue" id="2_era3q"]
@@ -43,7 +43,7 @@ _data = {
 &"jump": SubResource("Animation_be4wq")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_c6g11"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_db3if"]
 viewport_path = NodePath("Sprite/SubViewport")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cbcqg"]
@@ -63,37 +63,34 @@ shader_parameter/Alpha = 1.0
 [sub_resource type="BoxShape3D" id="BoxShape3D_1vldl"]
 size = Vector3(1.66205, 1.50894, 0.0842896)
 
-[node name="Rat" type="StaticBody3D"]
+[node name="Rat" type="StaticBody3D" unique_id=1489711793]
 script = ExtResource("1_ij113")
 dialogue = ExtResource("2_era3q")
 zoom = -4
 
-[node name="JumpPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_qr2xb")
-}
+[node name="JumpPlayer" type="AnimationPlayer" parent="." unique_id=1020150249]
+libraries/ = SubResource("AnimationLibrary_qr2xb")
 
-[node name="IdleActionTimer" type="Timer" parent="."]
+[node name="IdleActionTimer" type="Timer" parent="." unique_id=388537556 groups=["cutscenes1"]]
 one_shot = true
 
-[node name="Sprite" type="Sprite3D" parent="."]
+[node name="Sprite" type="Sprite3D" parent="." unique_id=761325541]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 shaded = true
-render_priority = 1
-texture = SubResource("ViewportTexture_c6g11")
+texture = SubResource("ViewportTexture_db3if")
 
-[node name="SubViewport" type="SubViewport" parent="Sprite"]
+[node name="SubViewport" type="SubViewport" parent="Sprite" unique_id=1828018944]
 disable_3d = true
 transparent_bg = true
 size = Vector2i(1772, 1772)
 
-[node name="Sprite2D" type="TextureRect" parent="Sprite/SubViewport"]
+[node name="Sprite2D" type="TextureRect" parent="Sprite/SubViewport" unique_id=1123461739]
 clip_children = 2
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("2_oloyq")
 
-[node name="Highlight" type="ColorRect" parent="Sprite/SubViewport/Sprite2D"]
+[node name="Highlight" type="ColorRect" parent="Sprite/SubViewport/Sprite2D" unique_id=1323137183]
 visible = false
 material = SubResource("ShaderMaterial_cbcqg")
 layout_mode = 1
@@ -103,7 +100,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Brighten" type="ColorRect" parent="Sprite/SubViewport/Sprite2D"]
+[node name="Brighten" type="ColorRect" parent="Sprite/SubViewport/Sprite2D" unique_id=513889982]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -113,7 +110,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0.196078)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1692890336]
 shape = SubResource("BoxShape3D_1vldl")
 
 [connection signal="timeout" from="IdleActionTimer" to="." method="idle"]

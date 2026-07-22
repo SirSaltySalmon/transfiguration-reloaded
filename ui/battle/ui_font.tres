@@ -3,6 +3,7 @@
 [ext_resource type="FontFile" uid="uid://0lfejob7te8f" path="res://assets/fonts/Belgiano Serif 2.ttf" id="1_mnp70"]
 [ext_resource type="Texture2D" uid="uid://cewy6p1p17yje" path="res://assets/battle/ui/circle2.png" id="2_ika3b"]
 [ext_resource type="Texture2D" uid="uid://bkj5j1tyt1jao" path="res://assets/battle/ui/circle1.png" id="3_hwrq0"]
+[ext_resource type="FontFile" uid="uid://665lgr82w7bu" path="res://assets/fonts/coolvetica rg.otf" id="4_hwrq0"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8eb04"]
 
@@ -14,7 +15,14 @@ texture = ExtResource("2_ika3b")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nk034"]
 texture = ExtResource("3_hwrq0")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ika3b"]
+bg_color = Color(0, 0, 0, 0.5882353)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hwrq0"]
+bg_color = Color(1, 1, 1, 1)
+
 [resource]
+default_font_size = 32
 Button/colors/font_color = Color(1, 1, 1, 1)
 Button/colors/font_disabled_color = Color(0.501407, 0.501406, 0.501406, 1)
 Button/colors/font_focus_color = Color(1, 1, 1, 1)
@@ -32,6 +40,12 @@ Button/styles/focus = SubResource("StyleBoxEmpty_8eb04")
 Button/styles/hover = SubResource("StyleBoxTexture_nocvi")
 Button/styles/normal = SubResource("StyleBoxEmpty_2wxuv")
 Button/styles/pressed = SubResource("StyleBoxTexture_nk034")
+ProgressBar/colors/font_color = Color(0.95, 0.95, 0.95, 1)
+ProgressBar/colors/font_outline_color = Color(0, 0, 0, 1)
+ProgressBar/constants/outline_size = 0
+ProgressBar/fonts/font = ExtResource("4_hwrq0")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_ika3b")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_hwrq0")
 RichTextLabel/colors/default_color = Color(1, 1, 1, 1)
 RichTextLabel/colors/font_outline_color = Color(1, 1, 1, 0.235294)
 RichTextLabel/colors/font_selected_color = Color(0, 0, 0, 1)
