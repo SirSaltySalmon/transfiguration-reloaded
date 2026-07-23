@@ -1,0 +1,398 @@
+[gd_scene format=3 uid="uid://bannewej6a5ya"]
+
+[ext_resource type="Script" uid="uid://1kn5eee10lvf" path="res://main/dating/dating.gd" id="1_3d6ic"]
+[ext_resource type="Texture2D" uid="uid://daj4f8jcj542f" path="res://assets/overworld/areas/LAIR.png" id="2_vmv25"]
+[ext_resource type="FontFile" uid="uid://ds86gfffkp1bv" path="res://assets/fonts/Moderniz.otf" id="3_hhsxw"]
+[ext_resource type="PackedScene" uid="uid://dlcb3m8ot2ika" path="res://dialogue/dating_balloon/DatingBalloon.tscn" id="3_u7imq"]
+[ext_resource type="Script" uid="uid://qhmkwov0dsat" path="res://main/dating/time_display.gd" id="4_o35aq"]
+[ext_resource type="Script" uid="uid://dh80dqyt60wsn" path="res://main/dating/auto.gd" id="4_t38uo"]
+[ext_resource type="Script" uid="uid://dttla56nnwv2d" path="res://main/dating/skip.gd" id="5_cm04d"]
+[ext_resource type="Script" uid="uid://dma07dafp0rpp" path="res://main/dating/date_display.gd" id="5_hhsxw"]
+[ext_resource type="PackedScene" uid="uid://b724oh1cswaws" path="res://main/pause_menu/pause_menu.tscn" id="9_24wuv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vmv25"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cm04d"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_24wuv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hhsxw"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="Theme" id="Theme_t38uo"]
+default_font_size = 30
+Button/constants/outline_size = 10
+Button/styles/disabled = SubResource("StyleBoxEmpty_vmv25")
+Button/styles/focus = SubResource("StyleBoxEmpty_vmv25")
+Button/styles/hover = SubResource("StyleBoxEmpty_vmv25")
+Button/styles/normal = SubResource("StyleBoxEmpty_vmv25")
+Button/styles/pressed = SubResource("StyleBoxEmpty_vmv25")
+CheckButton/colors/font_pressed_color = Color(0, 1, 0, 1)
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0)
+Label/constants/line_spacing = 3
+Label/constants/outline_size = 10
+Label/constants/shadow_offset_x = 5
+Label/constants/shadow_offset_y = -5
+Label/constants/shadow_outline_size = 5
+Label/fonts/font = ExtResource("3_hhsxw")
+Label/styles/focus = SubResource("StyleBoxFlat_cm04d")
+Label/styles/normal = SubResource("StyleBoxEmpty_24wuv")
+MarginContainer/constants/margin_bottom = 15
+MarginContainer/constants/margin_left = 30
+MarginContainer/constants/margin_right = 30
+MarginContainer/constants/margin_top = 15
+Panel/styles/panel = SubResource("StyleBoxFlat_hhsxw")
+RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 0.294118)
+RichTextLabel/constants/outline_size = 10
+RichTextLabel/constants/shadow_offset_x = -5
+RichTextLabel/constants/shadow_offset_y = 5
+
+[sub_resource type="Animation" id="Animation_hhsxw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Effects/Devour:color:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cover:color:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Devour:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.3137255, 0, 0, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Devour:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Cover:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_cm04d"]
+resource_name = "devour"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Devour:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.3137255, 0, 0, 1), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Devour:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_t38uo"]
+resource_name = "death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Effects/Devour:color:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Devour:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_24wuv"]
+resource_name = "enter"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cover:color:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cover:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_6sfop"]
+resource_name = "exit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cover:color:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(4.0000014, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cover:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oogvt"]
+_data = {
+&"RESET": SubResource("Animation_hhsxw"),
+&"death": SubResource("Animation_cm04d"),
+&"devour": SubResource("Animation_t38uo"),
+&"enter": SubResource("Animation_24wuv"),
+&"exit": SubResource("Animation_6sfop")
+}
+
+[node name="Dating" type="Node2D" unique_id=1190342588]
+script = ExtResource("1_3d6ic")
+
+[node name="Background" type="TextureRect" parent="." unique_id=336062243]
+offset_left = -176.0
+offset_right = 2224.0
+offset_bottom = 1080.0
+scale = Vector2(0.68, 0.68)
+texture = ExtResource("2_vmv25")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1013286425]
+
+[node name="Control" type="Control" parent="UI" unique_id=1858691413]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_t38uo")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Control" unique_id=237852891]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -37.5
+offset_top = -49.0
+offset_right = 37.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 30
+
+[node name="Auto" type="CheckButton" parent="UI/Control/HBoxContainer" unique_id=468769177]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Auto"
+script = ExtResource("4_t38uo")
+
+[node name="Timer" type="Timer" parent="UI/Control/HBoxContainer/Auto" unique_id=1647718242]
+wait_time = 5.0
+
+[node name="Skip" type="CheckButton" parent="UI/Control/HBoxContainer" unique_id=180283883]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Skip"
+script = ExtResource("5_cm04d")
+
+[node name="Timer" type="Timer" parent="UI/Control/HBoxContainer/Skip" unique_id=1238909227]
+wait_time = 0.2
+
+[node name="Prefs" type="Button" parent="UI/Control/HBoxContainer" unique_id=468718357]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+text = "Prefs"
+
+[node name="TextureRect" type="ColorRect" parent="UI/Control" unique_id=1693889588]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -264.0
+offset_top = -216.0
+offset_right = 145.32251
+offset_bottom = 17.158417
+grow_horizontal = 0
+rotation = 0.42181396
+color = Color(0.84705883, 0.38431373, 0.29803923, 1)
+
+[node name="TimeDisplay" type="Label" parent="UI/Control" unique_id=1083378074]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -192.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 81.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 48
+text = "12:00:00"
+horizontal_alignment = 2
+script = ExtResource("4_o35aq")
+
+[node name="DateDisplay" type="Label" parent="UI/Control" unique_id=1655559362]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -200.0
+offset_top = 64.0
+offset_right = -10.0
+offset_bottom = 137.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 20
+text = "Monday 4/21"
+horizontal_alignment = 2
+script = ExtResource("5_hhsxw")
+
+[node name="Effects" type="CanvasLayer" parent="." unique_id=964030798]
+layer = 129
+
+[node name="EffectsPlayer" type="AnimationPlayer" parent="Effects" unique_id=1632785559]
+libraries/ = SubResource("AnimationLibrary_oogvt")
+
+[node name="Devour" type="ColorRect" parent="Effects" unique_id=494428150]
+visible = false
+z_index = 1
+offset_right = 1280.0
+offset_bottom = 720.0
+mouse_filter = 2
+color = Color(0.3137255, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Cover" type="ColorRect" parent="Effects" unique_id=219262203]
+visible = false
+z_index = 20
+offset_right = 1280.0
+offset_bottom = 720.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="DatingBalloon" parent="." unique_id=1742079667 instance=ExtResource("3_u7imq")]
+next_action = &"ui_accept"
+skip_action = &"ui_cancel"
+
+[node name="PauseMenu" parent="." unique_id=1323170117 instance=ExtResource("9_24wuv")]
+visible = false
+
+[connection signal="toggled" from="UI/Control/HBoxContainer/Auto" to="UI/Control/HBoxContainer/Auto" method="_on_toggled"]
+[connection signal="timeout" from="UI/Control/HBoxContainer/Auto/Timer" to="UI/Control/HBoxContainer/Auto" method="_on_timer_timeout"]
+[connection signal="toggled" from="UI/Control/HBoxContainer/Skip" to="UI/Control/HBoxContainer/Skip" method="_on_toggled"]
+[connection signal="timeout" from="UI/Control/HBoxContainer/Skip/Timer" to="UI/Control/HBoxContainer/Skip" method="_on_timer_timeout"]

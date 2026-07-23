@@ -2,11 +2,11 @@ extends Control
 
 @export var main: BattleScene
 
-@onready var enemies_devoured: Label = $EnemiesDevoured
-@onready var progress_towards_next_size: Label = $ProgressTowardsNextSize
-@onready var progress_bar: ProgressBar = $ProgressBar
-@onready var kills: Label = $Kills
-@onready var money_earned: Label = $MoneyEarned
+@onready var enemies_devoured: Label = $Control/EnemiesDevoured
+@onready var progress_towards_next_size: Label = $Control/ProgressTowardsNextSize
+@onready var progress_bar: ProgressBar = $Control/ProgressBar
+@onready var kills: Label = $Control2/Kills
+@onready var money_earned: Label = $Control2/MoneyEarned
 @onready var win_bonus: Label = $WinBonus
 @onready var skip_or_continue: Button = $SkipOrContinue
 
@@ -21,11 +21,13 @@ func summarize_stats(won: bool):
 	var kill_count = main.kill_count
 	
 	enemies_devoured.text = "Enemies Devoured: %s" % str(devoured_count)
-	var diff = Global.devours_needed_for_next_size - Global.devours_progress
+	var diff = Global.sav.devours_needed_for_next_size - Global.sav.devours_progress
 	update_progress_bar()
 	
 	if diff == 0:
 		progress_towards_next_size.text = "Advance story to get to next size!"
+	else:
+		progress_towards_next_size.text = "Devour %s more to grow to the next size!" % diff  
 	
 	kills.text = "Kills: %s" % str(kill_count)
 	money_earned.text = "Money Earned: 0"
@@ -34,24 +36,26 @@ func summarize_stats(won: bool):
 	
 	skip_or_continue.text = "Skip"
 	
-	if not skipping:
+	if not skipping and not diff == 0:
 		await next_stat
 	
-	for i in range(devoured_count):
-		diff = Global.devours_needed_for_next_size - Global.devours_progress
-		if diff == 0:
-			progress_towards_next_size.text = "Advance story to get to next size!"
-			Global.devours_progress = 0
-			Global.devours_needed_for_next_size = 0
-			update_progress_bar()
-			break
-		else:
-			progress_towards_next_size.text = "Devour %s more to grow to the next size!" % diff
-			Global.devours_progress += 1
-			update_progress_bar()
-		
-		if not skipping:
-			await Methods.wait(0.1)
+	if not diff == 0:
+		for i in range(devoured_count):
+			Global.sav.devours_progress += 1
+			diff = Global.sav.devours_needed_for_next_size - Global.sav.devours_progress
+			if diff == 0:
+				progress_towards_next_size.text = "Advance story to get to next size!"
+				Global.sav.devours_progress = 0
+				Global.sav.devours_needed_for_next_size = 0
+				Global.sav.size += 1
+				update_progress_bar()
+				break  
+			else:
+				progress_towards_next_size.text = "Devour %s more to grow to the next size!" % diff
+				update_progress_bar()
+			
+			if not skipping:
+				await Methods.wait(0.1)
 	
 	if not skipping:
 		await next_stat
@@ -73,13 +77,13 @@ func summarize_stats(won: bool):
 		win_bonus.text = "Win Bonus: %s" % possible_bonuses[bonus_index]
 		match bonus_index:
 			0:
-				Global.cured_ham += 1
+				Global.sav.cured_ham += 1
 			1: 
-				Global.flesh += 1
+				Global.sav.flesh += 1
 			2: 
-				Global.goats_blood += 1
+				Global.sav.goats_blood += 1
 			3:
-				Global.money += 5
+				Global.sav.money += 5
 	else:
 		win_bonus.text = "Escaped! No bonus given."
 	
@@ -95,8 +99,8 @@ func _input(event: InputEvent) -> void:
 			next_stat.emit()
 
 func update_progress_bar():
-	progress_bar.max_value = Global.devours_needed_for_next_size
-	progress_bar.value = Global.devours_progress
+	progress_bar.max_value = Global.sav.devours_needed_for_next_size
+	progress_bar.value = Global.sav.devours_progress
 
 func _on_skip_or_continue_pressed() -> void:
 	if finished_showing_stats:

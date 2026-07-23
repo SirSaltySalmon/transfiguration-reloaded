@@ -36,12 +36,12 @@ func flip():
 
 func interact():
 	var title : String
-	if Global.size == 1 and not Global.rat_talk_1:
+	if Global.sav.size == 1 and not Global.sav.rat_talk_1:
 		title = "rat_talk_1"
-		Global.rat_talk_1 = true
-	elif Global.just_size_2 and not Global.rat_talk_2:
+		Global.sav.rat_talk_1 = true
+	elif Global.sav.just_size_2 and not Global.sav.rat_talk_2:
 		title = "rat_talk_2"
-		Global.rat_talk_2 = true
+		Global.sav.rat_talk_2 = true
 	
 	if title:
 		trigger_dialogue(title)

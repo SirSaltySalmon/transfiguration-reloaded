@@ -17,7 +17,7 @@ var center = main.skills
 
 func _ready():
 	effect_base.hide()
-	var data = Global.skills_data[id]
+	var data = Global.sav.skills_data[id]
 	value = data[0]
 	is_single_target = data[1]
 	is_enemy_target = data[2]

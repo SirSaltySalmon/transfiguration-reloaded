@@ -138,16 +138,16 @@ func parse_int(value : String) -> int:
 
 #region command code
 static func size_up():
-	Global.size += 1
+	Global.sav.size += 1
 
 static func set_size(value: int):
-	Global.size = value
+	Global.sav.size = value
 
 static func money_up():
-	Global.money += 1
+	Global.sav.money += 1
 
 static func set_money(value: int):
-	Global.money = value
+	Global.sav.money = value
 
 #endregion
 

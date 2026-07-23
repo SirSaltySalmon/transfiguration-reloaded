@@ -1,11 +1,13 @@
 extends Character
 
+func normal_init():
+	if Global.sav.size >= 2:
+		queue_free()
+
 func interact():
 	## eat
-	Global.size += 1
-	Global.just_size_2 = true
+	Global.sav.just_size_2 = true
+	Global.sav.size = 2
 	Methods.play_fx_overworld("devour")
 	queue_free()
-	
-	Methods.flags_changed.emit()
 	

@@ -52,25 +52,25 @@ func move_to_area(area_id : String, resource : String, direction : String):
 		finalize_move_to_area()
 
 func manage_battles():
-	if Global.just_size_2 and Global.current_area_id == "prison":
+	if Global.sav.just_size_2 and Global.sav.current_area_id == "prison":
 		Global.battle_type = 2
 		return true
 	
 	# No shadow wizards code here, handle separately
 	
-	if Global.size == 7 and Global.destination_area_id == "dining_hall":
+	if Global.sav.size == 7 and Global.destination_area_id == "dining_hall":
 		Global.battle_type = 4
 		return true
 	
 	# For other cases
-	if Global.size >= 2:
-		if not Global.repellant_active and randi_range(1, 4) == 1:
+	if Global.sav.size >= 2:
+		if not Global.sav.repellant_active and randi_range(1, 4) == 1:
 			return true
 	
 	return false
 
 func finalize_move_to_area():
-	Global.current_area_id = Global.destination_area_id
+	Global.sav.current_area_id = Global.destination_area_id
 	#prefetch cutscene, a name will be returned if cutscene conditions are met
 	var cutscene_name = manage_cutscenes()
 	
@@ -99,7 +99,7 @@ func enter_area():
 	await enter_transition()
 	area.show_arrows()
 	
-	Global.current_resource = Global.destination_resource
+	Global.sav.current_resource = Global.destination_resource
 	Global.move_direction = ""
 	Global.destination_area_id = ""
 	Global.destination_resource = ""
@@ -108,7 +108,7 @@ func get_sky_and_light():
 	var id = Global.destination_area_id
 	var sky_address = "res://assets/overworld/effects/sky/" + id + "_sky.tres"
 	env.environment = load(sky_address)
-	if id == "sewers":
+	if id == "sewers" or id == "library":
 		light.light_color = Color("6986c2")
 	elif id == "prison" or id == "shop":
 		light.light_color = Color("ccb47a")
@@ -197,16 +197,16 @@ func fix_camera(axis):
 			camera.position.y = 0
 		else:
 			camera.position.x = 0
-		camera.position.z     = 0
+		camera.position.z = 0
 
 func reload():
-	Global.destination_area_id = Global.current_area_id
-	Global.destination_resource = Global.current_resource
+	Global.destination_area_id = Global.sav.current_area_id
+	Global.destination_resource = Global.sav.current_resource
 	
 	finalize_move_to_area()
 
 func manage_cutscenes():
-	if not Global.cutscene_1 and Global.current_area_id == "sewers":
+	if not Global.sav.cutscene_1 and Global.sav.current_area_id == "sewers":
 		return "cutscene_1"
 	return null
 
@@ -225,7 +225,7 @@ func end_cutscene():
 	if is_instance_valid(DialogueManager.active_balloon):
 		DialogueManager.active_balloon.queue_free()
 	anim.stop()
-	Global.set(active_cutscene_name, true)
+	Global.sav.set(active_cutscene_name, true)
 	for child in area.get_children():
 		if child.is_in_group(active_cutscene_name) and child.name != "Background":
 			child.hide()

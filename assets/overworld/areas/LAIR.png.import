@@ -2,22 +2,24 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://pyg8a0x8avtj"
-path="res://.godot/imported/DRAGONSLAIR.png-ed464c465bd15fc9127f01fd1c330284.ctex"
+uid="uid://daj4f8jcj542f"
+path="res://.godot/imported/LAIR.png-0c97be378af0e1e0345bb549cd264e3b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/overworld/areas/DRAGONSLAIR.png"
-dest_files=["res://.godot/imported/DRAGONSLAIR.png-ed464c465bd15fc9127f01fd1c330284.ctex"]
+source_file="res://assets/overworld/areas/LAIR.png"
+dest_files=["res://.godot/imported/LAIR.png-0c97be378af0e1e0345bb549cd264e3b.ctex"]
 
 [params]
 
 compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
+compress/uastc_level=0
+compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
@@ -25,6 +27,10 @@ mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
+process/channel_remap/red=0
+process/channel_remap/green=1
+process/channel_remap/blue=2
+process/channel_remap/alpha=3
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

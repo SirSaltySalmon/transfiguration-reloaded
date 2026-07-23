@@ -155,7 +155,7 @@ func tween_change_display(value):
 	change_display_value = 0
 
 func manage_stylebox_color():
-	if (bar.value - Global.skills_data["Devour"][0]) <= devouring_threshold:
+	if (bar.value - Global.sav.skills_data["Devour"][0]) <= devouring_threshold:
 		bar.add_theme_stylebox_override("fill", devourable_stylebox)
 	else:
 		bar.add_theme_stylebox_override("fill", healthy_stylebox)

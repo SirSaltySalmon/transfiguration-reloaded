@@ -13,7 +13,7 @@ class_name ItemsButton extends BattleButton
 var count = 0
 
 func _process(_delta):
-	count = Global.get(item_id)
+	count = Global.sav.get(item_id)
 	if count > 0:
 		#eg Cured Ham x20
 		text = item_name + " x" + str(count)

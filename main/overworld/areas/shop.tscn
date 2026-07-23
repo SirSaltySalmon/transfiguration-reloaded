@@ -5,8 +5,60 @@
 [ext_resource type="PackedScene" uid="uid://h1poi1wqxoap" path="res://characters/rat/rat.tscn" id="3_8rluo"]
 [ext_resource type="Texture2D" uid="uid://bgljp5ckmha8o" path="res://assets/overworld/areas/SHOP_INSIDE.png" id="3_b8emr"]
 [ext_resource type="PackedScene" uid="uid://cofv6hjk51ptu" path="res://ui/overworld/arrow_manager.tscn" id="4_jeymx"]
+[ext_resource type="Shader" uid="uid://ce3e5bbugj1q7" path="res://assets/overworld/effects/highlight.gdshader" id="5_u36u0"]
 [ext_resource type="PackedScene" uid="uid://d3c7hfp0qwt6c" path="res://characters/gob/gob.tscn" id="5_xy5dt"]
 [ext_resource type="PackedScene" uid="uid://bsce3vhrswx5m" path="res://characters/tips/tips.tscn" id="6_8evj3"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_htc4s"]
+viewport_path = NodePath("Sprite/SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7ri7k"]
+resource_local_to_scene = true
+shader = ExtResource("5_u36u0")
+shader_parameter/Line_Smoothness = 0.034
+shader_parameter/Line_Width = 0.062
+shader_parameter/Brightness = 3.0
+shader_parameter/Rotation_deg = 30.0
+shader_parameter/Distortion = 1.8
+shader_parameter/Speed = 0.7
+shader_parameter/Position = 0.0
+shader_parameter/Position_Min = 0.25
+shader_parameter/Position_Max = 0.5
+shader_parameter/Alpha = 1.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_3w0op"]
+viewport_path = NodePath("Sprite/SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ppbh6"]
+resource_local_to_scene = true
+shader = ExtResource("5_u36u0")
+shader_parameter/Line_Smoothness = 0.1
+shader_parameter/Line_Width = 0.1
+shader_parameter/Brightness = 3.0
+shader_parameter/Rotation_deg = 30.0
+shader_parameter/Distortion = 1.0
+shader_parameter/Speed = 1.0
+shader_parameter/Position = 0.0
+shader_parameter/Position_Min = 0.25
+shader_parameter/Position_Max = 0.5
+shader_parameter/Alpha = 1.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_4808o"]
+viewport_path = NodePath("Sprite/SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hf5it"]
+resource_local_to_scene = true
+shader = ExtResource("5_u36u0")
+shader_parameter/Line_Smoothness = 0.045
+shader_parameter/Line_Width = 0.2
+shader_parameter/Brightness = 3.0
+shader_parameter/Rotation_deg = 30.0
+shader_parameter/Distortion = 1.8
+shader_parameter/Speed = 1.0
+shader_parameter/Position = 0.0
+shader_parameter/Position_Min = 0.25
+shader_parameter/Position_Max = 0.5
+shader_parameter/Alpha = 1.0
 
 [node name="shop" type="Node3D" unique_id=1124743587]
 script = ExtResource("1_ilr64")
@@ -36,8 +88,20 @@ texture = ExtResource("3_b8emr")
 [node name="Gob" parent="." unique_id=882208346 instance=ExtResource("5_xy5dt")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -5.525, 0.731, -8.1)
 
+[node name="Sprite" parent="Gob" index="0"]
+texture = SubResource("ViewportTexture_htc4s")
+
+[node name="Highlight" parent="Gob/Sprite/SubViewport/Sprite2D" index="0"]
+material = SubResource("ShaderMaterial_7ri7k")
+
 [node name="Tips" parent="." unique_id=1538832114 instance=ExtResource("6_8evj3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8884, 0.23253, -8)
+
+[node name="Sprite" parent="Tips" index="0"]
+texture = SubResource("ViewportTexture_3w0op")
+
+[node name="Highlight" parent="Tips/Sprite/SubViewport/Sprite2D" index="0"]
+material = SubResource("ShaderMaterial_ppbh6")
 
 [node name="ArrowManager" parent="." unique_id=1160439225 instance=ExtResource("4_jeymx")]
 
@@ -56,8 +120,19 @@ show_condition = ""
 [node name="RightArrow" parent="ArrowManager" index="3" unique_id=2000443815]
 destination = "sewers"
 resource = "res://main/overworld/areas/sewers.tscn"
+show_condition = "true"
 
 [node name="Rat" parent="." unique_id=1489711793 groups=["cutscene_1"] instance=ExtResource("3_8rluo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.15, -2.546, -7)
 
+[node name="Sprite" parent="Rat" index="2" unique_id=761325541]
+render_priority = 1
+texture = SubResource("ViewportTexture_4808o")
+
+[node name="Highlight" parent="Rat/Sprite/SubViewport/Sprite2D" parent_id_path=PackedInt32Array(1489711793, 1123461739) index="0" unique_id=1323137183]
+material = SubResource("ShaderMaterial_hf5it")
+
+[editable path="Gob"]
+[editable path="Tips"]
 [editable path="ArrowManager"]
+[editable path="Rat"]

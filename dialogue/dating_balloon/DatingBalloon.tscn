@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://dlcb3m8ot2ika"]
+
+[ext_resource type="Script" uid="uid://jqiwqcdyk0c0" path="res://dialogue/dating_balloon/dating_balloon.gd" id="1_g70yo"]
+[ext_resource type="Theme" uid="uid://bo4ssxwqvtpbh" path="res://main/dating/dating_ui_theme.tres" id="2_g70yo"]
+[ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="3_jceaw"]
+[ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="4_jpk38"]
+
+[node name="DatingBalloon" type="CanvasLayer" unique_id=1742079667]
+layer = 100
+script = ExtResource("1_g70yo")
+next_action = null
+skip_action = null
+
+[node name="Balloon" type="Control" parent="." unique_id=1272784991]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_g70yo")
+
+[node name="DialogueLabel" parent="Balloon" unique_id=444850351 instance=ExtResource("3_jceaw")]
+unique_name_in_owner = true
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+offset_left = 51.0
+offset_top = 525.0
+offset_right = 1231.0
+offset_bottom = 659.0
+grow_horizontal = 1
+size_flags_vertical = 3
+text = "WELCOME!!! TO THE LAIR!!! OF THE GREAT DRAGON JORIIIIIIIIIIIIII!!!!!!!!!!!"
+horizontal_alignment = 1
+
+[node name="Responses" type="MarginContainer" parent="Balloon" unique_id=1286339349]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -250.0
+offset_right = 320.0
+offset_bottom = 154.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ResponsesMenu" type="VBoxContainer" parent="Balloon/Responses" unique_id=933746244 node_paths=PackedStringArray("response_template")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 20
+script = ExtResource("4_jpk38")
+response_template = NodePath("ResponseExample")
+
+[node name="ResponseExample" type="Button" parent="Balloon/Responses/ResponsesMenu" unique_id=111522285]
+layout_mode = 2
+text = "Yes"
+
+[node name="ResponseExample2" type="Button" parent="Balloon/Responses/ResponsesMenu" unique_id=781780563]
+layout_mode = 2
+text = "No"
+
+[connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
+[connection signal="response_selected" from="Balloon/Responses/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]

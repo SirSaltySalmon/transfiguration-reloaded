@@ -2,6 +2,7 @@ extends Node
 
 const OVERWORLD_PATH = "res://main/overworld/overworld_3d_main.tscn"
 const BATTLE_PATH = "res://main/battle/battle.tscn"
+const TITLE_PATH = "res://main/title/title.tscn"
 
 var current_scene
 
@@ -11,6 +12,8 @@ var previous_position := Vector3(-1,-1,-1)
 var anim_speed := 1.0
 
 signal flags_changed
+
+signal dating_require_response
 
 var last_fight_won := false
 
@@ -37,6 +40,9 @@ func wait(time : float):
 #TODO: Manage two different cases in overworld & battle
 func tween_to_talker(talker_name: String, tween_time: float):
 	if not current_scene:
+		return
+	
+	if current_scene is DatingSim:
 		return
 
 	if talker_name == previous_talker:
@@ -70,6 +76,9 @@ func tween_to_normal(tween_time: float):
 	if not current_scene:
 		return
 	
+	if current_scene is DatingSim:
+		return
+	
 	if current_scene is BattleScene:
 		if current_scene.current_char == null:
 			current_scene.cam.return_to_idle()
@@ -100,6 +109,9 @@ func return_to_overworld(won: bool):
 		Global.move_direction = ""
 	SceneLoader.load_scene(OVERWORLD_PATH)
 
+func return_to_title():
+	SceneLoader.load_scene(TITLE_PATH)
+
 func rgb_to_hex(r:int,g:int,b:int) -> String:
 	return "#%02X%02X%02X" % [r, g, b]
 
@@ -112,3 +124,8 @@ func is_cutscene_playing():
 		if current_scene.active_cutscene_name != "":
 			return true
 	return false
+
+func get_slime_texture() -> Texture2D:
+	var size = Global.sav.size
+	var texture = load("res://characters/slime/slime_%s.png" % str(size))
+	return texture

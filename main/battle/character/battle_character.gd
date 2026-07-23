@@ -21,7 +21,7 @@ var index_at_death := 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var stats = Global.get("bt_" + battle_id)
+	var stats = Global.sav.get("bt_" + battle_id)
 	max_health = stats[0]
 	basic_attack = stats[1]
 	speed = stats[2]

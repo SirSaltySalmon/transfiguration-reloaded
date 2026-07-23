@@ -1,5 +1,5 @@
 ~ golem_talk
-Golem: go[wait=1.0]			lem
+Golem: go[wait=1.0]		lem
 
 => END
 
@@ -11,4 +11,5 @@ Golem: [i]Maybe it will remember once you get [color=cyan]bigger.[/color][/i]
 
 ~ golem_remember
 Golem: [i]It seems to have remembered what it should be doing.[/i]
+Golem: [i]Which is guarding this door.[/i]
 Golem: [i]Maybe it will forget once you get [color=cyan]bigger.[/color][/i]

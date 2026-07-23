@@ -12,7 +12,7 @@ var skills: Array[Skill] = []
 func _ready():
 	if parent.ally:
 		var path = "bt_" + parent.battle_id + "_skills"
-		var skills_array = Global.get(path)
+		var skills_array = Global.sav.get(path)
 		skill_1 = skills_array[0]
 		skill_2 = skills_array[1]
 		skill_3 = skills_array[2]

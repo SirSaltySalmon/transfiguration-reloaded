@@ -1,13 +1,13 @@
-[gd_scene format=3 uid="uid://bsmh1njvwdgin"]
+[gd_scene format=3 uid="uid://c8yqmcm1kcxv7"]
 
-[ext_resource type="Script" uid="uid://dt10ab67t400t" path="res://characters/golem/golem.gd" id="1_6via0"]
-[ext_resource type="Resource" uid="uid://c7a4l68t02l0h" path="res://dialogue/golem.dialogue" id="2_28mo5"]
-[ext_resource type="Texture2D" uid="uid://dn8c5uijlvgqk" path="res://characters/golem/golem.png" id="2_p3bu8"]
-[ext_resource type="Shader" uid="uid://ce3e5bbugj1q7" path="res://assets/overworld/effects/highlight.gdshader" id="3_28mo5"]
+[ext_resource type="Script" uid="uid://c8llg3c1d3800" path="res://characters/golem/golem_library.gd" id="1_ybbic"]
+[ext_resource type="Resource" uid="uid://c7a4l68t02l0h" path="res://dialogue/golem.dialogue" id="2_0flii"]
+[ext_resource type="Texture2D" uid="uid://dn8c5uijlvgqk" path="res://characters/golem/golem.png" id="3_p8nav"]
+[ext_resource type="Shader" uid="uid://ce3e5bbugj1q7" path="res://assets/overworld/effects/highlight.gdshader" id="4_ij14r"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qg114"]
 resource_local_to_scene = true
-shader = ExtResource("3_28mo5")
+shader = ExtResource("4_ij14r")
 shader_parameter/Line_Smoothness = 0.045
 shader_parameter/Line_Width = 0.2
 shader_parameter/Brightness = 3.0
@@ -21,13 +21,13 @@ shader_parameter/Alpha = 1.0
 
 [node name="Golem" type="StaticBody3D" unique_id=445330326]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
-script = ExtResource("1_6via0")
-dialogue = ExtResource("2_28mo5")
+script = ExtResource("1_ybbic")
+dialogue = ExtResource("2_0flii")
 
 [node name="Sprite" type="Sprite3D" parent="." unique_id=1566366295]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 shaded = true
-texture = ExtResource("2_p3bu8")
+texture = ExtResource("3_p8nav")
 
 [node name="SubViewport" type="SubViewport" parent="Sprite" unique_id=2072903056]
 disable_3d = true
@@ -38,7 +38,7 @@ size = Vector2i(2501, 3661)
 clip_children = 2
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("2_p3bu8")
+texture = ExtResource("3_p8nav")
 
 [node name="Highlight" type="ColorRect" parent="Sprite/SubViewport/Sprite2D" unique_id=319568175]
 visible = false

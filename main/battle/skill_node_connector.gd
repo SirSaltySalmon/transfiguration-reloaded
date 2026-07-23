@@ -5,7 +5,7 @@ class_name SkillNodeConnector extends Control
 func update_skill_options():
 	var id = main.current_char.battle_id
 	var path = "bt_" + id + "_skills"
-	var skills_array = Global.get(path)
+	var skills_array = Global.sav.get(path)
 	
 	for skill in get_children():
 		if skill is not SkillButton:

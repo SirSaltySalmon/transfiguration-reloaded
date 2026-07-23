@@ -51,6 +51,7 @@ offset_left = 51.0
 offset_top = 500.0
 offset_right = 1231.0
 offset_bottom = 634.0
+grow_horizontal = 1
 size_flags_vertical = 3
 text = "Dialogue..."
 horizontal_alignment = 1

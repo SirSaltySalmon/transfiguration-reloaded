@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://b7axuqtupvmfu"]
+
+[ext_resource type="Script" uid="uid://8cyqrodpkc1c" path="res://main/overworld/areas/area.gd" id="1_piyqf"]
+[ext_resource type="Texture2D" uid="uid://de85trrieg35q" path="res://assets/overworld/areas/LIBRARY.png" id="2_d5nr1"]
+[ext_resource type="PackedScene" uid="uid://h1poi1wqxoap" path="res://characters/rat/rat.tscn" id="3_32245"]
+[ext_resource type="PackedScene" uid="uid://dlfguy7fwyy6r" path="res://characters/slime/slime.tscn" id="4_psfmm"]
+[ext_resource type="PackedScene" uid="uid://cofv6hjk51ptu" path="res://ui/overworld/arrow_manager.tscn" id="5_10chv"]
+[ext_resource type="PackedScene" uid="uid://bsmh1njvwdgin" path="res://characters/golem/golem_prison.tscn" id="10_32245"]
+
+[node name="Library" type="Node3D" unique_id=1628032535]
+script = ExtResource("1_piyqf")
+area_id = "sewers"
+
+[node name="Background" type="Sprite3D" parent="." unique_id=1115190439]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+transparent = false
+shaded = true
+double_sided = false
+texture = ExtResource("2_d5nr1")
+
+[node name="Rat" parent="." unique_id=953603744 groups=["cutscene_1"] instance=ExtResource("3_32245")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.15, -2.546, -7)
+
+[node name="Slime" parent="." unique_id=959136789 instance=ExtResource("4_psfmm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.971711, -2.8317184, -6.99845)
+
+[node name="ArrowManager" parent="." unique_id=271098037 instance=ExtResource("5_10chv")]
+
+[node name="UpArrow" parent="ArrowManager" index="0" unique_id=462240817]
+show_condition = "Global.sav.size >= 3"
+
+[node name="DownArrow" parent="ArrowManager" index="1" unique_id=1785677814]
+show_condition = "Global.sav.size >= 6"
+
+[node name="LeftArrow" parent="ArrowManager" index="2" unique_id=612731789]
+show_condition = "Global.sav.size >= 1"
+
+[node name="RightArrow" parent="ArrowManager" index="3" unique_id=2000443815]
+show_condition = "Global.sav.size >= 1 and Global.sav.rat_talk_1"
+
+[node name="Golem" parent="." unique_id=445330326 instance=ExtResource("10_32245")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 8.880471, -0.474005, -7.57225)
+
+[editable path="ArrowManager"]

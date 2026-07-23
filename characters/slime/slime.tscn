@@ -2,6 +2,22 @@
 
 [ext_resource type="Script" uid="uid://dgwo7o2jo256y" path="res://characters/slime/slime.gd" id="1_7jwng"]
 [ext_resource type="Texture2D" uid="uid://bps28arvfbu63" path="res://characters/slime/slime_1.png" id="1_taxqy"]
+[ext_resource type="Texture2D" uid="uid://dwo8d6vai3126" path="res://characters/rat/rat.png" id="3_w75ej"]
+[ext_resource type="Shader" uid="uid://ce3e5bbugj1q7" path="res://assets/overworld/effects/highlight.gdshader" id="4_0qekm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_648cb"]
+resource_local_to_scene = true
+shader = ExtResource("4_0qekm")
+shader_parameter/Line_Smoothness = 0.045
+shader_parameter/Line_Width = 0.2
+shader_parameter/Brightness = 3.0
+shader_parameter/Rotation_deg = 30.0
+shader_parameter/Distortion = 1.8
+shader_parameter/Speed = 1.0
+shader_parameter/Position = 0.0
+shader_parameter/Position_Min = 0.25
+shader_parameter/Position_Max = 0.5
+shader_parameter/Alpha = 1.0
 
 [node name="Slime" type="StaticBody3D" unique_id=1560939899 groups=["cutscene_1"]]
 script = ExtResource("1_7jwng")
@@ -12,3 +28,34 @@ flip_h = true
 shaded = true
 render_priority = 1
 texture = ExtResource("1_taxqy")
+
+[node name="SubViewport" type="SubViewport" parent="Sprite" unique_id=1835343770]
+disable_3d = true
+transparent_bg = true
+size = Vector2i(1772, 1772)
+
+[node name="Sprite2D" type="TextureRect" parent="Sprite/SubViewport" unique_id=412229502]
+clip_children = 2
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_w75ej")
+
+[node name="Highlight" type="ColorRect" parent="Sprite/SubViewport/Sprite2D" unique_id=200487221]
+visible = false
+material = SubResource("ShaderMaterial_648cb")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Brighten" type="ColorRect" parent="Sprite/SubViewport/Sprite2D" unique_id=1107596809]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.196078)

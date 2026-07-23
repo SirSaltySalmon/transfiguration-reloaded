@@ -69,16 +69,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.971711, -2.8317184, -6.998
 [node name="ArrowManager" parent="." unique_id=271098037 instance=ExtResource("4_de0hd")]
 
 [node name="UpArrow" parent="ArrowManager" index="0" unique_id=462240817]
-show_condition = "Global.size >= 3"
+show_condition = "Global.sav.size >= 3"
 
 [node name="DownArrow" parent="ArrowManager" index="1" unique_id=1785677814]
-show_condition = "Global.size >= 6"
+show_condition = "Global.sav.size >= 6"
 
 [node name="LeftArrow" parent="ArrowManager" index="2" unique_id=612731789]
-show_condition = "Global.size >= 1"
+show_condition = "Global.sav.size >= 2"
 
 [node name="RightArrow" parent="ArrowManager" index="3" unique_id=2000443815]
-show_condition = "Global.size >= 1 and Global.rat_talk_1"
+show_condition = "Global.sav.rat_talk_1"
 
 [node name="Humans" type="Node3D" parent="." unique_id=1127703196 groups=["cutscene_1"]]
 visible = false

@@ -94,11 +94,11 @@ func initialize_allies():
 	%AllyHolders2.hide()
 	%AllyHolders3.hide()
 	
-	var size = str(Global.bt_party.size())
+	var size = str(Global.sav.bt_party.size())
 	var ally_holders = get_node("%AllyHolders" + size)
 	ally_holders.show()
 	
-	await load_chars(ally_holders, Global.bt_party)
+	await load_chars(ally_holders, Global.sav.bt_party)
 	
 	return
 

@@ -1,0 +1,175 @@
+[gd_scene format=3 uid="uid://b724oh1cswaws"]
+
+[ext_resource type="Script" uid="uid://ckpucfwflssfl" path="res://main/pause_menu/pause_menu.gd" id="1_hhokr"]
+[ext_resource type="Theme" uid="uid://bvemkf2eq2avn" path="res://ui/battle/ui_font.tres" id="2_pbfvu"]
+[ext_resource type="Shader" uid="uid://15wlgeg7fpdf" path="res://assets/battle/ui/textwave.gdshader" id="3_bme8k"]
+[ext_resource type="Script" uid="uid://dnxounqmgmj3y" path="res://main/pause_menu/save.gd" id="4_v7a3x"]
+[ext_resource type="Script" uid="uid://bkmr043uc3ln7" path="res://main/pause_menu/load.gd" id="5_l5kb5"]
+[ext_resource type="Script" uid="uid://rc7xiafb8bkd" path="res://main/pause_menu/quit.gd" id="6_7x0uu"]
+[ext_resource type="Script" uid="uid://ha1xk3h1rua2" path="res://main/pause_menu/return.gd" id="7_lbmux"]
+[ext_resource type="Script" uid="uid://7kwi08r0fjra" path="res://main/pause_menu/audio_slider.gd" id="8_lbmux"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_55ikr"]
+shader = ExtResource("3_bme8k")
+shader_parameter/height = 3.0
+shader_parameter/frequency = 30.0
+shader_parameter/speed = 1.0
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=1323170117]
+process_mode = 3
+layer = 256
+script = ExtResource("1_hhokr")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=869197039]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.39215687)
+
+[node name="Control" type="Control" parent="." unique_id=1610609846]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_pbfvu")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control" unique_id=464106694]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -0.5
+offset_right = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/VBoxContainer" unique_id=641049385]
+material = SubResource("ShaderMaterial_55ikr")
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/normal_font_size = 100
+text = "PAUSED"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="save" type="Button" parent="Control/VBoxContainer" unique_id=1431783778]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "save"
+script = ExtResource("4_v7a3x")
+
+[node name="load" type="Button" parent="Control/VBoxContainer" unique_id=577375909]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "load last save"
+script = ExtResource("5_l5kb5")
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="Control/VBoxContainer/load" unique_id=1586554438]
+oversampling_override = 1.0
+position = Vector2i(0, 36)
+size = Vector2i(580, 146)
+dialog_text = "Are you sure you want to Load Last Save?
+Unsaved progress will be lost."
+
+[node name="quit" type="Button" parent="Control/VBoxContainer" unique_id=1575575605]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "quit game"
+script = ExtResource("6_7x0uu")
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="Control/VBoxContainer/quit" unique_id=1176268245]
+oversampling_override = 1.0
+position = Vector2i(0, 36)
+size = Vector2i(580, 104)
+dialog_text = "Are you sure you want to Quit Game?
+Unsaved progress will be lost."
+
+[node name="return" type="Button" parent="Control/VBoxContainer" unique_id=2086226121]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "return to title"
+script = ExtResource("7_lbmux")
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="Control/VBoxContainer/return" unique_id=1512465021]
+oversampling_override = 1.0
+position = Vector2i(0, 36)
+size = Vector2i(580, 104)
+dialog_text = "Are you sure you want to Return To Title?
+Unsaved progress will be lost."
+
+[node name="master" type="HBoxContainer" parent="Control/VBoxContainer" unique_id=970808988]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/VBoxContainer/master" unique_id=334105900]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/normal_font_size = 48
+text = "master"
+fit_content = true
+
+[node name="HSlider" type="HSlider" parent="Control/VBoxContainer/master" unique_id=1334464332]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+step = 10.0
+value = 100.0
+script = ExtResource("8_lbmux")
+
+[node name="sfx" type="HBoxContainer" parent="Control/VBoxContainer" unique_id=1638759832]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/VBoxContainer/sfx" unique_id=2070953125]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/normal_font_size = 48
+text = "sfx"
+fit_content = true
+
+[node name="HSlider" type="HSlider" parent="Control/VBoxContainer/sfx" unique_id=1285774089]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+step = 10.0
+value = 100.0
+script = ExtResource("8_lbmux")
+bus_index = 1
+
+[node name="music" type="HBoxContainer" parent="Control/VBoxContainer" unique_id=1088294631]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/VBoxContainer/music" unique_id=1554389571]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/normal_font_size = 48
+text = "music"
+fit_content = true
+
+[node name="HSlider" type="HSlider" parent="Control/VBoxContainer/music" unique_id=796661113]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+step = 10.0
+value = 100.0
+script = ExtResource("8_lbmux")
+bus_index = 2
+
+[connection signal="pressed" from="Control/VBoxContainer/save" to="Control/VBoxContainer/save" method="_on_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/load" to="Control/VBoxContainer/load" method="_on_pressed"]
+[connection signal="confirmed" from="Control/VBoxContainer/load/ConfirmationDialog" to="Control/VBoxContainer/load" method="_on_confirmation_dialog_confirmed"]
+[connection signal="pressed" from="Control/VBoxContainer/quit" to="Control/VBoxContainer/quit" method="_on_pressed"]
+[connection signal="confirmed" from="Control/VBoxContainer/quit/ConfirmationDialog" to="Control/VBoxContainer/quit" method="_on_confirmation_dialog_confirmed"]
+[connection signal="pressed" from="Control/VBoxContainer/return" to="Control/VBoxContainer/return" method="_on_pressed"]
+[connection signal="confirmed" from="Control/VBoxContainer/return/ConfirmationDialog" to="Control/VBoxContainer/return" method="_on_confirmation_dialog_confirmed"]
+[connection signal="value_changed" from="Control/VBoxContainer/master/HSlider" to="Control/VBoxContainer/master/HSlider" method="_on_value_changed"]
+[connection signal="value_changed" from="Control/VBoxContainer/sfx/HSlider" to="Control/VBoxContainer/sfx/HSlider" method="_on_value_changed"]
+[connection signal="value_changed" from="Control/VBoxContainer/music/HSlider" to="Control/VBoxContainer/music/HSlider" method="_on_value_changed"]

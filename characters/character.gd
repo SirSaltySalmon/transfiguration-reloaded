@@ -10,6 +10,9 @@ class_name Character
 @export var zoom : int = -2
 @export var offset : int = 0
 
+func _ready():
+	Methods.flags_changed.connect(normal_init)
+
 func highlight():
 	if highlight_effect.visible == false:
 		Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
@@ -20,6 +23,9 @@ func unhighlight():
 	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 	highlight_effect.hide()
 	brighten_effect.hide()
+
+func normal_init():
+	pass
 
 func interact():
 	pass
