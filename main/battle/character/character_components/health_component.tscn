@@ -18,6 +18,7 @@ viewport_path = NodePath("SubViewport")
 [node name="HealthComponent" type="Sprite3D" unique_id=77961012]
 transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, 0, 0, 0)
 no_depth_test = true
+render_priority = 2
 texture = SubResource("ViewportTexture_4poig")
 script = ExtResource("1_y7bym")
 

@@ -188,6 +188,7 @@ func _on_action_over():
 		return
 	if get_alive_enemies().is_empty():
 		await cam.return_to_idle()
+		ui.display_move("")
 		win()
 		return
 	#else, next turn

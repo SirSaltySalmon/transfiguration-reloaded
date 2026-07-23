@@ -671,31 +671,31 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("WinScreen/UP:position")
+tracks/10/path = NodePath("WinScreen/ratwin:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [Vector2(872, 952)]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("WinScreen/ratwin:position")
+tracks/11/path = NodePath("WinScreen/Stats/Control:position")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(872, 952)]
+"values": [Vector2(0, 0)]
 }
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("WinScreen/Stats/Control:position")
+tracks/12/path = NodePath("WinScreen/Stats/Control2:position")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
@@ -707,34 +707,22 @@ tracks/12/keys = {
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("WinScreen/Stats/Control2:position")
+tracks/13/path = NodePath("WinScreen/Stats/WinBonus:position")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [Vector2(24, 336)]
 }
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("WinScreen/Stats/WinBonus:position")
+tracks/14/path = NodePath("WinScreen/Stats/SkipOrContinue:position")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(24, 336)]
-}
-tracks/15/type = "value"
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/path = NodePath("WinScreen/Stats/SkipOrContinue:position")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -884,70 +872,22 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("WinScreen/UP:position")
+tracks/4/path = NodePath("WinScreen/ratwin:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.9999999),
-"transitions": PackedFloat32Array(0.25, 1),
-"update": 0,
-"values": [Vector2(-1300, 0), Vector2(0, 0)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("WinScreen/DOWN:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0.9, 1.8999999),
-"transitions": PackedFloat32Array(0.25, 1),
-"update": 0,
-"values": [Vector2(-1300, 0), Vector2(0, 0)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("WinScreen/LEFT:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0.3, 0.6, 1.3, 1.5999999),
-"transitions": PackedFloat32Array(0.25, 0.25, 1, 1),
-"update": 0,
-"values": [Vector2(-1300, 0), Vector2(-1300, 0), Vector2(0, 0), Vector2(0, 0)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("WinScreen/RIGHT:position")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0.3, 1.3),
-"transitions": PackedFloat32Array(0.25, 1),
-"update": 0,
-"values": [Vector2(-1300, 0), Vector2(0, 0)]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("WinScreen/ratwin:position")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
 "times": PackedFloat32Array(1.4, 3),
 "transitions": PackedFloat32Array(0.25, 1),
 "update": 0,
 "values": [Vector2(800, 800), Vector2(800, 0)]
 }
-tracks/9/type = "method"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("WinScreen/Stats")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("WinScreen/Stats")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
@@ -958,13 +898,13 @@ tracks/9/keys = {
 "method": &"allow_input_true"
 }]
 }
-tracks/10/type = "method"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("WinScreen/RatDanceAnim")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("WinScreen/RatDanceAnim")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -972,49 +912,49 @@ tracks/10/keys = {
 "method": &"play"
 }]
 }
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("WinScreen/Stats/Control:position")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("WinScreen/Stats/Control:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
 "times": PackedFloat32Array(1.2, 3),
 "transitions": PackedFloat32Array(0.25, 1),
 "update": 0,
 "values": [Vector2(0, -800), Vector2(0, 0)]
 }
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("WinScreen/Stats/Control2:position")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("WinScreen/Stats/Control2:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
 "times": PackedFloat32Array(0.9, 3),
 "transitions": PackedFloat32Array(0.25, 1),
 "update": 0,
 "values": [Vector2(0, -700), Vector2(0, 0)]
 }
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("WinScreen/Stats/WinBonus:position")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("WinScreen/Stats/WinBonus:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
 "times": PackedFloat32Array(0.7, 3),
 "transitions": PackedFloat32Array(0.25, 1),
 "update": 0,
 "values": [Vector2(24, -600), Vector2(24, 336)]
 }
-tracks/14/type = "value"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("WinScreen/Stats/SkipOrContinue:position")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("WinScreen/Stats/SkipOrContinue:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
 "times": PackedFloat32Array(0.4, 3),
 "transitions": PackedFloat32Array(0.25, 1),
 "update": 0,
@@ -1842,48 +1782,12 @@ vertical_alignment = 1
 [node name="WinScreen" type="CanvasLayer" parent="." unique_id=828829731]
 visible = false
 
-[node name="UP" type="ColorRect" parent="WinScreen" unique_id=584695889]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = -0.00061035156
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.078431375)
-
-[node name="DOWN" type="ColorRect" parent="WinScreen" unique_id=424550563]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = -0.0009765625
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.078431375)
-
-[node name="LEFT" type="ColorRect" parent="WinScreen" unique_id=1108910159]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.078431375)
-
-[node name="RIGHT" type="ColorRect" parent="WinScreen" unique_id=166880026]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 0.001953125
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.078431375)
-
 [node name="ratwin" type="Node2D" parent="WinScreen" unique_id=1012642542]
 position = Vector2(872, 952)
 
 [node name="ratwintext" type="Sprite2D" parent="WinScreen/ratwin" unique_id=1277864176]
 material = SubResource("ShaderMaterial_6701q")
 position = Vector2(0, 400)
-scale = Vector2(0.7, 0.7)
 texture = ExtResource("32_gdl11")
 
 [node name="RatDanceAnim" type="AnimationPlayer" parent="WinScreen" unique_id=1948867749]

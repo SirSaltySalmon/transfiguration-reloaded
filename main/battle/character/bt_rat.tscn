@@ -26,11 +26,12 @@ texture = ExtResource("3_cfube")
 
 [node name="HealthComponent" parent="." unique_id=458302248 instance=ExtResource("4_55py4")]
 transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, -8.28578e-08, 0, 1.89556)
-render_priority = 1
+render_priority = 2
 texture = SubResource("ViewportTexture_cfube")
 
 [node name="TurnComponent" parent="." unique_id=1893024029 instance=ExtResource("5_4whg7")]
 transform = Transform3D(1.5, 0, 0, 0, -6.55671e-08, 1.5, 0, -1.5, -6.55671e-08, -1.08151e-07, 0, 2.47421)
+render_priority = 1
 texture = SubResource("ViewportTexture_eu0la")
 
 [node name="SkillComponent" parent="." unique_id=32111930 instance=ExtResource("6_etmc5")]

@@ -36,10 +36,10 @@ func summarize_stats(won: bool):
 	
 	skip_or_continue.text = "Skip"
 	
-	if not skipping and not diff == 0:
+	if not skipping and not diff == 0 and not devoured_count == 0:
 		await next_stat
 	
-	if not diff == 0:
+	if not diff == 0 and not devoured_count == 0:
 		for i in range(devoured_count):
 			Global.sav.devours_progress += 1
 			diff = Global.sav.devours_needed_for_next_size - Global.sav.devours_progress

@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://but1vaoxh587q" path="res://main/overworld/overworld_main.gd" id="1_vn6as"]
 [ext_resource type="FontFile" uid="uid://cmmltma2gsu3a" path="res://addons/command-terminal/ast/windows_command_prompt.ttf" id="3_c6k2t"]
 [ext_resource type="Script" uid="uid://dmieq82eqdhx3" path="res://main/overworld/camera_3d.gd" id="3_l7jqc"]
+[ext_resource type="PackedScene" uid="uid://b724oh1cswaws" path="res://main/pause_menu/pause_menu.tscn" id="4_bm6iy"]
 [ext_resource type="Environment" uid="uid://btl4ptewvgyxp" path="res://assets/overworld/effects/sky/sewers_sky.tres" id="4_kefms"]
 
 [sub_resource type="Animation" id="Animation_qg76s"]
@@ -369,6 +370,9 @@ grow_horizontal = 0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 32
 text = "Skip Cutscene"
+
+[node name="PauseMenu" parent="." unique_id=1323170117 instance=ExtResource("4_bm6iy")]
+visible = false
 
 [node name="Camera" type="Camera3D" parent="." unique_id=190514770 node_paths=PackedStringArray("main")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -2, -4)

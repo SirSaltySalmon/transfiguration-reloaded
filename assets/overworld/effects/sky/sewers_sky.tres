@@ -1,6 +1,7 @@
 [gd_resource type="Environment" format=3 uid="uid://btl4ptewvgyxp"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_royf7"]
+ground_color = Color(0.90880346, 0.83463866, 0.75503093, 1)
 
 [sub_resource type="Sky" id="Sky_8xc2e"]
 sky_material = SubResource("PhysicalSkyMaterial_royf7")
