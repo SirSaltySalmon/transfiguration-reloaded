@@ -18,6 +18,9 @@ func random_target(characters: Array[BattleCharacter]) -> BattleCharacter:
 	return characters[randi_range(0, characters.size() - 1)]
 
 func select_target(characters: Array[BattleCharacter], single: bool):
+	var all_chars = main.all_chars
+	for char in all_chars:
+		char.visual.hide_indicator()
 	if single:
 		return await select_one_target(characters)
 	else:
@@ -49,7 +52,7 @@ func select_all_targets(characters: Array[BattleCharacter]) -> Array[BattleChara
 	await confirmed_selection
 	
 	is_active = false
-	if available_targets:
+	if available_targets != []:
 		for target in available_targets:
 			target.visual.hide_indicator()
 	return available_targets
@@ -72,10 +75,17 @@ func _handle_navigation_input(event: InputEvent) -> void:
 		return
 	
 	var direction = 0
+	# Must flip for enemies as they are placed in opposite order
 	if event.is_action_pressed("ui_left"):
-		direction = 1
+		if available_targets[0].ally:
+			direction = 1
+		else:
+			direction = -1
 	elif event.is_action_pressed("ui_right"):
-		direction = -1
+		if available_targets[0].ally:
+			direction = -1
+		else:
+			direction = 1
 	
 	if direction != 0:
 		_move_selection(direction)
@@ -92,7 +102,8 @@ func _confirm_selection() -> void:
 	confirmed_selection.emit()
 
 func _cancel_selection() -> void:
-	current_target.visual.hide_indicator()
+	if current_target:
+		current_target.visual.hide_indicator()
 	for target in available_targets:
 		target.visual.hide_indicator()
 	current_target = null
@@ -124,11 +135,13 @@ func _focus_on_targets(targets: Array[BattleCharacter]) -> void:
 
 func _indicate_target(target) -> void:
 	if target is BattleCharacter:
+		for other_target in available_targets:
+			other_target.visual.hide_indicator()
 		target.visual.indicate(false)
 		return
 	else:
 		for char in target:
-			_indicate_target(target)
+			char.visual.indicate(false)
 		return
 
 #endregion

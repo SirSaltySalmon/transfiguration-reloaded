@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://dgea256bedc4i"]
+
+[ext_resource type="Texture2D" uid="uid://bi4xfs1ajau6k" path="res://brackeys_particle_bundle/particles/alpha/symbol_01_a.png" id="1_nou6r"]
+
+[sub_resource type="Gradient" id="Gradient_3foej"]
+offsets = PackedFloat32Array(0.12064623, 0.4779173, 0.66822255, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.97503906, 0, 0.4118363, 1, 0.92, 0, 0.3833332, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1hq2f"]
+gradient = SubResource("Gradient_3foej")
+
+[sub_resource type="Curve" id="Curve_j1vqo"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.29831925, 0.5497797), 0.0, 0.0, 0, 0, Vector2(1, 0.36130834), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_njai2"]
+curve = SubResource("Curve_j1vqo")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a2he4"]
+particle_flag_disable_z = true
+angle_min = -9.9999895
+angle_max = 10.0000105
+spread = 180.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, -98, 0)
+scale_min = 0.049999997
+scale_max = 0.29999998
+scale_curve = SubResource("CurveTexture_njai2")
+color_ramp = SubResource("GradientTexture1D_1hq2f")
+
+[sub_resource type="Gradient" id="Gradient_nou6r"]
+offsets = PackedFloat32Array(0.12064623, 0.4779173, 0.66822255, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.97503906, 0, 0.4118363, 1, 0.92, 0, 0.3833332, 1, 1, 0.06999999, 0.50400007, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_yeebk"]
+gradient = SubResource("Gradient_nou6r")
+
+[sub_resource type="Curve" id="Curve_vh8gb"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.09469935, 0.5723963), 0.0, 0.0, 0, 0, Vector2(1, 0.36130834), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_2x3kr"]
+curve = SubResource("Curve_vh8gb")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_203m5"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 10.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+angle_min = -9.9999895
+angle_max = 10.0000105
+spread = 180.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, -98, 0)
+scale_min = 0.049999997
+scale_max = 0.29999998
+scale_curve = SubResource("CurveTexture_2x3kr")
+color_ramp = SubResource("GradientTexture1D_yeebk")
+
+[node name="Node2D" type="Node2D" unique_id=149493700]
+
+[node name="Hearts" type="GPUParticles2D" parent="." unique_id=970278249]
+emitting = false
+amount = 30
+texture = ExtResource("1_nou6r")
+lifetime = 2.0
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_a2he4")
+
+[node name="HeartBurst" type="GPUParticles2D" parent="." unique_id=769016980]
+emitting = false
+amount = 10
+texture = ExtResource("1_nou6r")
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_203m5")

@@ -1,0 +1,139 @@
+[gd_scene format=3 uid="uid://cuvhgon2so21i"]
+
+[ext_resource type="Texture2D" uid="uid://djkoi1qy46ydk" path="res://brackeys_particle_bundle/particles/alpha/smoke_07_a.png" id="2_lmw20"]
+
+[sub_resource type="Gradient" id="Gradient_ky4s0"]
+offsets = PackedFloat32Array(0, 0.12, 0.89, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.105, 0.105, 0.105, 1, 0.923722, 0.923722, 0.923722, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vivmo"]
+gradient = SubResource("Gradient_ky4s0")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_03276"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_ig7tw"]
+sky_material = SubResource("ProceduralSkyMaterial_03276")
+
+[sub_resource type="Environment" id="Environment_mvuy3"]
+background_mode = 1
+background_color = Color(0.273873, 0.273873, 0.273873, 1)
+sky = SubResource("Sky_ig7tw")
+tonemap_mode = 2
+glow_enabled = true
+glow_levels/2 = 0.5
+glow_levels/4 = 1.0
+glow_levels/5 = 0.5
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0, 0, 0, 1)
+fog_density = 1.0
+fog_depth_end = 40.0
+adjustment_color_correction = SubResource("GradientTexture1D_vivmo")
+
+[sub_resource type="Gradient" id="Gradient_cri8a"]
+offsets = PackedFloat32Array(0.93479043, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.069445774, 0.0694457, 0.06944563, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ky4s0"]
+gradient = SubResource("Gradient_cri8a")
+width = 1024
+height = 1024
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_03276"]
+blend_mode = 1
+albedo_texture = SubResource("GradientTexture2D_ky4s0")
+uv1_scale = Vector3(2, 2, 2)
+uv1_triplanar = true
+
+[sub_resource type="Gradient" id="Gradient_mvuy3"]
+offsets = PackedFloat32Array(0.95520824, 0.9795138)
+colors = PackedColorArray(0.041331194, 0.041331142, 0.04133106, 1, 0.0781671, 0.07816728, 0.07816718, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_n7uud"]
+gradient = SubResource("Gradient_mvuy3")
+width = 1024
+height = 1024
+fill = 2
+fill_from = Vector2(0.50037163, 0.49851304)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cri8a"]
+albedo_texture = SubResource("GradientTexture2D_n7uud")
+uv1_triplanar = true
+uv1_triplanar_sharpness = 0.18946546
+
+[sub_resource type="Curve" id="Curve_e56px"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.226891, 1), 0.0, 0.0, 0, 0, Vector2(0.735294, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_d13ii"]
+curve = SubResource("Curve_e56px")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_187dp"]
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1.85)
+angle_min = 1.07288e-05
+angle_max = 360.0
+angular_velocity_min = -2.00002
+angular_velocity_max = 1.99998
+gravity = Vector3(0, 0, 0)
+scale_min = 2.0
+scale_max = 2.5
+alpha_curve = SubResource("CurveTexture_d13ii")
+turbulence_noise_scale = 15.0
+turbulence_influence_min = 0.01
+turbulence_influence_max = 0.01
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lswn8"]
+transparency = 1
+diffuse_mode = 3
+specular_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_lmw20")
+subsurf_scatter_strength = 1.0
+backlight_enabled = true
+backlight = Color(0.728822, 0.728822, 0.728822, 1)
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_wrk2t"]
+material = SubResource("StandardMaterial3D_lswn8")
+
+[node name="Node3D" type="Node3D" unique_id=1719295848]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=520654232]
+transform = Transform3D(-0.86602354, -0.43301606, 0.25000072, 0, 0.49999818, 0.86602646, -0.5000033, 0.7499993, -0.4330102, 0, 5, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=243446219]
+environment = SubResource("Environment_mvuy3")
+
+[node name="Floor" type="CSGBox3D" parent="." unique_id=1145551809]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, -0.5, -0.4)
+material_overlay = SubResource("StandardMaterial3D_03276")
+use_collision = true
+size = Vector3(100, 1, 100)
+material = SubResource("StandardMaterial3D_cri8a")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1218430474]
+transform = Transform3D(-4.371139e-08, 0.18395135, 0.98293537, 0, 0.98293537, -0.18395135, -1, -8.040769e-09, -4.296547e-08, 5, 3.9696565, 0)
+
+[node name="Cloud" type="Node3D" parent="." unique_id=1113208512]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.6, 0)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Cloud" unique_id=838528224]
+emitting = false
+amount = 24
+lifetime = 60.0
+preprocess = 60.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_187dp")
+draw_pass_1 = SubResource("QuadMesh_wrk2t")

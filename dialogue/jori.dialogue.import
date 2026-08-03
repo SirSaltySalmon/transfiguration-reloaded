@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bxi2wa8ditnrr"
+path="res://.godot/imported/jori.dialogue-bab1b8c944f10092d5b844cefb0dfec9.tres"
+
+[deps]
+
+source_file="res://dialogue/jori.dialogue"
+dest_files=["res://.godot/imported/jori.dialogue-bab1b8c944f10092d5b844cefb0dfec9.tres"]
+
+[params]
+
+defaults=true

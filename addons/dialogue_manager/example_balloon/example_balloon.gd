@@ -146,7 +146,6 @@ func _on_mutated(_mutation: Dictionary) -> void:
 	will_hide_balloon = true
 	mutation_cooldown.start(0.1)
 
-
 func _on_balloon_gui_input(event: InputEvent = null) -> void:
 	# See if we need to skip typing of the dialogue
 	if dialogue_label.is_typing:

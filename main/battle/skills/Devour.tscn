@@ -1,62 +1,115 @@
 [gd_scene format=3 uid="uid://cym6k0p4inexh"]
 
 [ext_resource type="Script" uid="uid://cx2d4d64bie0r" path="res://main/battle/skills/devour.gd" id="1_8n8fc"]
-[ext_resource type="Texture2D" uid="uid://o4ensyun5o3l" path="res://assets/battle/effects/sprite_sheets/bite.png" id="2_kth0g"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kth0g"]
-atlas = ExtResource("2_kth0g")
-region = Rect2(0, 0, 64, 64)
+[ext_resource type="Texture2D" uid="uid://bx472gfay5dk5" path="res://assets/assetpacks/brackeys-vfx/brackeys_particle_bundle/predrawn/blood_impact_6x5.png" id="2_kth0g"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l20x3"]
 atlas = ExtResource("2_kth0g")
-region = Rect2(64, 0, 64, 64)
+region = Rect2(0, 0, 69, 60)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sjhh6"]
 atlas = ExtResource("2_kth0g")
-region = Rect2(128, 0, 64, 64)
+region = Rect2(69, 0, 69, 60)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q6etc"]
 atlas = ExtResource("2_kth0g")
-region = Rect2(192, 0, 64, 64)
+region = Rect2(138, 0, 69, 60)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tveph"]
 atlas = ExtResource("2_kth0g")
-region = Rect2(256, 0, 64, 64)
+region = Rect2(207, 0, 69, 60)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_658n4"]
 atlas = ExtResource("2_kth0g")
-region = Rect2(320, 0, 64, 64)
+region = Rect2(276, 0, 69, 60)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rlo4t"]
 atlas = ExtResource("2_kth0g")
-region = Rect2(384, 0, 64, 64)
+region = Rect2(345, 0, 69, 60)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rnqgn"]
 atlas = ExtResource("2_kth0g")
-region = Rect2(448, 0, 64, 64)
+region = Rect2(0, 60, 69, 60)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uq6nb"]
 atlas = ExtResource("2_kth0g")
-region = Rect2(512, 0, 64, 64)
+region = Rect2(69, 60, 69, 60)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8gx3b"]
 atlas = ExtResource("2_kth0g")
-region = Rect2(576, 0, 64, 64)
+region = Rect2(138, 60, 69, 60)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r68sh"]
 atlas = ExtResource("2_kth0g")
-region = Rect2(640, 0, 64, 64)
+region = Rect2(207, 60, 69, 60)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_58cds"]
 atlas = ExtResource("2_kth0g")
-region = Rect2(704, 0, 64, 64)
+region = Rect2(276, 60, 69, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a3r3w"]
+atlas = ExtResource("2_kth0g")
+region = Rect2(345, 60, 69, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0d3cj"]
+atlas = ExtResource("2_kth0g")
+region = Rect2(0, 120, 69, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6twfv"]
+atlas = ExtResource("2_kth0g")
+region = Rect2(69, 120, 69, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lknpv"]
+atlas = ExtResource("2_kth0g")
+region = Rect2(138, 120, 69, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_crb43"]
+atlas = ExtResource("2_kth0g")
+region = Rect2(207, 120, 69, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4unv"]
+atlas = ExtResource("2_kth0g")
+region = Rect2(276, 120, 69, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w1gkk"]
+atlas = ExtResource("2_kth0g")
+region = Rect2(345, 120, 69, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r08go"]
+atlas = ExtResource("2_kth0g")
+region = Rect2(0, 180, 69, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7qbg"]
+atlas = ExtResource("2_kth0g")
+region = Rect2(69, 180, 69, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0v5k6"]
+atlas = ExtResource("2_kth0g")
+region = Rect2(138, 180, 69, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhhjq"]
+atlas = ExtResource("2_kth0g")
+region = Rect2(207, 180, 69, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_653rm"]
+atlas = ExtResource("2_kth0g")
+region = Rect2(276, 180, 69, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_klaa0"]
+atlas = ExtResource("2_kth0g")
+region = Rect2(345, 180, 69, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kbkta"]
+atlas = ExtResource("2_kth0g")
+region = Rect2(0, 240, 69, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_shdw1"]
+atlas = ExtResource("2_kth0g")
+region = Rect2(69, 240, 69, 60)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0d3cj"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kth0g")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_l20x3")
 }, {
@@ -91,11 +144,53 @@ animations = [{
 "texture": SubResource("AtlasTexture_58cds")
 }, {
 "duration": 1.0,
-"texture": null
+"texture": SubResource("AtlasTexture_a3r3w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0d3cj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6twfv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lknpv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_crb43")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u4unv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w1gkk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r08go")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b7qbg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0v5k6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhhjq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_653rm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_klaa0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kbkta")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_shdw1")
 }],
 "loop": false,
 "name": &"devour",
-"speed": 16.0
+"speed": 30.0
 }]
 
 [node name="Devour" type="Node3D" unique_id=481236096 node_paths=PackedStringArray("effect_base")]
@@ -104,9 +199,9 @@ id = "Devour"
 effect_base = NodePath("Effect")
 
 [node name="Effect" type="AnimatedSprite3D" parent="." unique_id=376329261]
-transform = Transform3D(10, 0, 0, 0, -4.37114e-07, 10, 0, -10, -4.37114e-07, 0, 0, 0)
+transform = Transform3D(3, 0, 0, 0, -1.3113416e-07, 3, 0, -3, -1.3113416e-07, 0, 0, 0)
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_0d3cj")
 animation = &"devour"
-frame = 12
+frame = 25
 frame_progress = 1.0

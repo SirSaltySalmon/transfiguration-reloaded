@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dijsxmki3uely"]
+[gd_scene format=3 uid="uid://dijsxmki3uely"]
 
 [ext_resource type="Script" uid="uid://wj28hb5nba7u" path="res://main/battle/character/battle_character.gd" id="1_5f6n5"]
 [ext_resource type="PackedScene" uid="uid://c0t5y6y88n7s8" path="res://main/battle/character/character_components/character_visual.tscn" id="2_6cnus"]
@@ -6,29 +6,28 @@
 [ext_resource type="PackedScene" uid="uid://ccuw8vpu5w10y" path="res://main/battle/character/character_components/health_component.tscn" id="4_ovlvw"]
 [ext_resource type="PackedScene" uid="uid://bs2xq80dv1ueu" path="res://main/battle/character/character_components/turn_component.tscn" id="5_hrwk3"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_2vf37"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ib8w3"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_bbl3j"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_dcyof"]
 viewport_path = NodePath("SubViewport")
 
-[node name="Knight" type="StaticBody3D"]
+[node name="Knight" type="StaticBody3D" unique_id=281325759]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 script = ExtResource("1_5f6n5")
 battle_id = "knight_low"
 
-[node name="CharacterVisual" parent="." instance=ExtResource("2_6cnus")]
+[node name="CharacterVisual" parent="." unique_id=566739046 instance=ExtResource("2_6cnus")]
 
-[node name="Sprite" parent="CharacterVisual" index="0"]
+[node name="Sprite" parent="CharacterVisual" index="0" unique_id=1916425201]
 texture = ExtResource("3_5tflo")
 
-[node name="HealthComponent" parent="." instance=ExtResource("4_ovlvw")]
+[node name="HealthComponent" parent="." unique_id=654617134 instance=ExtResource("4_ovlvw")]
 transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, -3.60041e-07, 0, 4.07077)
-render_priority = 1
-texture = SubResource("ViewportTexture_2vf37")
+texture = SubResource("ViewportTexture_ib8w3")
 
-[node name="TurnComponent" parent="." instance=ExtResource("5_hrwk3")]
+[node name="TurnComponent" parent="." unique_id=1374106668 instance=ExtResource("5_hrwk3")]
 transform = Transform3D(1.5, 0, 0, 0, -6.55671e-08, 1.5, 0, -1.5, -6.55671e-08, -2.04019e-07, 0, 4.66742)
-texture = SubResource("ViewportTexture_bbl3j")
+texture = SubResource("ViewportTexture_dcyof")
 
 [editable path="CharacterVisual"]

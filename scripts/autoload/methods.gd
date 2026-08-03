@@ -21,7 +21,25 @@ var skills_path_dict = {
 	"Devour": "res://main/battle/skills/Devour.tscn",
 	"Goop": "res://main/battle/skills/Goop.tscn",
 	"Toxic Bite": "res://main/battle/skills/ToxicBite.tscn",
-	"Dap Up": "res://main/battle/skills/DapUp.tscn"
+	"Dap Up": "res://main/battle/skills/DapUp.tscn",
+	"Judgment": "res://main/battle/skills/Judgment.tscn",
+	"Cure": "res://main/battle/skills/Cure.tscn",
+	"Bless": "res://main/battle/skills/bless.tscn",
+	"Band For Band": "res://main/battle/skills/band_for_band.tscn",
+	"Relentless Ridicule": "res://main/battle/skills/RelentlessRidicule.tscn",
+	"Cross Slash": "res://main/battle/skills/CrossSlash.tscn",
+	"Arrow Rain": "res://main/battle/skills/ArrowRain.tscn",
+	"Eternal Pyre's Embrace": "res://main/battle/skills/EternalPyreEmbrace.tscn",
+	"Icefall": "res://main/battle/skills/Icefall.tscn",
+}
+
+var area_resource_dict = {
+	"sewers": "res://main/overworld/areas/sewers.tscn",
+	"prison": "res://main/overworld/areas/prison.tscn",
+	"library": "res://main/overworld/areas/library.tscn",
+	"shop": "res://main/overworld/areas/shop.tscn",
+	"dining_hall": "res://main/overworld/areas/dining_hall.tscn",
+	"lair": null
 }
 
 func _ready():
@@ -100,6 +118,25 @@ func buy_grimoire():
 	Global.money -= 5
 	Global.gob_sells_grimoire = true
 
+func glow_grimoire():
+	# Pause music
+	# Glow the grimoire
+	pass
+
+func enter_shadow_wizards_battle():
+	Global.battle_type = 3
+	Global.sav.bt_party[2] = "angel"
+	enter_battle()
+
+func log_money():
+	Global.sav.money += 100
+	Global.sav.money_at_jori = Global.sav.money
+
+func check_money():
+	if Global.sav.money < Global.sav.money_at_jori - 100:
+		return false
+	return true
+
 func enter_battle():
 	SceneLoader.load_scene(BATTLE_PATH)
 
@@ -129,3 +166,9 @@ func get_slime_texture() -> Texture2D:
 	var size = Global.sav.size
 	var texture = load("res://characters/slime/slime_%s.png" % str(size))
 	return texture
+
+func is_skill_enemy(id):
+	return Global.sav.skills_data[id][2]
+
+func is_skill_single_target(id):
+	return Global.sav.skills_data[id][1]

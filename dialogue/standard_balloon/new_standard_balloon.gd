@@ -32,6 +32,8 @@ const TWEEN_TIME: float = 0.5
 var started := false
 @export var top_black_bar: ColorRect
 @export var bottom_black_bar: ColorRect
+
+var custom_talker := ""
 #endregion
 
 ## The current line

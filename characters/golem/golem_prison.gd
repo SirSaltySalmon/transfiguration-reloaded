@@ -1,14 +1,16 @@
 extends Character
 
+func normal_init():
+	if not Global.sav.tutorial_fight_complete:
+		show()
+	else:
+		hide()
+
 func interact():
-	var title : String
-	if Global.sav.size <= 3 and not Global.sav.golem_talk_1:
-		title = "golem_talk"
+	if not Global.sav.tutorial_fight_complete and not Global.sav.golem_talk_1:
+		await dialogue("golem_talk")
 		Global.sav.golem_talk_1 = true
-	elif Global.size <= 3:
-		title = "golem_forget"
-	
-	if title:
-		DialogueManager.show_dialogue_balloon(dialogue, title)
+	elif not Global.sav.tutorial_fight_complete:
+		await dialogue("golem_forget")
 		
 	Methods.flags_changed.emit()

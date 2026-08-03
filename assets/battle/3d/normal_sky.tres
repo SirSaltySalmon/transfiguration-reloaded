@@ -1,0 +1,15 @@
+[gd_resource type="Environment" format=3 uid="uid://dgg3akic7hbow"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_royf7"]
+turbidity = 15.0
+ground_color = Color(0.25, 0.237625, 0.2225, 1)
+
+[sub_resource type="Sky" id="Sky_f5xx3"]
+sky_material = SubResource("PhysicalSkyMaterial_royf7")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_f5xx3")
+tonemap_mode = 2
+glow_enabled = true
+glow_bloom = 1.0

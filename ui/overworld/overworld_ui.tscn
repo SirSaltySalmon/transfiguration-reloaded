@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b5b8i4p40f5ua" path="res://addons/command-terminal/scn/command_terminal_guts.tscn" id="5_3rsc8"]
 [ext_resource type="Script" uid="uid://c6n2mop2jrb3x" path="res://addons/command-terminal/src/CommandTerminal.gd" id="5_dyeyc"]
 [ext_resource type="FontFile" uid="uid://cmmltma2gsu3a" path="res://addons/command-terminal/ast/windows_command_prompt.ttf" id="6_p548d"]
+[ext_resource type="Script" uid="uid://dbd4ibk0g7s7s" path="res://ui/overworld/repellant_button.gd" id="8_v8l6k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qnqr2"]
 size = Vector2(250, 720)
@@ -75,3 +76,19 @@ font = ExtResource("6_p548d")
 
 [node name="__guts__" parent="Terminal" unique_id=1539303486 instance=ExtResource("5_3rsc8")]
 layout_mode = 1
+
+[node name="Button" type="Button" parent="." unique_id=924823213]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -152.0
+offset_bottom = 38.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "Repellant: OFF"
+alignment = 2
+script = ExtResource("8_v8l6k")
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

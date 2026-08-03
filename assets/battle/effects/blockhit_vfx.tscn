@@ -1,0 +1,167 @@
+[gd_scene format=3 uid="uid://lu0wrba6okb6"]
+
+[ext_resource type="Script" uid="uid://cxr1hamdmnin" path="res://assets/vfx/trigger_particles.gd" id="1_ra230"]
+[ext_resource type="AudioStream" uid="uid://ctcxmrpweekpu" path="res://sound/sfx/sekiro-deflect-1.wav" id="2_goosm"]
+[ext_resource type="Texture2D" uid="uid://w2e77tvgfexh" path="res://assets/assetpacks/brackeys-vfx/brackeys_particle_bundle/particles/alpha/trace_01_a.png" id="3_k4d4f"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_w7sbr"]
+random_pitch = 1.0594631
+streams_count = 1
+stream_0/stream = ExtResource("2_goosm")
+
+[sub_resource type="Curve" id="Curve_w7sbr"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0966386, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_jur8g"]
+curve = SubResource("Curve_w7sbr")
+
+[sub_resource type="Curve" id="Curve_gh0f8"]
+_limits = [0.0, 4.0, 0.0, 1.0]
+_data = [Vector2(0, 4), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveTexture" id="CurveTexture_13dk8"]
+curve = SubResource("Curve_gh0f8")
+
+[sub_resource type="Curve" id="Curve_vyfjq"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.205882, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_spxib"]
+curve = SubResource("Curve_vyfjq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jq86d"]
+lifetime_randomness = 0.5
+emission_shape = 2
+emission_sphere_radius = 0.01
+direction = Vector3(0, 1, 0)
+spread = 90.0
+initial_velocity_min = 15.0
+initial_velocity_max = 20.0
+damping_min = 100.00001
+damping_max = 100.00001
+scale_min = 0.19999999
+scale_max = 0.29999998
+scale_curve = SubResource("CurveTexture_spxib")
+color = Color(1, 0.569981, 0.22841, 1)
+alpha_curve = SubResource("CurveTexture_jur8g")
+emission_curve = SubResource("CurveTexture_13dk8")
+turbulence_noise_scale = 0.2
+turbulence_influence_min = 0.02
+turbulence_influence_max = 0.03
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n3cok"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_k4d4f")
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_pwwsu"]
+material = SubResource("StandardMaterial3D_n3cok")
+
+[sub_resource type="Animation" id="Animation_qtcbv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sparks:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OmniLight3D:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_632te"]
+resource_name = "play"
+length = 1.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sparks:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OmniLight3D:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.29999995),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer3D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hb1ae"]
+_data = {
+&"RESET": SubResource("Animation_qtcbv"),
+&"play": SubResource("Animation_632te")
+}
+
+[node name="BlockhitVFX" type="Node3D" unique_id=666528694 node_paths=PackedStringArray("anim")]
+script = ExtResource("1_ra230")
+anim = NodePath("AnimationPlayer")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1299148155]
+stream = SubResource("AudioStreamRandomizer_w7sbr")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="Sparks" type="GPUParticles3D" parent="." unique_id=1583855044]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07, 0)
+emitting = false
+amount = 30
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.8
+transform_align = 2
+process_material = SubResource("ParticleProcessMaterial_jq86d")
+draw_pass_1 = SubResource("QuadMesh_pwwsu")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=864515036]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06970811, 0)
+light_color = Color(1, 0.605052, 0.134841, 1)
+light_size = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=239795536]
+libraries/ = SubResource("AnimationLibrary_hb1ae")

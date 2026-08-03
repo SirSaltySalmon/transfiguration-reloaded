@@ -1,0 +1,156 @@
+~ jori_intro
+[i]Every action has its consequences.[/i]
+[i]For our crimes against humanity, we've been endlessly pursued.[/i]
+[i]Some might say it's thrilling, but me? All I want is to live a quiet, normal life.[/i]
+[i]So try imagining how relieved I felt to discover this sanctuary.
+	A place the raiders couldn't follow us into.[/i]
+[i]But among these glistening gold coins, I just can't shake the feeling...[/i]
+[i]...That it was a mistake to step foot in here.[/i]
+do! Methods.current_scene.show_jori("happy")
+WELCOME!!! TO THE LAIR!!! OF THE GREAT. DRAGON. JORI!!!
+do! Methods.current_scene.jori_emo("smug")
+Now, what do I owe the pleasure...
+Of having an invader in my home?
+[i]We need to run. Now.[/i]
+- RUN
+	do! Methods.current_scene.jori_emo("happy")
+	Die.
+	do! Methods.current_scene.date_death()
+	=> END
+- Try talking
+	=> jori_intro_2
+=> END
+
+~ jori_intro_2
+do! Methods.current_scene.jori_emo("neutral")
+Shush. You are not to speak until I let you.
+Usually, you would die by now, but I've thought of something better.
+do! Methods.current_scene.jori_emo("annoyed")
+Recently, the last of my servants unfortunately fell into the hands of the raiders.
+Which is, honestly, like, such a huge pain! Who's going to do my shopping now?
+So here's what gonna happen.
+do! Methods.current_scene.jori_emo("happy")
+You are going to be my new servants.
+And you're going to get me 20 pieces of Flesh for lunch.
+do! Methods.current_scene.jori_emo("smug")
+Here is [color=gold]100 Moneys[/color]. Keep the change.
+do! Methods.log_money()
+[i]There is no change.[/i]
+Now, off you go. And don't buy me any of those nasty Goat's Blood nonsense.
+If you even try to run off with my cash, you won't see the end of me.
+do! Methods.current_scene.exit_date()
+=> END
+
+~ jori_branch
+if Global.sav.flesh >= 20:
+	=> jori_pleased
+elif Methods.check_money():
+	=> jori_annoyed
+else:
+	=> bad_end
+
+~ jori_pleased
+do! Methods.current_scene.show_jori("happy")
+Oh, my, gosh! Look who's good at following instructions!
+That's 20 pieces of flesh, alright!
+do! Methods.current_scene.jori_emo("smug")
+What cute little servants. You deserve a reward.
+How about... some headpats?
+- Yes
+	do! Methods.current_scene.enter_headpat()
+	[i]Jori's hand is soft and warm.[/i]
+	[i]Though she is a cold-blooded reptile, being a fire dragon seems to still produce noticeable body heat.[/i]
+	[i]I can feel genuine affection and appreciation through the way she caresses me, even if she's too proud to say it herself.[/i]
+	do! Methods.current_scene.exit_headpat()
+	[i]...Though it is nice, it is a bit weird. This should probably stop here.[/i]
+- No, what?
+	do! Methods.current_scene.play_grass_cracking_sound()
+	...Oh.
+	Okay, then. That's alright. Um...
+do! Methods.current_scene.jori_emo("neutral")
+Well, let's get to eating these before they start to rot.
+[i]With utmost ease through her fireborne magic, she set up a campfire.[/i]
+do Methods.current_scene.jori_emo("happy")
+...What are you doing just standing there? Come here. Let's eat together!
+[i]Together...? With a Great Dragon like her...?[/i]
+[i]If my knowledge serves right, self-centered and powerful beings like her want no association with the average dungeon dweller.[/i]
+[i]Why has she taken such a special interest in us?[/i]
+do Methods.current_scene.show_campfire("neutral")
+Even though we're monsters, we should still practice good eating etiquette, okay?
+Make sure to not spill it over your clothes- oh, right. You're all naked.
+[i]My[/i] clothes? My late servant designed it for me. You like it?
+It's like, really ahead of the times. Probably like a few centuries.
+Yeah, I would just instinctually gulp things down like you, too, but I need to keep these clean.
+It's all I have left of her.
+[i]Reliable, caring, and considerate... Yet the legends speak horrors about her kind.[/i]
+[i]Surely, it can't all be false?[/i]
+...I'm sorry. I'm getting a bit sentimental.
+It's a bit rude talking about my ex-servants in front of my current ones, but...
+You'd understand, right?
+This dungeon... our home... is going under. Soon. I can't help but feel sad.
+I'm supposed to be a Great Dragon. Those who enter my servitude should at least be promised my protection.
+But I couldn't even save them.
+They had to save me from [color=green]him[/color].
+[i]Jori has so much love to give. But her primal anger is aching to be let out.[/i]
+[i]Once her love gets polluted with enough misery, it's for certain that the world will know her promised wrath.[/i]
+...Hey, I shouldn't have sent you out before. It's dangerous outside.
+Just stay with me from now on, okay?
+When [color=green]he[/color] eventualy gets here... Just run. As fast as you can.
+It is my duty to stay and [i]rip[/i] these savages apart.
+- Don't be ridiculous. You'd die.
+...Huh?
+- Don't just use us as a way to allieviate the guilt in your heart.
+...
+- I deserve to have you in my life.
+...
+- Your late servants deserve to not have died meaningless deaths.
+...
+- And you deserve to be happy, too.
+...
+- So don't just put up with this. For our sake, and all of monsterkind's sake...
+...
+- Run with us. We can escape. Together.
+...
+Alright.
+[i]It's as if the very Sun is before your eyes.[/i]
+[i]A flame that burns so bright, it makes the world flicker into darkness.[/i]
+This is the Eternal Pyre. My Relic.
+If we surrender this, [color=green]Hannes[/color] will only get stronger.
+But we will live another day, to rally our forces.
+And may he see the day the Great Dragons he hunts for sport tear him apart piece by piece.
+Come now, take my hand. Let's fly away from this place.
+- [color=red]DEVOUR[/color]
+- [color=red]DEVOUR[/color]
+What are you
+=> END
+
+~ jori_annoyed
+do! Methods.current_scene.show_jori("annoyed")
+Hey, I did tell you to get on with it, right?
+Remember - it's 20 pieces of flesh.
+do! Methods.current_scene.jori_emo("happy")
+Now, chop chop! Get a move on!
+do! Methods.current_scene.exit_date()
+=> END
+
+~ bad_end
+...Honestly, what did I do to you?
+I just don't understand. Every time I've trusted someone, all that ever happens is me getting hurt.
+Why did you have to betray me? Was it worth the 100 Moneys?
+Am I not worthy of your love?
+Do you hate me?
+Do you hate me?
+Do you hate me?
+Do you hate me?
+Do you hate me?
+Do you hate me?
+Do you hate me?
+Do you hate me?
+Do you hate me?
+Do you hate me?
+Do you hate me?
+Do you hate me?
+Do you hate me?
+Do you hate me?
+do! Methods.current_scene.date_bad_end()
+=> END

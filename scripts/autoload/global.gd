@@ -36,6 +36,9 @@ func _log_version() -> void:
 		sav.last_version_opened = current_version
 
 func _load_current_save() -> bool:
+	sav = SaveGame.new()
+	return false
+	
 	if FileAccess.file_exists(SAVE_STATE_PATH):
 		sav = ResourceLoader.load(SAVE_STATE_PATH, "", ResourceLoader.CACHE_MODE_IGNORE)
 	if not sav:
@@ -55,11 +58,13 @@ func save() -> void:
 signal size_updated
 
 #General tracker variables, used during gameplay, but are not needed to save.
-var destination_area_id : String
-var destination_resource : String
-var move_direction : String
+var destination_area_id : StringName
+var destination_resource : StringName
+var move_direction : StringName
 var transitioning := false
-var battle_type := 2
+var effective_escape_chance: int
+var custom_talker : StringName
+var battle_type := 4
 #0 : Random low level battle
 #1 : Random high level battle
 #2 : Tutorial battle

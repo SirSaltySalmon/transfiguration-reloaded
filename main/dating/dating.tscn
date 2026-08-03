@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://bannewej6a5ya"]
 
 [ext_resource type="Script" uid="uid://1kn5eee10lvf" path="res://main/dating/dating.gd" id="1_3d6ic"]
+[ext_resource type="Resource" uid="uid://bxi2wa8ditnrr" path="res://dialogue/jori.dialogue" id="2_oogvt"]
 [ext_resource type="Texture2D" uid="uid://daj4f8jcj542f" path="res://assets/overworld/areas/LAIR.png" id="2_vmv25"]
+[ext_resource type="Texture2D" uid="uid://c01nhk0rvt64p" path="res://characters/dragon/jori_sheet.png" id="3_6sfop"]
 [ext_resource type="FontFile" uid="uid://ds86gfffkp1bv" path="res://assets/fonts/Moderniz.otf" id="3_hhsxw"]
 [ext_resource type="PackedScene" uid="uid://dlcb3m8ot2ika" path="res://dialogue/dating_balloon/DatingBalloon.tscn" id="3_u7imq"]
 [ext_resource type="Script" uid="uid://qhmkwov0dsat" path="res://main/dating/time_display.gd" id="4_o35aq"]
@@ -9,6 +11,105 @@
 [ext_resource type="Script" uid="uid://dttla56nnwv2d" path="res://main/dating/skip.gd" id="5_cm04d"]
 [ext_resource type="Script" uid="uid://dma07dafp0rpp" path="res://main/dating/date_display.gd" id="5_hhsxw"]
 [ext_resource type="PackedScene" uid="uid://b724oh1cswaws" path="res://main/pause_menu/pause_menu.tscn" id="9_24wuv"]
+[ext_resource type="Script" uid="uid://b6fgv44n1oyi7" path="res://main/dating/prefs.gd" id="9_k2uyd"]
+
+[sub_resource type="Animation" id="Animation_oogvt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Jori:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(640, 374)]
+}
+
+[sub_resource type="Animation" id="Animation_k2uyd"]
+resource_name = "bounce"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Jori:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(0.3333333, 3, 1),
+"update": 0,
+"values": [Vector2(640, 374), Vector2(640, 320), Vector2(640, 374)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ld0am"]
+_data = {
+&"RESET": SubResource("Animation_oogvt"),
+&"bounce": SubResource("Animation_k2uyd")
+}
+
+[sub_resource type="Animation" id="Animation_ld0am"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vn0aj"]
+resource_name = "show"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rxh6x"]
+_data = {
+&"RESET": SubResource("Animation_ld0am"),
+&"show": SubResource("Animation_vn0aj")
+}
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vmv25"]
 
@@ -47,13 +148,16 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="Theme" id="Theme_t38uo"]
-default_font_size = 30
+default_font_size = 24
 Button/constants/outline_size = 10
 Button/styles/disabled = SubResource("StyleBoxEmpty_vmv25")
 Button/styles/focus = SubResource("StyleBoxEmpty_vmv25")
 Button/styles/hover = SubResource("StyleBoxEmpty_vmv25")
+Button/styles/hover_pressed = SubResource("StyleBoxEmpty_vmv25")
+Button/styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_vmv25")
 Button/styles/normal = SubResource("StyleBoxEmpty_vmv25")
 Button/styles/pressed = SubResource("StyleBoxEmpty_vmv25")
+CheckButton/colors/font_hover_pressed_color = Color(0, 0.64, 0, 1)
 CheckButton/colors/font_pressed_color = Color(0, 1, 0, 1)
 Label/colors/font_color = Color(1, 1, 1, 1)
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
@@ -166,6 +270,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cover:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_t38uo"]
 resource_name = "death"
@@ -192,6 +308,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cover:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_24wuv"]
@@ -248,7 +376,7 @@ tracks/1/keys = {
 "values": [true]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_oogvt"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6sfop"]
 _data = {
 &"RESET": SubResource("Animation_hhsxw"),
 &"death": SubResource("Animation_cm04d"),
@@ -257,8 +385,56 @@ _data = {
 &"exit": SubResource("Animation_6sfop")
 }
 
+[sub_resource type="Animation" id="Animation_rxh6x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_urel5"]
+resource_name = "intro"
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Effects/EffectsPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("enter"),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera2D:zoom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [Vector2(5, 5), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1pted"]
+_data = {
+&"RESET": SubResource("Animation_rxh6x"),
+&"intro": SubResource("Animation_urel5")
+}
+
 [node name="Dating" type="Node2D" unique_id=1190342588]
 script = ExtResource("1_3d6ic")
+dialogue_res = ExtResource("2_oogvt")
+balloon_scene = ExtResource("3_u7imq")
 
 [node name="Background" type="TextureRect" parent="." unique_id=336062243]
 offset_left = -176.0
@@ -267,7 +443,24 @@ offset_bottom = 1080.0
 scale = Vector2(0.68, 0.68)
 texture = ExtResource("2_vmv25")
 
+[node name="Jori" type="Sprite2D" parent="." unique_id=1612979008]
+visible = false
+modulate = Color(1, 1, 1, 0)
+position = Vector2(640, 374)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_6sfop")
+hframes = 4
+frame = 2
+
+[node name="JoriAnim" type="AnimationPlayer" parent="Jori" unique_id=1830960779]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_ld0am")
+
+[node name="AlphaAnim" type="AnimationPlayer" parent="Jori" unique_id=11933801]
+libraries/ = SubResource("AnimationLibrary_rxh6x")
+
 [node name="UI" type="CanvasLayer" parent="." unique_id=1013286425]
+layer = 101
 
 [node name="Control" type="Control" parent="UI" unique_id=1858691413]
 layout_mode = 3
@@ -276,6 +469,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme = SubResource("Theme_t38uo")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/Control" unique_id=237852891]
@@ -290,9 +484,11 @@ offset_top = -49.0
 offset_right = 37.5
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 theme_override_constants/separation = 30
 
 [node name="Auto" type="CheckButton" parent="UI/Control/HBoxContainer" unique_id=468769177]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -300,9 +496,11 @@ text = "Auto"
 script = ExtResource("4_t38uo")
 
 [node name="Timer" type="Timer" parent="UI/Control/HBoxContainer/Auto" unique_id=1647718242]
-wait_time = 5.0
+wait_time = 2.0
+one_shot = true
 
 [node name="Skip" type="CheckButton" parent="UI/Control/HBoxContainer" unique_id=180283883]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -310,7 +508,8 @@ text = "Skip"
 script = ExtResource("5_cm04d")
 
 [node name="Timer" type="Timer" parent="UI/Control/HBoxContainer/Skip" unique_id=1238909227]
-wait_time = 0.2
+wait_time = 0.1
+one_shot = true
 
 [node name="Prefs" type="Button" parent="UI/Control/HBoxContainer" unique_id=468718357]
 layout_mode = 2
@@ -318,6 +517,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 toggle_mode = true
 text = "Prefs"
+script = ExtResource("9_k2uyd")
 
 [node name="TextureRect" type="ColorRect" parent="UI/Control" unique_id=1693889588]
 layout_mode = 1
@@ -330,6 +530,7 @@ offset_right = 145.32251
 offset_bottom = 17.158417
 grow_horizontal = 0
 rotation = 0.42181396
+mouse_filter = 2
 color = Color(0.84705883, 0.38431373, 0.29803923, 1)
 
 [node name="TimeDisplay" type="Label" parent="UI/Control" unique_id=1083378074]
@@ -366,7 +567,7 @@ script = ExtResource("5_hhsxw")
 layer = 129
 
 [node name="EffectsPlayer" type="AnimationPlayer" parent="Effects" unique_id=1632785559]
-libraries/ = SubResource("AnimationLibrary_oogvt")
+libraries/ = SubResource("AnimationLibrary_6sfop")
 
 [node name="Devour" type="ColorRect" parent="Effects" unique_id=494428150]
 visible = false
@@ -385,14 +586,18 @@ offset_bottom = 720.0
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[node name="DatingBalloon" parent="." unique_id=1742079667 instance=ExtResource("3_u7imq")]
-next_action = &"ui_accept"
-skip_action = &"ui_cancel"
-
 [node name="PauseMenu" parent="." unique_id=1323170117 instance=ExtResource("9_24wuv")]
 visible = false
+
+[node name="MainAnim" type="AnimationPlayer" parent="." unique_id=1440102452]
+libraries/ = SubResource("AnimationLibrary_1pted")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1256845217]
+position = Vector2(40, 360)
+offset = Vector2(600, 0)
 
 [connection signal="toggled" from="UI/Control/HBoxContainer/Auto" to="UI/Control/HBoxContainer/Auto" method="_on_toggled"]
 [connection signal="timeout" from="UI/Control/HBoxContainer/Auto/Timer" to="UI/Control/HBoxContainer/Auto" method="_on_timer_timeout"]
 [connection signal="toggled" from="UI/Control/HBoxContainer/Skip" to="UI/Control/HBoxContainer/Skip" method="_on_toggled"]
 [connection signal="timeout" from="UI/Control/HBoxContainer/Skip/Timer" to="UI/Control/HBoxContainer/Skip" method="_on_timer_timeout"]
+[connection signal="pressed" from="UI/Control/HBoxContainer/Prefs" to="UI/Control/HBoxContainer/Prefs" method="_on_pressed"]

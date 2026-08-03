@@ -1,27 +1,24 @@
-class_name BattleCam extends Camera3D
+class_name BattleCam extends Node3D
 
 @export var main: BattleScene
 
-@onready var handheld_shake = $HandheldShake
+@export var handheld_shake: ShakerComponent3D
 #use play_shake() and stop_shake()
-@onready var impact_shake = $ImpactShake
+@export var impact_shake: ShakerComponent3D
+@export var big_impact_shake: ShakerComponent3D
 
-const small_shake_intensity = 1
-const small_shake_duration = 0.5
-
-const big_shake_intensity = 2
-const big_shake_duration = 1.5
-
-var idle_position = Vector3(4.2, 18, 0)
+var idle_position := Vector3(4.2, 18, 0)
+var idle_rot := Vector3(-80, 90, 0)
 var tween
 
 func _ready():
 	position = idle_position
+	rotation_degrees = idle_rot
 
 func get_destination_position(target) -> Vector3:
 	var destination: Vector3
 	if target is Array[BattleCharacter]:
-		destination = Vector3(-5, 12, 0)
+		destination = Vector3(-4, 12, 0)
 		if target[0].ally:
 			destination.x = 10.0
 	else:
@@ -32,6 +29,7 @@ func get_destination_position(target) -> Vector3:
 
 func tween_cam_to(target):
 	main.ui.vignette.focus()
+	rotation_degrees = idle_rot
 	var destination = get_destination_position(target)
 	return await tween_cam(destination)
 
@@ -53,11 +51,13 @@ func teleport_cam_to(target):
 	position = get_destination_position(target)
 
 func shake():
-	impact_shake.intensity = small_shake_intensity
-	impact_shake.duration = small_shake_duration
+	if Global.sav.disable_screen_shake:
+		return
+	impact_shake.force_stop_shake()
 	impact_shake.play_shake()
 
 func big_shake():
-	impact_shake.intensity = big_shake_intensity
-	impact_shake.duration = big_shake_duration
-	impact_shake.play_shake()
+	if Global.sav.disable_screen_shake:
+		return
+	big_impact_shake.force_stop_shake()
+	big_impact_shake.play_shake()

@@ -62,9 +62,17 @@ func manage_battles():
 		Global.battle_type = 4
 		return true
 	
-	# For other cases
-	if Global.sav.size >= 2:
+	# For other cases, which is random battles only
+	if Global.sav.repellant_active:
+		return false
+	
+	if Global.sav.size >= 5:
+		if randi_range(1, 4) == 1:
+			Global.battle_type = 1
+			return true
+	elif Global.sav.size >= 2:
 		if not Global.sav.repellant_active and randi_range(1, 4) == 1:
+			Global.battle_type = 0
 			return true
 	
 	return false
@@ -110,8 +118,13 @@ func get_sky_and_light():
 	env.environment = load(sky_address)
 	if id == "sewers" or id == "library":
 		light.light_color = Color("6986c2")
+		light.light_energy = 16.0
 	elif id == "prison" or id == "shop":
 		light.light_color = Color("ccb47a")
+		light.light_energy = 16.0
+	elif id == "dining_hall":
+		light.light_color = Color("8AEF9E")
+		light.light_energy = 3.0
 
 func enter_battle():
 	Methods.enter_battle()
@@ -195,8 +208,6 @@ func color_transition(is_exit: bool):
 func fix_camera(axis):
 		if axis == "position:x":
 			camera.position.y = 0
-		else:
-			camera.position.x = 0
 		camera.position.z = 0
 
 func reload():

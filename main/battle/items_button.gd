@@ -12,7 +12,7 @@ class_name ItemsButton extends BattleButton
 
 var count = 0
 
-func _process(_delta):
+func _physics_process(delta: float) -> void:
 	count = Global.sav.get(item_id)
 	if count > 0:
 		#eg Cured Ham x20

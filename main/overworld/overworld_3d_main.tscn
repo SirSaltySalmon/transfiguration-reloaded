@@ -24,26 +24,26 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Camera:position")
+tracks/1/path = NodePath("Sewers/Humans:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(3, -2, -4)]
+"values": [Vector3(0, 0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sewers/Humans:position")
+tracks/2/path = NodePath("Camera:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(3, -2, -4)]
 }
 
 [sub_resource type="Animation" id="Animation_bm6iy"]
@@ -62,39 +62,13 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(0, 1, -4), Vector3(0, -2, -4), Vector3(3, -2, -4), Vector3(3, -2, -4), Vector3(-3.855, 0.155, -4), Vector3(-3.855, 0.155, -4), Vector3(2.92, -1.455, -4)]
 }
-tracks/1/type = "value"
+tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sewers/Slime:position")
+tracks/1/path = NodePath("Sewers/Rat")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 2.3333333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-2.982, -2.832, -6.998), Vector3(1.873, -2.832, -6.998)]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sewers/Slime")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(4.99),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"hide"
-}]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sewers/Rat")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0, 3, 3.5, 4.99),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "values": [{
@@ -111,13 +85,51 @@ tracks/3/keys = {
 "method": &"hide"
 }]
 }
-tracks/4/type = "method"
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sewers/Slime")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(4.99),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"hide"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sewers/Humans:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(3.95, 5.57, 7.51, 10.03),
+"transitions": PackedFloat32Array(0.25, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-13.16, 0, 0), Vector3(-4.09, 0, 0), Vector3(-4.09, 0, 0), Vector3(20, 0, 0)]
+}
+tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("AnimationPlayer")
+tracks/4/path = NodePath("Sewers/Slime:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
+"times": PackedFloat32Array(0, 2.3333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-2.982, -2.832, -6.998), Vector3(1.873, -2.832, -6.998)]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AnimationPlayer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(3.5),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -125,13 +137,13 @@ tracks/4/keys = {
 "method": &"pause"
 }]
 }
-tracks/5/type = "method"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath(".")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(0, 10),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
@@ -141,18 +153,6 @@ tracks/5/keys = {
 "args": [true],
 "method": &"color_transition"
 }]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Sewers/Humans:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(3.95, 5.57, 7.51, 10.03),
-"transitions": PackedFloat32Array(0.25, 1, 1, 1),
-"update": 0,
-"values": [Vector3(-13.16, 0, 0), Vector3(-4.09, 0, 0), Vector3(-4.09, 0, 0), Vector3(20, 0, 0)]
 }
 tracks/7/type = "method"
 tracks/7/imported = false
@@ -381,6 +381,7 @@ script = ExtResource("3_l7jqc")
 main = NodePath("..")
 
 [node name="OmniLight3D" type="SpotLight3D" parent="Camera" unique_id=1023211415]
+transform = Transform3D(1, 0, 0, 0, 0.9848077, 0.17364818, 0, -0.17364818, 0.9848077, 0, 0.5, -0.5)
 light_color = Color(0.4104, 0.526933, 0.76, 1)
 light_energy = 16.0
 shadow_enabled = true

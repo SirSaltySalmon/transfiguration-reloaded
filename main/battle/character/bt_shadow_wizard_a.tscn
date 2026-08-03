@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://marjl1cxsmiy"]
+
+[ext_resource type="Script" uid="uid://bxjagdmucdr4k" path="res://main/battle/character/bt_sdwz.gd" id="1_tn0ws"]
+[ext_resource type="PackedScene" uid="uid://c0t5y6y88n7s8" path="res://main/battle/character/character_components/character_visual.tscn" id="2_hqyv6"]
+[ext_resource type="Texture2D" uid="uid://dsho0vr0w3aqd" path="res://characters/sdwz1/sdwz1.png" id="3_od7j7"]
+[ext_resource type="PackedScene" uid="uid://ccuw8vpu5w10y" path="res://main/battle/character/character_components/health_component.tscn" id="4_vp1kn"]
+[ext_resource type="PackedScene" uid="uid://bs2xq80dv1ueu" path="res://main/battle/character/character_components/turn_component.tscn" id="5_ax6sm"]
+[ext_resource type="PackedScene" uid="uid://r2yku07du05q" path="res://main/battle/character/character_components/skill_component.tscn" id="6_7lk27"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_e3ajf"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_g6q03"]
+viewport_path = NodePath("SubViewport")
+
+[node name="ShadowWizardA" type="StaticBody3D" unique_id=281325759 node_paths=PackedStringArray("skill_component")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+script = ExtResource("1_tn0ws")
+battle_id = "shadow_wizard_a"
+skill_component = NodePath("SkillComponent")
+basic_attack_chance = 0.0
+
+[node name="CharacterVisual" parent="." unique_id=566739046 instance=ExtResource("2_hqyv6")]
+
+[node name="Sprite" parent="CharacterVisual" index="0" unique_id=1916425201]
+alpha_cut = 2
+texture = ExtResource("3_od7j7")
+
+[node name="HealthComponent" parent="." unique_id=654617134 instance=ExtResource("4_vp1kn")]
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, -3.60041e-07, 0, 4.07077)
+texture = SubResource("ViewportTexture_e3ajf")
+
+[node name="TurnComponent" parent="." unique_id=1374106668 instance=ExtResource("5_ax6sm")]
+transform = Transform3D(1.5, 0, 0, 0, -6.55671e-08, 1.5, 0, -1.5, -6.55671e-08, -2.04019e-07, 0, 4.66742)
+texture = SubResource("ViewportTexture_g6q03")
+
+[node name="SkillComponent" parent="." unique_id=1953853332 instance=ExtResource("6_7lk27")]
+skill_1 = "Band For Band"
+skill_2 = "Relentless Ridicule"
+
+[editable path="CharacterVisual"]

@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://ys1hnrcybvo5"]
+
+[ext_resource type="Script" uid="uid://gx5kd26pyrrv" path="res://main/battle/skills/judgment.gd" id="1_t38xw"]
+[ext_resource type="Script" uid="uid://cnlimd7kpw2af" path="res://main/battle/skills/judgment_effect.gd" id="2_t38xw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t38xw"]
+albedo_color = Color(1, 1, 0.70980394, 1)
+emission_enabled = true
+emission = Color(1, 1, 0.7137255, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_t38xw"]
+material = SubResource("StandardMaterial3D_t38xw")
+top_radius = 6.0
+bottom_radius = 6.0
+height = 100.0
+
+[node name="Judgment" type="Node3D" unique_id=287046888 node_paths=PackedStringArray("effect_base")]
+script = ExtResource("1_t38xw")
+id = "Judgment"
+effect_base = NodePath("Effect")
+
+[node name="Effect" type="Node3D" parent="." unique_id=946037830]
+script = ExtResource("2_t38xw")
+
+[node name="BeamMesh" type="MeshInstance3D" parent="Effect" unique_id=153016167]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50, 0)
+mesh = SubResource("CylinderMesh_t38xw")
+skeleton = NodePath("../..")

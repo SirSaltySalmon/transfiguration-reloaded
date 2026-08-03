@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://c1oqo4h8l6rrm"]
+
+[ext_resource type="Script" uid="uid://d3brv4nyonwlc" path="res://main/battle/skills/arrow_rain.gd" id="1_j7wv4"]
+[ext_resource type="Texture2D" uid="uid://c4u8t2pwuaa2t" path="res://assets/assetpacks/brackeys-vfx/brackeys_particle_bundle/predrawn/big_hit_6x5.png" id="2_r68pw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7t1x"]
+atlas = ExtResource("2_r68pw")
+region = Rect2(0, 0, 557, 553)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_slk7g"]
+atlas = ExtResource("2_r68pw")
+region = Rect2(557, 0, 557, 553)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ycb0i"]
+atlas = ExtResource("2_r68pw")
+region = Rect2(1114, 0, 557, 553)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m61nl"]
+atlas = ExtResource("2_r68pw")
+region = Rect2(1671, 0, 557, 553)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbnb8"]
+atlas = ExtResource("2_r68pw")
+region = Rect2(2228, 0, 557, 553)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yf23g"]
+atlas = ExtResource("2_r68pw")
+region = Rect2(2785, 0, 557, 553)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_231tn"]
+atlas = ExtResource("2_r68pw")
+region = Rect2(0, 553, 557, 553)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a0a5m"]
+atlas = ExtResource("2_r68pw")
+region = Rect2(557, 553, 557, 553)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdou4"]
+atlas = ExtResource("2_r68pw")
+region = Rect2(1114, 553, 557, 553)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m66o2"]
+atlas = ExtResource("2_r68pw")
+region = Rect2(1671, 553, 557, 553)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bobd7"]
+atlas = ExtResource("2_r68pw")
+region = Rect2(2228, 553, 557, 553)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ccjin"]
+atlas = ExtResource("2_r68pw")
+region = Rect2(2785, 553, 557, 553)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5k75m"]
+atlas = ExtResource("2_r68pw")
+region = Rect2(0, 1106, 557, 553)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bf22g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l7t1x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_slk7g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ycb0i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m61nl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hbnb8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yf23g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_231tn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a0a5m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sdou4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m66o2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bobd7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ccjin")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5k75m")
+}],
+"loop": false,
+"name": &"arrow_rain",
+"speed": 30.0
+}]
+
+[node name="ArrowRain" type="Node3D" unique_id=778247494 node_paths=PackedStringArray("effect_base")]
+script = ExtResource("1_j7wv4")
+id = "Arrow Rain"
+effect_base = NodePath("Effect")
+
+[node name="Effect" type="AnimatedSprite3D" parent="." unique_id=129043845]
+transform = Transform3D(-8.742278e-08, -2, -8.742278e-08, 0, -8.742278e-08, 2, -2, 8.742278e-08, 3.821371e-15, 0, 0, 0)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_bf22g")
+animation = &"arrow_rain"
+frame = 12
+frame_progress = 1.0

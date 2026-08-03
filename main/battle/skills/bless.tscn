@@ -1,0 +1,137 @@
+[gd_scene format=3 uid="uid://bvl5orjr8lh2x"]
+
+[ext_resource type="Script" uid="uid://dcbt0dso15mxi" path="res://main/battle/skills/bless.gd" id="1_hfkcs"]
+[ext_resource type="Texture2D" uid="uid://v2mx63i3d5x4" path="res://assets/battle/effects/sprite_sheets/Holy VFX 02.png" id="2_hfkcs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c16mn"]
+atlas = ExtResource("2_hfkcs")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s2shg"]
+atlas = ExtResource("2_hfkcs")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gaypn"]
+atlas = ExtResource("2_hfkcs")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vfi3n"]
+atlas = ExtResource("2_hfkcs")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ecej4"]
+atlas = ExtResource("2_hfkcs")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6ose"]
+atlas = ExtResource("2_hfkcs")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5gc7k"]
+atlas = ExtResource("2_hfkcs")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5c60"]
+atlas = ExtResource("2_hfkcs")
+region = Rect2(336, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rri0x"]
+atlas = ExtResource("2_hfkcs")
+region = Rect2(384, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s506c"]
+atlas = ExtResource("2_hfkcs")
+region = Rect2(432, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j8ojd"]
+atlas = ExtResource("2_hfkcs")
+region = Rect2(480, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2bdo"]
+atlas = ExtResource("2_hfkcs")
+region = Rect2(528, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1byl"]
+atlas = ExtResource("2_hfkcs")
+region = Rect2(576, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tdneb"]
+atlas = ExtResource("2_hfkcs")
+region = Rect2(624, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5v81"]
+atlas = ExtResource("2_hfkcs")
+region = Rect2(672, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hwji8"]
+atlas = ExtResource("2_hfkcs")
+region = Rect2(720, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0d3cj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c16mn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s2shg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gaypn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vfi3n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ecej4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o6ose")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5gc7k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k5c60")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rri0x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s506c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j8ojd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v2bdo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c1byl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tdneb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m5v81")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hwji8")
+}],
+"loop": false,
+"name": &"bless",
+"speed": 15.0
+}]
+
+[node name="Bless" type="Node3D" unique_id=778247494 node_paths=PackedStringArray("effect_base")]
+script = ExtResource("1_hfkcs")
+id = "Bless"
+effect_base = NodePath("Effect")
+
+[node name="Effect" type="AnimatedSprite3D" parent="." unique_id=129043845]
+transform = Transform3D(-5.2453663e-07, -12, -5.2453663e-07, 0, -5.2453663e-07, 12, -12, 5.2453663e-07, 2.2928226e-14, 0, 0, 0)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_0d3cj")
+animation = &"bless"
+frame = 15
+frame_progress = 1.0

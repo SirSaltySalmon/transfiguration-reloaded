@@ -8,7 +8,6 @@
 [ext_resource type="Script" uid="uid://dbdifjem6wnue" path="res://addons/shaker/src/Vector3/shaker_component3D.gd" id="3_bdusq"]
 [ext_resource type="Script" uid="uid://s0gh6np63pog" path="res://ui/battle/move_display_label.gd" id="3_cgja1"]
 [ext_resource type="PackedScene" uid="uid://h70eg1of2m12" path="res://dialogue/standard_balloon/combat_balloon.tscn" id="3_dgfw6"]
-[ext_resource type="Environment" uid="uid://btl4ptewvgyxp" path="res://assets/overworld/effects/sky/sewers_sky.tres" id="3_rdbxm"]
 [ext_resource type="Script" uid="uid://qid4vwjxu53i" path="res://ui/battle/vignette.gd" id="4_keope"]
 [ext_resource type="Script" uid="uid://bpbdpnfxa75gv" path="res://main/battle/skills/skills_center.gd" id="4_nidv2"]
 [ext_resource type="Script" uid="uid://65nhallgxu6i" path="res://addons/shaker/data/Vector3/BaseShakerType3D.gd" id="4_w10i8"]
@@ -40,9 +39,19 @@
 [ext_resource type="Script" uid="uid://bvt8cw3q01vd8" path="res://main/battle/skill_button.gd" id="22_nidv2"]
 [ext_resource type="Script" uid="uid://c5tyt6py1i62o" path="res://main/battle/target_selection.gd" id="24_314eb"]
 [ext_resource type="Texture2D" uid="uid://bep5x6qupkg4u" path="res://assets/battle/ui/Rat.png" id="32_gdl11"]
+[ext_resource type="Texture2D" uid="uid://dkc0golprf6rg" path="res://assets/battle/ui/RatWalking.png" id="32_q788g"]
 [ext_resource type="Script" uid="uid://5h7rkunhl0tt" path="res://main/battle/stats.gd" id="33_6701q"]
+[ext_resource type="Texture2D" uid="uid://dgy6wjmrw7mg" path="res://assets/battle/ui/RatDead.png" id="33_pwmv7"]
 [ext_resource type="PackedScene" uid="uid://b724oh1cswaws" path="res://main/pause_menu/pause_menu.tscn" id="34_3lovp"]
+[ext_resource type="AnimationLibrary" uid="uid://blmxb3a3ydqbp" path="res://assets/battle/anim/epe.res" id="39_5lpl4"]
+[ext_resource type="AnimationLibrary" uid="uid://6y13a1h2t011" path="res://assets/battle/anim/icefall.res" id="39_pwmv7"]
 [ext_resource type="PackedScene" uid="uid://cl01ltrrx020y" path="res://assets/battle/3d/weathered_round_table__metal_top__wooden_legs.glb" id="41_6701q"]
+[ext_resource type="Environment" uid="uid://b5c61blm4twps" path="res://assets/battle/3d/size_7_sky.tres" id="46_8qows"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_f5xx3"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_uytlp"]
+radius = 20.0
 
 [sub_resource type="Animation" id="Animation_aprkc"]
 length = 0.001
@@ -506,12 +515,108 @@ shader_parameter/height = 1.5
 shader_parameter/frequency = 20.0
 shader_parameter/speed = 3.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6701q"]
+[sub_resource type="Animation" id="Animation_5lpl4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_43rn7"]
+resource_name = "escape"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 2.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mk36a"]
+_data = {
+&"RESET": SubResource("Animation_5lpl4"),
+&"escape": SubResource("Animation_43rn7")
+}
 
 [sub_resource type="Animation" id="Animation_3lovp"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ratwin/ratwintext:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_f5xx3"]
+resource_name = "rat_dance"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/ratescape/Walking:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2),
+"transitions": PackedFloat32Array(0.5, 2, 0.5, 2, 1),
+"update": 0,
+"values": [Vector2(630, 400), Vector2(630, 350), Vector2(630, 400), Vector2(630, 350), Vector2(630, 400)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e8205"]
+_data = {
+&"RESET": SubResource("Animation_3lovp"),
+&"rat_dance": SubResource("Animation_f5xx3")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6701q"]
+
+[sub_resource type="Animation" id="Animation_q788g"]
 resource_name = "rat_dance"
 length = 1.2
 loop_mode = 1
@@ -540,10 +645,54 @@ tracks/1/keys = {
 "values": [false, true]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_q788g"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f5xx3"]
 _data = {
 &"RESET": SubResource("Animation_3lovp"),
-&"rat_dance": SubResource("Animation_f5xx3")
+&"rat_dance": SubResource("Animation_q788g")
+}
+
+[sub_resource type="Animation" id="Animation_mk36a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainUI/SolidColor:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainUI/SolidColor:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SkillsCenter/Icefall/Effect/BeamMesh:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8qows"]
+_data = {
+&"RESET": SubResource("Animation_mk36a")
 }
 
 [sub_resource type="Animation" id="Animation_314eb"]
@@ -587,146 +736,146 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("BattleCam:position")
+tracks/3/path = NodePath("MainUI/IntroFIGHT:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(4.1902, 18, 0.0259711)]
+"update": 1,
+"values": [true]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("MainUI/IntroFIGHT:visible")
+tracks/4/path = NodePath("MainUI/IntroFIGHT:z_index")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [-1]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("MainUI/IntroFIGHT:z_index")
+tracks/5/path = NodePath("MainUI/SolidColor:color")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [-1]
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("MainUI/SolidColor:color")
+tracks/6/path = NodePath("DustParticles:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0, 0, 0, 1)]
+"values": [Vector3(0, 5, 0)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("BattleCam:rotation")
+tracks/7/path = NodePath("WinScreen:visible")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-1.3962636, 1.5707964, 0)]
+"update": 1,
+"values": [false]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("DustParticles:position")
+tracks/8/path = NodePath("WinScreen/ratwin:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 5, 0)]
+"values": [Vector2(872, 952)]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("WinScreen:visible")
+tracks/9/path = NodePath("WinScreen/Stats/Control:position")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Vector2(0, 0)]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("WinScreen/ratwin:position")
+tracks/10/path = NodePath("WinScreen/Stats/Control2:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(872, 952)]
+"values": [Vector2(0, 0)]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("WinScreen/Stats/Control:position")
+tracks/11/path = NodePath("WinScreen/Stats/WinBonus:position")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [Vector2(24, 336)]
 }
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("WinScreen/Stats/Control2:position")
+tracks/12/path = NodePath("WinScreen/Stats/SkipOrContinue:position")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [Vector2(32, 448)]
 }
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("WinScreen/Stats/WinBonus:position")
+tracks/13/path = NodePath("BattleCam:rotation")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(24, 336)]
+"values": [Vector3(-1.3962634, 1.5707964, 0)]
 }
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("WinScreen/Stats/SkipOrContinue:position")
+tracks/14/path = NodePath("BattleCam:position")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
 "times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(0.2),
 "update": 0,
-"values": [Vector2(32, 448)]
+"values": [Vector3(10, 70, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_g0v2f"]
@@ -816,6 +965,18 @@ tracks/6/keys = {
 "update": 0,
 "values": [Color(0, 0, 0, 1)]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("BattleCam:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.3962634, 1.5707964, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_6701q"]
 resource_name = "win_anim"
@@ -891,70 +1052,56 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
-"args": [true],
+"args": [],
 "method": &"summarize_stats"
 }, {
 "args": [],
 "method": &"allow_input_true"
 }]
 }
-tracks/6/type = "method"
+tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("WinScreen/RatDanceAnim")
+tracks/6/path = NodePath("WinScreen/Stats/Control:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [&"rat_dance", -1, 1.0, false],
-"method": &"play"
-}]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("WinScreen/Stats/Control:position")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
 "times": PackedFloat32Array(1.2, 3),
 "transitions": PackedFloat32Array(0.25, 1),
 "update": 0,
 "values": [Vector2(0, -800), Vector2(0, 0)]
 }
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("WinScreen/Stats/Control2:position")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("WinScreen/Stats/Control2:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
 "times": PackedFloat32Array(0.9, 3),
 "transitions": PackedFloat32Array(0.25, 1),
 "update": 0,
 "values": [Vector2(0, -700), Vector2(0, 0)]
 }
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("WinScreen/Stats/WinBonus:position")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("WinScreen/Stats/WinBonus:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
 "times": PackedFloat32Array(0.7, 3),
 "transitions": PackedFloat32Array(0.25, 1),
 "update": 0,
 "values": [Vector2(24, -600), Vector2(24, 336)]
 }
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("WinScreen/Stats/SkipOrContinue:position")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("WinScreen/Stats/SkipOrContinue:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
 "times": PackedFloat32Array(0.4, 3),
 "transitions": PackedFloat32Array(0.25, 1),
 "update": 0,
@@ -970,8 +1117,10 @@ _data = {
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_x50yd"]
 dof_blur_far_enabled = true
-dof_blur_far_distance = 20.0
+dof_blur_far_distance = 50.0
+dof_blur_far_transition = -1.0
 dof_blur_near_enabled = true
+dof_blur_amount = 0.05
 
 [sub_resource type="Resource" id="Resource_2k2jr"]
 script = ExtResource("5_o6t1s")
@@ -990,15 +1139,20 @@ amplitude = Vector3(0.5, 0.5, 0.5)
 script = ExtResource("6_wiji8")
 PositionShake = Array[ExtResource("4_w10i8")]([SubResource("Resource_5qicv")])
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_il4ka"]
-albedo_color = Color(0, 0, 0, 1)
-roughness = 0.5
+[sub_resource type="Resource" id="Resource_5lpl4"]
+script = ExtResource("7_oukdn")
+metadata/_custom_type_script = "uid://bso4njx2ubaat"
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_go5df"]
-material = SubResource("StandardMaterial3D_il4ka")
-top_radius = 2.0
-bottom_radius = 2.0
-height = 0.2
+[sub_resource type="Resource" id="Resource_43rn7"]
+script = ExtResource("7_oukdn")
+amplitude = Vector3(0.2, 0.2, 0.2)
+metadata/_custom_type_script = "uid://bso4njx2ubaat"
+
+[sub_resource type="Resource" id="Resource_mk36a"]
+script = ExtResource("6_wiji8")
+PositionShake = Array[ExtResource("4_w10i8")]([SubResource("Resource_5lpl4")])
+RotationShake = Array[ExtResource("4_w10i8")]([SubResource("Resource_43rn7")])
+metadata/_custom_type_script = "uid://bx74dlp2h8v6b"
 
 [sub_resource type="Curve" id="Curve_epriu"]
 _limits = [0.0, 0.25, 0.0, 1.0]
@@ -1033,6 +1187,7 @@ alpha_curve = SubResource("CurveTexture_rco3v")
 load_path = "res://.godot/imported/dust.png-38e6b4baae02e7ea8dadf5b7a74ab4ab.s3tc.ctex"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nqvru"]
+render_priority = 1
 transparency = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
@@ -1047,19 +1202,39 @@ particles_anim_loop = false
 material = SubResource("StandardMaterial3D_nqvru")
 orientation = 2
 
-[node name="Battle" type="Node3D" unique_id=938752914 node_paths=PackedStringArray("ui", "cam", "anim", "skills", "target")]
+[node name="Battle" type="Node3D" unique_id=938752914 node_paths=PackedStringArray("ui", "cam", "anim", "rat_dance_anim", "skills", "target", "env")]
 script = ExtResource("1_lyi2j")
 ui = NodePath("MainUI")
 cam = NodePath("BattleCam")
 anim = NodePath("MainAnim")
+rat_dance_anim = NodePath("WinScreen/RatDanceAnim")
 skills = NodePath("SkillsCenter")
 target = NodePath("TargetSelection")
 dialogue = ExtResource("2_b1lf2")
 combat_balloon = ExtResource("3_dgfw6")
+env = NodePath("WorldEnvironment")
 
-[node name="SkillsCenter" type="Node3D" parent="." unique_id=202295259 node_paths=PackedStringArray("main")]
+[node name="Table" type="StaticBody3D" parent="." unique_id=1064849543]
+physics_material_override = SubResource("PhysicsMaterial_f5xx3")
+
+[node name="TableModel" parent="Table" unique_id=463293113 instance=ExtResource("41_6701q")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, -35, 0)
+
+[node name="Table_LP_Glass_0" parent="Table/TableModel/Sketchfab_model/e53ba48d9801468988483daf272c6e25_fbx/RootNode/Table_LP/Object_4" parent_id_path=PackedInt32Array(463293113, 670210424) index="1" unique_id=1211111492]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Table" unique_id=1470089104]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+shape = SubResource("CylinderShape3D_uytlp")
+
+[node name="GPUCollisionShape" type="GPUParticlesCollisionBox3D" parent="Table" unique_id=2093742877]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+size = Vector3(40, 1, 40)
+
+[node name="SkillsCenter" type="Node3D" parent="." unique_id=202295259 node_paths=PackedStringArray("main", "cine_anim")]
 script = ExtResource("4_nidv2")
 main = NodePath("..")
+cine_anim = NodePath("../CineAnim")
 
 [node name="MainUI" type="Control" parent="." unique_id=1532482426 node_paths=PackedStringArray("anim", "vignette", "move_displayer", "move_container", "left_panel", "right_panel", "solid_color", "intro_fight", "skill_desc_handler", "skill_node_connector", "item_sprite", "item_description", "escape_chance_display", "flavor_text")]
 z_index = 1
@@ -1139,7 +1314,7 @@ theme = SubResource("Theme_rsn1y")
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 bbcode_enabled = true
-text = "[i]* Tastes like rat poison."
+text = "Burn makes a character take damage each turn, and reduces the damage they inflict."
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1
@@ -1509,6 +1684,7 @@ main_ui = NodePath("../../..")
 id = "escape"
 
 [node name="Skills" type="Control" parent="MainUI/RightPanel" unique_id=1744538831 node_paths=PackedStringArray("main")]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1616,7 +1792,7 @@ item_desc_display = NodePath("../../../LeftPanel/Items/ItemDescription")
 item_name = "Cured Ham"
 item_id = "cured_ham"
 sprite_id = 1
-item_desc = "Restore [color=green]25 HP[/color] to all allies"
+item_desc = "Restore [color=green]50 HP[/color] to all allies"
 main = NodePath("../../../..")
 parent = NodePath("../..")
 
@@ -1638,7 +1814,7 @@ item_desc_display = NodePath("../../../LeftPanel/Items/ItemDescription")
 item_name = "Flesh"
 item_id = "flesh"
 sprite_id = 2
-item_desc = "Restore [color=green]80 HP[/color] to one ally"
+item_desc = "Restore [color=green]100 HP[/color] to one ally"
 main = NodePath("../../../..")
 parent = NodePath("../..")
 
@@ -1660,7 +1836,7 @@ item_desc_display = NodePath("../../../LeftPanel/Items/ItemDescription")
 item_name = "Goat's Blood"
 item_id = "goats_blood"
 sprite_id = 3
-item_desc = "Revives an ally"
+item_desc = "Revives an ally to half health"
 main = NodePath("../../../..")
 parent = NodePath("../..")
 
@@ -1695,7 +1871,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Yes" type="Button" parent="MainUI/RightPanel/Escape" unique_id=725691518 node_paths=PackedStringArray("parent")]
+[node name="Yes" type="Button" parent="MainUI/RightPanel/Escape" unique_id=725691518 node_paths=PackedStringArray("main", "parent")]
 material = SubResource("ShaderMaterial_vfxhe")
 layout_mode = 0
 offset_left = 56.0
@@ -1708,6 +1884,7 @@ theme_override_font_sizes/font_size = 30
 text = "Yes"
 autowrap_mode = 2
 script = ExtResource("19_ceix2")
+main = NodePath("../../../..")
 parent = NodePath("../..")
 
 [node name="No" type="Button" parent="MainUI/RightPanel/Escape" unique_id=1252886374 node_paths=PackedStringArray("main_ui", "parent")]
@@ -1779,6 +1956,70 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="EscapeScreen" type="CanvasLayer" parent="." unique_id=1535785829]
+visible = false
+
+[node name="Control" type="Control" parent="EscapeScreen" unique_id=17698904]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="EscapeScreen/Control" unique_id=1949536149]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.78431374)
+
+[node name="EscapingText" type="RichTextLabel" parent="EscapeScreen/Control" unique_id=885359315]
+material = SubResource("ShaderMaterial_x50yd")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -392.0
+offset_top = -416.0
+offset_right = 408.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(400, 182)
+theme = ExtResource("6_ksl0e")
+theme_override_colors/font_outline_color = Color(0.5, 0.5, 0.5, 1)
+theme_override_constants/outline_size = 30
+theme_override_font_sizes/normal_font_size = 150
+text = "ESCAPING..."
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ratescape" type="Node2D" parent="EscapeScreen/Control" unique_id=1517239240]
+
+[node name="Walking" type="Sprite2D" parent="EscapeScreen/Control/ratescape" unique_id=1317333318]
+position = Vector2(630, 400)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("32_q788g")
+
+[node name="Dead" type="Sprite2D" parent="EscapeScreen/Control/ratescape" unique_id=197184921]
+position = Vector2(616, 416)
+scale = Vector2(2, 2)
+texture = ExtResource("33_pwmv7")
+
+[node name="EscapeAnimation" type="AnimationPlayer" parent="EscapeScreen" unique_id=1335605938]
+libraries/ = SubResource("AnimationLibrary_mk36a")
+
+[node name="RatDanceAnim" type="AnimationPlayer" parent="EscapeScreen" unique_id=1772255630]
+libraries/ = SubResource("AnimationLibrary_e8205")
+
 [node name="WinScreen" type="CanvasLayer" parent="." unique_id=828829731]
 visible = false
 
@@ -1787,11 +2028,11 @@ position = Vector2(872, 952)
 
 [node name="ratwintext" type="Sprite2D" parent="WinScreen/ratwin" unique_id=1277864176]
 material = SubResource("ShaderMaterial_6701q")
-position = Vector2(0, 400)
+position = Vector2(0, 385.99847)
 texture = ExtResource("32_gdl11")
 
 [node name="RatDanceAnim" type="AnimationPlayer" parent="WinScreen" unique_id=1948867749]
-libraries/ = SubResource("AnimationLibrary_q788g")
+libraries/ = SubResource("AnimationLibrary_f5xx3")
 
 [node name="Stats" type="Control" parent="WinScreen" unique_id=1421393913 node_paths=PackedStringArray("main")]
 layout_mode = 3
@@ -1891,101 +2132,94 @@ visible = false
 script = ExtResource("24_314eb")
 main = NodePath("..")
 
+[node name="CineAnim" type="AnimationPlayer" parent="." unique_id=1060797251]
+libraries/ = SubResource("AnimationLibrary_8qows")
+libraries/epe = ExtResource("39_5lpl4")
+libraries/icefall = ExtResource("39_pwmv7")
+
 [node name="MainAnim" type="AnimationPlayer" parent="." unique_id=1602434553]
 libraries/ = SubResource("AnimationLibrary_bplng")
 
-[node name="BattleCam" type="Camera3D" parent="." unique_id=1394033273 node_paths=PackedStringArray("main")]
-transform = Transform3D(-4.371139e-08, -0.984808, 0.17364803, 0, 0.17364803, 0.984808, -1, 4.3047326e-08, -7.590396e-09, 4.1902, 18, 0.0259711)
-attributes = SubResource("CameraAttributesPractical_x50yd")
+[node name="BattleCam" type="Node3D" parent="." unique_id=1810964477 node_paths=PackedStringArray("main", "handheld_shake", "impact_shake", "big_impact_shake")]
+transform = Transform3D(-4.371139e-08, -0.98480755, 0.17364818, 0, 0.1736482, 0.98480743, -1, 4.3047304e-08, -7.590402e-09, 10, 70, 0)
 script = ExtResource("2_g1d0u")
 main = NodePath("..")
+handheld_shake = NodePath("BattleCam/HandheldShake")
+impact_shake = NodePath("BattleCam/ImpactShake")
+big_impact_shake = NodePath("BattleCam/BigImpactShake")
 
-[node name="HandheldShake" type="Node3D" parent="BattleCam" unique_id=1561607957]
+[node name="BattleCam" type="Camera3D" parent="BattleCam" unique_id=1394033273]
+transform = Transform3D(1, -3.7904832e-07, -1.762528e-07, 3.790483e-07, 1, -9.685755e-08, 1.7625284e-07, 9.6857484e-08, 1, -0.0073048607, 1.8741583e-05, 0.039590426)
+attributes = SubResource("CameraAttributesPractical_x50yd")
+
+[node name="HandheldShake" type="Node3D" parent="BattleCam/BattleCam" unique_id=1561607957]
 script = ExtResource("3_bdusq")
 AutoPlay = true
 intensity = 0.5
 shake_speed = 0.5
 shakerPreset = SubResource("Resource_yns20")
 
-[node name="ImpactShake" type="Node3D" parent="BattleCam" unique_id=1133391440]
+[node name="ImpactShake" type="Node3D" parent="BattleCam/BattleCam" unique_id=1133391440]
 script = ExtResource("3_bdusq")
 duration = 0.5
 fade_in = 1e-05
 fade_out = 2.0
 shakerPreset = SubResource("Resource_g8sry")
 
-[node name="Table" type="StaticBody3D" parent="." unique_id=1064849543]
+[node name="BigImpactShake" type="Node3D" parent="BattleCam/BattleCam" unique_id=135109022]
+script = ExtResource("3_bdusq")
+intensity = 3.0
+duration = 1.5
+fade_in = 1e-05
+fade_out = 3.249007
+shakerPreset = SubResource("Resource_g8sry")
 
-[node name="TableModel" parent="Table" unique_id=463293113 instance=ExtResource("41_6701q")]
-transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, -35, 0)
+[node name="CinematicShake" type="Node3D" parent="BattleCam/BattleCam" unique_id=929389062]
+script = ExtResource("3_bdusq")
+intensity = 0.02
+duration = 4.5
+fade_in = 1.7410997
+fade_out = 8.337636e-05
+shakerPreset = SubResource("Resource_mk36a")
+metadata/_custom_type_script = "uid://dbdifjem6wnue"
 
 [node name="Holders" type="Node3D" parent="." unique_id=1393188613]
 
 [node name="AllyHolders1" type="Node3D" parent="Holders" unique_id=1078777892]
 unique_name_in_owner = true
-visible = false
 
 [node name="1" type="StaticBody3D" parent="Holders/AllyHolders1" unique_id=51528059]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.3, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Holders/AllyHolders1/1" unique_id=113280393]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
-mesh = SubResource("CylinderMesh_go5df")
-
 [node name="AllyHolders2" type="Node3D" parent="Holders" unique_id=1938925594]
 unique_name_in_owner = true
+visible = false
 
 [node name="1" type="StaticBody3D" parent="Holders/AllyHolders2" unique_id=1310589522]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.3, -5)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Holders/AllyHolders2/1" unique_id=323095728]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
-visible = false
-mesh = SubResource("CylinderMesh_go5df")
-
 [node name="2" type="StaticBody3D" parent="Holders/AllyHolders2" unique_id=206302135]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.3, 5)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Holders/AllyHolders2/2" unique_id=1797762033]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
-visible = false
-mesh = SubResource("CylinderMesh_go5df")
-
 [node name="AllyHolders3" type="Node3D" parent="Holders" unique_id=1360896721]
 unique_name_in_owner = true
-visible = false
 
-[node name="1" type="StaticBody3D" parent="Holders/AllyHolders3" unique_id=727108629]
+[node name="Rat" type="StaticBody3D" parent="Holders/AllyHolders3" unique_id=727108629]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.3, -8)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Holders/AllyHolders3/1" unique_id=1510396029]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
-mesh = SubResource("CylinderMesh_go5df")
-
 [node name="2" type="StaticBody3D" parent="Holders/AllyHolders3" unique_id=1911166599]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.3, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.49, 0.3, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Holders/AllyHolders3/2" unique_id=306980268]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
-mesh = SubResource("CylinderMesh_go5df")
-
-[node name="3" type="StaticBody3D" parent="Holders/AllyHolders3" unique_id=207730929]
+[node name="Angel" type="StaticBody3D" parent="Holders/AllyHolders3" unique_id=207730929]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.3, 8)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Holders/AllyHolders3/3" unique_id=1531301087]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
-mesh = SubResource("CylinderMesh_go5df")
 
 [node name="EnemyHolders1" type="Node3D" parent="Holders" unique_id=1946412159]
 unique_name_in_owner = true
 
 [node name="1" type="StaticBody3D" parent="Holders/EnemyHolders1" unique_id=88942553]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.3, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Holders/EnemyHolders1/1" unique_id=1334788415]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
-visible = false
-mesh = SubResource("CylinderMesh_go5df")
 
 [node name="EnemyHolders2" type="Node3D" parent="Holders" unique_id=183185273]
 unique_name_in_owner = true
@@ -1994,16 +2228,8 @@ visible = false
 [node name="2" type="StaticBody3D" parent="Holders/EnemyHolders2" unique_id=722397581]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.3, -5)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Holders/EnemyHolders2/2" unique_id=551032344]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
-mesh = SubResource("CylinderMesh_go5df")
-
 [node name="1" type="StaticBody3D" parent="Holders/EnemyHolders2" unique_id=747280865]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.3, 5)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Holders/EnemyHolders2/1" unique_id=826478524]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
-mesh = SubResource("CylinderMesh_go5df")
 
 [node name="EnemyHolders3" type="Node3D" parent="Holders" unique_id=258703026]
 unique_name_in_owner = true
@@ -2012,23 +2238,11 @@ visible = false
 [node name="1" type="StaticBody3D" parent="Holders/EnemyHolders3" unique_id=513272213]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.3, 8)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Holders/EnemyHolders3/1" unique_id=1679937139]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
-mesh = SubResource("CylinderMesh_go5df")
-
 [node name="2" type="StaticBody3D" parent="Holders/EnemyHolders3" unique_id=1858123681]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.3, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Holders/EnemyHolders3/2" unique_id=1383284304]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
-mesh = SubResource("CylinderMesh_go5df")
-
 [node name="3" type="StaticBody3D" parent="Holders/EnemyHolders3" unique_id=1229686493]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.3, -8)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Holders/EnemyHolders3/3" unique_id=2084024829]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
-mesh = SubResource("CylinderMesh_go5df")
 
 [node name="DustParticles" type="GPUParticles3D" parent="." unique_id=809171170]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
@@ -2038,16 +2252,20 @@ process_material = SubResource("ParticleProcessMaterial_y8qc7")
 draw_pass_1 = SubResource("PlaneMesh_tx0yf")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=73518027]
-environment = ExtResource("3_rdbxm")
+environment = ExtResource("46_8qows")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1524702004]
-transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 2.14352, 0)
+transform = Transform3D(0.9834705, -0.07652286, 0.16410379, 0, 0.90630776, 0.4226183, -0.1810684, -0.4156326, 0.89132696, 0, 2.14352, 0)
+shadow_enabled = true
 
 [node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=923801013]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20, 0)
+transform = Transform3D(-1.0213936e-07, -0.9659258, -0.25881907, -3.9080593e-08, -0.25881907, 0.9659258, -1, 1.0877385e-07, -1.1313341e-08, -5.964964, 15.802652, 0)
 light_energy = 16.0
+shadow_enabled = true
 spot_range = 30.0
 
 [connection signal="pressed" from="MainUI/LeftPanel/Options/AttackButton" to="MainUI/LeftPanel/Options/AttackButton" method="_on_pressed"]
 [connection signal="pressed" from="MainUI/LeftPanel/Options/DefendButton" to="MainUI/LeftPanel/Options/DefendButton" method="_on_pressed"]
 [connection signal="pressed" from="WinScreen/Stats/SkipOrContinue" to="WinScreen/Stats" method="_on_skip_or_continue_pressed"]
+
+[editable path="Table/TableModel"]

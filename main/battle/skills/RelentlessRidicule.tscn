@@ -1,0 +1,205 @@
+[gd_scene format=3 uid="uid://btvxgbpc5p4de"]
+
+[ext_resource type="Script" uid="uid://ci67yawrtr4ue" path="res://main/battle/skills/relentless_ridicule.gd" id="1_xk8fe"]
+[ext_resource type="Texture2D" uid="uid://dpe87klfy60s" path="res://assets/assetpacks/brackeys-vfx/brackeys_particle_bundle/predrawn/vortex_6x5.png" id="2_xk8fe"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_esa7l"]
+atlas = ExtResource("2_xk8fe")
+region = Rect2(0, 0, 427, 431)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oh6qv"]
+atlas = ExtResource("2_xk8fe")
+region = Rect2(427, 0, 427, 431)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hilcw"]
+atlas = ExtResource("2_xk8fe")
+region = Rect2(854, 0, 427, 431)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iolh0"]
+atlas = ExtResource("2_xk8fe")
+region = Rect2(1281, 0, 427, 431)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n8531"]
+atlas = ExtResource("2_xk8fe")
+region = Rect2(1708, 0, 427, 431)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7wbg1"]
+atlas = ExtResource("2_xk8fe")
+region = Rect2(2135, 0, 427, 431)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ygl5e"]
+atlas = ExtResource("2_xk8fe")
+region = Rect2(0, 431, 427, 431)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u5dof"]
+atlas = ExtResource("2_xk8fe")
+region = Rect2(427, 431, 427, 431)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sm1k7"]
+atlas = ExtResource("2_xk8fe")
+region = Rect2(854, 431, 427, 431)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_my0se"]
+atlas = ExtResource("2_xk8fe")
+region = Rect2(1281, 431, 427, 431)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_84rvj"]
+atlas = ExtResource("2_xk8fe")
+region = Rect2(1708, 431, 427, 431)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ly8v7"]
+atlas = ExtResource("2_xk8fe")
+region = Rect2(2135, 431, 427, 431)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqg2h"]
+atlas = ExtResource("2_xk8fe")
+region = Rect2(0, 862, 427, 431)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjsk4"]
+atlas = ExtResource("2_xk8fe")
+region = Rect2(427, 862, 427, 431)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vuu11"]
+atlas = ExtResource("2_xk8fe")
+region = Rect2(854, 862, 427, 431)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d20n0"]
+atlas = ExtResource("2_xk8fe")
+region = Rect2(1281, 862, 427, 431)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y78c3"]
+atlas = ExtResource("2_xk8fe")
+region = Rect2(1708, 862, 427, 431)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qll1y"]
+atlas = ExtResource("2_xk8fe")
+region = Rect2(2135, 862, 427, 431)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fmf18"]
+atlas = ExtResource("2_xk8fe")
+region = Rect2(0, 1293, 427, 431)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v5hc8"]
+atlas = ExtResource("2_xk8fe")
+region = Rect2(427, 1293, 427, 431)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eoras"]
+atlas = ExtResource("2_xk8fe")
+region = Rect2(854, 1293, 427, 431)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6yymr"]
+atlas = ExtResource("2_xk8fe")
+region = Rect2(1281, 1293, 427, 431)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_juidt"]
+atlas = ExtResource("2_xk8fe")
+region = Rect2(1708, 1293, 427, 431)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8i78"]
+atlas = ExtResource("2_xk8fe")
+region = Rect2(2135, 1293, 427, 431)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mu1vb"]
+atlas = ExtResource("2_xk8fe")
+region = Rect2(0, 1724, 427, 431)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfd88"]
+atlas = ExtResource("2_xk8fe")
+region = Rect2(427, 1724, 427, 431)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0d3cj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_esa7l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oh6qv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hilcw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iolh0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n8531")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7wbg1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ygl5e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u5dof")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sm1k7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_my0se")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_84rvj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ly8v7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uqg2h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xjsk4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vuu11")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d20n0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y78c3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qll1y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fmf18")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5hc8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eoras")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6yymr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_juidt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8i78")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mu1vb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kfd88")
+}],
+"loop": false,
+"name": &"ridicule",
+"speed": 30.0
+}]
+
+[node name="RelentlessRidicule" type="Node3D" unique_id=2090683391 node_paths=PackedStringArray("effect_base")]
+script = ExtResource("1_xk8fe")
+id = "Relentless Ridicule"
+effect_base = NodePath("Effect")
+
+[node name="Effect" type="AnimatedSprite3D" parent="." unique_id=2090378327]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_0d3cj")
+animation = &"ridicule"

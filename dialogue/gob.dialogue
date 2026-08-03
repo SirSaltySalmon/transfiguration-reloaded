@@ -8,7 +8,7 @@ Gob: Come back when you're a little, mmm, [color=cyan]bigger.[/color]
 => END
 
 ~ gob_assess
-if Global.gob_rejection:
+if Global.sav.gob_rejection:
 	Gob: Huh... did you go through a training arc or something?
 else:
 	Gob: Hmm? Looking for something?
@@ -23,7 +23,7 @@ Gob: To be frank though, if you can't afford it,
 ~ gob_sells_grimoire
 Gob: So you want the grimoire, right?
 - Yes
-	if Global.money < 5:
+	if Global.sav.money < 5:
 		Gob: Wha-you're broke?
 		Gob: Just get the hell out of my sight already.
 	else:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bsce3vhrswx5m"]
+[gd_scene format=3 uid="uid://bsce3vhrswx5m"]
 
 [ext_resource type="Script" uid="uid://cnbltkgwelf8g" path="res://characters/tips/tips.gd" id="1_4airb"]
 [ext_resource type="Texture2D" uid="uid://dyc76368cugic" path="res://characters/tips/TIPS.png" id="1_pb6su"]
@@ -22,33 +22,30 @@ shader_parameter/Position_Min = 0.25
 shader_parameter/Position_Max = 0.5
 shader_parameter/Alpha = 1.0
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_jxc8l"]
-size = Vector3(2.13825, 5.89926, 0.0842896)
-
-[node name="Tips" type="StaticBody3D"]
+[node name="Tips" type="StaticBody3D" unique_id=1630756052]
 script = ExtResource("1_4airb")
-dialogue = ExtResource("2_5eyjv")
+dialogue_res = ExtResource("2_5eyjv")
 zoom = -3
 offset = 2
 
-[node name="Sprite" type="Sprite3D" parent="."]
+[node name="Sprite" type="Sprite3D" parent="." unique_id=1887729240]
 shaded = true
 double_sided = false
 render_priority = 1
 texture = SubResource("ViewportTexture_icia6")
 
-[node name="SubViewport" type="SubViewport" parent="Sprite"]
+[node name="SubViewport" type="SubViewport" parent="Sprite" unique_id=321654529]
 disable_3d = true
 transparent_bg = true
-size = Vector2i(220, 607)
+size = Vector2i(400, 800)
 
-[node name="Sprite2D" type="TextureRect" parent="Sprite/SubViewport"]
+[node name="Sprite2D" type="TextureRect" parent="Sprite/SubViewport" unique_id=1182290728]
 clip_children = 2
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("1_pb6su")
 
-[node name="Highlight" type="ColorRect" parent="Sprite/SubViewport/Sprite2D"]
+[node name="Highlight" type="ColorRect" parent="Sprite/SubViewport/Sprite2D" unique_id=1514708243]
 visible = false
 material = SubResource("ShaderMaterial_60hqs")
 layout_mode = 1
@@ -58,7 +55,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Brighten" type="ColorRect" parent="Sprite/SubViewport/Sprite2D"]
+[node name="Brighten" type="ColorRect" parent="Sprite/SubViewport/Sprite2D" unique_id=1951739379]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -68,5 +65,6 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0.196078)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_jxc8l")
+[node name="CollisionPolygon2D" type="CollisionPolygon3D" parent="." unique_id=1179255373]
+transform = Transform3D(0.01, 0, 0, 0, -0.01, 8.7422775e-10, 0, -8.7422775e-10, -0.01, 0, 0, 0)
+polygon = PackedVector2Array(-71, -329.5, -71, -327.1, -134.5, -289, -136.8, -289, -144.7, -282, -146.6, -282, -147.7, -277, -149, -277, -149, -85.600006, -124.7, -29.700012, -130.4, -13, -131.6, -13, -147.5, 51, -149, 51, -148, 217, -148, 221, -110, 249.90002, -110, 251.29999, -51, 279.2, -51, 281, -13.899994, 281, -10.899994, 276, -9.600006, 276, 41, 132.29999, 41, 129.29999, 89.29999, 18, 91.600006, 18, 90, 12, 90, 8.299988, 85, 2.2999878, 85, 0.7000122, 19.899994, -27, 40, -45.100006, 40, -45.799988, 49.399994, -50, 52.199997, -50, 57, -58.5, 57, -70.399994, 2, -207.5, 2, -210.4, -40.699997, -303, -41.300003, -303, -43, -312.4, -43, -316, -53, -324, -53, -325.6)

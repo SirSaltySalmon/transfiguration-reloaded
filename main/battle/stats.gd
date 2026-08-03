@@ -16,7 +16,7 @@ var allow_input := false
 signal next_stat
 var finished_showing_stats := false
 
-func summarize_stats(won: bool):
+func summarize_stats():
 	var devoured_count := main.devoured_count
 	var kill_count = main.kill_count
 	
@@ -57,7 +57,7 @@ func summarize_stats(won: bool):
 			if not skipping:
 				await Methods.wait(0.1)
 	
-	if not skipping:
+	if not skipping and not kill_count == 0:
 		await next_stat
 	
 	var money_earned_count := 0
@@ -71,19 +71,23 @@ func summarize_stats(won: bool):
 	if not skipping:
 		await next_stat
 	
-	if won:
-		var possible_bonuses = ["1x Cured Ham", "1x Flesh", "1x Goat's Blood", "5x Money"]
-		var bonus_index = randi_range(0,3)
-		win_bonus.text = "Win Bonus: %s" % possible_bonuses[bonus_index]
-		match bonus_index:
-			0:
-				Global.sav.cured_ham += 1
-			1: 
-				Global.sav.flesh += 1
-			2: 
-				Global.sav.goats_blood += 1
-			3:
-				Global.sav.money += 5
+	if not main.escaped:
+		if Global.battle_type == 3:
+			win_bonus.text = "Win Bonus: 15x Moneys"
+			Global.sav.money += 15
+		else:
+			var possible_bonuses = ["1x Cured Ham", "1x Flesh", "1x Goat's Blood", "5x Moneys"]
+			var bonus_index = randi_range(0,3)
+			win_bonus.text = "Win Bonus: %s" % possible_bonuses[bonus_index]
+			match bonus_index:
+				0:
+					Global.sav.cured_ham += 1
+				1: 
+					Global.sav.flesh += 1
+				2: 
+					Global.sav.goats_blood += 1
+				3:
+					Global.sav.money += 5
 	else:
 		win_bonus.text = "Escaped! No bonus given."
 	

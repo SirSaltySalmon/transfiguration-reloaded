@@ -1,47 +1,71 @@
-[gd_scene load_steps=14 format=3 uid="uid://cq8a03hyva7pd"]
+[gd_scene format=3 uid="uid://cq8a03hyva7pd"]
 
 [ext_resource type="Script" uid="uid://j8ihfcb0jwxn" path="res://main/battle/skills/goop.gd" id="1_0kh5g"]
-[ext_resource type="Texture2D" uid="uid://j7viv43ml86d" path="res://assets/battle/effects/sprite_sheets/goop.png" id="2_0kh5g"]
+[ext_resource type="Texture2D" uid="uid://di8324gh78tft" path="res://assets/battle/effects/sprite_sheets/Acid VFX 01.png" id="2_0kh5g"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yicxk"]
 atlas = ExtResource("2_0kh5g")
-region = Rect2(0, 0, 64, 64)
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c8hg4"]
 atlas = ExtResource("2_0kh5g")
-region = Rect2(64, 0, 64, 64)
+region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e0xfe"]
 atlas = ExtResource("2_0kh5g")
-region = Rect2(128, 0, 64, 64)
+region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8kq1o"]
 atlas = ExtResource("2_0kh5g")
-region = Rect2(192, 0, 64, 64)
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fqj0q"]
 atlas = ExtResource("2_0kh5g")
-region = Rect2(256, 0, 64, 64)
+region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q6x4x"]
 atlas = ExtResource("2_0kh5g")
-region = Rect2(320, 0, 64, 64)
+region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l73as"]
 atlas = ExtResource("2_0kh5g")
-region = Rect2(384, 0, 64, 64)
+region = Rect2(192, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5gpof"]
 atlas = ExtResource("2_0kh5g")
-region = Rect2(448, 0, 64, 64)
+region = Rect2(224, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2yng3"]
 atlas = ExtResource("2_0kh5g")
-region = Rect2(512, 0, 64, 64)
+region = Rect2(256, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bvw2i"]
 atlas = ExtResource("2_0kh5g")
-region = Rect2(576, 0, 64, 64)
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_imgkx"]
+atlas = ExtResource("2_0kh5g")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rwp8d"]
+atlas = ExtResource("2_0kh5g")
+region = Rect2(352, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghrmv"]
+atlas = ExtResource("2_0kh5g")
+region = Rect2(384, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_td3mg"]
+atlas = ExtResource("2_0kh5g")
+region = Rect2(416, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xm3ne"]
+atlas = ExtResource("2_0kh5g")
+region = Rect2(448, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1l8bj"]
+atlas = ExtResource("2_0kh5g")
+region = Rect2(480, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0d3cj"]
 animations = [{
@@ -77,22 +101,36 @@ animations = [{
 "texture": SubResource("AtlasTexture_bvw2i")
 }, {
 "duration": 1.0,
-"texture": null
+"texture": SubResource("AtlasTexture_imgkx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rwp8d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghrmv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_td3mg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xm3ne")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1l8bj")
 }],
-"loop": false,
+"loop": true,
 "name": &"goop",
-"speed": 15.0
+"speed": 30.0
 }]
 
-[node name="Goop" type="Node3D" node_paths=PackedStringArray("effect_base")]
+[node name="Goop" type="Node3D" unique_id=7190194 node_paths=PackedStringArray("effect_base")]
 script = ExtResource("1_0kh5g")
 id = "Goop"
 effect_base = NodePath("Effect")
 
-[node name="Effect" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(10, 0, 0, 0, -4.37114e-07, 10, 0, -10, -4.37114e-07, 0, 0, 0)
+[node name="Effect" type="AnimatedSprite3D" parent="." unique_id=1346500919]
+transform = Transform3D(15, 0, 0, 0, -6.556708e-07, 15, 0, -15, -6.556708e-07, 0, 0, 0)
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_0d3cj")
 animation = &"goop"
-frame = 10
-frame_progress = 1.0
+frame_progress = 0.03672265

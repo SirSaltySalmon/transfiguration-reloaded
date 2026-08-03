@@ -35,18 +35,22 @@ func flip():
 	tween.tween_property(sprite, "rotation_degrees:y", current_rotation + flip_direction, 0.3)
 
 func interact():
-	var title : String
-	if Global.sav.size == 1 and not Global.sav.rat_talk_1:
-		title = "rat_talk_1"
+	if Global.sav.size == 7:
+		await dialogue("rat_size_7")
+	
+	elif Global.sav.size == 1 and not Global.sav.rat_talk_1:
+		await dialogue("rat_talk_1")
 		Global.sav.rat_talk_1 = true
 	elif Global.sav.just_size_2 and not Global.sav.rat_talk_2:
-		title = "rat_talk_2"
+		await dialogue("rat_talk_2")
 		Global.sav.rat_talk_2 = true
-	
-	if title:
-		trigger_dialogue(title)
+	elif Global.sav.size <= 2 and Global.sav.tutorial_fight_complete:
+		await dialogue("rat_suggests_roaming")
+	elif Global.sav.gob_sells_grimoire and Global.sav.current_area_id != "library" and not Global.sav.rat_comments_on_grimoire:
+		await dialogue("rat_comments_on_grimoire")
+		Global.sav.rat_comments_on_grimoire = true
+	elif Global.sav.size >= 5 and not Global.sav.rat_comments_on_posters: # If 7 hits the other check so it's okay
+		await dialogue("rat_comments_on_posters")
+		Global.sav.rat_comments_on_posters = true
 	
 	Methods.flags_changed.emit()
-
-func trigger_dialogue(title):
-	DialogueManager.show_dialogue_balloon(dialogue, title)

@@ -9,6 +9,8 @@
 [ext_resource type="Script" uid="uid://6eiqnwr5cthh" path="res://characters/humans/human.gd" id="5_hlnnv"]
 [ext_resource type="Texture2D" uid="uid://ljopcy7ta6xj" path="res://characters/humans/elf/elf_low.png" id="6_h25jm"]
 [ext_resource type="Texture2D" uid="uid://glaagiysj5uf" path="res://characters/humans/wizard/wizard_low.png" id="7_hui2p"]
+[ext_resource type="PackedScene" uid="uid://bvw83ybb7fxr3" path="res://characters/angel/angel.tscn" id="10_4djnu"]
+[ext_resource type="PackedScene" uid="uid://b2n880pn2htg0" path="res://characters/poster.tscn" id="11_g6nqu"]
 
 [sub_resource type="Animation" id="Animation_810m5"]
 length = 0.001
@@ -64,20 +66,24 @@ texture = ExtResource("1_lf7ej")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.15, -2.546, -7)
 
 [node name="Slime" parent="." unique_id=959136789 instance=ExtResource("4_4n0qt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.971711, -2.8317184, -6.99845)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.971711, -2.5277286, -6.99845)
 
 [node name="ArrowManager" parent="." unique_id=271098037 instance=ExtResource("4_de0hd")]
 
 [node name="UpArrow" parent="ArrowManager" index="0" unique_id=462240817]
-show_condition = "Global.sav.size >= 3"
+destination = "library"
+show_condition = "Global.sav.size >= 2"
 
 [node name="DownArrow" parent="ArrowManager" index="1" unique_id=1785677814]
+destination = "lair"
 show_condition = "Global.sav.size >= 6"
 
 [node name="LeftArrow" parent="ArrowManager" index="2" unique_id=612731789]
+destination = "shop"
 show_condition = "Global.sav.size >= 2"
 
 [node name="RightArrow" parent="ArrowManager" index="3" unique_id=2000443815]
+destination = "prison"
 show_condition = "Global.sav.rat_talk_1"
 
 [node name="Humans" type="Node3D" parent="." unique_id=1127703196 groups=["cutscene_1"]]
@@ -91,6 +97,7 @@ script = ExtResource("5_hlnnv")
 transform = Transform3D(0.098480776, -0.0030153717, -0.017101014, 0, 0.098480776, -0.017364826, 0.017364826, 0.017101014, 0.096984625, 0, 0, 0)
 shaded = true
 double_sided = false
+alpha_cut = 2
 texture = ExtResource("5_4ydsj")
 
 [node name="Idle" type="AnimationPlayer" parent="Humans/Knight" unique_id=1372779759]
@@ -106,6 +113,7 @@ script = ExtResource("5_hlnnv")
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 shaded = true
 double_sided = false
+alpha_cut = 2
 texture = ExtResource("6_h25jm")
 
 [node name="Idle" type="AnimationPlayer" parent="Humans/Elf" unique_id=484000748]
@@ -120,6 +128,7 @@ script = ExtResource("5_hlnnv")
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 shaded = true
 double_sided = false
+alpha_cut = 2
 texture = ExtResource("7_hui2p")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Humans/Wizard/Sprite" unique_id=1270462309]
@@ -133,4 +142,28 @@ root_node = NodePath("../Sprite")
 libraries/ = SubResource("AnimationLibrary_ffdfv")
 speed_scale = 0.5
 
+[node name="Angel" parent="." unique_id=1489711793 instance=ExtResource("10_4djnu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.594298, -1.1018138, -6)
+
+[node name="Poster" parent="." unique_id=1621675148 instance=ExtResource("11_g6nqu")]
+transform = Transform3D(0.87935114, -0.29373157, -0.37478444, 0.25230083, 0.95492023, -0.15643448, 0.40383896, 0.04300241, 0.91381884, 9.179815, 2.17172, -7.5852704)
+
+[node name="Sprite" parent="Poster" index="0" unique_id=1795430473]
+modulate = Color(0.8117647, 0.8117647, 0.8117647, 1)
+
+[node name="Poster2" parent="." unique_id=2025832737 instance=ExtResource("11_g6nqu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5662813, 1.4352372, -7.9)
+
+[node name="Sprite" parent="Poster2" index="0" unique_id=1795430473]
+modulate = Color(0.8117647, 0.8117647, 0.8117647, 1)
+
+[node name="Poster3" parent="." unique_id=1326155621 instance=ExtResource("11_g6nqu")]
+transform = Transform3D(0.9252097, 0.37945616, 0, -0.37945616, 0.9252097, 0, 0, 0, 1, -5.8479834, 2.4272285, -7.9)
+
+[node name="Sprite" parent="Poster3" index="0" unique_id=1795430473]
+modulate = Color(0.8117647, 0.8117647, 0.8117647, 1)
+
 [editable path="ArrowManager"]
+[editable path="Poster"]
+[editable path="Poster2"]
+[editable path="Poster3"]

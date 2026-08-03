@@ -1,0 +1,27 @@
+~ grimoire_summoning
+do! Methods.glow_grimoire()
+Grimoire: [color=#fff6ad]I hear your cries for help, my child.[/color]
+Grimoire: [color=#fff6ad]Worry not. I'm here[/color]
+do! Methods.enter_shadow_wizards_battle()
+=> END
+
+~ angel_talk_1
+Angel: [color=#fff6ad]Don't worry about what they said, dear. I'm no monster.[/color]
+Angel: [color=#fff6ad]Humanoids just love the idea of killing gods and their servants.[/color]
+Angel: [color=#fff6ad]It's a very natural thing. They love to express this urge in the form of JRPGs.[/color]
+Angel: [color=#fff6ad]But, my child, healthy expression is where the line should be drawn.
+	Those gentlemen were very rude.[/color]
+Angel: [color=#fff6ad]If I was an [i]actual[/i] angel, I would have sent them straight to Hell.[/color]
+=> END
+
+~ angel_talk_2
+# After growing to size 5, but is NOT yet size 7
+Angel: [color=#fff6ad]Will you ever be punished for your gluttony, you ask?[/color]
+Angel: [color=#fff6ad]My child, do not fear. Gluttony means over-indulgence, beyond what is necessary.[/color]
+Angel: [color=#fff6ad]But devouring these ratass bastards is absolutely necessary.[/color]
+=> END 
+
+~ angel_size_7
+# After growing to size 7
+Angel:  
+=> END

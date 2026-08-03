@@ -5,6 +5,13 @@ extends Button
 
 func _ready():
 	Methods.connect("dating_require_response", toggle_off)
+	disabled = true
+
+func enable():
+	disabled = false
+
+func disable():
+	disabled = true
 
 func toggle_off():
 	button_pressed = false
@@ -12,10 +19,19 @@ func toggle_off():
 
 func _on_toggled(toggled_on: bool) -> void:
 	if toggled_on:
-		dating.balloon.force_input()
-		timer.start(0.2)
+		if not is_instance_valid(dating.balloon):
+			toggle_off()
+			return
+		dating.balloon.dialogue_label.skip_typing()
+		timer.start(0.1)
 	else:
 		timer.stop()
 
 func _on_timer_timeout() -> void:
+	if not button_pressed:
+		return
+	if not is_instance_valid(dating.balloon):
+		toggle_off()
 	dating.balloon.force_input()
+	dating.balloon.dialogue_label.skip_typing()
+	timer.start(0.1)

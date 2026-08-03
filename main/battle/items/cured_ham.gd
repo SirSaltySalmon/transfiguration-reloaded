@@ -1,6 +1,9 @@
 extends ItemsButton
 
 func _on_pressed():
+	if count <= 0:
+		return
+	
 	var target = await main.target.select_all_targets(main.get_alive_allies())
 	if target == null:
 		return

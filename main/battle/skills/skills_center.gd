@@ -1,6 +1,7 @@
 class_name SkillCenter extends Node3D
 
 @export var main: BattleScene
+@export var cine_anim: AnimationPlayer
 
 var loaded_skills: Array = []
 
@@ -9,11 +10,12 @@ func load_skill_node(skill_id: String):
 		return
 	for skill_packed in loaded_skills:
 		if skill_packed[0] == skill_id:
-			return #Skill is already loaded
+			return skill_packed[1]
 	var path = Methods.skills_path_dict[skill_id]
-	var new_skill = load(path).instantiate()
-	add_child(new_skill)
-	loaded_skills.append([skill_id, new_skill])
+	var skill_node = load(path).instantiate()
+	add_child(skill_node)
+	loaded_skills.append([skill_id, skill_node])
+	return skill_node
 
 func get_skill(skill_id: String) -> Skill: #Skill must be loaded
 	for skill_packed in loaded_skills:

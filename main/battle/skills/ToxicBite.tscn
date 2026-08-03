@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://vm3mk4mqayuy"]
+[gd_scene format=3 uid="uid://vm3mk4mqayuy"]
 
 [ext_resource type="Script" uid="uid://cithn1fy7pwqx" path="res://main/battle/skills/toxic_bite.gd" id="1_sdrph"]
 [ext_resource type="Texture2D" uid="uid://o4ensyun5o3l" path="res://assets/battle/effects/sprite_sheets/bite.png" id="2_fdsh3"]
@@ -95,15 +95,15 @@ animations = [{
 }],
 "loop": false,
 "name": &"toxic_bite",
-"speed": 16.0
+"speed": 30.0
 }]
 
-[node name="ToxicBite" type="Node3D" node_paths=PackedStringArray("effect_base")]
+[node name="ToxicBite" type="Node3D" unique_id=2090683391 node_paths=PackedStringArray("effect_base")]
 script = ExtResource("1_sdrph")
 id = "Toxic Bite"
 effect_base = NodePath("Effect")
 
-[node name="Effect" type="AnimatedSprite3D" parent="."]
+[node name="Effect" type="AnimatedSprite3D" parent="." unique_id=2090378327]
 transform = Transform3D(10, 0, 0, 0, -4.37114e-07, 10, 0, -10, -4.37114e-07, 0, 0, 0)
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_0d3cj")

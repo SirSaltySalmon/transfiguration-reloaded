@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bnjhg7n6pcuvw"]
+
+[ext_resource type="Texture2D" uid="uid://d07vjsw78goli" path="res://brackeys_particle_bundle/flipbooks/wispy_smoke_02_8x8.tga" id="1_ssdlc"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bo8ig"]
+particles_animation = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 8
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bo8ig"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 10.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 98, 0)
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[node name="Node2D" type="Node2D" unique_id=470544486]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1646563557]
+material = SubResource("CanvasItemMaterial_bo8ig")
+emitting = false
+amount = 2
+texture = ExtResource("1_ssdlc")
+lifetime = 3.0
+process_material = SubResource("ParticleProcessMaterial_bo8ig")

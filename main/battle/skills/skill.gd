@@ -13,7 +13,7 @@ var description: String
 var duration: int
 
 var main: BattleScene = Methods.current_scene
-var center = main.skills
+var center: SkillCenter = main.skills
 
 func _ready():
 	effect_base.hide()
@@ -57,6 +57,9 @@ func kill_effect_for(target: BattleCharacter):
 func kill_effects():
 	for effect in effect_instances:
 		effect[0].queue_free()
+	effect_instances.clear()
+
+func clear_effects_references():
 	effect_instances.clear()
 
 func use(user: BattleCharacter, target):

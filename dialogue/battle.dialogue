@@ -5,6 +5,34 @@ Knight: NOOOOOOOOOO!!!
 do Methods.current_scene.cam.shake()
 Knight: WE WERE SO CLOSE TO REVIVING HIM!!!
 Slime: blob
-#Rat: Oops.
 Knight: I'LL [color=red]DESECREATE[/color] YOUR BODIES.
+=> END
+
+~ shadow_wizards
+ShadowWizardA: Yo! Check it out, [color=#aa5448]Hotdog[/color]!
+ShadowWizardA: A rat, a slime, AND an [color=yellow]angel[/color]?
+ShadowWizardA: That's my [color=darkgreen]dream blunt rotation[/color]!
+ShadowWizardB: AYO!!! THAT'S RADDD, [color=#6986c2]BLUEBERRY[/color]!!!
+do Methods.current_scene.cam.shake()
+ShadowWizardB: BUT BROTHA, AIN'T [color=#6a49e7]THE SHADOW GOVERNMENT[/color] BEEN SAYING,
+do Methods.current_scene.cam.shake()
+ShadowWizardB: THEY BE CLASSIFYIN' ANGELS AS MONSTERS NOW???
+Angel: [color=#fff6ad][color=#6a49e7]They[/color] are lying to you, dear.[/color]
+Angel: [color=#fff6ad]There's nothing monstrous about me.[/color]
+ShadowWizardA: Damn, no cap, OG?? That's a bummer.
+ShadowWizardA: If we don't follow the contract and [color=#befff2c]ice[/color] all the monsters...
+ShadowWizardA: We won't be getting no nuclear bombs!
+do Methods.current_scene.cam.shake()
+ShadowWizardB: [color=#6a49e7]THE GOVERNMENT[/color] SURE IS CRUEL!!! BUT THIS DUNGEON'S OURS NOW, BUDDY!!!
+Slime: blob
+ShadowWizardA: It's bout time we [color=cyan]slime[/color] you out, kiddo!!
+=> END
+
+~ relentless_ridicule
+% {{Global.custom_talker}}: Thy intimate life's as barren as thy farmland.
+% {{Global.custom_talker}}: The king seeks a jester, and I've been told thy daftness caught his eye!
+% {{Global.custom_talker}}: 'Mine Life, Part 12, Encounter With a Broke Bum...'
+% {{Global.custom_talker}}: Only the rightful king of England can pull that stick out of your ass!
+% {{Global.custom_talker}}: Hark, ye tender youths! A choice examplar of whom not to grow into.
+% {{Global.custom_talker}}: Half the wits of an orc, yet twice the stink of one!
 => END

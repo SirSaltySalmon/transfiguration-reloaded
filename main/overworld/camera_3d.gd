@@ -74,7 +74,7 @@ func can_interact():
 
 func shoot_ray():
 	var mouse_pos = get_viewport().get_mouse_position()
-	var ray_length = 1000
+	var ray_length = 100
 	var from = project_ray_origin(mouse_pos)
 	var to = from + project_ray_normal(mouse_pos) * ray_length
 	var space = get_world_3d().direct_space_state

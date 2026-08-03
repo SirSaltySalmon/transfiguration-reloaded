@@ -1,0 +1,170 @@
+[gd_scene format=3 uid="uid://bp25p7kepw1sk"]
+
+[ext_resource type="Script" uid="uid://0a24h1yuc8n1" path="res://main/battle/skills/icefall.gd" id="1_83rhi"]
+[ext_resource type="Script" uid="uid://cnlimd7kpw2af" path="res://main/battle/skills/judgment_effect.gd" id="1_rkucs"]
+[ext_resource type="ArrayMesh" uid="uid://dfbhd5akiqbem" path="res://assets/battle/3d/CUPIC_ICEBERG.obj" id="2_dy7c5"]
+[ext_resource type="Texture2D" uid="uid://btni88sihihw6" path="res://assets/assetpacks/brackeys-vfx/brackeys_particle_bundle/particles/alpha/star_07_a.png" id="3_dy7c5"]
+[ext_resource type="Texture2D" uid="uid://dia2cvhi0ed32" path="res://assets/battle/effects/sprite_sheets/ice.png" id="5_rth7d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dy7c5"]
+transparency = 1
+albedo_color = Color(0.82, 0.89199996, 1, 0.8156863)
+emission_enabled = true
+emission = Color(0.20174947, 0.29031694, 0.29031694, 1)
+emission_energy_multiplier = 16.0
+clearcoat = 0.9
+refraction_scale = 0.79
+
+[sub_resource type="Curve" id="Curve_dy7c5"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.50399995, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_83rhi"]
+curve = SubResource("Curve_dy7c5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rth7d"]
+spread = 180.0
+initial_velocity_min = 600.0
+initial_velocity_max = 600.0
+gravity = Vector3(0, 0, 0)
+scale_min = 50.0
+scale_max = 100.0
+alpha_curve = SubResource("CurveTexture_83rhi")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3mqyl"]
+render_priority = -1
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_dy7c5")
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_yo841"]
+material = SubResource("StandardMaterial3D_3mqyl")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3mqyl"]
+atlas = ExtResource("5_rth7d")
+region = Rect2(0, 0, 256, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yo841"]
+atlas = ExtResource("5_rth7d")
+region = Rect2(256, 0, 256, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3nrnv"]
+atlas = ExtResource("5_rth7d")
+region = Rect2(512, 0, 256, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2s53i"]
+atlas = ExtResource("5_rth7d")
+region = Rect2(768, 0, 256, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ls72g"]
+atlas = ExtResource("5_rth7d")
+region = Rect2(1024, 0, 256, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqqwq"]
+atlas = ExtResource("5_rth7d")
+region = Rect2(0, 128, 256, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6pb4"]
+atlas = ExtResource("5_rth7d")
+region = Rect2(256, 128, 256, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8fk5"]
+atlas = ExtResource("5_rth7d")
+region = Rect2(512, 128, 256, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ynf2l"]
+atlas = ExtResource("5_rth7d")
+region = Rect2(768, 128, 256, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbibs"]
+atlas = ExtResource("5_rth7d")
+region = Rect2(1024, 128, 256, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lupv0"]
+atlas = ExtResource("5_rth7d")
+region = Rect2(0, 256, 256, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4kri"]
+atlas = ExtResource("5_rth7d")
+region = Rect2(256, 256, 256, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_okta2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3mqyl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yo841")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3nrnv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2s53i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ls72g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqqwq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x6pb4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8fk5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ynf2l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hbibs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lupv0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r4kri")
+}],
+"loop": false,
+"name": &"icefall",
+"speed": 15.0
+}]
+
+[node name="Icefall" type="Node3D" unique_id=1779837651 node_paths=PackedStringArray("effect_base")]
+script = ExtResource("1_83rhi")
+id = "Icefall"
+effect_base = NodePath("Effect2")
+
+[node name="Effect" type="Node3D" parent="." unique_id=1707290406]
+script = ExtResource("1_rkucs")
+duration = 2.0
+
+[node name="BeamMesh" type="MeshInstance3D" parent="Effect" unique_id=2114309302]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+visible = false
+mesh = ExtResource("2_dy7c5")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_dy7c5")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Effect/BeamMesh" unique_id=112907153]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_rth7d")
+draw_pass_1 = SubResource("QuadMesh_yo841")
+
+[node name="Effect2" type="AnimatedSprite3D" parent="." unique_id=304359273]
+transform = Transform3D(-4.371139e-07, -10, -4.371139e-07, 0, -4.371139e-07, 10, -10, 4.371139e-07, 1.9106854e-14, 0, 0, 0)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_okta2")
+animation = &"icefall"
+frame = 11
+frame_progress = 1.0

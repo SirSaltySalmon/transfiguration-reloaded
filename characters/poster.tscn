@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://b2n880pn2htg0"]
+
+[ext_resource type="Texture2D" uid="uid://dn7elxx8ekwdu" path="res://characters/poster/poster.png" id="1_3aeo1"]
+[ext_resource type="Script" uid="uid://cmho14dmojlsb" path="res://characters/poster.gd" id="1_cfmry"]
+
+[node name="Poster" type="StaticBody3D" unique_id=658692767]
+script = ExtResource("1_cfmry")
+interactible = false
+
+[node name="Sprite" type="Sprite3D" parent="." unique_id=1795430473]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+shaded = true
+alpha_cut = 1
+texture = ExtResource("1_3aeo1")

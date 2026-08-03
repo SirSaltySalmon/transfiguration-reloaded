@@ -1,0 +1,193 @@
+[gd_scene format=3 uid="uid://ws2tyu56s18v"]
+
+[ext_resource type="Script" uid="uid://cxr1hamdmnin" path="res://assets/vfx/trigger_particles.gd" id="1_wr5dh"]
+[ext_resource type="AudioStream" uid="uid://xwvkxx70kijy" path="res://sound/sfx/bleed.mp3" id="2_5j2dw"]
+[ext_resource type="Texture2D" uid="uid://djkoi1qy46ydk" path="res://assets/assetpacks/brackeys-vfx/brackeys_particle_bundle/particles/alpha/smoke_07_a.png" id="3_tul20"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_o5h5d"]
+random_pitch = 1.3348398
+streams_count = 1
+stream_0/stream = ExtResource("2_5j2dw")
+
+[sub_resource type="Curve" id="Curve_cdnw8"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0.155462, 3), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveTexture" id="CurveTexture_n1tbp"]
+curve = SubResource("Curve_cdnw8")
+
+[sub_resource type="Curve" id="Curve_dfggd"]
+_data = [Vector2(0.521008, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_fkbi7"]
+curve = SubResource("Curve_dfggd")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4437r"]
+lifetime_randomness = 0.4
+angle_min = 1.07288e-05
+angle_max = 360.0
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 6.0
+gravity = Vector3(0, -20, 0)
+scale_min = 0.08
+scale_max = 0.099999994
+scale_curve = SubResource("CurveTexture_fkbi7")
+color = Color(0.9543753, 0.00077812985, 0.00042740107, 1)
+emission_curve = SubResource("CurveTexture_n1tbp")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qsp4k"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_tul20")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_voi2u"]
+material = SubResource("StandardMaterial3D_qsp4k")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iou1h"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+
+[sub_resource type="Gradient" id="Gradient_an8n6"]
+colors = PackedColorArray(1, 1, 1, 1, 0.74, 0.234333, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_otv5r"]
+gradient = SubResource("Gradient_an8n6")
+
+[sub_resource type="Curve" id="Curve_va7b1"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveTexture" id="CurveTexture_a60gs"]
+curve = SubResource("Curve_va7b1")
+
+[sub_resource type="Curve" id="Curve_cgx3f"]
+_data = [Vector2(0, 0), 0.0, 2.54045, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_n6q8k"]
+curve = SubResource("Curve_cgx3f")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nfuqh"]
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_n6q8k")
+color_ramp = SubResource("GradientTexture1D_otv5r")
+emission_curve = SubResource("CurveTexture_a60gs")
+
+[sub_resource type="SphereMesh" id="SphereMesh_u5om1"]
+
+[sub_resource type="Animation" id="Animation_qtcbv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fireballs:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shock:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_632te"]
+resource_name = "play"
+length = 1.5
+step = 0.1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer3D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Fireballs:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Shock:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hb1ae"]
+_data = {
+&"RESET": SubResource("Animation_qtcbv"),
+&"play": SubResource("Animation_632te")
+}
+
+[node name="BleedVFX" type="Node3D" unique_id=666528694 node_paths=PackedStringArray("anim")]
+script = ExtResource("1_wr5dh")
+anim = NodePath("AnimationPlayer")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1299148155]
+stream = SubResource("AudioStreamRandomizer_o5h5d")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="Fireballs" type="GPUParticles3D" parent="." unique_id=1241302511]
+emitting = false
+amount = 10
+lifetime = 0.9
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_4437r")
+draw_pass_1 = SubResource("QuadMesh_voi2u")
+
+[node name="Shock" type="GPUParticles3D" parent="." unique_id=1059937427]
+material_override = SubResource("StandardMaterial3D_iou1h")
+emitting = false
+amount = 1
+lifetime = 0.3
+one_shot = true
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_nfuqh")
+draw_pass_1 = SubResource("SphereMesh_u5om1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=239795536]
+libraries/ = SubResource("AnimationLibrary_hb1ae")

@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://y1b48j0beotc"]
+
+[ext_resource type="Script" uid="uid://b7ltqrcni481d" path="res://scripts/particle_spawner.gd" id="1_4ga2o"]
+[ext_resource type="PackedScene" uid="uid://c1qm1skk3kua3" path="res://scenes/heart_explosion.tscn" id="2_g6kvg"]
+
+[node name="Node2D" type="Node2D" unique_id=1640698744]
+
+[node name="ParticleSpawner" type="Node2D" parent="." unique_id=1548983883]
+script = ExtResource("1_4ga2o")
+vfx_scene = ExtResource("2_g6kvg")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1697456834]

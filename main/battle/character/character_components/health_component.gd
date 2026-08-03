@@ -3,6 +3,8 @@ class_name HealthComponent extends Sprite3D
 @onready var bar = $SubViewport/ProgressBar
 @onready var value_display = $SubViewport/ProgressBar/ValueDisplay
 @onready var change_display = $SubViewport/ChangeDisplay
+@onready var change_anim: AnimationPlayer = $SubViewport/ChangeDisplay/AnimationPlayer
+
 
 @onready var status_icons = $SubViewport/StatusIcons
 
@@ -16,7 +18,6 @@ signal effect_triggered
 
 var devouring_threshold: float
 var dead: bool = false
-var tweening_change_display: bool = false
 var change_display_value: int = 0
 
 var status_effects: Array[StatusEffect]
@@ -43,9 +44,11 @@ func get_health() -> int:
 
 func take_damage(value: int, attacker: BattleCharacter = parent, custom_color: Color = Color.RED) -> void:
 	var final_value = -value
-	if has_effect("Vulnerable"):
-		final_value = int(final_value * 1.5)
-	if attacker != parent && (attacker.health.has_effect("Burn") or has_effect("Defend")):
+	if has_effect("Insecure"):
+		final_value = int(final_value * 1.25)
+	if attacker != parent && attacker.health.has_effect("Burn"):
+		final_value = int(final_value * 0.5)
+	if has_effect("Defend"):
 		final_value = int(final_value * 0.5)
 	bar.value += final_value
 	main.cam.shake() ## Because camera shake only when damage is taken, but damage anim can trigger without damage
@@ -129,10 +132,11 @@ func burn():
 	effect_triggered.emit()
 	return
 
-func damage_anim(color: Color):
+func damage_anim(color: Color = Color.DARK_RED):
 	parent.visual.shake()
-	damage_anim_tween = get_tree().create_tween()
-	damage_anim_tween.tween_property(sprite, "modulate", Color.WHITE, 1.0 / Methods.anim_speed).from(color)
+	if not dead:
+		damage_anim_tween = get_tree().create_tween()
+		damage_anim_tween.tween_property(sprite, "modulate", Color.WHITE, 1.0 / Methods.anim_speed).from(color)
 
 func tween_change_display(value):
 	health_changed.emit()
@@ -144,15 +148,14 @@ func tween_change_display(value):
 	else:
 		change_display.modulate = Color.GREEN
 		change_display.text = " +" + str(change_display_value) + " HP"
-	var tween = get_tree().create_tween()
-	tween.set_ease(Tween.EASE_OUT)
-	tween.set_trans(Tween.TRANS_EXPO)
-	tween.tween_property(change_display, "scale", Vector2(1.3, 1.3), 0.3 / Methods.anim_speed).from(Vector2(1.0, 1.0))
-	tween.tween_property(change_display, "scale", Vector2(1.0, 1.0), 0.3 / Methods.anim_speed)
-	tween.tween_property(change_display, "modulate", Color(change_display.modulate, 0), 1 / Methods.anim_speed)
-	await tween.finished
+	change_anim.stop()
+	change_anim.play("display")
+
+
+func clear_display() -> void:
 	change_display.hide()
 	change_display_value = 0
+	
 
 func manage_stylebox_color():
 	if (bar.value - Global.sav.skills_data["Devour"][0]) <= devouring_threshold:

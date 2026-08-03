@@ -8,6 +8,7 @@
 [ext_resource type="Shader" uid="uid://ce3e5bbugj1q7" path="res://assets/overworld/effects/highlight.gdshader" id="5_u36u0"]
 [ext_resource type="PackedScene" uid="uid://d3c7hfp0qwt6c" path="res://characters/gob/gob.tscn" id="5_xy5dt"]
 [ext_resource type="PackedScene" uid="uid://bsce3vhrswx5m" path="res://characters/tips/tips.tscn" id="6_8evj3"]
+[ext_resource type="PackedScene" uid="uid://b2n880pn2htg0" path="res://characters/poster.tscn" id="9_htc4s"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_htc4s"]
 viewport_path = NodePath("Sprite/SubViewport")
@@ -88,34 +89,22 @@ texture = ExtResource("3_b8emr")
 [node name="Gob" parent="." unique_id=882208346 instance=ExtResource("5_xy5dt")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -5.525, 0.731, -8.1)
 
-[node name="Sprite" parent="Gob" index="0"]
+[node name="Sprite" parent="Gob" index="0" unique_id=873273356]
 texture = SubResource("ViewportTexture_htc4s")
 
-[node name="Highlight" parent="Gob/Sprite/SubViewport/Sprite2D" index="0"]
+[node name="Highlight" parent="Gob/Sprite/SubViewport/Sprite2D" parent_id_path=PackedInt32Array(882208346, 1977131826) index="0" unique_id=601143811]
 material = SubResource("ShaderMaterial_7ri7k")
 
 [node name="Tips" parent="." unique_id=1538832114 instance=ExtResource("6_8evj3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8884, 0.23253, -8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.618131, -0.053430915, -8)
 
-[node name="Sprite" parent="Tips" index="0"]
+[node name="Sprite" parent="Tips" index="0" unique_id=1887729240]
 texture = SubResource("ViewportTexture_3w0op")
 
-[node name="Highlight" parent="Tips/Sprite/SubViewport/Sprite2D" index="0"]
+[node name="Highlight" parent="Tips/Sprite/SubViewport/Sprite2D" parent_id_path=PackedInt32Array(1538832114, 1182290728) index="0" unique_id=1514708243]
 material = SubResource("ShaderMaterial_ppbh6")
 
 [node name="ArrowManager" parent="." unique_id=1160439225 instance=ExtResource("4_jeymx")]
-
-[node name="UpArrow" parent="ArrowManager" index="0" unique_id=462240817]
-destination = ""
-show_condition = ""
-
-[node name="DownArrow" parent="ArrowManager" index="1" unique_id=1785677814]
-destination = ""
-show_condition = ""
-
-[node name="LeftArrow" parent="ArrowManager" index="2" unique_id=612731789]
-destination = ""
-show_condition = ""
 
 [node name="RightArrow" parent="ArrowManager" index="3" unique_id=2000443815]
 destination = "sewers"
@@ -132,7 +121,22 @@ texture = SubResource("ViewportTexture_4808o")
 [node name="Highlight" parent="Rat/Sprite/SubViewport/Sprite2D" parent_id_path=PackedInt32Array(1489711793, 1123461739) index="0" unique_id=1323137183]
 material = SubResource("ShaderMaterial_hf5it")
 
+[node name="Poster" parent="." unique_id=1621675148 instance=ExtResource("9_htc4s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.417, 2.090869, -7.9)
+
+[node name="Sprite3D" parent="Poster" index="0" unique_id=1795430473]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 7.0055437, 0, 0)
+modulate = Color(0.75, 0.75, 0.75, 1)
+
+[node name="Poster2" parent="." unique_id=1326159312 instance=ExtResource("9_htc4s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.569439, 2.090869, -7.9)
+
+[node name="Sprite3D" parent="Poster2" index="0" unique_id=1795430473]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -4.005165, 1.4653797, 0)
+
 [editable path="Gob"]
 [editable path="Tips"]
 [editable path="ArrowManager"]
 [editable path="Rat"]
+[editable path="Poster"]
+[editable path="Poster2"]

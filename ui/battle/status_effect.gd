@@ -37,13 +37,16 @@ func remove_effect():
 	if name == "Goop":
 		target.parent.speed_mult += 0.3
 		target.parent.turn.update_speed()
-	elif name == "Haste":
+	elif name == "Bless":
 		target.parent.speed_mult -= 0.3
 		target.parent.turn.update_speed()
 	get_icon().hide()
 	target.status_effects.erase(self)
 	queue_free()
 	return
+
+func is_negative():
+	return true if name in ["Goop", "Poison", "Burn", "Frostbite", "Insecure"] else false
 
 func get_icon() -> Panel:
 	return target.status_icons.find_child(name, false)

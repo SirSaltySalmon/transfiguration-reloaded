@@ -4,12 +4,7 @@ extends StaticBody3D
 
 @export var direction : String
 @export var destination : String
-@export var resource : String
 @export var show_condition : String
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass
 
 func initialize_arrow():
 	if show_condition and destination:
@@ -20,9 +15,6 @@ func initialize_arrow():
 	else:
 		hide()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
 
 func highlight():
 	if !outline.visible:
@@ -35,7 +27,7 @@ func unhighlight():
 	
 func interact():
 	if not Methods.is_cutscene_playing() and not DialogueManager.is_active and visible:
-		Broadcaster.bc_move_to_area(destination, resource, direction)
+		Broadcaster.bc_move_to_area(destination, Methods.area_resource_dict[destination], direction)
 	
 # Function that takes a string condition and evaluates it as a boolean expression
 func evaluate_condition(input: String) -> bool:

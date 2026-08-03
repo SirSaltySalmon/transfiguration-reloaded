@@ -2,11 +2,13 @@ extends StaticBody3D
 
 class_name Character
 
-@onready var sprite = $Sprite
-@onready var highlight_effect = $Sprite/SubViewport/Sprite2D/Highlight
-@onready var brighten_effect = $Sprite/SubViewport/Sprite2D/Brighten
+@export var interactible := true
 
-@export var dialogue : DialogueResource
+@onready var sprite = $Sprite
+@onready var highlight_effect = $Sprite/SubViewport/Sprite2D/Highlight if interactible else null
+@onready var brighten_effect = $Sprite/SubViewport/Sprite2D/Brighten if interactible else null
+
+@export var dialogue_res : DialogueResource
 @export var zoom : int = -2
 @export var offset : int = 0
 
@@ -29,3 +31,11 @@ func normal_init():
 
 func interact():
 	pass
+
+func trigger_dialogue(title):
+	DialogueManager.show_dialogue_balloon(dialogue_res, title)
+
+func dialogue(title):
+	trigger_dialogue(title)
+	await DialogueManager.dialogue_ended
+	return

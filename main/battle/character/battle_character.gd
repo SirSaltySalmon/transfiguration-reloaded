@@ -3,6 +3,8 @@ class_name BattleCharacter
 
 @export var battle_id: String
 @export var ally: bool
+@export var skill_component: SkillComponent
+@export var basic_attack_chance := 1.0
 
 @onready var sprite = $CharacterVisual/Sprite
 @onready var health: HealthComponent = $HealthComponent
@@ -58,3 +60,23 @@ func use_defend():
 	health.add_effect("Defend", 1.0)
 	await start_action("Defend")
 	Broadcaster.action_over.emit()
+
+func ai_action():
+	if randf() <= basic_attack_chance:
+		var targets
+		if ally:
+			targets = main.get_alive_enemies()
+		else:
+			targets = main.get_alive_allies()
+		use_basic_attack(targets.pick_random())
+	else:
+		skill_action()
+
+func skill_action():
+	## Customize via polymorphism for skilled characters
+	var targets
+	if ally:
+		targets = main.get_alive_enemies()
+	else:
+		targets = main.get_alive_allies()
+	use_basic_attack(targets.pick_random())

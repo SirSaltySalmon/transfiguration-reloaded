@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cofv6hjk51ptu" path="res://ui/overworld/arrow_manager.tscn" id="4_unyr1"]
 [ext_resource type="PackedScene" uid="uid://caqf04g6pdks6" path="res://characters/dead_guy/dead_guy.tscn" id="5_igimx"]
 [ext_resource type="PackedScene" uid="uid://dlfguy7fwyy6r" path="res://characters/slime/slime.tscn" id="6_66aq6"]
+[ext_resource type="PackedScene" uid="uid://b2n880pn2htg0" path="res://characters/poster.tscn" id="8_fvc14"]
 
 [node name="Prison" type="Node3D" unique_id=993638934]
 script = ExtResource("1_k0ghv")
@@ -32,25 +33,26 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -1.18389, -3.4584053, -7.2265
 
 [node name="ArrowManager" parent="." unique_id=903147584 instance=ExtResource("4_unyr1")]
 
-[node name="UpArrow" parent="ArrowManager" index="0" unique_id=462240817]
-destination = ""
-show_condition = ""
-
-[node name="DownArrow" parent="ArrowManager" index="1" unique_id=1785677814]
-destination = ""
-show_condition = ""
-
 [node name="LeftArrow" parent="ArrowManager" index="2" unique_id=612731789]
 destination = "sewers"
 resource = "res://main/overworld/areas/sewers.tscn"
 show_condition = "Global.sav.size >= 2"
 
-[node name="RightArrow" parent="ArrowManager" index="3" unique_id=2000443815]
-destination = ""
-resource = ""
-show_condition = ""
+[node name="Poster" parent="." unique_id=1621675148 instance=ExtResource("8_fvc14")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.417, 2.090869, -7.9)
 
-[node name="Slime" parent="." unique_id=798157087 groups=["cutscenes1"] instance=ExtResource("6_66aq6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.971711, -2.8317184, -6.99845)
+[node name="Sprite3D" parent="Poster" index="0" unique_id=1795430473]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 3.8405547, -0.8384402, 0)
+
+[node name="Poster2" parent="." unique_id=741770980 instance=ExtResource("8_fvc14")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.417, 2.090869, -7.9)
+
+[node name="Sprite3D" parent="Poster2" index="0" unique_id=1795430473]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 5.409212, 0, 0)
+
+[node name="Slime" parent="." unique_id=1560939899 instance=ExtResource("6_66aq6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.971711, -2.5277286, -6.99845)
 
 [editable path="ArrowManager"]
+[editable path="Poster"]
+[editable path="Poster2"]

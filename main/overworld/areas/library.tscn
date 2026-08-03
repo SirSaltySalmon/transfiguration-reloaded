@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://h1poi1wqxoap" path="res://characters/rat/rat.tscn" id="3_32245"]
 [ext_resource type="PackedScene" uid="uid://dlfguy7fwyy6r" path="res://characters/slime/slime.tscn" id="4_psfmm"]
 [ext_resource type="PackedScene" uid="uid://cofv6hjk51ptu" path="res://ui/overworld/arrow_manager.tscn" id="5_10chv"]
+[ext_resource type="PackedScene" uid="uid://bvw83ybb7fxr3" path="res://characters/angel/angel.tscn" id="7_3a6sn"]
+[ext_resource type="PackedScene" uid="uid://b2n880pn2htg0" path="res://characters/poster.tscn" id="8_wc6i6"]
 [ext_resource type="PackedScene" uid="uid://bsmh1njvwdgin" path="res://characters/golem/golem_prison.tscn" id="10_32245"]
 
 [node name="Library" type="Node3D" unique_id=1628032535]
@@ -16,29 +18,38 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
 transparent = false
 shaded = true
 double_sided = false
+alpha_cut = 1
 texture = ExtResource("2_d5nr1")
 
 [node name="Rat" parent="." unique_id=953603744 groups=["cutscene_1"] instance=ExtResource("3_32245")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.15, -2.546, -7)
 
-[node name="Slime" parent="." unique_id=959136789 instance=ExtResource("4_psfmm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.971711, -2.8317184, -6.99845)
-
 [node name="ArrowManager" parent="." unique_id=271098037 instance=ExtResource("5_10chv")]
 
-[node name="UpArrow" parent="ArrowManager" index="0" unique_id=462240817]
-show_condition = "Global.sav.size >= 3"
-
 [node name="DownArrow" parent="ArrowManager" index="1" unique_id=1785677814]
-show_condition = "Global.sav.size >= 6"
-
-[node name="LeftArrow" parent="ArrowManager" index="2" unique_id=612731789]
+destination = "sewers"
+resource = "res://main/overworld/areas/sewers.tscn"
 show_condition = "Global.sav.size >= 1"
 
 [node name="RightArrow" parent="ArrowManager" index="3" unique_id=2000443815]
-show_condition = "Global.sav.size >= 1 and Global.sav.rat_talk_1"
+destination = "dining_hall"
+resource = "res://main/overworld/areas/dining_hall.tscn"
+show_condition = "Global.sav.size >= 4"
 
 [node name="Golem" parent="." unique_id=445330326 instance=ExtResource("10_32245")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 8.880471, -0.474005, -7.57225)
 
+[node name="Angel" parent="." unique_id=1489711793 instance=ExtResource("7_3a6sn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.594298, -1.1018138, -6)
+
+[node name="Poster" parent="." unique_id=1621675148 instance=ExtResource("8_wc6i6")]
+transform = Transform3D(0.99420923, 0.10746145, 0, -0.10746145, 0.99420923, 0, 0, 0, 1, -6.754336, 2.4153144, -7.99)
+
+[node name="Sprite3D" parent="Poster" index="0" unique_id=1795430473]
+modulate = Color(0.92, 0.8096, 0.8096, 1)
+
+[node name="Slime" parent="." unique_id=1560939899 instance=ExtResource("4_psfmm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.971711, -2.5277286, -6.99845)
+
 [editable path="ArrowManager"]
+[editable path="Poster"]

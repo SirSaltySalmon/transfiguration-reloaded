@@ -4,10 +4,15 @@ extends Node3D
 @export var ui: BattleUI
 @export var cam: BattleCam
 @export var anim: AnimationPlayer
+@export var rat_dance_anim: AnimationPlayer
 @export var skills: SkillCenter
 @export var target: TargetSelection
 @export var dialogue: DialogueResource
 @export var combat_balloon: PackedScene
+@export var env: WorldEnvironment
+
+const NORMAL_SKY = preload("uid://dgg3akic7hbow")
+const SIZE_7_SKY = preload("uid://b5c61blm4twps")
 
 var initializing_chars = false
 var loading_new_char = false
@@ -22,6 +27,8 @@ var all_chars: Array[BattleCharacter] = []
 
 var devoured_count := 0
 var kill_count := 0
+
+var escaped := false
 
 var current_char: BattleCharacter = null
 
@@ -64,6 +71,11 @@ func initialize_misc():
 		dialogue_queue.append("tutorial")
 	elif Global.battle_type == 3:
 		dialogue_queue.append("shadow_wizards")
+	
+	if Global.sav.size == 7:
+		env.environment = SIZE_7_SKY
+	else:
+		env.environment = NORMAL_SKY
 	return
 
 func load_chars(holders: Node, party: Array):
@@ -94,9 +106,14 @@ func initialize_allies():
 	%AllyHolders2.hide()
 	%AllyHolders3.hide()
 	
+	if Global.sav.size == 7:
+		%Rat.position.z = -13
+		%Angel.position.z = 13
+	
 	var size = str(Global.sav.bt_party.size())
 	var ally_holders = get_node("%AllyHolders" + size)
 	ally_holders.show()
+	
 	
 	await load_chars(ally_holders, Global.sav.bt_party)
 	
@@ -176,8 +193,7 @@ func action():
 		if first_player_turn:
 			first_player_turn = false
 	else:
-		current_char.use_basic_attack(target.random_target(get_alive_allies()))
-		## TODO: Make the actual enemy AI
+		current_char.ai_action()
 	return
 
 func _on_action_over():
@@ -186,7 +202,7 @@ func _on_action_over():
 	if get_alive_allies().is_empty():
 		lose()
 		return
-	if get_alive_enemies().is_empty():
+	if get_alive_enemies().is_empty() or escaped:
 		await cam.return_to_idle()
 		ui.display_move("")
 		win()
@@ -203,7 +219,15 @@ func lose():
 	Methods.return_to_overworld(false  )
 
 func win():
+	handle_win_flags()
+	rat_dance_anim.play("rat_dance")
 	anim.play("win_anim")
+
+func handle_win_flags():
+	if Global.battle_type == 2:
+		Global.sav.tutorial_fight_complete = true
+	elif Global.battle_type == 3:
+		Global.sav.shadow_wizards_defeated = true
 
 func wait_for_turn_ready():
 	while current_char == null:
@@ -229,11 +253,15 @@ func get_talker(talker: String) -> BattleCharacter:
 		if char.name == talker:
 			return char
 	return null
-	
+
+func queue_dialogue(code: String):
+	dialogue_queue.append(code)
+
 func dialogue_check():
 	if dialogue_queue.is_empty():
 		return
 	var title = dialogue_queue.pop_back()
+	
 	DialogueManager.show_dialogue_balloon_scene(combat_balloon, dialogue, title)
 	
 	await DialogueManager.dialogue_ended
@@ -242,6 +270,36 @@ func flavor_text_add():
 	if Global.battle_type == 2:
 		if first_player_turn:
 			flavor_queue = "Now let's see what he tastes like."
+	
+	if Global.battle_type == 3:
+		var has_insecure := false
+		for ally: BattleCharacter in get_alive_allies():
+			if ally.health.has_effect("Insecure"):
+				has_insecure = true
+				break
+		if has_insecure:
+			flavor_queue = "Insecure makes a character take more damage from all sources."
+	
+	if Global.sav.size == 7:
+		var has_burn := false
+		for enemy: BattleCharacter in get_alive_enemies():
+			if enemy.health.has_effect("Burn"):
+				has_burn = true
+				break
+		if has_burn:
+			flavor_queue = "Burn makes a character take damage each turn, and reduces the damage they inflict."
+	
+	if Global.battle_type == 4:
+		var has_frostbite := false
+		for ally: BattleCharacter in get_alive_allies():
+			if ally.health.has_effect("Frostbite"):
+				has_frostbite = true
+				break
+		if has_frostbite:
+			flavor_queue = "Frostbite prevents a character from using items."
+		
+		#TODO: Hannes is preparing a nasty attack... before Icefall and Moonbeam
+		pass
 		
 
 func flavor_text_check():

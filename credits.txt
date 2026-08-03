@@ -7,10 +7,6 @@ MUSIC
 SOUND EFFECTS
 -tba-
 
-ADDITIONAL ASSETS
-RPG Effects 64x64 by BDragon1727
-Pixel VFX Packs by Frostwindz on itch.io
-
 FONTS
 Roboto by Google Android Design
 Coolvetica by Typodermic Fonts
@@ -25,7 +21,12 @@ Maaack's Scene Loader by Maaack
 Shaker by Eneskp
 
 ASSETS USED:
+VFX Packs by Pimen on itch.io
 "Weathered Round Table  Metal Top & Wooden Legs" (https://skfb.ly/pArZE) by Nikoleta.Zhecheva is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+Iceberg by Poly by Google [CC-BY] via Poly Pizza
+RPG Effects 64x64 by BDragon1727
+Pixel VFX Packs by Frostwindz on itch.io
+
 
 DEDICATED TO
 My lovely patient friends and families who supported me through the hardest of times

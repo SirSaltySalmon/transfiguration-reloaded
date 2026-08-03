@@ -16,6 +16,9 @@ func _on_pressed():
 	if node == null:
 		return
 	var target = await main.target.select_target(node.get_target_choices(true), node.is_single_target)
+	if target is Array:
+		if target == []:
+			return
 	if target == null:
 		return
 	node.use(main.current_char, target)

@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://brvpcnyym41r6"]
+
+[ext_resource type="Texture2D" uid="uid://cfvb0mxtvlc8a" path="res://brackeys_particle_bundle/particles/alpha/spotlight_01_a.png" id="1_brsak"]
+
+[sub_resource type="Gradient" id="Gradient_3foej"]
+offsets = PackedFloat32Array(0.112977006, 0.27328235, 0.4278625)
+colors = PackedColorArray(0.7286116, 0.1600428, 0.18288821, 1, 0, 0, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1hq2f"]
+gradient = SubResource("Gradient_3foej")
+
+[sub_resource type="Curve" id="Curve_j1vqo"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.1717309, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_njai2"]
+curve = SubResource("Curve_j1vqo")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a2he4"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 98, 0)
+scale_min = 0.049999997
+scale_max = 0.29999998
+scale_curve = SubResource("CurveTexture_njai2")
+color_ramp = SubResource("GradientTexture1D_1hq2f")
+
+[node name="Node2D" type="Node2D" unique_id=149493700]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=970278249]
+amount = 60
+texture = ExtResource("1_brsak")
+lifetime = 2.0
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_a2he4")

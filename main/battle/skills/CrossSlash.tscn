@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://yk80050182ca"]
+
+[ext_resource type="Script" uid="uid://ka08y7wbt81b" path="res://main/battle/skills/cross_slash.gd" id="1_078jj"]
+[ext_resource type="Texture2D" uid="uid://brh2vslnh60pc" path="res://assets/battle/effects/sprite_sheets/Slash Sprite Sheet.png" id="2_078jj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ego2x"]
+atlas = ExtResource("2_078jj")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2e3m"]
+atlas = ExtResource("2_078jj")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tp7wt"]
+atlas = ExtResource("2_078jj")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pup50"]
+atlas = ExtResource("2_078jj")
+region = Rect2(0, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l36kv"]
+atlas = ExtResource("2_078jj")
+region = Rect2(0, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5r0bx"]
+atlas = ExtResource("2_078jj")
+region = Rect2(0, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s78mt"]
+atlas = ExtResource("2_078jj")
+region = Rect2(0, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hdtah"]
+atlas = ExtResource("2_078jj")
+region = Rect2(0, 448, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bf22g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ego2x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e2e3m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tp7wt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pup50")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l36kv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5r0bx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s78mt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hdtah")
+}],
+"loop": false,
+"name": &"cross_slash",
+"speed": 15.0
+}]
+
+[node name="CrossSlash" type="Node3D" unique_id=778247494 node_paths=PackedStringArray("effect_base")]
+script = ExtResource("1_078jj")
+id = "Cross Slash"
+effect_base = NodePath("Effect")
+
+[node name="Effect" type="AnimatedSprite3D" parent="." unique_id=129043845]
+transform = Transform3D(-5.2453663e-07, -12, -5.2453663e-07, 0, -5.2453663e-07, 12, -12, 5.2453663e-07, 2.2928226e-14, 0, 0, 0)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_bf22g")
+animation = &"cross_slash"
+frame = 7
+frame_progress = 1.0

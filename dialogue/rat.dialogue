@@ -1,21 +1,17 @@
 ~ rat_cutscene_1
 Rat: [i]Hey! What are you doing here?![/i]
 Rat: [i]Hide![/i]
-
 => END
 
 ~ rat_talk_1
-
 Rat: That was a close one. You need to be more careful from now on, okay?
 Rat: Ever since they arrived, the raiders have been [color=red]hunting[/color] us down and [color=red]stealing[/color] our food.
 	[i]Despicable...[/i]
-Rat: Even I'm struggling to just get by with them messing everything up.
-Rat: Like, I've got a family to feed, man! You feel me?
-
+Rat: I'm struggling to just get by with them messing everything up.
+Rat: Like, I've got pup support to pay, man! You feel me?
 => END
 
 ~ rat_talk_2
-
 Rat: ...Didn't know slimes can eat corpses like that. Impressive...
 Rat: Did you get a bit bigger as well? [i]Must have been nutritious.[/i]
 	You look quite a bit [color=yellow]stronger[/color] than before...
@@ -24,5 +20,33 @@ Rat: You and I, if we work together... we might be able to take down a few raide
 Rat: Then, you can [color=red]devour[/color] their corpses.
 	Eventually, [color=orange]you'll become fearsome enough to chase them away![/color]
 Rat: Come on, let me join you! Let's take back our home!
+=> END
 
+~ rat_suggests_roaming
+Rat: Look at you, big guy! Does human taste good?
+Rat: [color=yellow]Running around between areas[/color] will surely get us in contact with more.
+	Not as easy to hide when you're [color=cyan]bigger[/color]...
+Rat: So, we better be careful from now on.
+	...Unless that's what you want...
+=> END
+
+~ rat_comments_on_grimoire
+# Make sure NOT in library
+Rat: Neither of us know how to read, so I'm actually not sure why we bought that grimoire.
+Rat: But there's a library upstairs. I'm sure we can find someone to help!
+=> END
+
+~ rat_comments_on_posters
+Rat: Hey, check it out! We're famous! Our heroic acts have echoed across the lands.
+Rat: I bet that poster says something nice. If only I can read.
+Rat: Maybe my wife would actually want me back now. Do you think I should call her?
+- blob
+	Rat: Yeah, you're right. Probably not.
+- blob
+	Rat: Yeah, you're right. Probably not.
+=> END
+
+~ rat_size_7
+# IF size 7, ONLY says this
+Rat:  
 => END

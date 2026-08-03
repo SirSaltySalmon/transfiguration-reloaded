@@ -21,8 +21,9 @@ func _ready():
 	if not Methods.current_scene is BattleScene:
 		printerr("SkillComponent: Not in battle scene")
 		return
-	Methods.current_scene.skills.load_skill_node(skill_1)
-	Methods.current_scene.skills.load_skill_node(skill_2)
-	Methods.current_scene.skills.load_skill_node(skill_3)
-	Methods.current_scene.skills.load_skill_node(skill_4)
+	skills.append(Methods.current_scene.skills.load_skill_node(skill_1))
+	skills.append(Methods.current_scene.skills.load_skill_node(skill_2))
+	skills.append(Methods.current_scene.skills.load_skill_node(skill_3))
+	skills.append(Methods.current_scene.skills.load_skill_node(skill_4))
+	skills = skills.filter(func(value): return value != null)
 	

@@ -8,8 +8,6 @@
 [node name="DatingBalloon" type="CanvasLayer" unique_id=1742079667]
 layer = 100
 script = ExtResource("1_g70yo")
-next_action = null
-skip_action = null
 
 [node name="Balloon" type="Control" parent="." unique_id=1272784991]
 unique_name_in_owner = true
@@ -26,10 +24,10 @@ unique_name_in_owner = true
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
-offset_left = 51.0
-offset_top = 525.0
-offset_right = 1231.0
-offset_bottom = 659.0
+offset_left = 56.0
+offset_top = 583.0
+offset_right = 1236.0
+offset_bottom = 717.0
 grow_horizontal = 1
 size_flags_vertical = 3
 text = "WELCOME!!! TO THE LAIR!!! OF THE GREAT DRAGON JORIIIIIIIIIIIIII!!!!!!!!!!!"
@@ -42,10 +40,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -320.0
-offset_top = -250.0
-offset_right = 320.0
-offset_bottom = 154.0
+offset_left = -315.0
+offset_top = -192.0
+offset_right = 325.0
+offset_bottom = 212.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -64,6 +62,11 @@ text = "Yes"
 [node name="ResponseExample2" type="Button" parent="Balloon/Responses/ResponsesMenu" unique_id=781780563]
 layout_mode = 2
 text = "No"
+
+[node name="CharacterLabel" type="RichTextLabel" parent="." unique_id=2109076267]
+unique_name_in_owner = true
+offset_right = 40.0
+offset_bottom = 40.0
 
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
 [connection signal="response_selected" from="Balloon/Responses/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]

@@ -1,0 +1,934 @@
+[gd_scene format=3 uid="uid://dpfilv5g3s7lh"]
+
+[ext_resource type="PackedScene" uid="uid://cs6sa16vx7mf7" path="res://ui/overworld/overworld_ui.tscn" id="1_4ujin"]
+[ext_resource type="Script" uid="uid://carc72pw3eomp" path="res://main/overworld/shop_actual.gd" id="1_lv0ww"]
+[ext_resource type="Texture2D" uid="uid://bpaj1x2bxm2vx" path="res://assets/overworld/areas/shop_actual.png" id="1_rnel3"]
+[ext_resource type="Texture2D" uid="uid://by1h5j21xgyx4" path="res://assets/battle/ui/items_sheet.png" id="3_68ch0"]
+[ext_resource type="Script" uid="uid://dqlvsbfvvwe86" path="res://main/overworld/camera_2d.gd" id="3_lv0ww"]
+[ext_resource type="FontFile" uid="uid://0lfejob7te8f" path="res://assets/fonts/Belgiano Serif 2.ttf" id="4_phjr8"]
+[ext_resource type="Shader" uid="uid://d03mvyhqeq5qd" path="res://assets/overworld/effects/scroll.gdshader" id="4_xb08u"]
+[ext_resource type="Texture2D" uid="uid://cewy6p1p17yje" path="res://assets/battle/ui/circle2.png" id="5_u5aqj"]
+[ext_resource type="Script" uid="uid://cjtfhv6jgxokx" path="res://main/overworld/cured_ham_shop.gd" id="6_emsdc"]
+[ext_resource type="Texture2D" uid="uid://bkj5j1tyt1jao" path="res://assets/battle/ui/circle1.png" id="6_t0wup"]
+[ext_resource type="Script" uid="uid://cqudmxif4t1hr" path="res://main/overworld/flesh_shop.gd" id="7_rho47"]
+[ext_resource type="FontFile" uid="uid://665lgr82w7bu" path="res://assets/fonts/coolvetica rg.otf" id="7_xmlg1"]
+[ext_resource type="Script" uid="uid://310vcdqly68b" path="res://main/overworld/goats_blood.shop.gd" id="8_rho47"]
+[ext_resource type="Script" uid="uid://xrwry58ybqts" path="res://main/overworld/health_upgrade.gd" id="9_xinv6"]
+[ext_resource type="Script" uid="uid://bsoooqjafifpy" path="res://main/overworld/relentless_ridicule_shop.gd" id="10_ppn3x"]
+[ext_resource type="Script" uid="uid://pj53l6l7hl73" path="res://main/overworld/benevolence_shop.gd" id="11_yo1ir"]
+[ext_resource type="Script" uid="uid://cipek7sa5cy7k" path="res://main/overworld/repellant.gd" id="12_rniwa"]
+[ext_resource type="Script" uid="uid://bs515be6msfrj" path="res://main/overworld/leave_shop.gd" id="14_kvyjf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8eb04"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nocvi"]
+texture = ExtResource("5_u5aqj")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2wxuv"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nk034"]
+texture = ExtResource("6_t0wup")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8eb04"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ika3b"]
+bg_color = Color(0, 0, 0, 0.5882353)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hwrq0"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Theme" id="Theme_m7ycb"]
+default_font_size = 32
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_disabled_color = Color(0.501407, 0.501406, 0.501406, 1)
+Button/colors/font_focus_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_pressed_color = Color(0.804743, 0.804743, 0.804743, 1)
+Button/colors/font_outline_color = Color(1, 1, 1, 0.392157)
+Button/colors/font_pressed_color = Color(0.8, 0.8, 0.8, 0.784314)
+Button/constants/align_to_largest_stylebox = 0
+Button/constants/h_separation = 0
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 10
+Button/fonts/font = ExtResource("4_phjr8")
+Button/styles/disabled = null
+Button/styles/focus = SubResource("StyleBoxEmpty_8eb04")
+Button/styles/hover = SubResource("StyleBoxTexture_nocvi")
+Button/styles/normal = SubResource("StyleBoxEmpty_2wxuv")
+Button/styles/pressed = SubResource("StyleBoxTexture_nk034")
+Panel/styles/panel = SubResource("StyleBoxFlat_8eb04")
+ProgressBar/colors/font_color = Color(0.95, 0.95, 0.95, 1)
+ProgressBar/colors/font_outline_color = Color(0, 0, 0, 1)
+ProgressBar/constants/outline_size = 0
+ProgressBar/fonts/font = ExtResource("7_xmlg1")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_ika3b")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_hwrq0")
+RichTextLabel/colors/default_color = Color(1, 1, 1, 1)
+RichTextLabel/colors/font_outline_color = Color(1, 1, 1, 0.235294)
+RichTextLabel/colors/font_selected_color = Color(0, 0, 0, 1)
+RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 1)
+RichTextLabel/colors/selection_color = Color(0, 0, 0, 1)
+RichTextLabel/colors/table_border = Color(0, 0, 0, 1)
+RichTextLabel/colors/table_even_row_bg = Color(0, 0, 0, 1)
+RichTextLabel/colors/table_odd_row_bg = Color(0, 0, 0, 1)
+RichTextLabel/constants/line_separation = 0
+RichTextLabel/constants/outline_size = 5
+RichTextLabel/constants/shadow_offset_x = 0
+RichTextLabel/constants/shadow_offset_y = 0
+RichTextLabel/constants/shadow_outline_size = 0
+RichTextLabel/constants/table_h_separation = 0
+RichTextLabel/constants/table_v_separation = 0
+RichTextLabel/constants/text_highlight_h_padding = 0
+RichTextLabel/constants/text_highlight_v_padding = 0
+RichTextLabel/font_sizes/bold_font_size = 16
+RichTextLabel/font_sizes/bold_italics_font_size = 16
+RichTextLabel/font_sizes/italics_font_size = 16
+RichTextLabel/font_sizes/mono_font_size = 16
+RichTextLabel/font_sizes/normal_font_size = 16
+RichTextLabel/fonts/bold_font = null
+RichTextLabel/fonts/bold_italics_font = null
+RichTextLabel/fonts/italics_font = null
+RichTextLabel/fonts/mono_font = null
+RichTextLabel/fonts/normal_font = ExtResource("7_xmlg1")
+RichTextLabel/styles/focus = null
+RichTextLabel/styles/normal = null
+
+[sub_resource type="Animation" id="Animation_lv0ww"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OverworldUI/ColorRect:color:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.25),
+"update": 0,
+"values": [Vector2(0, 500)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Flavour:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 0.5)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Flavour:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(910.99994, -42)]
+}
+
+[sub_resource type="Animation" id="Animation_uevn1"]
+resource_name = "enter"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [Vector2(5, 5), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OverworldUI/ColorRect:color:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5333333),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [Vector2(0, 500), Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Flavour:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.5, 0.5)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Flavour:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [Vector2(700, -100), Vector2(910.99994, -42)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_emsdc"]
+_data = {
+&"RESET": SubResource("Animation_lv0ww"),
+&"enter": SubResource("Animation_uevn1")
+}
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_xb08u"]
+viewport_path = NodePath("Flavour/SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xb08u"]
+resource_local_to_scene = true
+shader = ExtResource("4_xb08u")
+shader_parameter/scroll_speed = 0.08
+shader_parameter/angle_degrees = 180.00000855
+shader_parameter/repeat_x = 1.0
+shader_parameter/repeat_y = 1.0
+shader_parameter/row_offset = 1.0
+shader_parameter/texture_to_scroll = SubResource("ViewportTexture_xb08u")
+
+[node name="ShopActual" type="Node2D" unique_id=259750750]
+script = ExtResource("1_lv0ww")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=645767689]
+position = Vector2(704, 366.99997)
+scale = Vector2(0.68, 0.68)
+texture = ExtResource("1_rnel3")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=697801070 node_paths=PackedStringArray("main")]
+position = Vector2(640, 360)
+position_smoothing_enabled = true
+script = ExtResource("3_lv0ww")
+main = NodePath("..")
+MAX_SCROLLING_SPEED = 50.0
+ACCEL = 50.0
+
+[node name="Control" type="Control" parent="." unique_id=1847303206]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 500.0
+offset_bottom = 500.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = SubResource("Theme_m7ycb")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control" unique_id=649551849]
+custom_minimum_size = Vector2(700, 650)
+layout_mode = 0
+offset_left = 64.0
+offset_top = 32.0
+offset_right = 764.0
+offset_bottom = 682.0
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/ScrollContainer" unique_id=1071955060]
+custom_minimum_size = Vector2(700, 650)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="CuredHam" type="HBoxContainer" parent="Control/ScrollContainer/VBoxContainer" unique_id=738225091]
+custom_minimum_size = Vector2(700, 150)
+layout_mode = 2
+
+[node name="ItemThumbnail" type="Panel" parent="Control/ScrollContainer/VBoxContainer/CuredHam" unique_id=301044088]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Texture" type="Sprite2D" parent="Control/ScrollContainer/VBoxContainer/CuredHam/ItemThumbnail" unique_id=1802114584]
+scale = Vector2(0.29999998, 0.3)
+texture = ExtResource("3_68ch0")
+centered = false
+hframes = 5
+frame = 1
+
+[node name="ItemDescription" type="Panel" parent="Control/ScrollContainer/VBoxContainer/CuredHam" unique_id=101461741]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/ScrollContainer/VBoxContainer/CuredHam/ItemDescription" unique_id=1988673968]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/ScrollContainer/VBoxContainer/CuredHam/ItemDescription/MarginContainer" unique_id=1955761699]
+layout_mode = 2
+mouse_filter = 1
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Cured Ham
+5 Moneys
+In Stock: Always
+"
+fit_content = true
+
+[node name="BuyButton" type="Panel" parent="Control/ScrollContainer/VBoxContainer/CuredHam" unique_id=846115329]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Button" type="Button" parent="Control/ScrollContainer/VBoxContainer/CuredHam/BuyButton" unique_id=1109168817]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -19.5
+offset_right = 30.0
+offset_bottom = 19.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "BUY"
+script = ExtResource("6_emsdc")
+cost = 5
+description = "Heals 50 HP to all allies when used in combat"
+
+[node name="Flesh" type="HBoxContainer" parent="Control/ScrollContainer/VBoxContainer" unique_id=1640385460]
+custom_minimum_size = Vector2(700, 150)
+layout_mode = 2
+
+[node name="ItemThumbnail" type="Panel" parent="Control/ScrollContainer/VBoxContainer/Flesh" unique_id=682759038]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Texture" type="Sprite2D" parent="Control/ScrollContainer/VBoxContainer/Flesh/ItemThumbnail" unique_id=780890553]
+scale = Vector2(0.29999998, 0.3)
+texture = ExtResource("3_68ch0")
+centered = false
+hframes = 5
+frame = 2
+
+[node name="ItemDescription" type="Panel" parent="Control/ScrollContainer/VBoxContainer/Flesh" unique_id=1815852802]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/ScrollContainer/VBoxContainer/Flesh/ItemDescription" unique_id=594517676]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/ScrollContainer/VBoxContainer/Flesh/ItemDescription/MarginContainer" unique_id=1196710265]
+layout_mode = 2
+mouse_filter = 1
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Flesh
+5 Moneys
+In Stock: Always
+"
+fit_content = true
+
+[node name="BuyButton" type="Panel" parent="Control/ScrollContainer/VBoxContainer/Flesh" unique_id=976738977]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Button" type="Button" parent="Control/ScrollContainer/VBoxContainer/Flesh/BuyButton" unique_id=973121680]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -19.5
+offset_right = 30.0
+offset_bottom = 19.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "BUY"
+script = ExtResource("7_rho47")
+cost = 5
+description = "Heals 100 HP to one ally when used in combat"
+
+[node name="GoatsBlood" type="HBoxContainer" parent="Control/ScrollContainer/VBoxContainer" unique_id=769493727]
+custom_minimum_size = Vector2(700, 150)
+layout_mode = 2
+
+[node name="ItemThumbnail" type="Panel" parent="Control/ScrollContainer/VBoxContainer/GoatsBlood" unique_id=1309603206]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Texture" type="Sprite2D" parent="Control/ScrollContainer/VBoxContainer/GoatsBlood/ItemThumbnail" unique_id=1700370540]
+scale = Vector2(0.29999998, 0.3)
+texture = ExtResource("3_68ch0")
+centered = false
+hframes = 5
+frame = 3
+
+[node name="ItemDescription" type="Panel" parent="Control/ScrollContainer/VBoxContainer/GoatsBlood" unique_id=192432144]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/ScrollContainer/VBoxContainer/GoatsBlood/ItemDescription" unique_id=858641467]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/ScrollContainer/VBoxContainer/GoatsBlood/ItemDescription/MarginContainer" unique_id=1004582786]
+layout_mode = 2
+mouse_filter = 1
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Goat's Blood
+10 Moneys
+In Stock: Always
+"
+fit_content = true
+
+[node name="BuyButton" type="Panel" parent="Control/ScrollContainer/VBoxContainer/GoatsBlood" unique_id=1769622175]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Button" type="Button" parent="Control/ScrollContainer/VBoxContainer/GoatsBlood/BuyButton" unique_id=1264758980]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -19.5
+offset_right = 30.0
+offset_bottom = 19.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "BUY"
+script = ExtResource("8_rho47")
+cost = 10
+description = "Revives a dead ally to half health when used in combat"
+
+[node name="HealthUpgrade" type="HBoxContainer" parent="Control/ScrollContainer/VBoxContainer" unique_id=318886462]
+custom_minimum_size = Vector2(700, 150)
+layout_mode = 2
+
+[node name="ItemThumbnail" type="Panel" parent="Control/ScrollContainer/VBoxContainer/HealthUpgrade" unique_id=663989399]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Texture" type="Sprite2D" parent="Control/ScrollContainer/VBoxContainer/HealthUpgrade/ItemThumbnail" unique_id=21427994]
+scale = Vector2(0.29999998, 0.3)
+texture = ExtResource("3_68ch0")
+centered = false
+hframes = 5
+
+[node name="ItemDescription" type="Panel" parent="Control/ScrollContainer/VBoxContainer/HealthUpgrade" unique_id=1961214391]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/ScrollContainer/VBoxContainer/HealthUpgrade/ItemDescription" unique_id=578618793]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/ScrollContainer/VBoxContainer/HealthUpgrade/ItemDescription/MarginContainer" unique_id=2002014400]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/ScrollContainer/VBoxContainer/HealthUpgrade/ItemDescription/MarginContainer/VBoxContainer" unique_id=845273337]
+layout_mode = 2
+mouse_filter = 1
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Health Upgrade
+10 Moneys"
+fit_content = true
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Control/ScrollContainer/VBoxContainer/HealthUpgrade/ItemDescription/MarginContainer/VBoxContainer" unique_id=1398557650]
+layout_mode = 2
+mouse_filter = 1
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "In Stock: 1"
+fit_content = true
+
+[node name="BuyButton" type="Panel" parent="Control/ScrollContainer/VBoxContainer/HealthUpgrade" unique_id=434605707]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Button" type="Button" parent="Control/ScrollContainer/VBoxContainer/HealthUpgrade/BuyButton" unique_id=159809768 node_paths=PackedStringArray("description_label", "in_stock_label")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -19.5
+offset_right = 30.0
+offset_bottom = 19.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "BUY"
+script = ExtResource("9_xinv6")
+cost = 10
+stock_id = "Health Upgrade"
+description_label = NodePath("../../ItemDescription/MarginContainer/VBoxContainer/RichTextLabel")
+in_stock_label = NodePath("../../ItemDescription/MarginContainer/VBoxContainer/RichTextLabel2")
+description = "Permanently raise max HP for all current and future allies"
+
+[node name="RelentlessRidicule" type="HBoxContainer" parent="Control/ScrollContainer/VBoxContainer" unique_id=921265770]
+custom_minimum_size = Vector2(700, 150)
+layout_mode = 2
+
+[node name="ItemThumbnail" type="Panel" parent="Control/ScrollContainer/VBoxContainer/RelentlessRidicule" unique_id=697528862]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Texture" type="Sprite2D" parent="Control/ScrollContainer/VBoxContainer/RelentlessRidicule/ItemThumbnail" unique_id=1016597218]
+scale = Vector2(0.29999998, 0.3)
+texture = ExtResource("3_68ch0")
+centered = false
+hframes = 5
+
+[node name="ItemDescription" type="Panel" parent="Control/ScrollContainer/VBoxContainer/RelentlessRidicule" unique_id=341591770]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/ScrollContainer/VBoxContainer/RelentlessRidicule/ItemDescription" unique_id=187087691]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/ScrollContainer/VBoxContainer/RelentlessRidicule/ItemDescription/MarginContainer" unique_id=1263803196]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/ScrollContainer/VBoxContainer/RelentlessRidicule/ItemDescription/MarginContainer/VBoxContainer" unique_id=824963819]
+layout_mode = 2
+mouse_filter = 1
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Relentless Ridicule
+15 Moneys"
+fit_content = true
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Control/ScrollContainer/VBoxContainer/RelentlessRidicule/ItemDescription/MarginContainer/VBoxContainer" unique_id=112742336]
+layout_mode = 2
+mouse_filter = 1
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "In Stock: 1"
+fit_content = true
+
+[node name="BuyButton" type="Panel" parent="Control/ScrollContainer/VBoxContainer/RelentlessRidicule" unique_id=865279289]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Button" type="Button" parent="Control/ScrollContainer/VBoxContainer/RelentlessRidicule/BuyButton" unique_id=618253095 node_paths=PackedStringArray("description_label", "in_stock_label")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -19.5
+offset_right = 30.0
+offset_bottom = 19.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "BUY"
+script = ExtResource("10_ppn3x")
+cost = 15
+stock_id = "Relentless Ridicule"
+description_label = NodePath("../../ItemDescription/MarginContainer/VBoxContainer/RichTextLabel")
+in_stock_label = NodePath("../../ItemDescription/MarginContainer/VBoxContainer/RichTextLabel2")
+description = "Skill for Rat. Deals 20 DMG, victim takes 25% extra damage for 3 turns"
+
+[node name="Benevolence" type="HBoxContainer" parent="Control/ScrollContainer/VBoxContainer" unique_id=758587142]
+custom_minimum_size = Vector2(700, 150)
+layout_mode = 2
+
+[node name="ItemThumbnail" type="Panel" parent="Control/ScrollContainer/VBoxContainer/Benevolence" unique_id=679421893]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Texture" type="Sprite2D" parent="Control/ScrollContainer/VBoxContainer/Benevolence/ItemThumbnail" unique_id=322970643]
+scale = Vector2(0.29999998, 0.3)
+texture = ExtResource("3_68ch0")
+centered = false
+hframes = 5
+
+[node name="ItemDescription" type="Panel" parent="Control/ScrollContainer/VBoxContainer/Benevolence" unique_id=920755918]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/ScrollContainer/VBoxContainer/Benevolence/ItemDescription" unique_id=672381563]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/ScrollContainer/VBoxContainer/Benevolence/ItemDescription/MarginContainer" unique_id=1402021977]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/ScrollContainer/VBoxContainer/Benevolence/ItemDescription/MarginContainer/VBoxContainer" unique_id=2094665454]
+layout_mode = 2
+mouse_filter = 1
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Benevolence
+15 Moneys"
+fit_content = true
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Control/ScrollContainer/VBoxContainer/Benevolence/ItemDescription/MarginContainer/VBoxContainer" unique_id=1235749142]
+layout_mode = 2
+mouse_filter = 1
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "In Stock: 1"
+fit_content = true
+
+[node name="BuyButton" type="Panel" parent="Control/ScrollContainer/VBoxContainer/Benevolence" unique_id=1533812427]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Button" type="Button" parent="Control/ScrollContainer/VBoxContainer/Benevolence/BuyButton" unique_id=87790330 node_paths=PackedStringArray("description_label", "in_stock_label")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -19.5
+offset_right = 30.0
+offset_bottom = 19.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "BUY"
+script = ExtResource("11_yo1ir")
+cost = 15
+stock_id = "Benevolence"
+description_label = NodePath("../../ItemDescription/MarginContainer/VBoxContainer/RichTextLabel")
+in_stock_label = NodePath("../../ItemDescription/MarginContainer/VBoxContainer/RichTextLabel2")
+description = "Skill for Angel. Deals DMG equal to current HP to all enemies"
+
+[node name="Repellant" type="HBoxContainer" parent="Control/ScrollContainer/VBoxContainer" unique_id=1107253839]
+custom_minimum_size = Vector2(700, 150)
+layout_mode = 2
+
+[node name="ItemThumbnail" type="Panel" parent="Control/ScrollContainer/VBoxContainer/Repellant" unique_id=2064875438]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Texture" type="Sprite2D" parent="Control/ScrollContainer/VBoxContainer/Repellant/ItemThumbnail" unique_id=258083707]
+scale = Vector2(0.29999998, 0.3)
+texture = ExtResource("3_68ch0")
+centered = false
+hframes = 5
+
+[node name="ItemDescription" type="Panel" parent="Control/ScrollContainer/VBoxContainer/Repellant" unique_id=1614941361]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/ScrollContainer/VBoxContainer/Repellant/ItemDescription" unique_id=437488759]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/ScrollContainer/VBoxContainer/Repellant/ItemDescription/MarginContainer" unique_id=658125923]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/ScrollContainer/VBoxContainer/Repellant/ItemDescription/MarginContainer/VBoxContainer" unique_id=1517470835]
+layout_mode = 2
+mouse_filter = 1
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Repellant
+1 Money"
+fit_content = true
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Control/ScrollContainer/VBoxContainer/Repellant/ItemDescription/MarginContainer/VBoxContainer" unique_id=568688430]
+layout_mode = 2
+mouse_filter = 1
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "In Stock: 1"
+fit_content = true
+
+[node name="BuyButton" type="Panel" parent="Control/ScrollContainer/VBoxContainer/Repellant" unique_id=2146958463]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Button" type="Button" parent="Control/ScrollContainer/VBoxContainer/Repellant/BuyButton" unique_id=668103893 node_paths=PackedStringArray("description_label", "in_stock_label")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -19.5
+offset_right = 30.0
+offset_bottom = 19.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "BUY"
+script = ExtResource("12_rniwa")
+cost = 1
+stock_id = "Repellant"
+description_label = NodePath("../../ItemDescription/MarginContainer/VBoxContainer/RichTextLabel")
+in_stock_label = NodePath("../../ItemDescription/MarginContainer/VBoxContainer/RichTextLabel2")
+description = "Avoid random encounters. Can be turned on and off freely"
+
+[node name="HoverItemDescription" type="Panel" parent="Control" unique_id=374562380]
+visible = false
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 0
+offset_left = 815.0
+offset_top = 424.0
+offset_right = 1179.0
+offset_bottom = 574.0
+size_flags_horizontal = 3
+mouse_filter = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/HoverItemDescription" unique_id=527909722]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/HoverItemDescription/MarginContainer" unique_id=718164351]
+layout_mode = 2
+mouse_filter = 1
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+fit_content = true
+
+[node name="OverworldUI" parent="." unique_id=413115182 instance=ExtResource("1_4ujin")]
+
+[node name="ColorRect" type="ColorRect" parent="OverworldUI" unique_id=2122613904]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="LeaveShop" type="Button" parent="OverworldUI" unique_id=775706157]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -54.0
+offset_top = -28.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "Leave Shop"
+script = ExtResource("14_kvyjf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=669060984]
+libraries/ = SubResource("AnimationLibrary_emsdc")
+
+[node name="Flavour" type="ColorRect" parent="." unique_id=1038176193]
+material = SubResource("ShaderMaterial_xb08u")
+offset_left = 910.99994
+offset_top = -42.0
+offset_right = 2322.996
+offset_bottom = 12.0
+rotation = 0.3328431
+scale = Vector2(0.5, 0.5)
+color = Color(1, 1, 0.53, 1)
+
+[node name="SubViewport" type="SubViewport" parent="Flavour" unique_id=2125201480]
+size = Vector2i(2824, 108)
+
+[node name="Flavour" type="ColorRect" parent="Flavour/SubViewport" unique_id=1087454512]
+offset_right = 1412.0
+offset_bottom = 54.0
+scale = Vector2(2, 2)
+color = Color(1, 1, 0.53, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Flavour/SubViewport/Flavour" unique_id=1775856687]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.5372549)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = ExtResource("4_phjr8")
+theme_override_font_sizes/normal_font_size = 40
+text = "HIGH QUALITY MAGIC - 9/10 GOBLINS RECOMMEND - 1419 BEST SUPPLIER AWARD -"
+scroll_active = false
+autowrap_mode = 0
+
+[connection signal="mouse_entered" from="OverworldUI/Left" to="Camera2D" method="_on_left_mouse_entered"]
+[connection signal="mouse_exited" from="OverworldUI/Left" to="Camera2D" method="_on_left_mouse_exited"]
+[connection signal="mouse_entered" from="OverworldUI/Right" to="Camera2D" method="_on_right_mouse_entered"]
+[connection signal="mouse_exited" from="OverworldUI/Right" to="Camera2D" method="_on_right_mouse_exited"]
+[connection signal="pressed" from="OverworldUI/LeaveShop" to="OverworldUI/LeaveShop" method="_on_pressed"]
+
+[editable path="OverworldUI"]

@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://bkmr043uc3ln7" path="res://main/pause_menu/load.gd" id="5_l5kb5"]
 [ext_resource type="Script" uid="uid://rc7xiafb8bkd" path="res://main/pause_menu/quit.gd" id="6_7x0uu"]
 [ext_resource type="Script" uid="uid://ha1xk3h1rua2" path="res://main/pause_menu/return.gd" id="7_lbmux"]
+[ext_resource type="Script" uid="uid://1varl2khuu71" path="res://main/pause_menu/disableshake.gd" id="8_l0i11"]
 [ext_resource type="Script" uid="uid://7kwi08r0fjra" path="res://main/pause_menu/audio_slider.gd" id="8_lbmux"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_55ikr"]
@@ -14,6 +15,10 @@ shader = ExtResource("3_bme8k")
 shader_parameter/height = 3.0
 shader_parameter/frequency = 30.0
 shader_parameter/speed = 1.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lbmux"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lbmux"]
 
 [node name="PauseMenu" type="CanvasLayer" unique_id=1323170117]
 process_mode = 3
@@ -26,7 +31,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.39215687)
+color = Color(0, 0, 0, 0.78431374)
 
 [node name="Control" type="Control" parent="." unique_id=1610609846]
 layout_mode = 3
@@ -104,14 +109,26 @@ size = Vector2i(580, 104)
 dialog_text = "Are you sure you want to Return To Title?
 Unsaved progress will be lost."
 
+[node name="Divider" type="Panel" parent="Control/VBoxContainer" unique_id=1581636429]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_lbmux")
+
+[node name="disableshake" type="CheckButton" parent="Control/VBoxContainer" unique_id=275362428]
+material = SubResource("ShaderMaterial_lbmux")
+layout_mode = 2
+text = "disable screen shake"
+alignment = 1
+script = ExtResource("8_l0i11")
+
 [node name="master" type="HBoxContainer" parent="Control/VBoxContainer" unique_id=970808988]
 layout_mode = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control/VBoxContainer/master" unique_id=334105900]
-custom_minimum_size = Vector2(160, 0)
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 theme_override_constants/outline_size = 10
-theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/normal_font_size = 32
 text = "master"
 fit_content = true
 
@@ -127,10 +144,10 @@ script = ExtResource("8_lbmux")
 layout_mode = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control/VBoxContainer/sfx" unique_id=2070953125]
-custom_minimum_size = Vector2(160, 0)
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 theme_override_constants/outline_size = 10
-theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/normal_font_size = 32
 text = "sfx"
 fit_content = true
 
@@ -147,10 +164,10 @@ bus_index = 1
 layout_mode = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control/VBoxContainer/music" unique_id=1554389571]
-custom_minimum_size = Vector2(160, 0)
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 theme_override_constants/outline_size = 10
-theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/normal_font_size = 32
 text = "music"
 fit_content = true
 
@@ -170,6 +187,7 @@ bus_index = 2
 [connection signal="confirmed" from="Control/VBoxContainer/quit/ConfirmationDialog" to="Control/VBoxContainer/quit" method="_on_confirmation_dialog_confirmed"]
 [connection signal="pressed" from="Control/VBoxContainer/return" to="Control/VBoxContainer/return" method="_on_pressed"]
 [connection signal="confirmed" from="Control/VBoxContainer/return/ConfirmationDialog" to="Control/VBoxContainer/return" method="_on_confirmation_dialog_confirmed"]
+[connection signal="toggled" from="Control/VBoxContainer/disableshake" to="Control/VBoxContainer/disableshake" method="_on_toggled"]
 [connection signal="value_changed" from="Control/VBoxContainer/master/HSlider" to="Control/VBoxContainer/master/HSlider" method="_on_value_changed"]
 [connection signal="value_changed" from="Control/VBoxContainer/sfx/HSlider" to="Control/VBoxContainer/sfx/HSlider" method="_on_value_changed"]
 [connection signal="value_changed" from="Control/VBoxContainer/music/HSlider" to="Control/VBoxContainer/music/HSlider" method="_on_value_changed"]

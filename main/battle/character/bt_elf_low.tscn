@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://t4sc63rgs27h"]
+
+[ext_resource type="Script" uid="uid://wj28hb5nba7u" path="res://main/battle/character/battle_character.gd" id="1_35xm5"]
+[ext_resource type="PackedScene" uid="uid://c0t5y6y88n7s8" path="res://main/battle/character/character_components/character_visual.tscn" id="2_ilbuh"]
+[ext_resource type="Texture2D" uid="uid://ljopcy7ta6xj" path="res://characters/humans/elf/elf_low.png" id="3_35xm5"]
+[ext_resource type="PackedScene" uid="uid://ccuw8vpu5w10y" path="res://main/battle/character/character_components/health_component.tscn" id="4_07b56"]
+[ext_resource type="PackedScene" uid="uid://bs2xq80dv1ueu" path="res://main/battle/character/character_components/turn_component.tscn" id="5_885yh"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_35xm5"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ilbuh"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Elf" type="StaticBody3D" unique_id=36953412]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+script = ExtResource("1_35xm5")
+battle_id = "elf_low"
+
+[node name="CharacterVisual" parent="." unique_id=598858165 instance=ExtResource("2_ilbuh")]
+
+[node name="Sprite" parent="CharacterVisual" index="0" unique_id=1916425201]
+texture = ExtResource("3_35xm5")
+
+[node name="HealthComponent" parent="." unique_id=313391265 instance=ExtResource("4_07b56")]
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, -3.60041e-07, 0, 4.07077)
+texture = SubResource("ViewportTexture_35xm5")
+
+[node name="TurnComponent" parent="." unique_id=471687455 instance=ExtResource("5_885yh")]
+transform = Transform3D(1.5, 0, 0, 0, -6.55671e-08, 1.5, 0, -1.5, -6.55671e-08, -2.04019e-07, 0, 4.66742)
+texture = SubResource("ViewportTexture_ilbuh")
+
+[editable path="CharacterVisual"]

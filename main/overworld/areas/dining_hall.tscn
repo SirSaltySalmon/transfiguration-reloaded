@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://gctpwykfcyi4"]
+
+[ext_resource type="Script" uid="uid://8cyqrodpkc1c" path="res://main/overworld/areas/area.gd" id="1_eve7s"]
+[ext_resource type="Texture2D" uid="uid://bx047lhgm5rob" path="res://assets/overworld/areas/DININGHALL.png" id="2_4bhns"]
+[ext_resource type="PackedScene" uid="uid://cak74x3b1puu2" path="res://characters/humans/shadow_gov/wizards_1.tscn" id="4_eve7s"]
+[ext_resource type="PackedScene" uid="uid://b2ip6cgwfh1vr" path="res://characters/humans/shadow_gov/wizards_2.tscn" id="5_a4ilb"]
+[ext_resource type="PackedScene" uid="uid://cofv6hjk51ptu" path="res://ui/overworld/arrow_manager.tscn" id="5_s2ut8"]
+[ext_resource type="PackedScene" uid="uid://r76wbbnqdera" path="res://characters/humans/shadow_gov/wizards_3.tscn" id="6_auuwf"]
+[ext_resource type="Texture2D" uid="uid://djebkfylmi7h3" path="res://assets/overworld/effects/blood_1.png" id="7_ubh0o"]
+[ext_resource type="Texture2D" uid="uid://byj34lrsjs4on" path="res://assets/overworld/effects/blood_2.png" id="8_s2ut8"]
+[ext_resource type="Texture2D" uid="uid://c4qkvijqgnxgi" path="res://assets/overworld/effects/blood_3.png" id="9_sb2dm"]
+
+[node name="Library" type="Node3D" unique_id=1628032535]
+script = ExtResource("1_eve7s")
+area_id = "sewers"
+
+[node name="Background" type="Sprite3D" parent="." unique_id=1115190439]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+transparent = false
+shaded = true
+double_sided = false
+texture = ExtResource("2_4bhns")
+
+[node name="ArrowManager" parent="." unique_id=271098037 instance=ExtResource("5_s2ut8")]
+
+[node name="LeftArrow" parent="ArrowManager" index="2" unique_id=612731789]
+destination = "library"
+resource = "res://main/overworld/areas/library.tscn"
+show_condition = "Global.sav.size >= 1"
+
+[node name="Wizards1" parent="." unique_id=445330326 node_paths=PackedStringArray("blood") instance=ExtResource("4_eve7s")]
+transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1.5, -6.9402313, -0.789, -6)
+blood = NodePath("../Blood2")
+
+[node name="Wizards2" parent="." unique_id=2131990847 node_paths=PackedStringArray("blood") instance=ExtResource("5_a4ilb")]
+transform = Transform3D(-2.5, 0, -3.774895e-07, 0, 2.5, 0, 3.774895e-07, 0, -2.5, -0.534, -1.495, -4)
+blood = NodePath("../Blood3")
+
+[node name="Wizards3" parent="." unique_id=2025838438 node_paths=PackedStringArray("blood") instance=ExtResource("6_auuwf")]
+transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1.5, 8.207908, -1.261, -7)
+blood = NodePath("../Blood1")
+zoom = -3
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=887033189]
+
+[node name="Blood1" type="Sprite2D" parent="." unique_id=1730756954]
+modulate = Color(0.71, 0.71, 0.71, 0.39215687)
+position = Vector2(952, 248.00003)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("7_ubh0o")
+
+[node name="Blood2" type="Sprite2D" parent="." unique_id=168041526]
+modulate = Color(1, 1, 1, 0.39215687)
+position = Vector2(128, 144)
+texture = ExtResource("8_s2ut8")
+flip_h = true
+
+[node name="Blood3" type="Sprite2D" parent="." unique_id=403665552]
+modulate = Color(1, 1, 1, 0.39215687)
+position = Vector2(648, 544)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("9_sb2dm")
+
+[editable path="ArrowManager"]

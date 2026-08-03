@@ -1,9 +1,6 @@
 class_name DatingBalloon
 extends DialogueManagerExampleBalloon
 
-func force_input():
-	_on_balloon_gui_input()
-
 ## Apply any changes to the balloon given a new [DialogueLine].
 func apply_dialogue_line() -> void:
 	mutation_cooldown.stop()
@@ -11,9 +8,6 @@ func apply_dialogue_line() -> void:
 	is_waiting_for_input = false
 	balloon.focus_mode = Control.FOCUS_ALL
 	balloon.grab_focus()
-
-	character_label.visible = not dialogue_line.character.is_empty()
-	character_label.text = tr(dialogue_line.character, "dialogue")
 
 	dialogue_label.hide()
 	dialogue_label.dialogue_line = dialogue_line
@@ -43,3 +37,8 @@ func apply_dialogue_line() -> void:
 		is_waiting_for_input = true
 		balloon.focus_mode = Control.FOCUS_ALL
 		balloon.grab_focus()
+
+func force_input():
+	if responses_menu.visible:
+		return
+	next(dialogue_line.next_id)

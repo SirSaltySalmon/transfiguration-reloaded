@@ -1,0 +1,246 @@
+[gd_scene format=3 uid="uid://0dq03flolvpo"]
+
+[ext_resource type="Script" uid="uid://djtyhpjhcgfyv" path="res://main/battle/skills/band_for_band.gd" id="1_g60r2"]
+[ext_resource type="Script" uid="uid://bw86aun2u7jid" path="res://assets/battle/effects/trigger_particles.gd" id="2_ylote"]
+[ext_resource type="ArrayMesh" uid="uid://1tuxfw2pf0cf" path="res://assets/assetpacks/KayKit_DungeonRemastered_1.1_FREE/Assets/obj/coin.obj" id="3_6nflg"]
+[ext_resource type="Texture2D" uid="uid://d07vjsw78goli" path="res://assets/assetpacks/brackeys-vfx/brackeys_particle_bundle/flipbooks/wispy_smoke_02_8x8.tga" id="3_ubs5a"]
+[ext_resource type="Texture2D" uid="uid://djkoi1qy46ydk" path="res://assets/assetpacks/brackeys-vfx/brackeys_particle_bundle/particles/alpha/smoke_07_a.png" id="5_fde81"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0cbny"]
+lifetime_randomness = 0.9
+particle_flag_rotate_y = true
+emission_shape = 1
+emission_sphere_radius = 0.2
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 15.0
+gravity = Vector3(0, -30, 0)
+scale_min = 2.0
+scale_max = 2.0
+collision_mode = 1
+collision_friction = 0.3
+collision_bounce = 1.0
+
+[sub_resource type="Curve" id="Curve_1nk5o"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0798319, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ylote"]
+curve = SubResource("Curve_1nk5o")
+
+[sub_resource type="Curve" id="Curve_3tpum"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0.00840336, 2), 0.0, 0.0, 0, 0, Vector2(0.159664, 0.966292), 0.0, 0.0, 0, 0, Vector2(0.256303, 1.57303), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ubs5a"]
+curve = SubResource("Curve_3tpum")
+
+[sub_resource type="Curve" id="Curve_auxws"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0756302, 1), 0.0, 0.0, 0, 0, Vector2(0.210084, 0.865169), 0.0, 0.0, 0, 0, Vector2(0.403361, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.719101), -0.948894, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_6nflg"]
+curve = SubResource("Curve_auxws")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_s10f6"]
+lifetime_randomness = 0.3
+emission_shape = 1
+emission_sphere_radius = 0.3
+angle_min = 1.07288e-05
+angle_max = 360.0
+spread = 180.0
+initial_velocity_max = 4.0
+angular_velocity_min = -90.0
+angular_velocity_max = 90.0
+gravity = Vector3(0, 0.2, 0)
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_6nflg")
+color = Color(0.999999, 0.608967, 0.244135, 1)
+alpha_curve = SubResource("CurveTexture_ylote")
+emission_curve = SubResource("CurveTexture_ubs5a")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fde81"]
+transparency = 1
+blend_mode = 1
+diffuse_mode = 3
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_ubs5a")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 8
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_5rtvv"]
+material = SubResource("StandardMaterial3D_fde81")
+
+[sub_resource type="Curve" id="Curve_a6jrf"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0.155462, 3), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveTexture" id="CurveTexture_gxxe6"]
+curve = SubResource("Curve_a6jrf")
+
+[sub_resource type="Curve" id="Curve_b1qrp"]
+_data = [Vector2(0.521008, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_yhs3x"]
+curve = SubResource("Curve_b1qrp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5vw27"]
+lifetime_randomness = 0.4
+angle_min = 1.07288e-05
+angle_max = 360.0
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 4.0
+initial_velocity_max = 6.0
+gravity = Vector3(0, -10, 0)
+scale_min = 0.29999998
+scale_max = 0.59999996
+scale_curve = SubResource("CurveTexture_yhs3x")
+color = Color(1, 0.6665, 0.31, 1)
+emission_curve = SubResource("CurveTexture_gxxe6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_drbb0"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("5_fde81")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_kq58d"]
+material = SubResource("StandardMaterial3D_drbb0")
+
+[sub_resource type="Animation" id="Animation_mi1lt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Coins:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Fire:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Fireballs:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ccwko"]
+resource_name = "play"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Coins:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Fire:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Fireballs:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fde81"]
+_data = {
+&"RESET": SubResource("Animation_mi1lt"),
+&"play": SubResource("Animation_ccwko")
+}
+
+[node name="BandForBand" type="Node3D" unique_id=287046888 node_paths=PackedStringArray("effect_base")]
+script = ExtResource("1_g60r2")
+id = "Band For Band"
+effect_base = NodePath("FireExplosionFlipbook")
+
+[node name="FireExplosionFlipbook" type="Node3D" parent="." unique_id=1379501936 node_paths=PackedStringArray("anim")]
+script = ExtResource("2_ylote")
+anim = NodePath("AnimationPlayer")
+
+[node name="Coins" type="GPUParticles3D" parent="FireExplosionFlipbook" unique_id=941946530]
+emitting = false
+amount = 10
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.95
+collision_base_size = 1.0
+process_material = SubResource("ParticleProcessMaterial_0cbny")
+draw_pass_1 = ExtResource("3_6nflg")
+
+[node name="Fire" type="GPUParticles3D" parent="FireExplosionFlipbook" unique_id=330271355]
+emitting = false
+amount = 64
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_s10f6")
+draw_pass_1 = SubResource("QuadMesh_5rtvv")
+
+[node name="Fireballs" type="GPUParticles3D" parent="FireExplosionFlipbook" unique_id=998281727]
+emitting = false
+amount = 6
+lifetime = 0.9
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_5vw27")
+draw_pass_1 = SubResource("QuadMesh_kq58d")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FireExplosionFlipbook" unique_id=871868122]
+libraries/ = SubResource("AnimationLibrary_fde81")

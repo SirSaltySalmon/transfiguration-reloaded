@@ -1,110 +1,221 @@
-[gd_scene load_steps=16 format=3 uid="uid://bek8pfbimuapd"]
+[gd_scene format=3 uid="uid://bek8pfbimuapd"]
 
 [ext_resource type="Script" uid="uid://mpmolb60uin3" path="res://main/battle/skills/dap_up.gd" id="1_87fek"]
-[ext_resource type="Texture2D" uid="uid://o4ensyun5o3l" path="res://assets/battle/effects/sprite_sheets/bite.png" id="2_3mb7h"]
+[ext_resource type="Texture2D" uid="uid://dctm2s3su5xv6" path="res://assets/battle/effects/sprite_sheets/Holy VFX 01 Impact.png" id="2_87fek"]
+[ext_resource type="Script" uid="uid://cgj52746kkdjr" path="res://main/battle/skills/dap_up_effect.gd" id="2_m3jbg"]
+[ext_resource type="Texture2D" uid="uid://dfkyixrr0o5ic" path="res://assets/battle/effects/dapup.png" id="4_1ggme"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kth0g"]
-atlas = ExtResource("2_3mb7h")
-region = Rect2(0, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_3mb7h"]
+atlas = ExtResource("2_87fek")
+region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l20x3"]
-atlas = ExtResource("2_3mb7h")
-region = Rect2(64, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3jbg"]
+atlas = ExtResource("2_87fek")
+region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sjhh6"]
-atlas = ExtResource("2_3mb7h")
-region = Rect2(128, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ggme"]
+atlas = ExtResource("2_87fek")
+region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_q6etc"]
-atlas = ExtResource("2_3mb7h")
-region = Rect2(192, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_m0vun"]
+atlas = ExtResource("2_87fek")
+region = Rect2(96, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tveph"]
-atlas = ExtResource("2_3mb7h")
-region = Rect2(256, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_2lg71"]
+atlas = ExtResource("2_87fek")
+region = Rect2(128, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_658n4"]
-atlas = ExtResource("2_3mb7h")
-region = Rect2(320, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_nae8l"]
+atlas = ExtResource("2_87fek")
+region = Rect2(160, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rlo4t"]
-atlas = ExtResource("2_3mb7h")
-region = Rect2(384, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rnqgn"]
-atlas = ExtResource("2_3mb7h")
-region = Rect2(448, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uq6nb"]
-atlas = ExtResource("2_3mb7h")
-region = Rect2(512, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8gx3b"]
-atlas = ExtResource("2_3mb7h")
-region = Rect2(576, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_r68sh"]
-atlas = ExtResource("2_3mb7h")
-region = Rect2(640, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_58cds"]
-atlas = ExtResource("2_3mb7h")
-region = Rect2(704, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1ghe"]
+atlas = ExtResource("2_87fek")
+region = Rect2(192, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0d3cj"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kth0g")
+"texture": SubResource("AtlasTexture_3mb7h")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_l20x3")
+"texture": SubResource("AtlasTexture_m3jbg")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sjhh6")
+"texture": SubResource("AtlasTexture_1ggme")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_q6etc")
+"texture": SubResource("AtlasTexture_m0vun")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tveph")
+"texture": SubResource("AtlasTexture_2lg71")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_658n4")
+"texture": SubResource("AtlasTexture_nae8l")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rlo4t")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rnqgn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uq6nb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8gx3b")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_r68sh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_58cds")
-}, {
-"duration": 1.0,
-"texture": null
+"texture": SubResource("AtlasTexture_e1ghe")
 }],
 "loop": false,
 "name": &"dap_up",
-"speed": 16.0
+"speed": 15.0
 }]
 
-[node name="DapUp" type="Node3D" node_paths=PackedStringArray("effect_base")]
+[sub_resource type="Animation" id="Animation_m3jbg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Left:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-3, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Left:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Right:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(4),
+"update": 0,
+"values": [Vector3(3, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Right:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(4),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1ggme"]
+resource_name = "dap_up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Left:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 4),
+"update": 0,
+"values": [Vector3(-3, 0, 0), Vector3(3, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Left:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(4, 0.25, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.39215687), Color(1, 1, 1, 1), Color(1, 1, 1, 0.39215687)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Right:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 4),
+"update": 0,
+"values": [Vector3(3, 0, 0), Vector3(-3, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Right:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(4, 0.25, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.39215687), Color(1, 1, 1, 1), Color(1, 1, 1, 0.39215687)]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Effect")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.13333333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"dap_up", 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m0vun"]
+_data = {
+&"RESET": SubResource("Animation_m3jbg"),
+&"dap_up": SubResource("Animation_1ggme")
+}
+
+[node name="DapUp" type="Node3D" unique_id=241376626 node_paths=PackedStringArray("effect_base")]
 script = ExtResource("1_87fek")
 id = "Dap Up"
-effect_base = NodePath("Effect")
+effect_base = NodePath("DapUpEffect")
 
-[node name="Effect" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(10, 0, 0, 0, -4.37114e-07, 10, 0, -10, -4.37114e-07, 0, 0, 0)
+[node name="DapUpEffect" type="Node3D" parent="." unique_id=160148748]
+transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, 0, 2, 0)
+script = ExtResource("2_m3jbg")
+
+[node name="Effect" type="AnimatedSprite3D" parent="DapUpEffect" unique_id=1724590950]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0, 0)
+no_depth_test = true
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_0d3cj")
 animation = &"dap_up"
+frame = 6
+frame_progress = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DapUpEffect" unique_id=1023542059]
+libraries/ = SubResource("AnimationLibrary_m0vun")
+
+[node name="Left" type="Sprite3D" parent="DapUpEffect" unique_id=749097919]
+transform = Transform3D(0.75, 0.4330127, 0.5, -0.5, 0.8660254, 0, -0.4330127, -0.25, 0.8660254, -3, 0, 0)
+modulate = Color(1, 1, 1, 0)
+no_depth_test = true
+texture = ExtResource("4_1ggme")
+hframes = 2
+frame = 1
+
+[node name="Right" type="Sprite3D" parent="DapUpEffect" unique_id=1966885787]
+transform = Transform3D(0.75, -0.4330127, -0.5, 0.5, 0.8660254, 0, 0.4330127, -0.25, 0.8660254, 3, 0, 0)
+modulate = Color(1, 1, 1, 0)
+no_depth_test = true
+texture = ExtResource("4_1ggme")
+hframes = 2
