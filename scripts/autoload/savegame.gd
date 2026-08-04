@@ -99,7 +99,10 @@ extends Resource
 	"Cross Slash": [10, false, true, "Deals [color=red]VALUE Damage[/color] to all targets."],
 	"Arrow Rain": [15, false, true, "Deals [color=red]VALUE Damage[/color] to 3 random enemy targets."],
 	"Eternal Pyre's Embrace": [15, false, true, "Deals [color=red]VALUE Damage[/color] to all enemies, [color=orange]Burning[/color] them for DURATION turns.", 3],
-	"Icefall": [50, false, true, "Deals [color=red]VALUE Damage[/color] to all enemies, [color=blue]Frostbiting[/color] them for DURATION turns.", 3],
+	"Icefall": [70, false, true, "Deals [color=red]VALUE Damage[/color] to all enemies, [color=blue]Frostbiting[/color] them for DURATION turns.", 3],
+	"Gear Switch": [0, true, false, "Hannes: Enter Phase 2"],
+	"Rend": [20, false, true, "Deals [color=red]VALUE Damage[/color] to 3 random enemy targets."],
+	"Moonbeam": [100, false, true, "Deals [color=red]VALUE Damage[/color] to all targets."],
 }
 
 #Use these skills ID, but fetch skill module path from dictionary in Methods
@@ -123,4 +126,4 @@ var bt_reference := ["Health", "Basic Attack", "Speed"]
 @export var bt_wizard_high := [70, 50, 30]
 
 
-@export var bt_hannes := [1000, 30, 90]
+@export var bt_hannes := [1000, 30, 50]

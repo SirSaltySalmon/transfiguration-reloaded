@@ -45,8 +45,10 @@
 [ext_resource type="PackedScene" uid="uid://b724oh1cswaws" path="res://main/pause_menu/pause_menu.tscn" id="34_3lovp"]
 [ext_resource type="AnimationLibrary" uid="uid://blmxb3a3ydqbp" path="res://assets/battle/anim/epe.res" id="39_5lpl4"]
 [ext_resource type="AnimationLibrary" uid="uid://6y13a1h2t011" path="res://assets/battle/anim/icefall.res" id="39_pwmv7"]
+[ext_resource type="AnimationLibrary" uid="uid://m55u7uxqsxvf" path="res://assets/battle/anim/gearswitch.res" id="40_43rn7"]
 [ext_resource type="PackedScene" uid="uid://cl01ltrrx020y" path="res://assets/battle/3d/weathered_round_table__metal_top__wooden_legs.glb" id="41_6701q"]
-[ext_resource type="Environment" uid="uid://b5c61blm4twps" path="res://assets/battle/3d/size_7_sky.tres" id="46_8qows"]
+[ext_resource type="AnimationLibrary" uid="uid://7itw84ah42o6" path="res://assets/battle/anim/moonbeam.res" id="42_mk36a"]
+[ext_resource type="Environment" uid="uid://m5stumg57fng" path="res://assets/assetpacks/sky/cold_night_sky.tres" id="47_5lpl4"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_f5xx3"]
 
@@ -689,6 +691,102 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BattleCam:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(10, 70, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BattleCam:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SkillsCenter/Moonbeam/Beam/GPUParticles3D2:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SkillsCenter/Moonbeam/Beam/GPUParticles3D2:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 400, 1500)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("BattleCam/BattleCam/CinematicShake:duration")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SkillsCenter/Moonbeam/Beam/BeamMesh:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SkillsCenter/Moonbeam/Beam/BeamMesh:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("SkillsCenter/Moonbeam/Beam/BeamMesh:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8qows"]
 _data = {
@@ -1117,7 +1215,7 @@ _data = {
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_x50yd"]
 dof_blur_far_enabled = true
-dof_blur_far_distance = 50.0
+dof_blur_far_distance = 100.0
 dof_blur_far_transition = -1.0
 dof_blur_near_enabled = true
 dof_blur_amount = 0.05
@@ -1135,9 +1233,15 @@ PositionShake = Array[ExtResource("4_w10i8")]([SubResource("Resource_2k2jr")])
 script = ExtResource("7_oukdn")
 amplitude = Vector3(0.5, 0.5, 0.5)
 
+[sub_resource type="Resource" id="Resource_rkmuk"]
+script = ExtResource("7_oukdn")
+amplitude = Vector3(0.03, 0.03, 0.03)
+metadata/_custom_type_script = "uid://bso4njx2ubaat"
+
 [sub_resource type="Resource" id="Resource_g8sry"]
 script = ExtResource("6_wiji8")
 PositionShake = Array[ExtResource("4_w10i8")]([SubResource("Resource_5qicv")])
+RotationShake = Array[ExtResource("4_w10i8")]([SubResource("Resource_rkmuk")])
 
 [sub_resource type="Resource" id="Resource_5lpl4"]
 script = ExtResource("7_oukdn")
@@ -1145,7 +1249,7 @@ metadata/_custom_type_script = "uid://bso4njx2ubaat"
 
 [sub_resource type="Resource" id="Resource_43rn7"]
 script = ExtResource("7_oukdn")
-amplitude = Vector3(0.2, 0.2, 0.2)
+amplitude = Vector3(0.5, 0.3, 0.3)
 metadata/_custom_type_script = "uid://bso4njx2ubaat"
 
 [sub_resource type="Resource" id="Resource_mk36a"]
@@ -2135,13 +2239,15 @@ main = NodePath("..")
 [node name="CineAnim" type="AnimationPlayer" parent="." unique_id=1060797251]
 libraries/ = SubResource("AnimationLibrary_8qows")
 libraries/epe = ExtResource("39_5lpl4")
+libraries/gearswitch = ExtResource("40_43rn7")
 libraries/icefall = ExtResource("39_pwmv7")
+libraries/moonbeam = ExtResource("42_mk36a")
 
 [node name="MainAnim" type="AnimationPlayer" parent="." unique_id=1602434553]
 libraries/ = SubResource("AnimationLibrary_bplng")
 
 [node name="BattleCam" type="Node3D" parent="." unique_id=1810964477 node_paths=PackedStringArray("main", "handheld_shake", "impact_shake", "big_impact_shake")]
-transform = Transform3D(-4.371139e-08, -0.98480755, 0.17364818, 0, 0.1736482, 0.98480743, -1, 4.3047304e-08, -7.590402e-09, 10, 70, 0)
+transform = Transform3D(-4.371139e-08, -0.9848073, 0.17364813, 0, 0.17364815, 0.98480725, -1, 4.3047294e-08, -7.590401e-09, 10, 70, 0)
 script = ExtResource("2_g1d0u")
 main = NodePath("..")
 handheld_shake = NodePath("BattleCam/HandheldShake")
@@ -2149,7 +2255,7 @@ impact_shake = NodePath("BattleCam/ImpactShake")
 big_impact_shake = NodePath("BattleCam/BigImpactShake")
 
 [node name="BattleCam" type="Camera3D" parent="BattleCam" unique_id=1394033273]
-transform = Transform3D(1, -3.7904832e-07, -1.762528e-07, 3.790483e-07, 1, -9.685755e-08, 1.7625284e-07, 9.6857484e-08, 1, -0.0073048607, 1.8741583e-05, 0.039590426)
+transform = Transform3D(0.99999994, -4.9829515e-07, 1.3208958e-07, 4.982952e-07, 1.0000002, -1.7007105e-06, -1.3208869e-07, 1.7007106e-06, 1.0000002, 4.890738e-07, -2.9572436e-07, -7.571084e-07)
 attributes = SubResource("CameraAttributesPractical_x50yd")
 
 [node name="HandheldShake" type="Node3D" parent="BattleCam/BattleCam" unique_id=1561607957]
@@ -2174,10 +2280,17 @@ fade_in = 1e-05
 fade_out = 3.249007
 shakerPreset = SubResource("Resource_g8sry")
 
+[node name="HugeImpactShake" type="Node3D" parent="BattleCam/BattleCam" unique_id=1877119404]
+script = ExtResource("3_bdusq")
+intensity = 3.0
+duration = 1.5
+fade_in = 1e-05
+fade_out = 3.249007
+shakerPreset = SubResource("Resource_g8sry")
+
 [node name="CinematicShake" type="Node3D" parent="BattleCam/BattleCam" unique_id=929389062]
 script = ExtResource("3_bdusq")
 intensity = 0.02
-duration = 4.5
 fade_in = 1.7410997
 fade_out = 8.337636e-05
 shakerPreset = SubResource("Resource_mk36a")
@@ -2252,7 +2365,7 @@ process_material = SubResource("ParticleProcessMaterial_y8qc7")
 draw_pass_1 = SubResource("PlaneMesh_tx0yf")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=73518027]
-environment = ExtResource("46_8qows")
+environment = ExtResource("47_5lpl4")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1524702004]
 transform = Transform3D(0.9834705, -0.07652286, 0.16410379, 0, 0.90630776, 0.4226183, -0.1810684, -0.4156326, 0.89132696, 0, 2.14352, 0)

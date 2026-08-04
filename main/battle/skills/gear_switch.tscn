@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://c26uyobgyc648"]
+
+[ext_resource type="Script" uid="uid://dmogp2snrtr0q" path="res://gear_switch.gd" id="1_pwgp3"]
+
+[node name="GearSwitch" type="Node3D" unique_id=952507271 node_paths=PackedStringArray("effect_base")]
+script = ExtResource("1_pwgp3")
+id = "Gear Switch"
+effect_base = NodePath(".")
+metadata/_custom_type_script = "uid://kxjy0ig6lb4h"

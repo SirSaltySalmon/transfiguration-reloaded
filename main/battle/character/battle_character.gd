@@ -80,3 +80,18 @@ func skill_action():
 	else:
 		targets = main.get_alive_allies()
 	use_basic_attack(targets.pick_random())
+
+func use_skill(skill: Skill):
+	var targets = get_random_skill_target(skill.id)
+	skill.use(self, targets)
+
+func get_random_skill_target(id):
+	var targets
+	if Methods.is_skill_enemy(id):
+		targets = main.get_alive_allies()
+	else:
+		targets = main.get_alive_enemies()
+	
+	if Methods.is_skill_single_target(id):
+		targets = targets.pick_random()
+	return targets

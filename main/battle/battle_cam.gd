@@ -35,6 +35,7 @@ func tween_cam_to(target):
 
 func return_to_idle():
 	main.ui.vignette.unfocus()
+	rotation_degrees = idle_rot
 	return await tween_cam(idle_position)
 
 func tween_cam(destination):

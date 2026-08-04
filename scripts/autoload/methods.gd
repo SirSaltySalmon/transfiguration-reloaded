@@ -17,6 +17,8 @@ signal dating_require_response
 
 var last_fight_won := false
 
+var hannes_strong_attack_next := false
+
 var skills_path_dict = {
 	"Devour": "res://main/battle/skills/Devour.tscn",
 	"Goop": "res://main/battle/skills/Goop.tscn",
@@ -31,6 +33,9 @@ var skills_path_dict = {
 	"Arrow Rain": "res://main/battle/skills/ArrowRain.tscn",
 	"Eternal Pyre's Embrace": "res://main/battle/skills/EternalPyreEmbrace.tscn",
 	"Icefall": "res://main/battle/skills/Icefall.tscn",
+	"Rend": "res://main/battle/skills/Rend.tscn",
+	"Gear Switch": "res://main/battle/skills/gear_switch.tscn",
+	"Moonbeam": "res://main/battle/skills/moonbeam.tscn",
 }
 
 var area_resource_dict = {

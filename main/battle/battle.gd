@@ -297,8 +297,8 @@ func flavor_text_add():
 				break
 		if has_frostbite:
 			flavor_queue = "Frostbite prevents a character from using items."
-		
-		#TODO: Hannes is preparing a nasty attack... before Icefall and Moonbeam
+		if Methods.hannes_strong_attack_next:
+			flavor_queue = "Hannes is preparing a nasty attack..."
 		pass
 		
 

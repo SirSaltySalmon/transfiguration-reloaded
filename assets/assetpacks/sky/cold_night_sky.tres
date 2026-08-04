@@ -1,0 +1,25 @@
+[gd_resource type="Environment" format=3 uid="uid://m5stumg57fng"]
+
+[ext_resource type="Texture2D" uid="uid://bulhgia0l5v4g" path="res://assets/assetpacks/sky/AllSkyFree_Sky_ColdNight_Equirect.png" id="1_2vqbf"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_jg3j4"]
+panorama = ExtResource("1_2vqbf")
+
+[sub_resource type="Sky" id="Sky_gvhec"]
+sky_material = SubResource("PanoramaSkyMaterial_jg3j4")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_gvhec")
+ambient_light_energy = 1.11
+ssao_enabled = true
+ssao_radius = 8.1
+ssao_intensity = 4.3
+glow_enabled = true
+glow_intensity = 1.86
+glow_strength = 0.87
+glow_bloom = 0.02
+glow_hdr_threshold = 0.44
+fog_depth_curve = 2.0
+fog_depth_begin = 0.0
+fog_depth_end = 1358.0

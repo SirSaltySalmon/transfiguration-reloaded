@@ -19,7 +19,7 @@ refraction_scale = 0.79
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.50399995, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_83rhi"]
+[sub_resource type="CurveTexture" id="CurveTexture_rth7d"]
 curve = SubResource("Curve_dy7c5")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rth7d"]
@@ -29,7 +29,7 @@ initial_velocity_max = 600.0
 gravity = Vector3(0, 0, 0)
 scale_min = 50.0
 scale_max = 100.0
-alpha_curve = SubResource("CurveTexture_83rhi")
+alpha_curve = SubResource("CurveTexture_rth7d")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3mqyl"]
 render_priority = -1
@@ -47,57 +47,60 @@ particles_anim_loop = false
 [sub_resource type="QuadMesh" id="QuadMesh_yo841"]
 material = SubResource("StandardMaterial3D_3mqyl")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3mqyl"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_rth7d"]
 atlas = ExtResource("5_rth7d")
 region = Rect2(0, 0, 256, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yo841"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_3mqyl"]
 atlas = ExtResource("5_rth7d")
 region = Rect2(256, 0, 256, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3nrnv"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_yo841"]
 atlas = ExtResource("5_rth7d")
 region = Rect2(512, 0, 256, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2s53i"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_3nrnv"]
 atlas = ExtResource("5_rth7d")
 region = Rect2(768, 0, 256, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ls72g"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2s53i"]
 atlas = ExtResource("5_rth7d")
 region = Rect2(1024, 0, 256, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dqqwq"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ls72g"]
 atlas = ExtResource("5_rth7d")
 region = Rect2(0, 128, 256, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_x6pb4"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqqwq"]
 atlas = ExtResource("5_rth7d")
 region = Rect2(256, 128, 256, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_x8fk5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6pb4"]
 atlas = ExtResource("5_rth7d")
 region = Rect2(512, 128, 256, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ynf2l"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8fk5"]
 atlas = ExtResource("5_rth7d")
 region = Rect2(768, 128, 256, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hbibs"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ynf2l"]
 atlas = ExtResource("5_rth7d")
 region = Rect2(1024, 128, 256, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lupv0"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbibs"]
 atlas = ExtResource("5_rth7d")
 region = Rect2(0, 256, 256, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_r4kri"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_lupv0"]
 atlas = ExtResource("5_rth7d")
 region = Rect2(256, 256, 256, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_okta2"]
 animations = [{
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rth7d")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3mqyl")
 }, {
@@ -130,11 +133,8 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lupv0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_r4kri")
 }],
-"loop": false,
+"loop": 0,
 "name": &"icefall",
 "speed": 15.0
 }]

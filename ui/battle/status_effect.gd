@@ -15,7 +15,7 @@ func _on_added() -> void:
 	if name == "Goop":
 		target.parent.speed_mult -= 0.3
 		target.parent.turn.update_speed()
-	elif name == "Haste":
+	elif name == "Bless":
 		target.parent.speed_mult += 0.3
 		target.parent.turn.update_speed()
 	get_icon().show()

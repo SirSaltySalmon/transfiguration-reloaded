@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://ce8ljk14efqm4"]
+
+[ext_resource type="Environment" uid="uid://m5stumg57fng" path="res://assets/assetpacks/sky/cold_night_sky.tres" id="1_jg3j4"]
+
+[node name="AllSkyFree_ColdNight" type="Node3D" unique_id=1937519832]
+
+[node name="WorldEnvironment_ColdNightEquirect" type="WorldEnvironment" parent="." unique_id=1816549213]
+environment = ExtResource("1_jg3j4")
+
+[node name="DirectionalLight_ColdNightEquirect" type="DirectionalLight3D" parent="." unique_id=1427543263]
+transform = Transform3D(1, 0, 0, 0, 0.849579, 0.527461, 0, -0.527461, 0.849579, 0, 26.5368, 0)
+light_color = Color(0.376471, 0.517647, 0.666667, 1)
+light_energy = 0.07
+shadow_enabled = true
