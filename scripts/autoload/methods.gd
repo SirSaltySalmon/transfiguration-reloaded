@@ -3,6 +3,7 @@ extends Node
 const OVERWORLD_PATH = "res://main/overworld/overworld_3d_main.tscn"
 const BATTLE_PATH = "res://main/battle/battle.tscn"
 const TITLE_PATH = "res://main/title/title.tscn"
+const DATING_PATH = "res://main/dating/dating.tscn"
 
 var current_scene
 
@@ -44,7 +45,7 @@ var area_resource_dict = {
 	"library": "res://main/overworld/areas/library.tscn",
 	"shop": "res://main/overworld/areas/shop.tscn",
 	"dining_hall": "res://main/overworld/areas/dining_hall.tscn",
-	"lair": null
+	"lair": "res://main/overworld/areas/lair.tscn"
 }
 
 func _ready():
@@ -128,22 +129,20 @@ func glow_grimoire():
 	# Glow the grimoire
 	pass
 
-func enter_shadow_wizards_battle():
-	Global.battle_type = 3
-	Global.sav.bt_party[2] = "angel"
-	enter_battle()
-
 func log_money():
 	Global.sav.money += 100
 	Global.sav.money_at_jori = Global.sav.money
 
 func check_money():
-	if Global.sav.money < Global.sav.money_at_jori - 100:
+	if Global.sav.money <= Global.sav.money_at_jori - 100:
 		return false
 	return true
 
 func enter_battle():
 	SceneLoader.load_scene(BATTLE_PATH)
+
+func enter_date():
+	SceneLoader.load_scene(DATING_PATH)
 
 func return_to_overworld(won: bool):
 	last_fight_won = won

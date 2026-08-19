@@ -57,7 +57,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_e1ghe")
 }],
-"loop": false,
+"loop": 0,
 "name": &"dap_up",
 "speed": 15.0
 }]
@@ -137,7 +137,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5, 1),
 "transitions": PackedFloat32Array(4, 0.25, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0.39215687), Color(1, 1, 1, 1), Color(1, 1, 1, 0.39215687)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.39215687)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -161,7 +161,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.5, 1),
 "transitions": PackedFloat32Array(4, 0.25, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0.39215687), Color(1, 1, 1, 1), Color(1, 1, 1, 0.39215687)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.39215687)]
 }
 tracks/4/type = "method"
 tracks/4/imported = false
@@ -175,6 +175,20 @@ tracks/4/keys = {
 "values": [{
 "args": [&"dap_up", 1.0, false],
 "method": &"play"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.13333334),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_sound"
 }]
 }
 
@@ -209,6 +223,7 @@ libraries/ = SubResource("AnimationLibrary_m0vun")
 transform = Transform3D(0.75, 0.4330127, 0.5, -0.5, 0.8660254, 0, -0.4330127, -0.25, 0.8660254, -3, 0, 0)
 modulate = Color(1, 1, 1, 0)
 no_depth_test = true
+render_priority = 2
 texture = ExtResource("4_1ggme")
 hframes = 2
 frame = 1
@@ -217,5 +232,6 @@ frame = 1
 transform = Transform3D(0.75, -0.4330127, -0.5, 0.5, 0.8660254, 0, 0.4330127, -0.25, 0.8660254, 3, 0, 0)
 modulate = Color(1, 1, 1, 0)
 no_depth_test = true
+render_priority = 2
 texture = ExtResource("4_1ggme")
 hframes = 2

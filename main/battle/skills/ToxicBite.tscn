@@ -93,7 +93,7 @@ animations = [{
 "duration": 1.0,
 "texture": null
 }],
-"loop": false,
+"loop": 0,
 "name": &"toxic_bite",
 "speed": 30.0
 }]

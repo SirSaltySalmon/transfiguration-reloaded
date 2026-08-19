@@ -10,6 +10,9 @@ extends Control
 @onready var win_bonus: Label = $WinBonus
 @onready var skip_or_continue: Button = $SkipOrContinue
 
+const CHA_CHING = preload("uid://bx7u4n8qshaql")
+const DISAPPOINTMENT = preload("uid://dxthasyeargtp")
+
 var skipping := false
 var allow_input := false
 
@@ -55,6 +58,7 @@ func summarize_stats():
 				update_progress_bar()
 			
 			if not skipping:
+				SoundManager.play_sound(CHA_CHING)
 				await Methods.wait(0.1)
 	
 	if not skipping and not kill_count == 0:
@@ -66,6 +70,7 @@ func summarize_stats():
 		money_earned.text = "Money Earned: %s" % str(money_earned_count)
 		
 		if not skipping:
+			SoundManager.play_sound(CHA_CHING)
 			await Methods.wait(0.1)
 	
 	if not skipping:
@@ -79,6 +84,7 @@ func summarize_stats():
 			var possible_bonuses = ["1x Cured Ham", "1x Flesh", "1x Goat's Blood", "5x Moneys"]
 			var bonus_index = randi_range(0,3)
 			win_bonus.text = "Win Bonus: %s" % possible_bonuses[bonus_index]
+			SoundManager.play_sound(CHA_CHING)
 			match bonus_index:
 				0:
 					Global.sav.cured_ham += 1
@@ -90,6 +96,7 @@ func summarize_stats():
 					Global.sav.money += 5
 	else:
 		win_bonus.text = "Escaped! No bonus given."
+		SoundManager.play_sound(DISAPPOINTMENT)
 	
 	skip_or_continue.text = "Continue"
 	finished_showing_stats = true

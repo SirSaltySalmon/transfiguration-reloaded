@@ -38,6 +38,8 @@
 [ext_resource type="Script" uid="uid://d3nqa1ukamd56" path="res://main/battle/skill_node_connector.gd" id="22_fvn33"]
 [ext_resource type="Script" uid="uid://bvt8cw3q01vd8" path="res://main/battle/skill_button.gd" id="22_nidv2"]
 [ext_resource type="Script" uid="uid://c5tyt6py1i62o" path="res://main/battle/target_selection.gd" id="24_314eb"]
+[ext_resource type="SpriteFrames" uid="uid://c3wdkjws2xh4h" path="res://assets/battle/effects/cure.tres" id="27_8qows"]
+[ext_resource type="SpriteFrames" uid="uid://ce7efk5r7e8vo" path="res://assets/battle/effects/bless.tres" id="30_uytlp"]
 [ext_resource type="Texture2D" uid="uid://bep5x6qupkg4u" path="res://assets/battle/ui/Rat.png" id="32_gdl11"]
 [ext_resource type="Texture2D" uid="uid://dkc0golprf6rg" path="res://assets/battle/ui/RatWalking.png" id="32_q788g"]
 [ext_resource type="Script" uid="uid://5h7rkunhl0tt" path="res://main/battle/stats.gd" id="33_6701q"]
@@ -1075,6 +1077,20 @@ tracks/7/keys = {
 "update": 0,
 "values": [Vector3(-1.3962634, 1.5707964, 0)]
 }
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_entrance_sound"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_6701q"]
 resource_name = "win_anim"
@@ -1263,14 +1279,14 @@ _limits = [0.0, 0.25, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.496894, 0.126374), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_rco3v"]
+[sub_resource type="CurveTexture" id="CurveTexture_mk36a"]
 curve = SubResource("Curve_epriu")
 
 [sub_resource type="Curve" id="Curve_0vaki"]
 _data = [Vector2(0, 0), 0.0, 5.0, 0, 0, Vector2(0.485507, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -5.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_003jo"]
+[sub_resource type="CurveTexture" id="CurveTexture_e8205"]
 curve = SubResource("Curve_0vaki")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_y8qc7"]
@@ -1284,16 +1300,15 @@ orbit_velocity_max = 5.0
 gravity = Vector3(0, 0, 0)
 scale_min = 0.2
 scale_max = 0.4
-scale_curve = SubResource("CurveTexture_003jo")
-alpha_curve = SubResource("CurveTexture_rco3v")
+scale_curve = SubResource("CurveTexture_e8205")
+alpha_curve = SubResource("CurveTexture_mk36a")
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xygk7"]
 load_path = "res://.godot/imported/dust.png-38e6b4baae02e7ea8dadf5b7a74ab4ab.s3tc.ctex"
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nqvru"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8qows"]
 render_priority = 1
 transparency = 1
-shading_mode = 0
 vertex_color_use_as_albedo = true
 albedo_texture = SubResource("CompressedTexture2D_xygk7")
 billboard_mode = 3
@@ -1303,7 +1318,7 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_tx0yf"]
-material = SubResource("StandardMaterial3D_nqvru")
+material = SubResource("StandardMaterial3D_8qows")
 orientation = 2
 
 [node name="Battle" type="Node3D" unique_id=938752914 node_paths=PackedStringArray("ui", "cam", "anim", "rat_dance_anim", "skills", "target", "env")]
@@ -1878,7 +1893,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CuredHam" type="Button" parent="MainUI/RightPanel/Items" unique_id=1152982108 node_paths=PackedStringArray("item_sprite", "item_desc_display", "main", "parent")]
+[node name="CuredHam" type="Button" parent="MainUI/RightPanel/Items" unique_id=1152982108 node_paths=PackedStringArray("item_sprite", "item_desc_display", "effect_base", "main", "parent")]
 material = SubResource("ShaderMaterial_p7lmq")
 layout_mode = 0
 offset_left = 56.0
@@ -1897,10 +1912,18 @@ item_name = "Cured Ham"
 item_id = "cured_ham"
 sprite_id = 1
 item_desc = "Restore [color=green]50 HP[/color] to all allies"
+effect_base = NodePath("Effect")
 main = NodePath("../../../..")
 parent = NodePath("../..")
 
-[node name="Flesh" type="Button" parent="MainUI/RightPanel/Items" unique_id=25021399 node_paths=PackedStringArray("item_sprite", "item_desc_display", "main", "parent")]
+[node name="Effect" type="AnimatedSprite3D" parent="MainUI/RightPanel/Items/CuredHam" unique_id=1648949127]
+transform = Transform3D(-4.371139e-07, -10, -4.37114e-07, 0, -4.37114e-07, 10, -10, 4.371139e-07, 1.9106861e-14, -0.0003284216, 0.005830765, -0.029034615)
+visible = false
+texture_filter = 0
+sprite_frames = ExtResource("27_8qows")
+animation = &"cure"
+
+[node name="Flesh" type="Button" parent="MainUI/RightPanel/Items" unique_id=25021399 node_paths=PackedStringArray("item_sprite", "item_desc_display", "effect_base", "main", "parent")]
 material = SubResource("ShaderMaterial_vfxhe")
 layout_mode = 0
 offset_left = 56.0
@@ -1919,10 +1942,11 @@ item_name = "Flesh"
 item_id = "flesh"
 sprite_id = 2
 item_desc = "Restore [color=green]100 HP[/color] to one ally"
+effect_base = NodePath("../CuredHam/Effect")
 main = NodePath("../../../..")
 parent = NodePath("../..")
 
-[node name="Goat\'sBlood" type="Button" parent="MainUI/RightPanel/Items" unique_id=468521049 node_paths=PackedStringArray("item_sprite", "item_desc_display", "main", "parent")]
+[node name="Goat\'sBlood" type="Button" parent="MainUI/RightPanel/Items" unique_id=468521049 node_paths=PackedStringArray("item_sprite", "item_desc_display", "effect_base", "main", "parent")]
 material = SubResource("ShaderMaterial_q1t4l")
 layout_mode = 0
 offset_left = 72.0
@@ -1941,8 +1965,18 @@ item_name = "Goat's Blood"
 item_id = "goats_blood"
 sprite_id = 3
 item_desc = "Revives an ally to half health"
+effect_base = NodePath("Effect")
 main = NodePath("../../../..")
 parent = NodePath("../..")
+
+[node name="Effect" type="AnimatedSprite3D" parent="MainUI/RightPanel/Items/Goat\'sBlood" unique_id=1388958852]
+transform = Transform3D(-5.2453663e-07, -12, -5.2453663e-07, 0, -5.2453663e-07, 12, -12, 5.2453663e-07, 2.2928226e-14, 0, 0, 0)
+visible = false
+texture_filter = 0
+sprite_frames = ExtResource("30_uytlp")
+animation = &"bless"
+frame = 15
+frame_progress = 1.0
 
 [node name="Money" type="Button" parent="MainUI/RightPanel/Items" unique_id=852212867 node_paths=PackedStringArray("item_sprite", "item_desc_display", "main", "parent")]
 material = SubResource("ShaderMaterial_fo1wp")
@@ -2243,11 +2277,14 @@ libraries/gearswitch = ExtResource("40_43rn7")
 libraries/icefall = ExtResource("39_pwmv7")
 libraries/moonbeam = ExtResource("42_mk36a")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CineAnim" unique_id=681491499]
+bus = &"SFX"
+
 [node name="MainAnim" type="AnimationPlayer" parent="." unique_id=1602434553]
 libraries/ = SubResource("AnimationLibrary_bplng")
 
 [node name="BattleCam" type="Node3D" parent="." unique_id=1810964477 node_paths=PackedStringArray("main", "handheld_shake", "impact_shake", "big_impact_shake")]
-transform = Transform3D(-4.371139e-08, -0.9848073, 0.17364813, 0, 0.17364815, 0.98480725, -1, 4.3047294e-08, -7.590401e-09, 10, 70, 0)
+transform = Transform3D(-4.371139e-08, -0.98480725, 0.17364813, 0, 0.17364813, 0.98480725, -1, 4.304729e-08, -7.590401e-09, 10, 70, 0)
 script = ExtResource("2_g1d0u")
 main = NodePath("..")
 handheld_shake = NodePath("BattleCam/HandheldShake")

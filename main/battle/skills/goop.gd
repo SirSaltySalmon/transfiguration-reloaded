@@ -1,5 +1,7 @@
 extends Skill
 
+const GOOP = preload("uid://cm6wrij2asvqp")
+
 func use(user: BattleCharacter, target):
 	await user.start_action("Goop")
 	
@@ -8,6 +10,7 @@ func use(user: BattleCharacter, target):
 	target.health.add_effect("Goop", duration)
 	target.health.damage_anim(Color.AQUA)
 	effect.play("goop")
+	SoundManager.play_sound(GOOP)
 	await Methods.wait(1.0 / Methods.anim_speed)
 	
 	kill_effects()

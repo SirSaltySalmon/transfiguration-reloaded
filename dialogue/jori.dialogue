@@ -2,7 +2,7 @@
 [i]Every action has its consequences.[/i]
 [i]For our crimes against humanity, we've been endlessly pursued.[/i]
 [i]Some might say it's thrilling, but me? All I want is to live a quiet, normal life.[/i]
-[i]So try imagining how relieved I felt to discover this sanctuary.
+[i]So I was relieved to discover this sanctuary.
 	A place the raiders couldn't follow us into.[/i]
 [i]But among these glistening gold coins, I just can't shake the feeling...[/i]
 [i]...That it was a mistake to step foot in here.[/i]
@@ -55,6 +55,7 @@ Oh, my, gosh! Look who's good at following instructions!
 That's 20 pieces of flesh, alright!
 do! Methods.current_scene.jori_emo("smug")
 What cute little servants. You deserve a reward.
+do! Methods.current_scene.jori_emo("happy")
 How about... some headpats?
 - Yes
 	do! Methods.current_scene.enter_headpat()
@@ -69,7 +70,7 @@ How about... some headpats?
 	Okay, then. That's alright. Um...
 do! Methods.current_scene.jori_emo("neutral")
 Well, let's get to eating these before they start to rot.
-[i]With utmost ease through her fireborne magic, she set up a campfire.[/i]
+[i]With utmost ease, she snaps a bonfire into existence.[/i]
 do Methods.current_scene.jori_emo("happy")
 ...What are you doing just standing there? Come here. Let's eat together!
 [i]Together...? With a Great Dragon like her...?[/i]
@@ -84,44 +85,57 @@ Yeah, I would just instinctually gulp things down like you, too, but I need to k
 It's all I have left of her.
 [i]Reliable, caring, and considerate... Yet the legends speak horrors about her kind.[/i]
 [i]Surely, it can't all be false?[/i]
+do Methods.current_scene.campfire_emo("sad_minor")
 ...I'm sorry. I'm getting a bit sentimental.
 It's a bit rude talking about my ex-servants in front of my current ones, but...
 You'd understand, right?
 This dungeon... our home... is going under. Soon. I can't help but feel sad.
+do Methods.current_scene.campfire_emo("crying_into")
 I'm supposed to be a Great Dragon. Those who enter my servitude should at least be promised my protection.
 But I couldn't even save them.
 They had to save me from [color=green]him[/color].
 [i]Jori has so much love to give. But her primal anger is aching to be let out.[/i]
 [i]Once her love gets polluted with enough misery, it's for certain that the world will know her promised wrath.[/i]
+do Methods.current_scene.campfire_emo("crying_away")
 ...Hey, I shouldn't have sent you out before. It's dangerous outside.
 Just stay with me from now on, okay?
 When [color=green]he[/color] eventualy gets here... Just run. As fast as you can.
 It is my duty to stay and [i]rip[/i] these savages apart.
 - Don't be ridiculous. You'd die.
+do Methods.current_scene.campfire_emo("crying_into")
 ...Huh?
-- Don't just use us as a way to allieviate the guilt in your heart.
+- Don't just use us as a way...
+...
+- ...to allieviate the guilt in your heart.
 ...
 - I deserve to have you in my life.
 ...
-- Your late servants deserve to not have died meaningless deaths.
+- Your late servants deserve meaningful deaths.
 ...
 - And you deserve to be happy, too.
 ...
-- So don't just put up with this. For our sake, and all of monsterkind's sake...
+- So don't just put up with this.
+...
+- For our sake, and all of monsterkind's sake...
 ...
 - Run with us. We can escape. Together.
 ...
+do Methods.current_scene.campfire_emo("crying_away")
 Alright.
+do Methods.current_scene.show_flame()
 [i]It's as if the very Sun is before your eyes.[/i]
 [i]A flame that burns so bright, it makes the world flicker into darkness.[/i]
 This is the Eternal Pyre. My Relic.
 If we surrender this, [color=green]Hannes[/color] will only get stronger.
 But we will live another day, to rally our forces.
-And may he see the day the Great Dragons he hunts for sport tear him apart piece by piece.
-Come now, take my hand. Let's fly away from this place.
+And may he see the day the Great Dragons he hunts for sport [i]tear[/i] him apart piece by piece.
+... Come, now.
+Take my hand.
+Let's fly away from this place.
 - [color=red]DEVOUR[/color]
 - [color=red]DEVOUR[/color]
 What are you
+do! Methods.current_scene.devour_jori()
 => END
 
 ~ jori_annoyed
@@ -135,6 +149,7 @@ do! Methods.current_scene.exit_date()
 
 ~ bad_end
 ...Honestly, what did I do to you?
+You took my money, spent it all, and didn't even come back with food?
 I just don't understand. Every time I've trusted someone, all that ever happens is me getting hurt.
 Why did you have to betray me? Was it worth the 100 Moneys?
 Am I not worthy of your love?

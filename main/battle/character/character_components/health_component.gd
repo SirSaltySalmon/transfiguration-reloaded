@@ -5,6 +5,8 @@ class_name HealthComponent extends Sprite3D
 @onready var change_display = $SubViewport/ChangeDisplay
 @onready var change_anim: AnimationPlayer = $SubViewport/ChangeDisplay/AnimationPlayer
 
+const SMALL_IMPACT = preload("uid://ds25chp6h5a3")
+const DEVOUR = preload("uid://cvy25pxhxruyk")
 
 @onready var status_icons = $SubViewport/StatusIcons
 
@@ -72,6 +74,9 @@ func devour(damage: int):
 		main.devoured_count += 1
 		main.ui.display_move("Devoured! Gained bonus action!")
 		main.current_char.turn.force_action()
+		SoundManager.play_sound(DEVOUR)
+	else:
+		SoundManager.play_sound(parent.basic_attack_sound)
 
 func add_effect(effect_name: String, duration: int):
 	if has_effect(effect_name):
@@ -120,6 +125,7 @@ func poison():
 	await main.cam.tween_cam_to(parent)
 	main.ui.display_move("Poison")
 	take_damage(poison_damage, parent, Color.DARK_GREEN)
+	SoundManager.play_sound(SMALL_IMPACT)
 	await Methods.wait(1.0 / Methods.anim_speed)
 	effect_triggered.emit()
 	return
@@ -128,6 +134,7 @@ func burn():
 	await main.cam.tween_cam_to(parent)
 	main.ui.display_move("Burn")
 	take_damage(burn_damage, parent, Color.ORANGE_RED)
+	SoundManager.play_sound(SMALL_IMPACT)
 	await Methods.wait(1.0 / Methods.anim_speed)
 	effect_triggered.emit()
 	return

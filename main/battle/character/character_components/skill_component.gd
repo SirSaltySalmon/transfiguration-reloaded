@@ -6,6 +6,7 @@ class_name SkillComponent extends Node
 @export var skill_2: String
 @export var skill_3: String
 @export var skill_4: String
+@export var skill_5: String #For extra complex characters
 
 var skills: Array[Skill] = []
 
@@ -25,5 +26,6 @@ func _ready():
 	skills.append(Methods.current_scene.skills.load_skill_node(skill_2))
 	skills.append(Methods.current_scene.skills.load_skill_node(skill_3))
 	skills.append(Methods.current_scene.skills.load_skill_node(skill_4))
+	skills.append(Methods.current_scene.skills.load_skill_node(skill_5))
 	skills = skills.filter(func(value): return value != null)
 	

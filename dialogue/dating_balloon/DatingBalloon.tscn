@@ -4,6 +4,7 @@
 [ext_resource type="Theme" uid="uid://bo4ssxwqvtpbh" path="res://main/dating/dating_ui_theme.tres" id="2_g70yo"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="3_jceaw"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="4_jpk38"]
+[ext_resource type="PackedScene" uid="uid://nnf1ljsuubxn" path="res://dialogue/dating_balloon/response_example.tscn" id="5_fy17u"]
 
 [node name="DatingBalloon" type="CanvasLayer" unique_id=1742079667]
 layer = 100
@@ -55,13 +56,8 @@ theme_override_constants/separation = 20
 script = ExtResource("4_jpk38")
 response_template = NodePath("ResponseExample")
 
-[node name="ResponseExample" type="Button" parent="Balloon/Responses/ResponsesMenu" unique_id=111522285]
+[node name="ResponseExample" parent="Balloon/Responses/ResponsesMenu" unique_id=1556233607 instance=ExtResource("5_fy17u")]
 layout_mode = 2
-text = "Yes"
-
-[node name="ResponseExample2" type="Button" parent="Balloon/Responses/ResponsesMenu" unique_id=781780563]
-layout_mode = 2
-text = "No"
 
 [node name="CharacterLabel" type="RichTextLabel" parent="." unique_id=2109076267]
 unique_name_in_owner = true

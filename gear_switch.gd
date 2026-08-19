@@ -7,10 +7,15 @@ func _ready():
 	super()
 	center.cine_anim.add_animation_library("gearswitch", GEARSWITCH)
 
-func use(user: BattleCharacter, target):
+func use(user: BattleCharacter, _target):
 	await user.start_action("Gear Switch")
 	
+	main.queue_dialogue("gear_switch")
+	Global.custom_talker = user.name
+	await main.dialogue_check() # Called manually!!
+	
 	main.env.environment = COLD_NIGHT_SKY
+	main.play_entrance_sound()
 	user.gearswitched = true
 	center.cine_anim.play("gearswitch/play", -1, Methods.anim_speed)
 	

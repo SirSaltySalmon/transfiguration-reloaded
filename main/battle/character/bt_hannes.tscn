@@ -5,12 +5,13 @@
 [ext_resource type="Texture2D" uid="uid://dys15poxfg2wm" path="res://characters/hannes/hannes_sheet.png" id="3_ggj1m"]
 [ext_resource type="PackedScene" uid="uid://ccuw8vpu5w10y" path="res://main/battle/character/character_components/health_component.tscn" id="4_53806"]
 [ext_resource type="PackedScene" uid="uid://bs2xq80dv1ueu" path="res://main/battle/character/character_components/turn_component.tscn" id="5_cqjie"]
+[ext_resource type="Script" uid="uid://bsnt4ybuug6jf" path="res://main/battle/character/character_components/hannes_health_component.gd" id="5_e4vm5"]
 [ext_resource type="PackedScene" uid="uid://r2yku07du05q" path="res://main/battle/character/character_components/skill_component.tscn" id="6_qcvok"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_rkmuk"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_e4vm5"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_e4vm5"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_3b8vq"]
 viewport_path = NodePath("SubViewport")
 
 [node name="Hannes" type="StaticBody3D" unique_id=36953412 node_paths=PackedStringArray("skill_component")]
@@ -38,17 +39,19 @@ hframes = 2
 
 [node name="HealthComponent" parent="." unique_id=313391265 instance=ExtResource("4_53806")]
 transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, -3.60041e-07, 0, 4.07077)
-texture = SubResource("ViewportTexture_rkmuk")
+texture = SubResource("ViewportTexture_e4vm5")
+script = ExtResource("5_e4vm5")
 
 [node name="TurnComponent" parent="." unique_id=471687455 instance=ExtResource("5_cqjie")]
 transform = Transform3D(1.5, 0, 0, 0, -6.55671e-08, 1.5, 0, -1.5, -6.55671e-08, -2.04019e-07, 0, 4.66742)
-texture = SubResource("ViewportTexture_e4vm5")
+texture = SubResource("ViewportTexture_3b8vq")
 
 [node name="SkillComponent" parent="." unique_id=1953853332 instance=ExtResource("6_qcvok")]
 skill_1 = "Gear Switch"
 skill_2 = "Rend"
 skill_3 = "Icefall"
 skill_4 = "Moonbeam"
+skill_5 = "Relentless Ridicule"
 
 [editable path="CharacterVisual"]
 [editable path="HealthComponent"]

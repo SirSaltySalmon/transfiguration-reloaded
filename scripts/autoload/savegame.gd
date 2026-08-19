@@ -1,6 +1,8 @@
 class_name SaveGame
 extends Resource
 
+const GLASS = preload("uid://b6dgqijm875t5")
+
 @export var first_version_opened : String
 @export var last_version_opened : String
 @export var last_unix_time_saved : int
@@ -63,15 +65,15 @@ extends Resource
 @export var angel_talk_1 := false
 @export var rat_comments_on_posters := false
 @export var angel_talk_2 := false
-@export var jori_intro := false
+@export var jori_intro := true
 
-@export var money_at_jori := 0
+@export var money_at_jori := 101
 
 #Items & money data
-@export var cured_ham := 0
-@export var flesh := 0
-@export var goats_blood := 0
-@export var money := 0
+@export var cured_ham := 1
+@export var flesh := 19
+@export var goats_blood := 1
+@export var money := 1
 @export var repellant_owned := false
 
 @export var stock_dict = {
@@ -110,7 +112,7 @@ var bt_reference := ["Health", "Basic Attack", "Speed"]
 @export var bt_slime := [150, 20, 50]
 @export var bt_slime_skills := ["Devour", "Goop", "Eternal Pyre's Embrace", ""]
 @export var bt_rat := [100, 30, 70]
-@export var bt_rat_skills := ["Toxic Bite", "Dap Up", "", ""]
+@export var bt_rat_skills := ["Toxic Bite", "Dap Up", "Relentless Ridicule", ""]
 @export var bt_angel := [130, 20, 40]
 @export var bt_angel_skills := ["Judgment", "Cure", "Bless", ""]
 
@@ -125,5 +127,4 @@ var bt_reference := ["Health", "Basic Attack", "Speed"]
 @export var bt_elf_high := [70, 40, 80]
 @export var bt_wizard_high := [70, 50, 30]
 
-
-@export var bt_hannes := [1000, 30, 50]
+@export var bt_hannes := [1000, 30, 45]

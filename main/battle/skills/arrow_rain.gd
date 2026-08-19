@@ -1,5 +1,7 @@
 extends Skill
 
+const ARROW = preload("uid://c7oebuk86c7xc")
+
 func use(user: BattleCharacter, target):
 	await user.start_action("Arrow Rain")
 	
@@ -11,6 +13,7 @@ func use(user: BattleCharacter, target):
 		var effect = set_effect(targ)
 		targ.health.take_damage(value, user)
 		effect.play("arrow_rain")
+		SoundManager.play_sound(ARROW)
 		
 		await Methods.wait(0.5 / Methods.anim_speed)
 		

@@ -4,6 +4,7 @@
 [ext_resource type="Theme" uid="uid://deuac1eygl4i6" path="res://assets/overworld/themes/standard.tres" id="2_40fhp"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="3_n6q07"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="4_uoxsu"]
+[ext_resource type="PackedScene" uid="uid://nnf1ljsuubxn" path="res://dialogue/dating_balloon/response_example.tscn" id="5_v6rd6"]
 
 [node name="StandardBalloon" type="CanvasLayer" unique_id=1742079667 node_paths=PackedStringArray("top_black_bar", "bottom_black_bar")]
 layer = 100
@@ -78,13 +79,8 @@ theme_override_constants/separation = 2
 script = ExtResource("4_uoxsu")
 response_template = NodePath("ResponseExample")
 
-[node name="ResponseExample" type="Button" parent="Balloon/Responses/ResponsesMenu" unique_id=111522285]
+[node name="ResponseExample" parent="Balloon/Responses/ResponsesMenu" unique_id=1556233607 instance=ExtResource("5_v6rd6")]
 layout_mode = 2
-text = "Yes"
-
-[node name="ResponseExample2" type="Button" parent="Balloon/Responses/ResponsesMenu" unique_id=781780563]
-layout_mode = 2
-text = "No"
 
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
 [connection signal="response_selected" from="Balloon/Responses/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]

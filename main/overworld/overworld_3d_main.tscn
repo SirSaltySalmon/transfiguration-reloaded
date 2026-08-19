@@ -2,10 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://cs6sa16vx7mf7" path="res://ui/overworld/overworld_ui.tscn" id="1_gon5r"]
 [ext_resource type="Script" uid="uid://but1vaoxh587q" path="res://main/overworld/overworld_main.gd" id="1_vn6as"]
+[ext_resource type="AudioStream" uid="uid://cg38l83s0tb2i" path="res://sfx/footsteps.mp3" id="2_qg76s"]
 [ext_resource type="FontFile" uid="uid://cmmltma2gsu3a" path="res://addons/command-terminal/ast/windows_command_prompt.ttf" id="3_c6k2t"]
+[ext_resource type="AudioStream" uid="uid://sld6ljkwpx4k" path="res://sfx/rat_fall.mp3" id="3_kglt5"]
 [ext_resource type="Script" uid="uid://dmieq82eqdhx3" path="res://main/overworld/camera_3d.gd" id="3_l7jqc"]
 [ext_resource type="PackedScene" uid="uid://b724oh1cswaws" path="res://main/pause_menu/pause_menu.tscn" id="4_bm6iy"]
-[ext_resource type="Environment" uid="uid://btl4ptewvgyxp" path="res://assets/overworld/effects/sky/sewers_sky.tres" id="4_kefms"]
+[ext_resource type="AudioStream" uid="uid://beccvygfvvss5" path="res://sfx/creak_in.mp3" id="4_t4ucy"]
+[ext_resource type="Environment" uid="uid://btl4ptewvgyxp" path="res://assets/overworld/effects/sky/sewers_sky.tres" id="9_kglt5"]
 
 [sub_resource type="Animation" id="Animation_qg76s"]
 length = 0.001
@@ -44,6 +47,66 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(3, -2, -4)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Lair/Rat:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-4.6497693, -2.546, -7)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Lair/Rat:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-6.2831855, -1.5707964, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Lair/Dragon:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(12, 1.338, -7.5)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("DiningHall/Hannes:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Camera:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_bm6iy"]
@@ -168,14 +231,307 @@ tracks/7/keys = {
 "method": &"end_cutscene"
 }]
 }
+tracks/8/type = "audio"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("AnimationPlayer/SFXStreamPlayer")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"clips": [{
+"end_offset": 29.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_qg76s")
+}, {
+"end_offset": 20.5,
+"start_offset": 10.5,
+"stream": ExtResource("2_qg76s")
+}, {
+"end_offset": 0.0,
+"start_offset": 29.0,
+"stream": ExtResource("2_qg76s")
+}],
+"times": PackedFloat32Array(0, 3.6, 7.2)
+}
+tracks/8/use_blend = true
+
+[sub_resource type="Animation" id="Animation_t4ucy"]
+resource_name = "cutscene_2"
+length = 15.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 5, 6.1, 7.2, 9, 15),
+"transitions": PackedFloat32Array(0.5, 1, 2, 0.5, 1, 2, 1),
+"update": 0,
+"values": [Vector3(0, 8.831974, -3.9999995), Vector3(0, -0.5013627, -3.2500005), Vector3(0, -0.5013627, -3.2500005), Vector3(-1.0094118, -0.501192, -3.2500002), Vector3(-2.145, -0.501, -3.25), Vector3(-2.145, -0.5009999, -3.25), Vector3(3.96, 0.704, -1.51)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"pause"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 14),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [false],
+"method": &"color_transition"
+}, {
+"args": [true],
+"method": &"color_transition"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(15),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"end_cutscene"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Lair/Rat:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-6.2831855, -1.5707964, 0), Vector3(0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Lair/Rat:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.2, 1.4, 5, 7.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 12, -7), Vector3(0, -2, -7), Vector3(0, -2, -7), Vector3(-8.16, -2, -7)]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Lair/Rat")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1.4, 2.7, 3.2, 4, 5, 5.3, 5.6, 5.9, 6.2, 6.5, 6.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"jump_and_rotate"
+}, {
+"args": [],
+"method": &"flip"
+}, {
+"args": [],
+"method": &"flip"
+}, {
+"args": [&"rat_cutscene_2"],
+"method": &"trigger_dialogue"
+}, {
+"args": [],
+"method": &"jump_and_rotate"
+}, {
+"args": [],
+"method": &"jump_and_rotate"
+}, {
+"args": [],
+"method": &"jump_and_rotate"
+}, {
+"args": [],
+"method": &"jump_and_rotate"
+}, {
+"args": [],
+"method": &"jump_and_rotate"
+}, {
+"args": [],
+"method": &"jump_and_rotate"
+}, {
+"args": [],
+"method": &"jump_and_rotate"
+}]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Lair/Dragon:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(10, 14.1),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(12, 1.338, -7.5), Vector3(6.329, 1.338, -7.5)]
+}
+tracks/8/type = "audio"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("AnimationPlayer/SFXStreamPlayer")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_kglt5")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": null
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_t4ucy")
+}],
+"times": PackedFloat32Array(0, 3.9, 10)
+}
+tracks/8/use_blend = true
+
+[sub_resource type="Animation" id="Animation_kglt5"]
+resource_name = "cutscene_3"
+length = 8.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.1, 3, 4, 6, 7, 8),
+"transitions": PackedFloat32Array(0.25, 0.25, 0.25, 0.25, 1, 0.25, 0.25),
+"update": 0,
+"values": [Vector3(0, 1, -4), Vector3(0, 1, -4), Vector3(-3.5899773, 1.0941191, -2.979622), Vector3(-3.5899773, 1.0941191, -2.979622), Vector3(6.9871063, 0.7505057, -1.6381378), Vector3(6.9871063, 0.7505057, -1.6381378), Vector3(0, 1, -3)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1, 8),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"pause"
+}, {
+"args": [],
+"method": &"pause"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [false],
+"method": &"color_transition"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(8.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"end_cutscene"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("DiningHall/Hannes:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 6, 6.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("DiningHall/Hannes")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1, 8),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [&"hannes_1"],
+"method": &"trigger_dialogue"
+}, {
+"args": [&"hannes_2"],
+"method": &"trigger_dialogue"
+}]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Camera:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1.1, 3, 4, 6, 7, 8),
+"transitions": PackedFloat32Array(1, 0.25, 0.25, 0.25, 1, 0.25, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(-0.09599312, 0.60213864, 0), Vector3(-0.09599312, 0.60213864, 0), Vector3(-0.08290315, -0.37088236, 0), Vector3(-0.08290315, -0.37088236, 0), Vector3(0, 0, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qg76s"]
 _data = {
 &"RESET": SubResource("Animation_qg76s"),
-&"cutscene_1": SubResource("Animation_bm6iy")
+&"cutscene_1": SubResource("Animation_bm6iy"),
+&"cutscene_2": SubResource("Animation_t4ucy"),
+&"cutscene_3": SubResource("Animation_kglt5")
 }
 
-[sub_resource type="Animation" id="Animation_vhtj1"]
+[sub_resource type="Animation" id="Animation_hhsxw"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -201,9 +557,85 @@ tracks/1/keys = {
 "update": 1,
 "values": [1.0]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Devour:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.3137255, 0, 0, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Devour:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Cover:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
-[sub_resource type="Animation" id="Animation_rxouy"]
+[sub_resource type="Animation" id="Animation_cm04d"]
 resource_name = "devour"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Devour:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.3137255, 0, 0, 1), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Devour:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cover:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_t38uo"]
+resource_name = "death"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -216,8 +648,32 @@ tracks/0/keys = {
 "update": 0,
 "values": [1.0, 0.0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Devour:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cover:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
-[sub_resource type="Animation" id="Animation_0omg8"]
+[sub_resource type="Animation" id="Animation_24wuv"]
 resource_name = "enter"
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -231,8 +687,20 @@ tracks/0/keys = {
 "update": 0,
 "values": [1.0, 0.0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cover:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
-[sub_resource type="Animation" id="Animation_kglt5"]
+[sub_resource type="Animation" id="Animation_6sfop"]
 resource_name = "exit"
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -246,13 +714,26 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0, 1.0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cover:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_bm6iy"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rxouy"]
 _data = {
-&"RESET": SubResource("Animation_vhtj1"),
-&"devour": SubResource("Animation_rxouy"),
-&"enter": SubResource("Animation_0omg8"),
-&"exit": SubResource("Animation_kglt5")
+&"RESET": SubResource("Animation_hhsxw"),
+&"death": SubResource("Animation_cm04d"),
+&"devour": SubResource("Animation_t38uo"),
+&"enter": SubResource("Animation_24wuv"),
+&"exit": SubResource("Animation_6sfop")
 }
 
 [sub_resource type="Curve" id="Curve_utq4w"]
@@ -311,6 +792,9 @@ anim = NodePath("AnimationPlayer")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=443344323]
 libraries/ = SubResource("AnimationLibrary_qg76s")
 
+[node name="SFXStreamPlayer" type="AudioStreamPlayer" parent="AnimationPlayer" unique_id=160907065]
+bus = &"SFX"
+
 [node name="OverworldUI" parent="." unique_id=151247020 instance=ExtResource("1_gon5r")]
 
 [node name="AUTOCOMPLETE-PANEL" parent="OverworldUI/Terminal/__guts__/AutocompleteControl" index="0"]
@@ -334,26 +818,28 @@ offset_bottom = 6.0
 theme_override_fonts/font = ExtResource("3_c6k2t")
 theme_override_font_sizes/font_size = 12
 
-[node name="Effects" type="CanvasLayer" parent="." unique_id=1550308920]
+[node name="Effects" type="CanvasLayer" parent="." unique_id=1461697966]
 layer = 129
 
-[node name="EffectsPlayer" type="AnimationPlayer" parent="Effects" unique_id=498262325]
-root_node = NodePath("../../OverworldUI")
-libraries/ = SubResource("AnimationLibrary_bm6iy")
+[node name="EffectsPlayer" type="AnimationPlayer" parent="Effects" unique_id=62154046]
+libraries/ = SubResource("AnimationLibrary_rxouy")
 
-[node name="Devour" type="ColorRect" parent="Effects" unique_id=1140301883]
+[node name="Devour" type="ColorRect" parent="Effects" unique_id=1034603160]
+visible = false
 z_index = 1
 offset_right = 1280.0
 offset_bottom = 720.0
 mouse_filter = 2
-color = Color(0.3137255, 0, 0, 0)
+color = Color(0.3137255, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
 
-[node name="Cover" type="ColorRect" parent="Effects" unique_id=460219878]
+[node name="Cover" type="ColorRect" parent="Effects" unique_id=873668867]
 z_index = 20
 offset_right = 1280.0
 offset_bottom = 720.0
 mouse_filter = 2
-color = Color(0, 0, 0, 0)
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="SkipButton" type="CanvasLayer" parent="." unique_id=2074905089]
 visible = false
@@ -389,7 +875,7 @@ spot_range = 30.0
 spot_angle = 60.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1948573418]
-environment = ExtResource("4_kefms")
+environment = ExtResource("9_kglt5")
 
 [node name="DustParticles" type="GPUParticles3D" parent="." unique_id=1557810043]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.42168)

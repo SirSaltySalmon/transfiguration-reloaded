@@ -67,12 +67,12 @@ func set_sound_volume(volume_between_0_and_1: float) -> void:
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(ui_sound_effects.bus), linear_to_db(volume_between_0_and_1))
 
 
-func play_sound(resource: AudioStream, override_bus: String = "") -> AudioStreamPlayer:
-	return sound_effects.play(resource, override_bus)
+func play_sound(resource: AudioStream, from_position := 0.0, override_bus: String = "") -> AudioStreamPlayer:
+	return sound_effects.play(resource, from_position, override_bus)
 
 
-func play_sound_with_pitch(resource: AudioStream, pitch: float = 1.0, override_bus: String = "") -> AudioStreamPlayer:
-	var player = sound_effects.play(resource, override_bus)
+func play_sound_with_pitch(resource: AudioStream, from_position := 0.0, pitch: float = 1.0, override_bus: String = "") -> AudioStreamPlayer:
+	var player = sound_effects.play(resource, from_position, override_bus)
 	player.pitch_scale = pitch
 	return player
 
@@ -81,12 +81,12 @@ func stop_sound(resource: AudioStream) -> void:
 	return sound_effects.stop(resource)
 
 
-func play_ui_sound(resource: AudioStream, override_bus: String = "") -> AudioStreamPlayer:
-	return ui_sound_effects.play(resource, override_bus)
+func play_ui_sound(resource: AudioStream, from_position := 0.0, override_bus: String = "") -> AudioStreamPlayer:
+	return ui_sound_effects.play(resource, from_position, override_bus)
 
 
-func play_ui_sound_with_pitch(resource: AudioStream, pitch: float = 1.0, override_bus: String = "") -> AudioStreamPlayer:
-	var player = ui_sound_effects.play(resource, override_bus)
+func play_ui_sound_with_pitch(resource: AudioStream, pitch: float = 1.0, from_position := 0.0, override_bus: String = "") -> AudioStreamPlayer:
+	var player = ui_sound_effects.play(resource, from_position, override_bus)
 	player.pitch_scale = pitch
 	return player
 

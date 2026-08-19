@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cfe8pvdku4aj1"
+path="res://.godot/imported/hannes.dialogue-101dccd5084f07ca4abd61c52175c70e.tres"
+
+[deps]
+
+source_file="res://dialogue/hannes.dialogue"
+dest_files=["res://.godot/imported/hannes.dialogue-101dccd5084f07ca4abd61c52175c70e.tres"]
+
+[params]
+
+defaults=true

@@ -118,7 +118,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1l8bj")
 }],
-"loop": true,
+"loop": 1,
 "name": &"goop",
 "speed": 30.0
 }]

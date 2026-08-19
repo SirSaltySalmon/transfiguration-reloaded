@@ -1,10 +1,13 @@
 extends StaticBody3D
 class_name BattleCharacter
 
+const SPELL_STARTUP = preload("uid://pfgkn3j30cxb")
+
 @export var battle_id: String
 @export var ally: bool
 @export var skill_component: SkillComponent
 @export var basic_attack_chance := 1.0
+@export var basic_attack_sound: AudioStream = preload("res://sfx/small_impact.mp3")
 
 @onready var sprite = $CharacterVisual/Sprite
 @onready var health: HealthComponent = $HealthComponent
@@ -37,6 +40,7 @@ func start_action(text := ""):
 		main.ui.display_move(text)
 	main.ui.flavor_text.hide()
 	main.cam.tween_cam_to(self)
+	SoundManager.play_sound(SPELL_STARTUP)
 	var tween = get_tree().create_tween()
 	tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	tween.set_ease(Tween.EASE_OUT)
@@ -52,6 +56,7 @@ func use_basic_attack(target: BattleCharacter):
 	
 	await main.skills.focus_on_target(target)
 	target.health.take_damage(basic_attack, self)
+	SoundManager.play_sound(basic_attack_sound)
 	await Methods.wait(1.0 / Methods.anim_speed)
 	
 	Broadcaster.action_over.emit()

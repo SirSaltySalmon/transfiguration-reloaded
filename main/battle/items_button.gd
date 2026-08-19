@@ -8,6 +8,9 @@ class_name ItemsButton extends BattleButton
 @export var sprite_id: int
 @export var item_desc: String
 
+@export var effect_base: Node3D
+var effect_instances = []
+
 @export var main: BattleScene
 
 var count = 0
@@ -26,5 +29,17 @@ func _on_mouse_entered():
 		return
 	item_sprite.frame = sprite_id
 	item_desc_display.text = item_desc
-	
-	
+
+func set_effect(target: BattleCharacter):
+	var effect = effect_base.duplicate()
+	add_child(effect)
+	effect_instances.append([effect, target])
+	effect.global_position = target.global_position
+	effect.global_position.y += 0.2
+	effect.show()
+	return effect
+
+func kill_effects():
+	for effect in effect_instances:
+		effect[0].queue_free()
+	effect_instances.clear()

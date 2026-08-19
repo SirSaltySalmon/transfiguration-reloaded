@@ -2,16 +2,17 @@
 
 [ext_resource type="Script" uid="uid://1kn5eee10lvf" path="res://main/dating/dating.gd" id="1_3d6ic"]
 [ext_resource type="Resource" uid="uid://bxi2wa8ditnrr" path="res://dialogue/jori.dialogue" id="2_oogvt"]
-[ext_resource type="Texture2D" uid="uid://daj4f8jcj542f" path="res://assets/overworld/areas/LAIR.png" id="2_vmv25"]
 [ext_resource type="Texture2D" uid="uid://c01nhk0rvt64p" path="res://characters/dragon/jori_sheet.png" id="3_6sfop"]
 [ext_resource type="FontFile" uid="uid://ds86gfffkp1bv" path="res://assets/fonts/Moderniz.otf" id="3_hhsxw"]
 [ext_resource type="PackedScene" uid="uid://dlcb3m8ot2ika" path="res://dialogue/dating_balloon/DatingBalloon.tscn" id="3_u7imq"]
+[ext_resource type="Texture2D" uid="uid://dcycg7578e7ob" path="res://assets/overworld/areas/blurredLAIR.png" id="4_k2uyd"]
 [ext_resource type="Script" uid="uid://qhmkwov0dsat" path="res://main/dating/time_display.gd" id="4_o35aq"]
 [ext_resource type="Script" uid="uid://dh80dqyt60wsn" path="res://main/dating/auto.gd" id="4_t38uo"]
 [ext_resource type="Script" uid="uid://dttla56nnwv2d" path="res://main/dating/skip.gd" id="5_cm04d"]
 [ext_resource type="Script" uid="uid://dma07dafp0rpp" path="res://main/dating/date_display.gd" id="5_hhsxw"]
 [ext_resource type="PackedScene" uid="uid://b724oh1cswaws" path="res://main/pause_menu/pause_menu.tscn" id="9_24wuv"]
 [ext_resource type="Script" uid="uid://b6fgv44n1oyi7" path="res://main/dating/prefs.gd" id="9_k2uyd"]
+[ext_resource type="VideoStream" uid="uid://c4lxol1ffib6q" path="res://assets/dating/jori_devouring.ogv" id="12_ld0am"]
 
 [sub_resource type="Animation" id="Animation_oogvt"]
 length = 0.001
@@ -41,7 +42,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.15, 0.3),
 "transitions": PackedFloat32Array(0.3333333, 3, 1),
 "update": 0,
-"values": [Vector2(640, 374), Vector2(640, 320), Vector2(640, 374)]
+"values": [Vector2(640, 374), Vector2(640, 354), Vector2(640, 374)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ld0am"]
@@ -441,7 +442,7 @@ offset_left = -176.0
 offset_right = 2224.0
 offset_bottom = 1080.0
 scale = Vector2(0.68, 0.68)
-texture = ExtResource("2_vmv25")
+texture = ExtResource("4_k2uyd")
 
 [node name="Jori" type="Sprite2D" parent="." unique_id=1612979008]
 visible = false
@@ -568,6 +569,23 @@ layer = 129
 
 [node name="EffectsPlayer" type="AnimationPlayer" parent="Effects" unique_id=1632785559]
 libraries/ = SubResource("AnimationLibrary_6sfop")
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="Effects" unique_id=1259898335]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+ratio = 1.7778
+
+[node name="Video" type="VideoStreamPlayer" parent="Effects/AspectRatioContainer" unique_id=630621578]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+mouse_filter = 2
+stream = ExtResource("12_ld0am")
+expand = true
 
 [node name="Devour" type="ColorRect" parent="Effects" unique_id=494428150]
 visible = false

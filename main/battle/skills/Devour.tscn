@@ -188,7 +188,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_shdw1")
 }],
-"loop": false,
+"loop": 0,
 "name": &"devour",
 "speed": 30.0
 }]

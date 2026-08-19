@@ -3,6 +3,11 @@ Rat: [i]Hey! What are you doing here?![/i]
 Rat: [i]Hide![/i]
 => END
 
+~ rat_cutscene_2
+Rat: ...Where am I?
+Rat: Guys? Are you there?
+=> END
+
 ~ rat_talk_1
 Rat: That was a close one. You need to be more careful from now on, okay?
 Rat: Ever since they arrived, the raiders have been [color=red]hunting[/color] us down and [color=red]stealing[/color] our food.
@@ -48,5 +53,5 @@ Rat: Maybe my wife would actually want me back now. Do you think I should call h
 
 ~ rat_size_7
 # IF size 7, ONLY says this
-Rat:  
+Rat: .
 => END

@@ -5,6 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://dn8c5uijlvgqk" path="res://characters/golem/golem.png" id="2_p3bu8"]
 [ext_resource type="Shader" uid="uid://ce3e5bbugj1q7" path="res://assets/overworld/effects/highlight.gdshader" id="3_28mo5"]
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_wc6i6"]
+viewport_path = NodePath("Sprite/SubViewport")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qg114"]
 resource_local_to_scene = true
 shader = ExtResource("3_28mo5")
@@ -28,7 +31,7 @@ dialogue_res = ExtResource("2_28mo5")
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 shaded = true
 alpha_cut = 2
-texture = ExtResource("2_p3bu8")
+texture = SubResource("ViewportTexture_wc6i6")
 
 [node name="SubViewport" type="SubViewport" parent="Sprite" unique_id=2072903056]
 disable_3d = true

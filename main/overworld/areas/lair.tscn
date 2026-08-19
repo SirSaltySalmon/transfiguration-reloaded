@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://cg5a4uch7ymjq"]
+
+[ext_resource type="Script" uid="uid://8cyqrodpkc1c" path="res://main/overworld/areas/area.gd" id="1_l6ilf"]
+[ext_resource type="Texture2D" uid="uid://daj4f8jcj542f" path="res://assets/overworld/areas/LAIR.png" id="2_mmy3q"]
+[ext_resource type="PackedScene" uid="uid://b84aramkmpw2h" path="res://characters/dragon/dragon.tscn" id="3_fx368"]
+[ext_resource type="PackedScene" uid="uid://h1poi1wqxoap" path="res://characters/rat/rat.tscn" id="3_vlcit"]
+[ext_resource type="PackedScene" uid="uid://dlfguy7fwyy6r" path="res://characters/slime/slime.tscn" id="4_4uctu"]
+[ext_resource type="PackedScene" uid="uid://cofv6hjk51ptu" path="res://ui/overworld/arrow_manager.tscn" id="5_dfnbs"]
+[ext_resource type="PackedScene" uid="uid://bvw83ybb7fxr3" path="res://characters/angel/angel.tscn" id="10_q3wkn"]
+
+[node name="Lair" type="Node3D" unique_id=1628032535]
+script = ExtResource("1_l6ilf")
+area_id = "sewers"
+
+[node name="Background" type="Sprite3D" parent="." unique_id=1115190439]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+transparent = false
+shaded = true
+double_sided = false
+texture = ExtResource("2_mmy3q")
+
+[node name="Dragon" parent="." unique_id=1489711793 groups=["cutscene_2"] instance=ExtResource("3_fx368")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.329, 1.338, -7.5)
+
+[node name="Rat" parent="." unique_id=953603744 groups=["cutscene_1", "cutscene_2"] instance=ExtResource("3_vlcit")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6497693, -2.546, -7)
+
+[node name="Slime" parent="." unique_id=959136789 instance=ExtResource("4_4uctu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.971711, -2.5277286, -6.99845)
+
+[node name="ArrowManager" parent="." unique_id=271098037 instance=ExtResource("5_dfnbs")]
+
+[node name="UpArrow" parent="ArrowManager" index="0" unique_id=462240817]
+destination = "sewers"
+
+[node name="Angel" parent="." unique_id=334545179 instance=ExtResource("10_q3wkn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.594298, -1.1018138, -6)
+
+[editable path="ArrowManager"]

@@ -62,7 +62,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_hdtah")
 }],
-"loop": false,
+"loop": 0,
 "name": &"cross_slash",
 "speed": 15.0
 }]

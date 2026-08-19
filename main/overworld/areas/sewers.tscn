@@ -87,6 +87,7 @@ destination = "prison"
 show_condition = "Global.sav.rat_talk_1"
 
 [node name="Humans" type="Node3D" parent="." unique_id=1127703196 groups=["cutscene_1"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.334753, 0, 0)
 visible = false
 
 [node name="Knight" type="Node3D" parent="Humans" unique_id=2129286248]
@@ -146,7 +147,7 @@ speed_scale = 0.5
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.594298, -1.1018138, -6)
 
 [node name="Poster" parent="." unique_id=1621675148 instance=ExtResource("11_g6nqu")]
-transform = Transform3D(0.87935114, -0.29373157, -0.37478444, 0.25230083, 0.95492023, -0.15643448, 0.40383896, 0.04300241, 0.91381884, 9.179815, 2.17172, -7.5852704)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.179815, 2.17172, -7.993796)
 
 [node name="Sprite" parent="Poster" index="0" unique_id=1795430473]
 modulate = Color(0.8117647, 0.8117647, 0.8117647, 1)

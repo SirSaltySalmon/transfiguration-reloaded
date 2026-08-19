@@ -52,7 +52,10 @@ var responses: Array = []:
 					item.response = response
 				# Otherwise assume we can just set the text
 				else:
-					item.text = response.text
+					if item is CustomResponse:
+						item.label.text = response.text
+					else:
+						item.text = response.text
 
 				item.set_meta("response", response)
 

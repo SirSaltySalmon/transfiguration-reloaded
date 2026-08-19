@@ -1,8 +1,6 @@
 ~ grimoire_summoning
-do! Methods.glow_grimoire()
 Grimoire: [color=#fff6ad]I hear your cries for help, my child.[/color]
 Grimoire: [color=#fff6ad]Worry not. I'm here[/color]
-do! Methods.enter_shadow_wizards_battle()
 => END
 
 ~ angel_talk_1
@@ -23,5 +21,5 @@ Angel: [color=#fff6ad]But devouring these ratass bastards is absolutely necessar
 
 ~ angel_size_7
 # After growing to size 7
-Angel:  
+Angel: .
 => END

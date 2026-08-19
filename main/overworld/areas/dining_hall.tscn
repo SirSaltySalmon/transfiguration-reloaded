@@ -9,8 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://djebkfylmi7h3" path="res://assets/overworld/effects/blood_1.png" id="7_ubh0o"]
 [ext_resource type="Texture2D" uid="uid://byj34lrsjs4on" path="res://assets/overworld/effects/blood_2.png" id="8_s2ut8"]
 [ext_resource type="Texture2D" uid="uid://c4qkvijqgnxgi" path="res://assets/overworld/effects/blood_3.png" id="9_sb2dm"]
+[ext_resource type="PackedScene" uid="uid://csxveqpk5meop" path="res://characters/hannes/hannes.tscn" id="10_s2ut8"]
 
-[node name="Library" type="Node3D" unique_id=1628032535]
+[node name="DiningHall" type="Node3D" unique_id=1628032535]
 script = ExtResource("1_eve7s")
 area_id = "sewers"
 
@@ -25,40 +26,42 @@ texture = ExtResource("2_4bhns")
 
 [node name="LeftArrow" parent="ArrowManager" index="2" unique_id=612731789]
 destination = "library"
-resource = "res://main/overworld/areas/library.tscn"
 show_condition = "Global.sav.size >= 1"
 
 [node name="Wizards1" parent="." unique_id=445330326 node_paths=PackedStringArray("blood") instance=ExtResource("4_eve7s")]
 transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1.5, -6.9402313, -0.789, -6)
-blood = NodePath("../Blood2")
+blood = NodePath("../CanvasLayer/Blood2")
 
 [node name="Wizards2" parent="." unique_id=2131990847 node_paths=PackedStringArray("blood") instance=ExtResource("5_a4ilb")]
 transform = Transform3D(-2.5, 0, -3.774895e-07, 0, 2.5, 0, 3.774895e-07, 0, -2.5, -0.534, -1.495, -4)
-blood = NodePath("../Blood3")
+blood = NodePath("../CanvasLayer/Blood3")
 
 [node name="Wizards3" parent="." unique_id=2025838438 node_paths=PackedStringArray("blood") instance=ExtResource("6_auuwf")]
 transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1.5, 8.207908, -1.261, -7)
-blood = NodePath("../Blood1")
+blood = NodePath("../CanvasLayer/Blood1")
 zoom = -3
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=887033189]
 
-[node name="Blood1" type="Sprite2D" parent="." unique_id=1730756954]
+[node name="Blood1" type="Sprite2D" parent="CanvasLayer" unique_id=1730756954]
 modulate = Color(0.71, 0.71, 0.71, 0.39215687)
 position = Vector2(952, 248.00003)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("7_ubh0o")
 
-[node name="Blood2" type="Sprite2D" parent="." unique_id=168041526]
+[node name="Blood2" type="Sprite2D" parent="CanvasLayer" unique_id=168041526]
 modulate = Color(1, 1, 1, 0.39215687)
 position = Vector2(128, 144)
 texture = ExtResource("8_s2ut8")
 flip_h = true
 
-[node name="Blood3" type="Sprite2D" parent="." unique_id=403665552]
+[node name="Blood3" type="Sprite2D" parent="CanvasLayer" unique_id=403665552]
 modulate = Color(1, 1, 1, 0.39215687)
 position = Vector2(648, 544)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("9_sb2dm")
+
+[node name="Hannes" parent="." unique_id=1737641011 groups=["cutscene_3"] instance=ExtResource("10_s2ut8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.96516156, -7)
 
 [editable path="ArrowManager"]

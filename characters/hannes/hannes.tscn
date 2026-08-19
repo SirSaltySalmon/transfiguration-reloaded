@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://csxveqpk5meop"]
+
+[ext_resource type="Script" uid="uid://bqqlg4rpb6esw" path="res://characters/character.gd" id="1_6814b"]
+[ext_resource type="Resource" uid="uid://cfe8pvdku4aj1" path="res://dialogue/hannes.dialogue" id="2_6tmy7"]
+[ext_resource type="Texture2D" uid="uid://dys15poxfg2wm" path="res://characters/hannes/hannes_sheet.png" id="2_inuja"]
+
+[node name="Hannes" type="StaticBody3D" unique_id=1737641011]
+script = ExtResource("1_6814b")
+interactible = false
+dialogue_res = ExtResource("2_6tmy7")
+zoom = -4
+metadata/_custom_type_script = "uid://bqqlg4rpb6esw"
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1800386935]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+alpha_cut = 1
+texture = ExtResource("2_inuja")
+hframes = 2

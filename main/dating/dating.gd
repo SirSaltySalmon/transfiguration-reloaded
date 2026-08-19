@@ -1,6 +1,10 @@
 class_name DatingSim
 extends Node2D
 
+const LARGE_IMPACT = preload("uid://cgv60uv5ol5oi")
+const GLASS = preload("uid://b6dgqijm875t5")
+const CHEERY_TUNE = preload("uid://nqveqbqrc5fs")
+
 @onready var jori: Sprite2D = $Jori
 @onready var jori_anim: AnimationPlayer = $Jori/JoriAnim
 @onready var alpha_anim: AnimationPlayer = $Jori/AlphaAnim
@@ -49,12 +53,15 @@ func exit_headpat():
 	pass
 
 func play_grass_cracking_sound():
-	pass
+	SoundManager.play_sound(GLASS)
 
 func show_campfire(code: String):
 	pass
 
 func campfire_emo(code: String):
+	pass
+
+func show_flame():
 	pass
 
 func stop_auto_and_skip():
@@ -66,18 +73,37 @@ func stop_auto_and_skip():
 func date_death():
 	# No flags triggered
 	stop_auto_and_skip()
+	DialogueManager.is_active = false
 	effects_player.stop()
 	effects_player.play("death")
+	SoundManager.play_sound(LARGE_IMPACT)
 	await effects_player.animation_finished
 	Methods.return_to_overworld(false)
 
 func exit_date():
 	stop_auto_and_skip()
 	Global.sav.jori_intro = true # Got out peacefully
+	DialogueManager.is_active = false
 	effects_player.stop()
 	effects_player.play("exit")
 	await effects_player.animation_finished
 	Methods.return_to_overworld(true)
+
+func devour_jori():
+	stop_auto_and_skip()
+	Global.sav.size = 7
+	DialogueManager.is_active = false
+	SoundManager.play_sound(CHEERY_TUNE)
+	%Video.show()
+	%Video.play()
+	await %Video.finished
+	effects_player.stop()
+	effects_player.play("death")
+	SoundManager.play_sound(LARGE_IMPACT)
+	%Video.hide()
+	await effects_player.animation_finished
+	Methods.return_to_overworld(true)
+	
 
 func date_bad_end():
 	stop_auto_and_skip()

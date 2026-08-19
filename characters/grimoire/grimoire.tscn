@@ -1,0 +1,105 @@
+[gd_scene format=3 uid="uid://m55tqsnbw1jp"]
+
+[ext_resource type="Script" uid="uid://27jckikfbnx1" path="res://characters/grimoire/grimoire.gd" id="1_j32gu"]
+[ext_resource type="Resource" uid="uid://bdrcptpesc0mn" path="res://dialogue/angel.dialogue" id="2_xmhdb"]
+[ext_resource type="Texture2D" uid="uid://ciq2ggbibgabh" path="res://characters/grimoire/grimoire.png" id="3_j32gu"]
+[ext_resource type="Shader" uid="uid://ce3e5bbugj1q7" path="res://assets/overworld/effects/highlight.gdshader" id="4_82ml8"]
+[ext_resource type="Script" uid="uid://dbdifjem6wnue" path="res://addons/shaker/src/Vector3/shaker_component3D.gd" id="5_vxhyh"]
+[ext_resource type="Script" uid="uid://65nhallgxu6i" path="res://addons/shaker/data/Vector3/BaseShakerType3D.gd" id="6_sgwjc"]
+[ext_resource type="Script" uid="uid://bso4njx2ubaat" path="res://addons/shaker/data/Vector3/ShakerTypeRandom3D.gd" id="7_l2gah"]
+[ext_resource type="Script" uid="uid://bx74dlp2h8v6b" path="res://addons/shaker/data/Vector3/ShakerPreset3D.gd" id="8_p10if"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_wc6i6"]
+viewport_path = NodePath("Sprite/SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qg114"]
+resource_local_to_scene = true
+shader = ExtResource("4_82ml8")
+shader_parameter/Line_Smoothness = 0.045
+shader_parameter/Line_Width = 0.2
+shader_parameter/Brightness = 3.0
+shader_parameter/Rotation_deg = 30.0
+shader_parameter/Distortion = 1.8
+shader_parameter/Speed = 1.0
+shader_parameter/Position = 0.0
+shader_parameter/Position_Min = 0.25
+shader_parameter/Position_Max = 0.5
+shader_parameter/Alpha = 1.0
+
+[sub_resource type="Resource" id="Resource_5qicv"]
+script = ExtResource("7_l2gah")
+amplitude = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="Resource" id="Resource_irl2y"]
+script = ExtResource("8_p10if")
+PositionShake = Array[ExtResource("6_sgwjc")]([SubResource("Resource_5qicv")])
+
+[node name="Grimoire" type="StaticBody3D" unique_id=445330326]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+script = ExtResource("1_j32gu")
+dialogue_res = ExtResource("2_xmhdb")
+
+[node name="Sprite" type="Sprite3D" parent="." unique_id=1566366295]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 8.932744e-08, 1.8341666e-09, 1.9927256e-08)
+shaded = true
+alpha_cut = 2
+texture = SubResource("ViewportTexture_wc6i6")
+
+[node name="SubViewport" type="SubViewport" parent="Sprite" unique_id=2072903056]
+disable_3d = true
+transparent_bg = true
+size = Vector2i(1000, 942)
+
+[node name="Sprite2D" type="TextureRect" parent="Sprite/SubViewport" unique_id=617346215]
+clip_children = 2
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_j32gu")
+
+[node name="Highlight" type="ColorRect" parent="Sprite/SubViewport/Sprite2D" unique_id=319568175]
+visible = false
+material = SubResource("ShaderMaterial_qg114")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Brighten" type="ColorRect" parent="Sprite/SubViewport/Sprite2D" unique_id=560352821]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.196078)
+
+[node name="ImpactShake" type="Node3D" parent="Sprite" unique_id=602131866]
+unique_name_in_owner = true
+script = ExtResource("5_vxhyh")
+intensity = 0.5
+duration = 0.5
+fade_in = 1e-05
+fade_out = 2.0
+shakerPreset = SubResource("Resource_irl2y")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Sprite" unique_id=1932368297]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 1.7053026e-14, 0, 1, 0, -1.7053026e-14, 0, 1, 2.6992012e-07, 0, -3.0875273)
+visible = false
+light_energy = 16.0
+shadow_enabled = true
+omni_range = 20.0
+omni_attenuation = 0.5
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Sprite" unique_id=1680269007]
+transform = Transform3D(5, 0, 8.526513e-14, 0, 5, 0, -8.526513e-14, 0, 5, -0.12399667, 0.90285957, -0.7493635)
+light_color = Color(1, 0.68235296, 1, 1)
+shadow_enabled = true
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="." unique_id=1106150542]
+transform = Transform3D(3.2, 0, 0, 0, 3.2, 0, 0, 0, 3.2, 0, 0, 0)
+depth = 0.01
+polygon = PackedVector2Array(-0.3053954, 0.19246075, -0.11224929, -0.29851973, 0.28867367, -0.1403726, 0.30943078, -0.06254637, 0.024682784, 0.2815866)

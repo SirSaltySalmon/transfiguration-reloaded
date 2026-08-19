@@ -68,7 +68,10 @@ func _init(data: Dictionary = {}) -> void:
 			DMConstants.TYPE_DIALOGUE:
 				character = data.character
 				character_replacements = data.get("character_replacements", [] as Array[Dictionary])
-				text = data.text
+				if data.text == ".":
+					text = ""
+				else:
+					text = data.text
 				text_replacements = data.get("text_replacements", [] as Array[Dictionary])
 				translation_key = data.get("translation_key", data.text)
 				pauses = data.get("pauses", {})

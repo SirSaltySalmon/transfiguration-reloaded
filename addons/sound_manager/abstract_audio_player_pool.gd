@@ -36,9 +36,6 @@ func get_possible_bus(possible_busses: PackedStringArray) -> String:
 func prepare(resource: AudioStream, override_bus: String = "") -> AudioStreamPlayer:
 	var player: AudioStreamPlayer
 
-	if resource is AudioStreamRandomizer:
-		player = get_player_with_resource(resource)
-
 	if player == null:
 		player = get_available_player()
 

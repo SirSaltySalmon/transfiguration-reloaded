@@ -1,0 +1,202 @@
+[gd_scene format=3 uid="uid://i430j5nvcpwo"]
+
+[ext_resource type="Script" uid="uid://brs6ta26mivrw" path="res://main/cinematics/hannes_death.gd" id="1_3uig3"]
+[ext_resource type="Environment" uid="uid://dgg3akic7hbow" path="res://assets/battle/3d/normal_sky.tres" id="1_6rm3w"]
+[ext_resource type="PackedScene" uid="uid://cl01ltrrx020y" path="res://assets/battle/3d/weathered_round_table__metal_top__wooden_legs.glb" id="2_3uig3"]
+[ext_resource type="Script" uid="uid://dbdifjem6wnue" path="res://addons/shaker/src/Vector3/shaker_component3D.gd" id="3_txjg7"]
+[ext_resource type="Script" uid="uid://65nhallgxu6i" path="res://addons/shaker/data/Vector3/BaseShakerType3D.gd" id="4_78spd"]
+[ext_resource type="Script" uid="uid://ugfbchubfgh3" path="res://addons/shaker/data/Vector3/ShakerTypeSineWave3D.gd" id="5_f5rov"]
+[ext_resource type="Script" uid="uid://bx74dlp2h8v6b" path="res://addons/shaker/data/Vector3/ShakerPreset3D.gd" id="6_oag3g"]
+[ext_resource type="Texture2D" uid="uid://djebkfylmi7h3" path="res://assets/overworld/effects/blood_1.png" id="7_ev75q"]
+[ext_resource type="Texture2D" uid="uid://dys15poxfg2wm" path="res://characters/hannes/hannes_sheet.png" id="8_li51x"]
+[ext_resource type="PackedScene" uid="uid://bagraegk311h0" path="res://addons/maaacks_credits_scene/examples/scenes/end_credits/end_credits.tscn" id="10_txjg7"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dv20y"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_lyo3n"]
+radius = 20.0
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_awrki"]
+dof_blur_far_enabled = true
+dof_blur_far_distance = 100.0
+dof_blur_far_transition = -1.0
+dof_blur_near_enabled = true
+dof_blur_amount = 0.05
+
+[sub_resource type="Resource" id="Resource_2k2jr"]
+script = ExtResource("5_f5rov")
+frequency = Vector3(0.2, 0, 0.7)
+amplitude = Vector3(0.1, 0, 0.1)
+
+[sub_resource type="Resource" id="Resource_pfgcx"]
+script = ExtResource("6_oag3g")
+PositionShake = Array[ExtResource("4_78spd")]([SubResource("Resource_2k2jr")])
+
+[sub_resource type="Curve" id="Curve_3uig3"]
+_limits = [0.0, 0.25, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.496894, 0.126374), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_mk36a"]
+curve = SubResource("Curve_3uig3")
+
+[sub_resource type="Curve" id="Curve_txjg7"]
+_data = [Vector2(0, 0), 0.0, 5.0, 0, 0, Vector2(0.485507, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -5.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_e8205"]
+curve = SubResource("Curve_txjg7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_78spd"]
+emission_shape_scale = Vector3(40, 20, 40)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+initial_velocity_min = -1.0
+initial_velocity_max = 1.0
+orbit_velocity_min = -5.0
+orbit_velocity_max = 5.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.2
+scale_max = 0.4
+scale_curve = SubResource("CurveTexture_e8205")
+alpha_curve = SubResource("CurveTexture_mk36a")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_f5rov"]
+load_path = "res://.godot/imported/dust.png-38e6b4baae02e7ea8dadf5b7a74ab4ab.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8qows"]
+render_priority = 1
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("CompressedTexture2D_f5rov")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_oag3g"]
+material = SubResource("StandardMaterial3D_8qows")
+orientation = 2
+
+[node name="HannesDeath" type="Node3D" unique_id=431470024]
+script = ExtResource("1_3uig3")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1355525363]
+environment = ExtResource("1_6rm3w")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=870993076]
+transform = Transform3D(1.3113416e-07, -1, 4.371139e-08, -3.821371e-15, 4.371139e-08, 1, -1, -1.3113416e-07, 1.9106853e-15, 0, 15.803, 0)
+light_energy = 5.0
+shadow_enabled = true
+spot_range = 30.0
+
+[node name="Table" type="StaticBody3D" parent="." unique_id=2131530795]
+physics_material_override = SubResource("PhysicsMaterial_dv20y")
+
+[node name="TableModel" parent="Table" unique_id=463293113 instance=ExtResource("2_3uig3")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, -35, 0)
+
+[node name="Table_LP_Glass_0" parent="Table/TableModel/Sketchfab_model/e53ba48d9801468988483daf272c6e25_fbx/RootNode/Table_LP/Object_4" parent_id_path=PackedInt32Array(463293113, 670210424) index="1" unique_id=1211111492]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Table" unique_id=192709576]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+shape = SubResource("CylinderShape3D_lyo3n")
+
+[node name="GPUCollisionShape" type="GPUParticlesCollisionBox3D" parent="Table" unique_id=1834549658]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+size = Vector3(40, 1, 40)
+
+[node name="BattleCam" type="Camera3D" parent="." unique_id=1389032728]
+transform = Transform3D(-0.6977885, -0.5016574, 0.5113033, 0, 0.7138078, 0.70034164, -0.7163039, 0.48869032, -0.49808687, 3.196579, 4.4736176, -4.8660583)
+attributes = SubResource("CameraAttributesPractical_awrki")
+
+[node name="HandheldShake" type="Node3D" parent="BattleCam" unique_id=1698027739]
+script = ExtResource("3_txjg7")
+AutoPlay = true
+intensity = 0.5
+shake_speed = 0.5
+shakerPreset = SubResource("Resource_pfgcx")
+
+[node name="Sprite3D2" type="Sprite3D" parent="." unique_id=1220574112]
+transform = Transform3D(1.5, -4.4703484e-08, 1.9540512e-15, 0, -6.556708e-08, -1.5, 4.4703484e-08, 1.5, -6.556708e-08, 0.15372849, 0, -1.945)
+shaded = true
+texture = ExtResource("7_ev75q")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1686122614]
+transform = Transform3D(0.19814958, -0.027143115, 1.1864633e-09, 0, -8.742278e-09, -0.2, 0.027143115, 0.19814958, -8.661393e-09, 0.14872837, 0.01, -2.552)
+modulate = Color(0, 0, 0, 1)
+texture = ExtResource("8_li51x")
+hframes = 2
+frame = 1
+
+[node name="DustParticles" type="GPUParticles3D" parent="." unique_id=1101488458]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+amount = 200
+lifetime = 5.0
+process_material = SubResource("ParticleProcessMaterial_78spd")
+draw_pass_1 = SubResource("PlaneMesh_oag3g")
+
+[node name="EndCredits" parent="." unique_id=1478056362 instance=ExtResource("10_txjg7")]
+main_menu_scene_path = "uid://2l0nutefih78"
+
+[node name="ScrollContainer" parent="EndCredits" index="1" unique_id=696557777]
+scroll_vertical = 2
+
+[node name="CreditsLabel" parent="EndCredits/ScrollContainer/VBoxContainer" parent_id_path=PackedInt32Array(1478056362, 1669382442) index="1" unique_id=1182180713]
+text = "[img=500]res:///addons/maaacks_credits_scene/examples/assets/game_logo/transfiguration.png[/img] 
+
+
+[font_size=32]A game by[/font_size]
+[font_size=64]Binh-Khang Nguyen[/font_size]
+aka Salmon
+[url=https://x.com/xiuxaoxalmon]X: xiuxaoxalmon[/url]
+
+
+[font_size=32]Art by[/font_size]
+[font_size=64]Van Duong[/font_size]
+[url=https://x.com/dyuongv]X: @dyuongv[/url]
+
+
+[font_size=32]Music by[/font_size]
+[font_size=64]Hoang Nguyen[/font_size]
+
+
+[font_size=48]Sourced Assets[/font_size]
+[font_size=32]Fonts[/font_size]
+Baskerville by John Baskerville
+Roboto by Google Android Design
+Coolvetica by Typodermic Fonts
+BelgianoSerif by Fajarisha Phonna
+Moderniz by Eko Bimantara
+
+
+[font_size=32]Visuals & Effects[/font_size]
+VFX Packs by Pimen on itch.io
+\"Weathered Round Table Metal Top & Wooden Legs\" by Nikoleta.Zhecheva CC 4.0
+Iceberg by Poly by Google CC-BY via Poly Pizza
+RPG Effects 64x64 by BDragon1727
+Pixel VFX Packs by Frostwindz on itch.io
+
+[font_size=32]Sound Effects[/font_size]
+Metal Hit by Marcelo Fernandez (Combat Enter Sound)
+
+[font_size=48]Tools[/font_size]
+[img=500]res:///addons/maaacks_credits_scene/examples/assets/godot_engine_logo/logo_vertical_color_dark.png[/img]  
+
+[font_size=32]Plugins[/font_size]
+DialogueManager by Nathan Hoad
+SoundManager by Nathan Hoad
+CommandTerminal by 20ml
+Maaack's Scene Loader by Maaack
+Maack's Credit Scene by Maack
+Shaker by Eneskp
+
+
+[font_size=32]Dedicated To[/font_size]
+My lovely patient friends and families who supported me through the hardest of times
+"
+
+[editable path="Table/TableModel"]
+[editable path="EndCredits"]

@@ -1,5 +1,7 @@
 extends Skill
 
+const EXPLOSION = preload("uid://dr46lk80j3wv3")
+
 func use(user: BattleCharacter, target):
 	await user.start_action("Judgment")
 	
@@ -11,6 +13,7 @@ func use(user: BattleCharacter, target):
 		var effect = set_effect(targ)
 		targ.health.take_damage(value)
 		effect.play()
+		SoundManager.play_sound(EXPLOSION)
 		
 		await Methods.wait(0.5 / Methods.anim_speed)
 		
@@ -18,6 +21,8 @@ func use(user: BattleCharacter, target):
 			target.erase(targ)
 			if target == []:
 				break
+	
+	await Methods.wait(0.5 / Methods.anim_speed)
 	
 	kill_effects()
 	Broadcaster.action_over.emit()

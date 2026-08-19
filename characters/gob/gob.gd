@@ -1,15 +1,15 @@
 extends Character
 
 func interact():
-	if Global.size <= 2 and not Global.gob_rejection:
+	if Global.sav.size <= 2 and not Global.sav.gob_rejection:
 		await dialogue("gob_rejection")
 		Global.gob_rejection = true
-	elif Global.size >= 3 and not Global.gob_assess:
+	elif Global.sav.size >= 3 and not Global.sav.gob_assess:
 		await dialogue("gob_assess")
 		Global.gob_assess = true
-	elif Global.size >= 3 and not Global.gob_sells_grimoire:
+	elif Global.sav.size >= 3 and not Global.sav.gob_sells_grimoire:
 		await dialogue("gob_sells_grimoire")
 		#repeat until grimoire is sold so no check flag, when sold flag is activated in dialogue code
-	elif Global.gob_sells_grimoire:
-		#open shop menu
+	elif Global.sav.gob_sells_grimoire:
+		SceneLoader.load_scene("res://main/overworld/shop_actual.tscn")
 		pass

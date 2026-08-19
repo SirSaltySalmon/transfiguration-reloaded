@@ -23,6 +23,7 @@ func action():
 		flip_last_action = true
 	
 func jump_and_rotate():
+	jumpanim.stop()
 	jumpanim.play("jump")
 	var tween = get_tree().create_tween()
 	tween.tween_property(sprite, "rotation_degrees:y", randi_range(-10, 10), 0.3)

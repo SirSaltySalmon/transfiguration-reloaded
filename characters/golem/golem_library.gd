@@ -4,7 +4,7 @@ func normal_init():
 	if not Global.sav.size >= 4:
 		show()
 	else:
-		hide()
+		queue_free()
 
 func interact():
 	if not Global.golem_talk_2:

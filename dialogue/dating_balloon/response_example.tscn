@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://nnf1ljsuubxn"]
+
+[ext_resource type="Script" uid="uid://ccc2ryd5amd5d" path="res://dialogue/dating_balloon/response_button.gd" id="1_pbeds"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b068y"]
+
+[node name="ResponseExample" type="Button" unique_id=1556233607 node_paths=PackedStringArray("label")]
+custom_minimum_size = Vector2(0, 49)
+offset_right = 12.0
+offset_bottom = 49.0
+text = " "
+script = ExtResource("1_pbeds")
+label = NodePath("RichTextLabel")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=638952811]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_b068y")
+bbcode_enabled = true
+text = "[color=red]DEVOUR[/color]"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1

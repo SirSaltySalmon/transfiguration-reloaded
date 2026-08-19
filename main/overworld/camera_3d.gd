@@ -104,6 +104,8 @@ func highlight_interactables():
 	if !raycast.is_empty():
 		current_collider = raycast["collider"]
 		if is_instance_valid(current_collider):
+			if previous_collider != current_collider:
+				UiSound._play_hover()
 			previous_collider = current_collider
 			if current_collider.has_method("highlight"):
 				current_collider.highlight()

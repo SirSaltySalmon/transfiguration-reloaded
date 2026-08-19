@@ -7,7 +7,7 @@ extends StaticBody3D
 @export var show_condition : String
 
 func initialize_arrow():
-	if show_condition and destination:
+	if destination:
 		if evaluate_condition(show_condition):
 			show()
 		else:
@@ -31,6 +31,9 @@ func interact():
 	
 # Function that takes a string condition and evaluates it as a boolean expression
 func evaluate_condition(input: String) -> bool:
+	if input == '':
+		return true
+	
 	# Create a new GDScript instance
 	var script = GDScript.new()
 	# Dynamically create a function named 'eval' which returns the boolean condition passed as a string

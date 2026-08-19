@@ -5,9 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://h1poi1wqxoap" path="res://characters/rat/rat.tscn" id="3_32245"]
 [ext_resource type="PackedScene" uid="uid://dlfguy7fwyy6r" path="res://characters/slime/slime.tscn" id="4_psfmm"]
 [ext_resource type="PackedScene" uid="uid://cofv6hjk51ptu" path="res://ui/overworld/arrow_manager.tscn" id="5_10chv"]
+[ext_resource type="PackedScene" uid="uid://c8yqmcm1kcxv7" path="res://characters/golem/golem_library.tscn" id="5_piyqf"]
 [ext_resource type="PackedScene" uid="uid://bvw83ybb7fxr3" path="res://characters/angel/angel.tscn" id="7_3a6sn"]
 [ext_resource type="PackedScene" uid="uid://b2n880pn2htg0" path="res://characters/poster.tscn" id="8_wc6i6"]
-[ext_resource type="PackedScene" uid="uid://bsmh1njvwdgin" path="res://characters/golem/golem_prison.tscn" id="10_32245"]
+[ext_resource type="PackedScene" uid="uid://m55tqsnbw1jp" path="res://characters/grimoire/grimoire.tscn" id="9_piyqf"]
 
 [node name="Library" type="Node3D" unique_id=1628032535]
 script = ExtResource("1_piyqf")
@@ -28,16 +29,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.15, -2.546, -7)
 
 [node name="DownArrow" parent="ArrowManager" index="1" unique_id=1785677814]
 destination = "sewers"
-resource = "res://main/overworld/areas/sewers.tscn"
 show_condition = "Global.sav.size >= 1"
 
 [node name="RightArrow" parent="ArrowManager" index="3" unique_id=2000443815]
 destination = "dining_hall"
-resource = "res://main/overworld/areas/dining_hall.tscn"
 show_condition = "Global.sav.size >= 4"
 
-[node name="Golem" parent="." unique_id=445330326 instance=ExtResource("10_32245")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 8.880471, -0.474005, -7.57225)
+[node name="Golem" parent="." unique_id=445330326 instance=ExtResource("5_piyqf")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 8.880471, -0.474005, -6.812588)
 
 [node name="Angel" parent="." unique_id=1489711793 instance=ExtResource("7_3a6sn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.594298, -1.1018138, -6)
@@ -45,11 +44,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.594298, -1.1018138, -6)
 [node name="Poster" parent="." unique_id=1621675148 instance=ExtResource("8_wc6i6")]
 transform = Transform3D(0.99420923, 0.10746145, 0, -0.10746145, 0.99420923, 0, 0, 0, 1, -6.754336, 2.4153144, -7.99)
 
-[node name="Sprite3D" parent="Poster" index="0" unique_id=1795430473]
+[node name="Sprite" parent="Poster" index="0" unique_id=1795430473]
 modulate = Color(0.92, 0.8096, 0.8096, 1)
 
 [node name="Slime" parent="." unique_id=1560939899 instance=ExtResource("4_psfmm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.971711, -2.5277286, -6.99845)
+
+[node name="Grimoire" parent="." unique_id=610375462 instance=ExtResource("9_piyqf")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.3405106, -0.75401926, -7.742314)
 
 [editable path="ArrowManager"]
 [editable path="Poster"]

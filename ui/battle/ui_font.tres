@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://bkj5j1tyt1jao" path="res://assets/battle/ui/circle1.png" id="3_hwrq0"]
 [ext_resource type="FontFile" uid="uid://665lgr82w7bu" path="res://assets/fonts/coolvetica rg.otf" id="4_hwrq0"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k2uyd"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8eb04"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nocvi"]
@@ -42,7 +44,7 @@ bg_color = Color(1, 1, 1, 1)
 [resource]
 default_font_size = 32
 Button/colors/font_color = Color(1, 1, 1, 1)
-Button/colors/font_disabled_color = Color(0.501407, 0.501406, 0.501406, 1)
+Button/colors/font_disabled_color = Color(0, 0, 0, 1)
 Button/colors/font_focus_color = Color(1, 1, 1, 1)
 Button/colors/font_hover_color = Color(1, 1, 1, 1)
 Button/colors/font_hover_pressed_color = Color(0.804743, 0.804743, 0.804743, 1)
@@ -53,7 +55,7 @@ Button/constants/h_separation = 0
 Button/constants/icon_max_width = 0
 Button/constants/outline_size = 10
 Button/fonts/font = ExtResource("1_mnp70")
-Button/styles/disabled = null
+Button/styles/disabled = SubResource("StyleBoxEmpty_k2uyd")
 Button/styles/focus = SubResource("StyleBoxEmpty_8eb04")
 Button/styles/hover = SubResource("StyleBoxTexture_nocvi")
 Button/styles/normal = SubResource("StyleBoxEmpty_2wxuv")

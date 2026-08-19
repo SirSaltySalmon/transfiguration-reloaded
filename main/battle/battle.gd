@@ -1,6 +1,8 @@
 class_name BattleScene
 extends Node3D
 
+const ENTRANCE = preload("uid://depmo2hlye4am")
+
 @export var ui: BattleUI
 @export var cam: BattleCam
 @export var anim: AnimationPlayer
@@ -36,6 +38,9 @@ var dialogue_queue := []
 var flavor_queue := ""
 
 var first_player_turn := true ## generic flag for flavor text
+
+func play_entrance_sound():
+	SoundManager.play_sound(ENTRANCE)
 
 func _process(_delta: float) -> void:
 	if initializing_chars:
@@ -279,6 +284,8 @@ func flavor_text_add():
 				break
 		if has_insecure:
 			flavor_queue = "Insecure makes a character take more damage from all sources."
+		if first_player_turn:
+			flavor_queue = "They love casting spells."
 	
 	if Global.sav.size == 7:
 		var has_burn := false
@@ -299,6 +306,8 @@ func flavor_text_add():
 			flavor_queue = "Frostbite prevents a character from using items."
 		if Methods.hannes_strong_attack_next:
 			flavor_queue = "Hannes is preparing a nasty attack..."
+		if first_player_turn:
+			flavor_queue = "Hannes is methodical. Look for a pattern!"
 		pass
 		
 

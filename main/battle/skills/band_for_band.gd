@@ -1,5 +1,7 @@
 extends Skill
 
+const CHA_CHING = preload("uid://bx7u4n8qshaql")
+
 func use(user: BattleCharacter, target):
 	await user.start_action("Band For Band")
 	
@@ -11,6 +13,7 @@ func use(user: BattleCharacter, target):
 		var effect = set_effect(targ)
 		targ.health.take_damage(value, user)
 		effect.play()
+		SoundManager.play_sound(CHA_CHING)
 		
 		await Methods.wait(0.5 / Methods.anim_speed)
 		

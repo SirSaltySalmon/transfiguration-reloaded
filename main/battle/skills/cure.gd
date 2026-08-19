@@ -1,5 +1,7 @@
 extends Skill
 
+const CURE = preload("uid://dvkat5k7gitu5")
+
 func use(user: BattleCharacter, target):
 	await user.start_action("Cure")
 	
@@ -12,6 +14,7 @@ func use(user: BattleCharacter, target):
 			if status_effect.is_negative():
 				status_effect.remove_effect()
 	
+	SoundManager.play_sound(CURE)
 	effect.play("cure")
 	await Methods.wait(1.0 / Methods.anim_speed)
 	

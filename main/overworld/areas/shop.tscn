@@ -108,7 +108,6 @@ material = SubResource("ShaderMaterial_ppbh6")
 
 [node name="RightArrow" parent="ArrowManager" index="3" unique_id=2000443815]
 destination = "sewers"
-resource = "res://main/overworld/areas/sewers.tscn"
 show_condition = "true"
 
 [node name="Rat" parent="." unique_id=1489711793 groups=["cutscene_1"] instance=ExtResource("3_8rluo")]
@@ -124,14 +123,14 @@ material = SubResource("ShaderMaterial_hf5it")
 [node name="Poster" parent="." unique_id=1621675148 instance=ExtResource("9_htc4s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.417, 2.090869, -7.9)
 
-[node name="Sprite3D" parent="Poster" index="0" unique_id=1795430473]
+[node name="Sprite" parent="Poster" index="0" unique_id=1795430473]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 7.0055437, 0, 0)
 modulate = Color(0.75, 0.75, 0.75, 1)
 
 [node name="Poster2" parent="." unique_id=1326159312 instance=ExtResource("9_htc4s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.569439, 2.090869, -7.9)
 
-[node name="Sprite3D" parent="Poster2" index="0" unique_id=1795430473]
+[node name="Sprite" parent="Poster2" index="0" unique_id=1795430473]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -4.005165, 1.4653797, 0)
 
 [editable path="Gob"]

@@ -36,3 +36,15 @@ ShadowWizardA: It's bout time we [color=cyan]slime[/color] you out, kiddo!!
 % {{Global.custom_talker}}: Hark, ye tender youths! A choice examplar of whom not to grow into.
 % {{Global.custom_talker}}: Half the wits of an orc, yet twice the stink of one!
 => END
+
+~ gear_switch
+{{Global.custom_talker}}: BASTARDS.
+{{Global.custom_talker}}: You're not supposed to be able to lay even a [i]finger[/i] on me.
+{{Global.custom_talker}}: The Ice Dragon Yuval...
+{{Global.custom_talker}}: The Moon Dragon Stel...
+do Methods.current_scene.cam.shake()
+{{Global.custom_talker}}: It was ME who CRUSHED THEM!
+do Methods.current_scene.cam.shake()
+{{Global.custom_talker}}: The strongest wizard there is! The very symbol of justice!
+{{Global.custom_talker}}: I will not be humiliated by the likes of you.
+=> END

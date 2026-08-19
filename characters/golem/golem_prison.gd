@@ -4,7 +4,7 @@ func normal_init():
 	if not Global.sav.tutorial_fight_complete:
 		show()
 	else:
-		hide()
+		queue_free()
 
 func interact():
 	if not Global.sav.tutorial_fight_complete and not Global.sav.golem_talk_1:
