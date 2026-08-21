@@ -55,7 +55,7 @@ DialogueManager by Nathan Hoad
 SoundManager by Nathan Hoad
 CommandTerminal by 20ml
 Maaack's Scene Loader by Maaack
-Maack's Credit Scene by Maack
+Maaack's Credit Scene by Maaack
 Shaker by Eneskp
 
 
