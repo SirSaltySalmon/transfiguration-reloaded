@@ -10,7 +10,9 @@ effect_base = NodePath("Effect")
 
 [node name="Effect" type="AnimatedSprite3D" parent="." unique_id=1757940577]
 transform = Transform3D(-4.371139e-07, -10, -4.37114e-07, 0, -4.37114e-07, 10, -10, 4.371139e-07, 1.9106861e-14, -0.0003284216, 0.005830765, -0.029034615)
+alpha_cut = 1
 texture_filter = 0
+render_priority = 1
 sprite_frames = ExtResource("2_rp0lc")
 animation = &"cure"
 frame = 15

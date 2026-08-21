@@ -193,6 +193,7 @@ effect_base = NodePath("Effect")
 
 [node name="Effect" type="AnimatedSprite3D" parent="." unique_id=641241910]
 transform = Transform3D(-6.556708e-07, -15, -6.556708e-07, 0, -6.556708e-07, 15, -15, 6.556708e-07, 2.866028e-14, -2.9432173, 0, 0)
+alpha_cut = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_q25mq")
 animation = &"benevolence"

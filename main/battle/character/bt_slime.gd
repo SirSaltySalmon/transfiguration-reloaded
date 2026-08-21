@@ -8,4 +8,4 @@ func _ready():
 	if Global.sav.size == 7:
 		sprite.scale = Vector3(0.6, 0.6, 0.6)
 	else:
-		sprite.scale = Vector3(0.2, 0.2, 0.2)
+		sprite.scale = Vector3(0.2, 0.2, 0.2) + Global.sav.size * Vector3(0.03, 0.03, 0.03)

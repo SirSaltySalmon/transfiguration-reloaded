@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://deiunrr35ijyt"
-path="res://.godot/imported/dungeon_texture.png-388ca65bb47e8eb6dbf5621875333f7c.ctex"
+uid="uid://dnrcm7lgpy8pu"
+path="res://.godot/imported/cg_dragon-bg.png-062292b4769437e09b49eace1562efd6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/assetpacks/KayKit_DungeonRemastered_1.1_FREE/Assets/textures/dungeon_texture.png"
-dest_files=["res://.godot/imported/dungeon_texture.png-388ca65bb47e8eb6dbf5621875333f7c.ctex"]
+source_file="res://assets/dating/cg_dragon-bg.png"
+dest_files=["res://.godot/imported/cg_dragon-bg.png-062292b4769437e09b49eace1562efd6.ctex"]
 
 [params]
 

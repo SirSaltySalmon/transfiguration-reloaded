@@ -117,18 +117,15 @@ func tween_to_normal(tween_time: float):
 	previous_position = Vector3(-1,-1,-1)
 	previous_talker = ""
 	await tween.finished
+	if not is_instance_valid(current_scene):
+		return
 	if current_scene is OverworldMain:
 		if current_scene.active_cutscene_name != "":
 			current_scene.anim.play()
 
 func buy_grimoire():
-	Global.money -= 5
-	Global.gob_sells_grimoire = true
-
-func glow_grimoire():
-	# Pause music
-	# Glow the grimoire
-	pass
+	Global.sav.money -= 5
+	Global.sav.gob_sells_grimoire = true
 
 func log_money():
 	Global.sav.money += 100
@@ -140,18 +137,22 @@ func check_money():
 	return true
 
 func enter_battle():
+	DialogueManager.is_active = false
 	SceneLoader.load_scene(BATTLE_PATH)
 
 func enter_date():
+	DialogueManager.is_active = false
 	SceneLoader.load_scene(DATING_PATH)
 
 func return_to_overworld(won: bool):
+	DialogueManager.is_active = false
 	last_fight_won = won
 	if not won:
 		Global.move_direction = ""
 	SceneLoader.load_scene(OVERWORLD_PATH)
 
 func return_to_title():
+	DialogueManager.is_active = false
 	SceneLoader.load_scene(TITLE_PATH)
 
 func rgb_to_hex(r:int,g:int,b:int) -> String:

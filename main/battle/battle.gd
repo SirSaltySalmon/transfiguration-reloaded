@@ -13,6 +13,7 @@ const WON = preload("uid://b1vkv0ba2hvjs")
 @export var dialogue: DialogueResource
 @export var combat_balloon: PackedScene
 @export var env: WorldEnvironment
+@export var dir_light: DirectionalLight3D
 
 const NORMAL_SKY = preload("uid://dgg3akic7hbow")
 const SIZE_7_SKY = preload("uid://b5c61blm4twps")
@@ -80,8 +81,10 @@ func initialize_misc():
 	
 	if Global.sav.size == 7:
 		env.environment = SIZE_7_SKY
+		dir_light.hide()
 	else:
 		env.environment = NORMAL_SKY
+		dir_light.show()
 	return
 
 func load_chars(holders: Node, party: Array):

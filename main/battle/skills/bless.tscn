@@ -10,7 +10,9 @@ effect_base = NodePath("Effect")
 
 [node name="Effect" type="AnimatedSprite3D" parent="." unique_id=129043845]
 transform = Transform3D(-5.2453663e-07, -12, -5.2453663e-07, 0, -5.2453663e-07, 12, -12, 5.2453663e-07, 2.2928226e-14, 0, 0, 0)
+alpha_cut = 1
 texture_filter = 0
+render_priority = 1
 sprite_frames = ExtResource("2_wcbr3")
 animation = &"bless"
 frame = 15

@@ -5,14 +5,23 @@
 [ext_resource type="Texture2D" uid="uid://c01nhk0rvt64p" path="res://characters/dragon/jori_sheet.png" id="3_6sfop"]
 [ext_resource type="FontFile" uid="uid://ds86gfffkp1bv" path="res://assets/fonts/Moderniz.otf" id="3_hhsxw"]
 [ext_resource type="PackedScene" uid="uid://dlcb3m8ot2ika" path="res://dialogue/dating_balloon/DatingBalloon.tscn" id="3_u7imq"]
-[ext_resource type="Texture2D" uid="uid://dcycg7578e7ob" path="res://assets/overworld/areas/blurredLAIR.png" id="4_k2uyd"]
 [ext_resource type="Script" uid="uid://qhmkwov0dsat" path="res://main/dating/time_display.gd" id="4_o35aq"]
 [ext_resource type="Script" uid="uid://dh80dqyt60wsn" path="res://main/dating/auto.gd" id="4_t38uo"]
+[ext_resource type="Texture2D" uid="uid://daj4f8jcj542f" path="res://assets/overworld/areas/LAIR.png" id="4_vn0aj"]
 [ext_resource type="Script" uid="uid://dttla56nnwv2d" path="res://main/dating/skip.gd" id="5_cm04d"]
 [ext_resource type="Script" uid="uid://dma07dafp0rpp" path="res://main/dating/date_display.gd" id="5_hhsxw"]
+[ext_resource type="Shader" uid="uid://crjjy5yu53cgw" path="res://assets/dating/blur.gdshader" id="5_rxh6x"]
+[ext_resource type="Texture2D" uid="uid://bb0xrdof2h2vr" path="res://assets/dating/cg_headpat.png" id="7_1pted"]
+[ext_resource type="Texture2D" uid="uid://dnrcm7lgpy8pu" path="res://assets/dating/cg_dragon-bg.png" id="7_rxh6x"]
+[ext_resource type="Texture2D" uid="uid://c6bimjlnubtr2" path="res://characters/dragon/jori_campfire_sheet.png" id="8_urel5"]
 [ext_resource type="PackedScene" uid="uid://b724oh1cswaws" path="res://main/pause_menu/pause_menu.tscn" id="9_24wuv"]
 [ext_resource type="Script" uid="uid://b6fgv44n1oyi7" path="res://main/dating/prefs.gd" id="9_k2uyd"]
+[ext_resource type="Texture2D" uid="uid://bua335h1g3lrm" path="res://assets/dating/flame.png" id="10_chwxt"]
 [ext_resource type="VideoStream" uid="uid://c4lxol1ffib6q" path="res://assets/dating/jori_devouring.ogv" id="12_ld0am"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fx368"]
+shader = ExtResource("5_rxh6x")
+shader_parameter/blur_amount = 2.000000095
 
 [sub_resource type="Animation" id="Animation_oogvt"]
 length = 0.001
@@ -243,6 +252,69 @@ tracks/4/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("%CampfireBG:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("%CampfireBG:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("%Headpat:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_1pted"]
+resource_name = "campfire_show"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%CampfireBG:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%CampfireBG:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_cm04d"]
 resource_name = "devour"
@@ -377,13 +449,70 @@ tracks/1/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_chwxt"]
+resource_name = "headpat_hide"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%Headpat:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%Headpat:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_oex5t"]
+resource_name = "headpat_show"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%Headpat:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%Headpat:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6sfop"]
 _data = {
 &"RESET": SubResource("Animation_hhsxw"),
+&"campfire_show": SubResource("Animation_1pted"),
 &"death": SubResource("Animation_cm04d"),
 &"devour": SubResource("Animation_t38uo"),
 &"enter": SubResource("Animation_24wuv"),
-&"exit": SubResource("Animation_6sfop")
+&"exit": SubResource("Animation_6sfop"),
+&"headpat_hide": SubResource("Animation_chwxt"),
+&"headpat_show": SubResource("Animation_oex5t")
 }
 
 [sub_resource type="Animation" id="Animation_rxh6x"]
@@ -442,7 +571,16 @@ offset_left = -176.0
 offset_right = 2224.0
 offset_bottom = 1080.0
 scale = Vector2(0.68, 0.68)
-texture = ExtResource("4_k2uyd")
+texture = ExtResource("4_vn0aj")
+
+[node name="Background" type="ColorRect" parent="Background" unique_id=1712627761]
+material = SubResource("ShaderMaterial_fx368")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Jori" type="Sprite2D" parent="." unique_id=1612979008]
 visible = false
@@ -459,6 +597,36 @@ libraries/ = SubResource("AnimationLibrary_ld0am")
 
 [node name="AlphaAnim" type="AnimationPlayer" parent="Jori" unique_id=11933801]
 libraries/ = SubResource("AnimationLibrary_rxh6x")
+
+[node name="Headpat" type="TextureRect" parent="." unique_id=2036491037]
+unique_name_in_owner = true
+visible = false
+offset_right = 1920.0
+offset_bottom = 1080.0
+scale = Vector2(0.67, 0.67)
+texture = ExtResource("7_1pted")
+
+[node name="CampfireBG" type="TextureRect" parent="." unique_id=1912815012]
+unique_name_in_owner = true
+visible = false
+offset_right = 1920.0
+offset_bottom = 1080.0
+scale = Vector2(0.67, 0.67)
+texture = ExtResource("7_rxh6x")
+
+[node name="JoriCampfire" type="Sprite2D" parent="CampfireBG" unique_id=1118827046]
+texture = ExtResource("8_urel5")
+centered = false
+hframes = 4
+frame = 2
+
+[node name="Flame" type="TextureRect" parent="." unique_id=1808876537]
+unique_name_in_owner = true
+visible = false
+offset_right = 1920.0
+offset_bottom = 1080.0
+scale = Vector2(0.67, 0.67)
+texture = ExtResource("10_chwxt")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1013286425]
 layer = 101
@@ -520,7 +688,18 @@ toggle_mode = true
 text = "Prefs"
 script = ExtResource("9_k2uyd")
 
-[node name="TextureRect" type="ColorRect" parent="UI/Control" unique_id=1693889588]
+[node name="FakeTimeSys" type="Control" parent="UI" unique_id=789825484]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = SubResource("Theme_t38uo")
+
+[node name="TextureRect" type="ColorRect" parent="UI/FakeTimeSys" unique_id=1693889588]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -534,12 +713,12 @@ rotation = 0.42181396
 mouse_filter = 2
 color = Color(0.84705883, 0.38431373, 0.29803923, 1)
 
-[node name="TimeDisplay" type="Label" parent="UI/Control" unique_id=1083378074]
+[node name="TimeDisplay" type="Label" parent="UI/FakeTimeSys" unique_id=1083378074]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -192.0
+offset_left = -295.0
 offset_top = 8.0
 offset_right = -8.0
 offset_bottom = 81.0
@@ -549,7 +728,7 @@ text = "12:00:00"
 horizontal_alignment = 2
 script = ExtResource("4_o35aq")
 
-[node name="DateDisplay" type="Label" parent="UI/Control" unique_id=1655559362]
+[node name="DateDisplay" type="Label" parent="UI/FakeTimeSys" unique_id=1655559362]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -597,6 +776,7 @@ color = Color(0.3137255, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="Cover" type="ColorRect" parent="Effects" unique_id=219262203]
+unique_name_in_owner = true
 visible = false
 z_index = 20
 offset_right = 1280.0

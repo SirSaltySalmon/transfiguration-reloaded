@@ -7,7 +7,7 @@ extends Control
 @onready var progress_bar: ProgressBar = $Control/ProgressBar
 @onready var kills: Label = $Control2/Kills
 @onready var money_earned: Label = $Control2/MoneyEarned
-@onready var win_bonus: Label = $WinBonus
+@onready var win_bonus: Label = $WinBonus/Label
 @onready var skip_or_continue: Button = $SkipOrContinue
 
 const CHA_CHING = preload("uid://bx7u4n8qshaql")
@@ -36,7 +36,7 @@ func summarize_stats():
 	kills.text = "Kills: %s" % str(kill_count)
 	money_earned.text = "Money Earned: 0"
 	
-	win_bonus.text = "Win Bonus: ..."
+	win_bonus.text = "..."
 	
 	skip_or_continue.text = "Skip"
 	
@@ -79,12 +79,12 @@ func summarize_stats():
 	
 	if not main.escaped:
 		if Global.battle_type == 3:
-			win_bonus.text = "Win Bonus: 15x Moneys"
+			win_bonus.text = "15x Moneys"
 			Global.sav.money += 15
 		else:
 			var possible_bonuses = ["1x Cured Ham", "1x Flesh", "1x Goat's Blood", "5x Moneys"]
 			var bonus_index = randi_range(0,3)
-			win_bonus.text = "Win Bonus: %s" % possible_bonuses[bonus_index]
+			win_bonus.text = possible_bonuses[bonus_index]
 			SoundManager.play_sound(CHA_CHING)
 			match bonus_index:
 				0:

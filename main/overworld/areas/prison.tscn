@@ -20,6 +20,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
 transparent = false
 shaded = true
 double_sided = false
+alpha_cut = 1
 texture = ExtResource("2_biss2")
 
 [node name="Rat" parent="." unique_id=1160790682 instance=ExtResource("3_806ke")]
@@ -35,19 +36,18 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -1.18389, -3.4584053, -7.2265
 
 [node name="LeftArrow" parent="ArrowManager" index="2" unique_id=612731789]
 destination = "sewers"
-resource = "res://main/overworld/areas/sewers.tscn"
 show_condition = "Global.sav.size >= 2"
 
 [node name="Poster" parent="." unique_id=1621675148 instance=ExtResource("8_fvc14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.417, 2.090869, -7.9)
 
-[node name="Sprite3D" parent="Poster" index="0" unique_id=1795430473]
+[node name="Sprite" parent="Poster" index="0" unique_id=1795430473]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 3.8405547, -0.8384402, 0)
 
 [node name="Poster2" parent="." unique_id=741770980 instance=ExtResource("8_fvc14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.417, 2.090869, -7.9)
 
-[node name="Sprite3D" parent="Poster2" index="0" unique_id=1795430473]
+[node name="Sprite" parent="Poster2" index="0" unique_id=1795430473]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 5.409212, 0, 0)
 
 [node name="Slime" parent="." unique_id=1560939899 instance=ExtResource("6_66aq6")]

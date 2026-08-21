@@ -20,7 +20,6 @@ func use(user: BattleCharacter, target):
 	SoundManager.play_sound(user.SPELL_STARTUP)
 	main.ui.display_move("Eternal Pyre's Embrace")
 	main.ui.flavor_text.hide()
-	play()
 	center.cine_anim.play("epe/epe", -1, Methods.anim_speed)
 	
 	await center.cine_anim.animation_finished

@@ -1,8 +1,6 @@
 class_name SaveGame
 extends Resource
 
-const GLASS = preload("uid://b6dgqijm875t5")
-
 @export var first_version_opened : String
 @export var last_version_opened : String
 @export var last_unix_time_saved : int
@@ -14,29 +12,39 @@ const GLASS = preload("uid://b6dgqijm875t5")
 @export var music_vol := 100.0
 
 #Overworld data
-@export var size := 7:
+@export var size := 6:
 	set(value):
 		size = value
 		devours_progress = 0
 		var new_target = 0
+		var new_chance = 0
 		match value:
 			1:
 				new_target = 0 # eat body to advance
+				new_chance = 100
 			2:
 				new_target = 3 # FARM NORMALLY
+				new_chance = 80
 			3:
 				new_target = 0 # eat shadow wizards & golem to advance
+				new_chance = 70
 			4:
 				new_target = 0 # eat aristocratic wizards to advance
+				new_chance = 60
 			5:
 				new_target = 6 # FARM NORMALLY
+				new_chance = 50
 			6:
 				new_target = 0 # eat dragon to advance
+				new_chance = 40
 			7:
 				new_target = 0 # endgame
+				new_chance = 40
 			_:
 				new_target = 0
+				base_escape_chance = 80
 		devours_needed_for_next_size = new_target
+		base_escape_chance = new_chance
 		Methods.flags_changed.emit()
 @export var devours_needed_for_next_size := 0
 @export var devours_progress := 0
@@ -44,7 +52,7 @@ const GLASS = preload("uid://b6dgqijm875t5")
 @export var current_resource := "res://main/overworld/areas/sewers.tscn"
 @export var random_battle_type := 0
 @export var base_escape_chance := 80
-@export var repellant_active := false
+@export var repellant_active := true
 
 #Story flags
 @export var cutscene_1 = false
@@ -56,7 +64,7 @@ const GLASS = preload("uid://b6dgqijm875t5")
 @export var golem_talk_2 := false
 @export var gob_rejection := false
 @export var gob_assess := false
-@export var gob_sells_grimoire := false
+@export var gob_sells_grimoire := true
 @export var rat_comments_on_grimoire := false
 @export var shadow_wizards_defeated := false
 @export var shadow_1 := false
@@ -67,20 +75,20 @@ const GLASS = preload("uid://b6dgqijm875t5")
 @export var angel_talk_2 := false
 @export var jori_intro := true
 
-@export var money_at_jori := 101
+@export var money_at_jori := 100
 
 #Items & money data
 @export var cured_ham := 1
-@export var flesh := 19
+@export var flesh := 20
 @export var goats_blood := 1
 @export var money := 1
-@export var repellant_owned := false
+@export var repellant_owned := true
 
 @export var stock_dict = {
 	"Health Upgrade" : 1,
-	"Relentless Ridicule" : 1,
-	"Benevolence" : 1,
-	"Repellant" : 1,
+	"Relentless Ridicule" : 0,
+	"Benevolence" : 0,
+	"Repellant" : 0,
 }
 
 #Battle stats data

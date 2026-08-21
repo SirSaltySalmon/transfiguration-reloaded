@@ -128,8 +128,7 @@ colors = PackedColorArray(0.577008, 0.577008, 0.577008, 1, 1, 1, 1, 1)
 gradient = SubResource("Gradient_xnxts")
 
 [sub_resource type="Gradient" id="Gradient_s71h6"]
-offsets = PackedFloat32Array(0, 0.636792)
-colors = PackedColorArray(1, 0, 0, 1, 1, 0.842543, 0.452112, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_w48qg"]
 gradient = SubResource("Gradient_s71h6")
@@ -150,8 +149,8 @@ point_count = 2
 curve = SubResource("Curve_cr1xj")
 
 [sub_resource type="Curve" id="Curve_ry3n1"]
-_limits = [0.0, 6.1629868, 0.0, 1.0]
-_data = [Vector2(0, 6.1629868), 0.0, 0.0, 0, 0, Vector2(1, 0.235955), 0.0, 0.0, 0, 0]
+_limits = [0.0, 20.0, 0.0, 1.0]
+_data = [Vector2(0, 20), 0.0, 0.0, 0, 0, Vector2(0.98832685, 10.638299), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_w48qg"]
@@ -162,14 +161,14 @@ angle_min = 1.07288e-05
 angle_max = 360.0
 direction = Vector3(0, 1, 0)
 spread = 5.0
-initial_velocity_min = 30.0
-initial_velocity_max = 60.0
+initial_velocity_min = 10.0
+initial_velocity_max = 20.0
 angular_velocity_min = -6.0000157
 angular_velocity_max = 5.999984
 velocity_limit_curve = SubResource("CurveTexture_w48qg")
 gravity = Vector3(0, 0, 0)
-scale_min = 7.0
-scale_max = 13.0
+scale_min = 20.0
+scale_max = 30.0
 scale_curve = SubResource("CurveTexture_vivmo")
 color_ramp = SubResource("GradientTexture1D_w48qg")
 color_initial_ramp = SubResource("GradientTexture1D_h2yge")
@@ -223,11 +222,11 @@ emission_shape = 1
 emission_sphere_radius = 0.07
 direction = Vector3(0, 1, 0)
 spread = 20.0
-initial_velocity_min = 2.0
-initial_velocity_max = 4.0
+initial_velocity_min = 5.0
+initial_velocity_max = 7.0
 gravity = Vector3(0, 0, 0)
-scale_min = 2.0
-scale_max = 3.0
+scale_min = 5.0
+scale_max = 8.0
 scale_curve = SubResource("CurveTexture_08sgb")
 color = Color(1, 0.72281, 0.345682, 1)
 alpha_curve = SubResource("CurveTexture_7adko")
@@ -283,8 +282,8 @@ point_count = 2
 curve = SubResource("Curve_8xpvj")
 
 [sub_resource type="Curve" id="Curve_760hf"]
-_limits = [0.0, 1.5, 0.0, 1.0]
-_data = [Vector2(0, 1.5), 0.0, 0.0, 0, 0, Vector2(1, 0.247191), 0.0, 0.0, 0, 0]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 3.2584267), 0.0, 0.0, 0, 0, Vector2(1, 0.247191), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_074og"]
@@ -295,14 +294,14 @@ angle_min = 1.07288e-05
 angle_max = 360.0
 direction = Vector3(0, 1, 0)
 spread = 5.0
-initial_velocity_min = 1.0
-initial_velocity_max = 1.5
+initial_velocity_min = 2.0
+initial_velocity_max = 3.0
 angular_velocity_min = -30.0
 angular_velocity_max = 30.0
 velocity_limit_curve = SubResource("CurveTexture_074og")
 gravity = Vector3(0, 0, 0)
 scale_min = 6.0
-scale_max = 9.0
+scale_max = 12.0
 scale_curve = SubResource("CurveTexture_getpj")
 color_initial_ramp = SubResource("GradientTexture1D_2cqfq")
 alpha_curve = SubResource("CurveTexture_yaehf")
@@ -347,7 +346,6 @@ id = "Eternal Pyre's Embrace"
 effect_base = NodePath("Effect")
 
 [node name="Fire" type="Node3D" parent="." unique_id=1511582816]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Fire" unique_id=1426990962]
 root_node = NodePath("../..")

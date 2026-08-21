@@ -78,6 +78,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.495, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
 shaded = true
 double_sided = false
+alpha_cut = 1
 texture = ExtResource("2_ovq1p")
 
 [node name="InsideShop" type="Sprite3D" parent="Background" unique_id=1135019589]

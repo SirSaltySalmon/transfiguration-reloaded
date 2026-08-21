@@ -27,7 +27,7 @@ func apply_dialogue_line() -> void:
 	# Wait for input
 	if dialogue_line.responses.size() > 0:
 		balloon.focus_mode = Control.FOCUS_NONE
-		responses_menu.show()
+		show_responses_menu()
 		Methods.dating_require_response.emit()
 	elif dialogue_line.time != "":
 		var time = dialogue_line.text.length() * 0.02 if dialogue_line.time == "auto" else dialogue_line.time.to_float()
@@ -42,3 +42,10 @@ func force_input():
 	if responses_menu.visible:
 		return
 	next(dialogue_line.next_id)
+
+func show_responses_menu():
+	responses_menu.show()
+	var tween = create_tween()
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_EXPO)
+	tween.tween_property(responses_menu, "offset_transform_position:y", 0.0, 1.0).from(-580.0)

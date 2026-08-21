@@ -17,13 +17,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
 transparent = false
 shaded = true
 double_sided = false
+alpha_cut = 1
 texture = ExtResource("2_mmy3q")
 
 [node name="Dragon" parent="." unique_id=1489711793 groups=["cutscene_2"] instance=ExtResource("3_fx368")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.329, 1.338, -7.5)
 
 [node name="Rat" parent="." unique_id=953603744 groups=["cutscene_1", "cutscene_2"] instance=ExtResource("3_vlcit")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6497693, -2.546, -7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7769613, -2.546, -7)
 
 [node name="Slime" parent="." unique_id=959136789 instance=ExtResource("4_4uctu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.971711, -2.5277286, -6.99845)

@@ -122,7 +122,7 @@ func get_sky_and_light():
 		env.environment = load("res://assets/overworld/effects/sky/size_7_sky.tres")
 		light.light_color = Color("e4a2a0")
 		light.light_energy = 16.0
-	return
+		return
 	
 	var id = Global.destination_area_id
 	var sky_address = "res://assets/overworld/effects/sky/" + id + "_sky.tres"

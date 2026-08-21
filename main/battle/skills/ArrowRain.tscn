@@ -109,7 +109,9 @@ effect_base = NodePath("Effect")
 
 [node name="Effect" type="AnimatedSprite3D" parent="." unique_id=129043845]
 transform = Transform3D(-8.742278e-08, -2, -8.742278e-08, 0, -8.742278e-08, 2, -2, 8.742278e-08, 3.821371e-15, 0, 0, 0)
+alpha_cut = 2
 texture_filter = 0
+render_priority = 1
 sprite_frames = SubResource("SpriteFrames_bf22g")
 animation = &"arrow_rain"
 frame = 12

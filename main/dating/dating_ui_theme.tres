@@ -1,5 +1,7 @@
 [gd_resource type="Theme" format=3 uid="uid://bo4ssxwqvtpbh"]
 
+[ext_resource type="FontFile" uid="uid://665lgr82w7bu" path="res://assets/fonts/coolvetica rg.otf" id="1_ms17m"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
 bg_color = Color(0, 0, 0, 1)
 border_width_left = 3
@@ -60,7 +62,7 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w6e3q"]
-bg_color = Color(0.85, 0.380375, 0.2975, 0.54901963)
+bg_color = Color(0.6, 0.2685, 0.21000002, 0.54901963)
 border_width_left = 8
 border_width_top = 8
 border_width_right = 8
@@ -73,7 +75,24 @@ corner_radius_bottom_left = 16
 
 [resource]
 default_font_size = 30
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/align_to_largest_stylebox = 0
+Button/constants/h_separation = 4
+Button/constants/icon_max_width = 0
 Button/constants/outline_size = 10
+Button/fonts/font = ExtResource("1_ms17m")
 Button/styles/disabled = SubResource("StyleBoxFlat_spyqn")
 Button/styles/focus = SubResource("StyleBoxFlat_ms17m")
 Button/styles/hover = SubResource("StyleBoxFlat_ms17m")

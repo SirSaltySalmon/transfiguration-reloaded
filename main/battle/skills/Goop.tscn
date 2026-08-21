@@ -118,7 +118,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1l8bj")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"goop",
 "speed": 30.0
 }]
@@ -130,7 +130,7 @@ effect_base = NodePath("Effect")
 
 [node name="Effect" type="AnimatedSprite3D" parent="." unique_id=1346500919]
 transform = Transform3D(15, 0, 0, 0, -6.556708e-07, 15, 0, -15, -6.556708e-07, 0, 0, 0)
+alpha_cut = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_0d3cj")
 animation = &"goop"
-frame_progress = 0.03672265

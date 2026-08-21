@@ -64,7 +64,7 @@ var move_direction : StringName
 var transitioning := false
 var effective_escape_chance: int
 var custom_talker : StringName
-var battle_type := 4
+var battle_type := 3
 #0 : Random low level battle
 #1 : Random high level battle
 #2 : Tutorial battle

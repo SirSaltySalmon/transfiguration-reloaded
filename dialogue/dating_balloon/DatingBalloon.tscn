@@ -47,11 +47,13 @@ offset_right = 325.0
 offset_bottom = 212.0
 grow_horizontal = 2
 grow_vertical = 2
+offset_transform_enabled = true
 
 [node name="ResponsesMenu" type="VBoxContainer" parent="Balloon/Responses" unique_id=933746244 node_paths=PackedStringArray("response_template")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 8
+offset_transform_enabled = true
 theme_override_constants/separation = 20
 script = ExtResource("4_jpk38")
 response_template = NodePath("ResponseExample")

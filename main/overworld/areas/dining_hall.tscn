@@ -20,6 +20,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
 transparent = false
 shaded = true
 double_sided = false
+alpha_cut = 1
 texture = ExtResource("2_4bhns")
 
 [node name="ArrowManager" parent="." unique_id=271098037 instance=ExtResource("5_s2ut8")]

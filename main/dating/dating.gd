@@ -6,6 +6,7 @@ const GLASS = preload("uid://b6dgqijm875t5")
 const CHEERY_TUNE = preload("uid://nqveqbqrc5fs")
 
 @onready var jori: Sprite2D = $Jori
+@onready var jori_campfire: Sprite2D = $CampfireBG/JoriCampfire
 @onready var jori_anim: AnimationPlayer = $Jori/JoriAnim
 @onready var alpha_anim: AnimationPlayer = $Jori/AlphaAnim
 @onready var main_anim: AnimationPlayer = $MainAnim
@@ -19,6 +20,13 @@ const emo_dict = {
 	"annoyed": 1,
 	"happy": 2,
 	"smug": 3,
+}
+
+const campfire_dict = {
+	"neutral": 3,
+	"sad_minor": 2,
+	"crying_into": 1,
+	"crying_away": 0,
 }
 
 var balloon: DatingBalloon
@@ -47,22 +55,28 @@ func jori_emo(code: String):
 	jori_anim.play("bounce")
 
 func enter_headpat():
-	pass
+	effects_player.play("headpat_show")
 
 func exit_headpat():
-	pass
+	effects_player.play("headpat_hide")
 
 func play_grass_cracking_sound():
 	SoundManager.play_sound(GLASS)
 
 func show_campfire(code: String):
-	pass
+	campfire_emo(code)
+	effects_player.play("campfire_show")
 
 func campfire_emo(code: String):
-	pass
+	jori_campfire.frame = campfire_dict[code]
 
 func show_flame():
-	pass
+	%FakeTimeSys.hide()
+	%Cover.show()
+	%Cover.color = Color.BLACK
+	await Methods.wait(2.0)
+	%Flame.show()
+	%Cover.hide()
 
 func stop_auto_and_skip():
 	%Auto.toggle_off()

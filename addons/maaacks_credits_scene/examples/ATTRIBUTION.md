@@ -36,6 +36,7 @@ VFX Packs by Pimen on itch.io
 Iceberg by Poly by Google CC-BY via Poly Pizza
 RPG Effects 64x64 by BDragon1727
 Pixel VFX Packs by Frostwindz on itch.io
+KayKit's Dungeon Remastered (coin object)
 
 
 ### Sound Effects
