@@ -9,9 +9,11 @@ extends BattleButton
 @onready var escaping_text: RichTextLabel = $"../../../../EscapeScreen/Control/EscapingText"
 
 func _on_pressed():
-	var success = false
-	if Global.battle_type in [0, 1]:
-		success = true if randi_range(1, 100) <= Global.effective_escape_chance else false
+	if not Global.battle_type in [0, 1]:
+		main.ui.display_move("Can't escape from an important fight!")
+		return
+	
+	var success = true if randi_range(1, 100) <= Global.effective_escape_chance else false
 	
 	main.ui.close()
 	await main.current_char.start_action("Escape")

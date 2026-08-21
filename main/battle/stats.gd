@@ -12,6 +12,7 @@ extends Control
 
 const CHA_CHING = preload("uid://bx7u4n8qshaql")
 const DISAPPOINTMENT = preload("uid://dxthasyeargtp")
+const POSITIVE = preload("uid://t68lbrneuimy")
 
 var skipping := false
 var allow_input := false
@@ -58,7 +59,7 @@ func summarize_stats():
 				update_progress_bar()
 			
 			if not skipping:
-				SoundManager.play_sound(CHA_CHING)
+				SoundManager.play_sound(POSITIVE)
 				await Methods.wait(0.1)
 	
 	if not skipping and not kill_count == 0:
@@ -70,7 +71,7 @@ func summarize_stats():
 		money_earned.text = "Money Earned: %s" % str(money_earned_count)
 		
 		if not skipping:
-			SoundManager.play_sound(CHA_CHING)
+			SoundManager.play_sound(POSITIVE)
 			await Methods.wait(0.1)
 	
 	if not skipping:

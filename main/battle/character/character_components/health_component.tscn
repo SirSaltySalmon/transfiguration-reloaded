@@ -4,13 +4,6 @@
 [ext_resource type="Script" uid="uid://bwn3tdlxp478a" path="res://main/battle/character/character_components/health_component.gd" id="1_y7bym"]
 [ext_resource type="StyleBox" uid="uid://d228aqxv5hdbd" path="res://assets/battle/ui/healthbar_healthy.tres" id="2_jd75v"]
 [ext_resource type="FontFile" uid="uid://ds86gfffkp1bv" path="res://assets/fonts/Moderniz.otf" id="4_mcc4u"]
-[ext_resource type="Texture2D" uid="uid://duh655unleuy8" path="res://assets/battle/ui/DefendIcon.png" id="5_76eet"]
-[ext_resource type="Texture2D" uid="uid://g27uyb8r7jr0" path="res://assets/battle/ui/PoisonIcon.png" id="5_dvg4k"]
-[ext_resource type="Texture2D" uid="uid://qr0ls4q3w7cp" path="res://assets/battle/ui/GoopIcon.png" id="6_0ut8i"]
-[ext_resource type="Texture2D" uid="uid://dyxcmqcjugxc6" path="res://assets/battle/ui/VulnerableIcon.png" id="6_nauc6"]
-[ext_resource type="Texture2D" uid="uid://2kbuujh6y7gm" path="res://assets/battle/ui/HasteIcon.png" id="7_j6hcm"]
-[ext_resource type="Texture2D" uid="uid://bfqdn4yw2v7hh" path="res://assets/battle/ui/BurnIcon.png" id="7_q6bx5"]
-[ext_resource type="Texture2D" uid="uid://2kklyqhvljhh" path="res://assets/battle/ui/FrostbiteIcon.png" id="8_1wvb0"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_4poig"]
 viewport_path = NodePath("SubViewport")
@@ -178,73 +171,3 @@ offset_top = 35.925
 offset_right = 756.0
 offset_bottom = 105.925
 theme_override_constants/separation = 5
-
-[node name="Defend" type="Panel" parent="SubViewport/StatusIcons" unique_id=1530787527]
-visible = false
-custom_minimum_size = Vector2(70, 70)
-layout_mode = 2
-
-[node name="Sprite2D" type="Sprite2D" parent="SubViewport/StatusIcons/Defend" unique_id=310406654]
-position = Vector2(3, 3)
-texture = ExtResource("5_76eet")
-centered = false
-
-[node name="Goop" type="Panel" parent="SubViewport/StatusIcons" unique_id=1192856059]
-visible = false
-custom_minimum_size = Vector2(70, 70)
-layout_mode = 2
-
-[node name="Sprite2D" type="Sprite2D" parent="SubViewport/StatusIcons/Goop" unique_id=1077794823]
-position = Vector2(3, 3)
-texture = ExtResource("6_0ut8i")
-centered = false
-
-[node name="Bless" type="Panel" parent="SubViewport/StatusIcons" unique_id=1943701654]
-visible = false
-custom_minimum_size = Vector2(70, 70)
-layout_mode = 2
-
-[node name="Sprite2D" type="Sprite2D" parent="SubViewport/StatusIcons/Bless" unique_id=832114239]
-position = Vector2(3, 3)
-texture = ExtResource("7_j6hcm")
-centered = false
-
-[node name="Poison" type="Panel" parent="SubViewport/StatusIcons" unique_id=1599217905]
-visible = false
-custom_minimum_size = Vector2(70, 70)
-layout_mode = 2
-
-[node name="Sprite2D" type="Sprite2D" parent="SubViewport/StatusIcons/Poison" unique_id=498208808]
-position = Vector2(3, 3)
-texture = ExtResource("5_dvg4k")
-centered = false
-
-[node name="Insecure" type="Panel" parent="SubViewport/StatusIcons" unique_id=1876534727]
-visible = false
-custom_minimum_size = Vector2(70, 70)
-layout_mode = 2
-
-[node name="Sprite2D" type="Sprite2D" parent="SubViewport/StatusIcons/Insecure" unique_id=1801542884]
-position = Vector2(3, 3)
-texture = ExtResource("6_nauc6")
-centered = false
-
-[node name="Burn" type="Panel" parent="SubViewport/StatusIcons" unique_id=1776328299]
-visible = false
-custom_minimum_size = Vector2(70, 70)
-layout_mode = 2
-
-[node name="Sprite2D" type="Sprite2D" parent="SubViewport/StatusIcons/Burn" unique_id=436266034]
-position = Vector2(3, 3)
-texture = ExtResource("7_q6bx5")
-centered = false
-
-[node name="Frostbite" type="Panel" parent="SubViewport/StatusIcons" unique_id=1790000642]
-visible = false
-custom_minimum_size = Vector2(70, 70)
-layout_mode = 2
-
-[node name="Sprite2D" type="Sprite2D" parent="SubViewport/StatusIcons/Frostbite" unique_id=1923626501]
-position = Vector2(3, 3)
-texture = ExtResource("8_1wvb0")
-centered = false

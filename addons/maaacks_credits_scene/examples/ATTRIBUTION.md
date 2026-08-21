@@ -40,9 +40,9 @@ Pixel VFX Packs by Frostwindz on itch.io
 
 ### Sound Effects
 Metal Hit by Marcelo Fernandez (Combat Enter Sound)
-Stressed Out SFX From OMORI (Eternal Pyre's Embrace Sound)
-Heal SFX From Undertale (Healing)
-Lancer Splat From Deltarune (Goop)
+Stressed Out SFX From OMORI
+Heal SFX From Undertale
+Lancer Splat and Explosion From Deltarune
 lolurio's Free Cozy Game UI SFX Pack
 
 

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cte3vomkauyv8" path="res://characters/gob/gob.gd" id="1_wqb0d"]
 [ext_resource type="Texture2D" uid="uid://qafc5nwyyuti" path="res://characters/gob/GOB.png" id="2_mn7iq"]
+[ext_resource type="Resource" uid="uid://cl2hb7w8j85jw" path="res://dialogue/gob.dialogue" id="2_vw1qt"]
 [ext_resource type="Shader" uid="uid://ce3e5bbugj1q7" path="res://assets/overworld/effects/highlight.gdshader" id="3_mby6x"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_8bmo1"]
@@ -23,6 +24,7 @@ shader_parameter/Alpha = 1.0
 
 [node name="Gob" type="StaticBody3D" unique_id=165683118]
 script = ExtResource("1_wqb0d")
+dialogue_res = ExtResource("2_vw1qt")
 
 [node name="Sprite" type="Sprite3D" parent="." unique_id=873273356]
 shaded = true

@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://ll3xmsu2igme"]
+
+[ext_resource type="Script" uid="uid://cdd26dx6id5tg" path="res://main/battle/status_effects/status_effect.gd" id="1_k7fh6"]
+[ext_resource type="Texture2D" uid="uid://2kklyqhvljhh" path="res://assets/battle/ui/FrostbiteIcon.png" id="2_fyac2"]
+
+[node name="Frostbite" type="Panel" unique_id=969196420]
+custom_minimum_size = Vector2(70, 70)
+script = ExtResource("1_k7fh6")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1732310819]
+position = Vector2(3, 3)
+texture = ExtResource("2_fyac2")
+centered = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=360098722]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/normal_font_size = 40
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1

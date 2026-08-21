@@ -2,6 +2,7 @@ class_name BattleScene
 extends Node3D
 
 const ENTRANCE = preload("uid://depmo2hlye4am")
+const WON = preload("uid://b1vkv0ba2hvjs")
 
 @export var ui: BattleUI
 @export var cam: BattleCam
@@ -224,6 +225,7 @@ func lose():
 	Methods.return_to_overworld(false  )
 
 func win():
+	SoundManager.play_sound(WON)
 	handle_win_flags()
 	rat_dance_anim.play("rat_dance")
 	anim.play("win_anim")

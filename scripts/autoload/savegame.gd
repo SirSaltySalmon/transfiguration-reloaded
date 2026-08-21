@@ -44,7 +44,7 @@ const GLASS = preload("uid://b6dgqijm875t5")
 @export var current_resource := "res://main/overworld/areas/sewers.tscn"
 @export var random_battle_type := 0
 @export var base_escape_chance := 80
-@export var repellant_active := true
+@export var repellant_active := false
 
 #Story flags
 @export var cutscene_1 = false
@@ -96,12 +96,13 @@ const GLASS = preload("uid://b6dgqijm875t5")
 	"Judgment": [20, false, true, "Deals [color=red]VALUE Damage[/color] to 3 random enemy targets."],
 	"Cure": [30, true, false, "Heals an ally for [color=green]VALUE Damage[/color] and relieves them of any negative effects."],
 	"Bless": [30, false, false, "[color=lightblue]Raise speed by 30%[/color] for all allies for DURATION turns.", 5],
+	"Benevolence": [0, false, true, "Deal damage equal to [color=green]current health[/color] to all enemies, then [color=red]dies[/color]."],
 	"Band For Band": [20, false, true, "Deals [color=red]VALUE Damage[/color] to 3 random enemy targets."],
-	"Relentless Ridicule": [20, true, true, "Deals [color=red]VALUE Damage[/color] to an enemy, causing them to [color=purple]take 25% extra damage[/color] for 3 turns.", 3],
+	"Relentless Ridicule": [20, true, true, "Deals [color=red]VALUE Damage[/color] to an enemy, causing them to [color=purple]take 25% extra damage[/color] for DURATION turns.", 3],
 	"Cross Slash": [10, false, true, "Deals [color=red]VALUE Damage[/color] to all targets."],
 	"Arrow Rain": [15, false, true, "Deals [color=red]VALUE Damage[/color] to 3 random enemy targets."],
 	"Eternal Pyre's Embrace": [15, false, true, "Deals [color=red]VALUE Damage[/color] to all enemies, [color=orange]Burning[/color] them for DURATION turns.", 3],
-	"Icefall": [70, false, true, "Deals [color=red]VALUE Damage[/color] to all enemies, [color=blue]Frostbiting[/color] them for DURATION turns.", 3],
+	"Icefall": [70, false, true, "Deals [color=red]VALUE Damage[/color] to all enemies, [color=blue]Frostbiting[/color] them for DURATION turns.", 2],
 	"Gear Switch": [0, true, false, "Hannes: Enter Phase 2"],
 	"Rend": [20, false, true, "Deals [color=red]VALUE Damage[/color] to 3 random enemy targets."],
 	"Moonbeam": [100, false, true, "Deals [color=red]VALUE Damage[/color] to all targets."],
@@ -114,7 +115,7 @@ var bt_reference := ["Health", "Basic Attack", "Speed"]
 @export var bt_rat := [100, 30, 70]
 @export var bt_rat_skills := ["Toxic Bite", "Dap Up", "Relentless Ridicule", ""]
 @export var bt_angel := [130, 20, 40]
-@export var bt_angel_skills := ["Judgment", "Cure", "Bless", ""]
+@export var bt_angel_skills := ["Judgment", "Cure", "Bless", "Benevolence"]
 
 @export var bt_knight_low := [90, 30, 30]
 @export var bt_elf_low := [60, 40, 60]
@@ -127,4 +128,4 @@ var bt_reference := ["Health", "Basic Attack", "Speed"]
 @export var bt_elf_high := [70, 40, 80]
 @export var bt_wizard_high := [70, 50, 30]
 
-@export var bt_hannes := [1000, 30, 45]
+@export var bt_hannes := [1111, 30, 45]

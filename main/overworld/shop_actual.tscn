@@ -13,10 +13,10 @@
 [ext_resource type="Script" uid="uid://cqudmxif4t1hr" path="res://main/overworld/flesh_shop.gd" id="7_rho47"]
 [ext_resource type="FontFile" uid="uid://665lgr82w7bu" path="res://assets/fonts/coolvetica rg.otf" id="7_xmlg1"]
 [ext_resource type="Script" uid="uid://310vcdqly68b" path="res://main/overworld/goats_blood.shop.gd" id="8_rho47"]
-[ext_resource type="Script" uid="uid://xrwry58ybqts" path="res://main/overworld/health_upgrade.gd" id="9_xinv6"]
+[ext_resource type="Script" uid="uid://xrwry58ybqts" path="res://main/overworld/health_upgrade_shop.gd" id="9_xinv6"]
 [ext_resource type="Script" uid="uid://bsoooqjafifpy" path="res://main/overworld/relentless_ridicule_shop.gd" id="10_ppn3x"]
 [ext_resource type="Script" uid="uid://pj53l6l7hl73" path="res://main/overworld/benevolence_shop.gd" id="11_yo1ir"]
-[ext_resource type="Script" uid="uid://cipek7sa5cy7k" path="res://main/overworld/repellant.gd" id="12_rniwa"]
+[ext_resource type="Script" uid="uid://cipek7sa5cy7k" path="res://main/overworld/repellant_shop.gd" id="12_rniwa"]
 [ext_resource type="Script" uid="uid://bs515be6msfrj" path="res://main/overworld/leave_shop.gd" id="14_kvyjf"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8eb04"]
@@ -501,7 +501,7 @@ theme_override_font_sizes/font_size = 64
 text = "BUY"
 script = ExtResource("8_rho47")
 cost = 10
-description = "Revives a dead ally to half health when used in combat"
+description = "Revives a dead ally when used in combat"
 
 [node name="HealthUpgrade" type="HBoxContainer" parent="Control/ScrollContainer/VBoxContainer" unique_id=318886462]
 custom_minimum_size = Vector2(700, 150)
@@ -747,7 +747,7 @@ cost = 15
 stock_id = "Benevolence"
 description_label = NodePath("../../ItemDescription/MarginContainer/VBoxContainer/RichTextLabel")
 in_stock_label = NodePath("../../ItemDescription/MarginContainer/VBoxContainer/RichTextLabel2")
-description = "Skill for Angel. Deals DMG equal to current HP to all enemies"
+description = "Skill for Angel. Deals DMG equal to current HP to all enemies, then dies"
 
 [node name="Repellant" type="HBoxContainer" parent="Control/ScrollContainer/VBoxContainer" unique_id=1107253839]
 custom_minimum_size = Vector2(700, 150)

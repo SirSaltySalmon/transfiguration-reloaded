@@ -5,6 +5,9 @@ const CURE = preload("uid://dvkat5k7gitu5")
 func _on_pressed():
 	if count <= 0:
 		return
+	if main.current_char.health.has_effect("Frostbite"):
+		main.ui.display_move("Frostbitten! Can't use items!")
+		return
 	
 	var target = await main.target.select_all_targets(main.get_alive_allies())
 	if target == []:

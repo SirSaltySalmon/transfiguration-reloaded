@@ -1,6 +1,8 @@
 class_name ShopButton
 extends Button
 
+const CHA_CHING = preload("uid://bx7u4n8qshaql")
+
 func _ready():
 	connect("pressed", _on_pressed)
 	connect("mouse_entered", _on_mouse_entered)
@@ -31,7 +33,7 @@ func _physics_process(delta: float) -> void:
 			in_stock_label.text = "Out of Stock"
 
 func _on_pressed():
-	pass
+	SoundManager.play_sound(CHA_CHING)
 
 func requirement():
 	return true

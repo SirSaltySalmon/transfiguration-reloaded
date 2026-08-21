@@ -11,6 +11,7 @@ func use(user: BattleCharacter, target):
 		targ.health.take_damage(value, user)
 		effect.play("Cross Slash")
 	SoundManager.play_sound(SWORD_UNSHEATHE)
+	main.cam.shake()
 	await Methods.wait(1.0 / Methods.anim_speed)
 	
 	kill_effects()

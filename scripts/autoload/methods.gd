@@ -28,6 +28,7 @@ var skills_path_dict = {
 	"Judgment": "res://main/battle/skills/Judgment.tscn",
 	"Cure": "res://main/battle/skills/Cure.tscn",
 	"Bless": "res://main/battle/skills/bless.tscn",
+	"Benevolence": "res://main/battle/skills/Benevolence.tscn",
 	"Band For Band": "res://main/battle/skills/band_for_band.tscn",
 	"Relentless Ridicule": "res://main/battle/skills/RelentlessRidicule.tscn",
 	"Cross Slash": "res://main/battle/skills/CrossSlash.tscn",

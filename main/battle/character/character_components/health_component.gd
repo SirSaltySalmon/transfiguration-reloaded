@@ -22,8 +22,6 @@ var devouring_threshold: float
 var dead: bool = false
 var change_display_value: int = 0
 
-var status_effects: Array[StatusEffect]
-
 const poison_damage: int = 20
 const burn_damage: int = 10
 
@@ -31,6 +29,16 @@ var main: BattleScene = Methods.current_scene
 var sprite: Sprite3D
 
 var damage_anim_tween
+
+var dict = {
+	"Bless": "res://main/battle/status_effects/bless.tscn",
+	"Burn": "res://main/battle/status_effects/burn.tscn",
+	"Defend": "res://main/battle/status_effects/defend.tscn",
+	"Frostbite": "res://main/battle/status_effects/frostbite.tscn",
+	"Goop": "res://main/battle/status_effects/goop.tscn",
+	"Insecure": "res://main/battle/status_effects/insecure.tscn",
+	"Poison": "res://main/battle/status_effects/poison.tscn",
+}
 
 func init_component():
 	bar.max_value = parent.max_health
@@ -86,28 +94,29 @@ func add_effect(effect_name: String, duration: int):
 		effect.duration = duration
 		main.ui.display_move("Duration extended!")
 		return
-	var new_effect = StatusEffect.new()
-	new_effect.name = effect_name
-	new_effect.duration = duration
-	new_effect.target = self
-	status_effects.append(new_effect)
-	new_effect._on_added()
+	assert(effect_name in dict)
+	var effect: StatusEffect = load(dict[effect_name]).instantiate()
+	status_icons.add_child(effect)
+	effect.name = effect_name
+	effect.target = self
+	effect._on_added()
+	effect.duration = duration
 	return
 
 func get_effect_node(effect_name: String) -> StatusEffect:
-	for effects in status_effects:
-		if effects.name == effect_name:
-			return effects
+	for effect in status_icons.get_children():
+		if effect.name == effect_name:
+			return effect
 	return null
 
 func has_effect(effect_name: String) -> bool:
-	for effects in status_effects:
-		if effects.name == effect_name:
+	for effect in status_icons.get_children():
+		if effect.name == effect_name:
 			return true
 	return false
 
 func trigger_all_effects():
-	for effect in status_effects:
+	for effect in status_icons.get_children():
 		var is_triggered = effect.trigger()
 		if is_triggered:
 			await effect_triggered
@@ -117,7 +126,7 @@ func trigger_all_effects():
 	return false
 
 func remove_all_effects():
-	for effect in status_effects:
+	for effect in status_icons.get_children():
 		await effect.remove_effect()
 	return
 

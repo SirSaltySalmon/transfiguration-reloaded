@@ -1,4 +1,4 @@
-extends Node
+extends Panel
 class_name StatusEffect
 
 ## Some code I'm really not proud of
@@ -9,7 +9,11 @@ class_name StatusEffect
 ## That I figured out with skills
 
 var target : HealthComponent
-var duration : int
+@onready var duration_displayer: RichTextLabel = $RichTextLabel
+var duration : int :
+	set(value):
+		duration = value
+		duration_displayer.text = str(value)
 
 func _on_added() -> void:
 	if name == "Goop":
@@ -18,7 +22,7 @@ func _on_added() -> void:
 	elif name == "Bless":
 		target.parent.speed_mult += 0.3
 		target.parent.turn.update_speed()
-	get_icon().show()
+	show()
 
 func trigger():
 	var triggered := false
@@ -40,13 +44,9 @@ func remove_effect():
 	elif name == "Bless":
 		target.parent.speed_mult -= 0.3
 		target.parent.turn.update_speed()
-	get_icon().hide()
-	target.status_effects.erase(self)
+	hide()
 	queue_free()
 	return
 
 func is_negative():
 	return true if name in ["Goop", "Poison", "Burn", "Frostbite", "Insecure"] else false
-
-func get_icon() -> Panel:
-	return target.status_icons.find_child(name, false)

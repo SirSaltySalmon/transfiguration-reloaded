@@ -9,7 +9,7 @@ func use(user: BattleCharacter, target):
 	var effect = set_effect(target)
 	target.health.restore_health(value)
 	
-	for status_effect in target.health.status_effects:
+	for status_effect in target.health.status_icons.get_children():
 		if status_effect is StatusEffect:
 			if status_effect.is_negative():
 				status_effect.remove_effect()
