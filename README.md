@@ -15,37 +15,37 @@ aka Salmon
 
 ## Sourced Assets
 ### Fonts
-Baskerville by John Baskerville
-Roboto by Google Android Design
-Coolvetica by Typodermic Fonts
-BelgianoSerif by Fajarisha Phonna
-Moderniz by Eko Bimantara
+- Baskerville by John Baskerville
+- Roboto by Google Android Design
+- Coolvetica by Typodermic Fonts
+- BelgianoSerif by Fajarisha Phonna
+- Moderniz by Eko Bimantara
 
 ### Visuals & Effects
-Brackeys VFX Pack by Brackeys on itch.io
-VFX Packs by Pimen on itch.io
-"Weathered Round Table Metal Top & Wooden Legs" by Nikoleta.Zhecheva CC 4.0
-Iceberg by Poly by Google CC-BY via Poly Pizza
-RPG Effects 64x64 by BDragon1727
-Pixel VFX Packs by Frostwindz on itch.io
+- Brackeys VFX Pack by Brackeys on itch.io
+- VFX Packs by Pimen on itch.io
+- "Weathered Round Table Metal Top & Wooden Legs" by Nikoleta.Zhecheva CC 4.0
+- Iceberg by Poly by Google CC-BY via Poly Pizza
+- RPG Effects 64x64 by BDragon1727
+- Pixel VFX Packs by Frostwindz on itch.io
 
 ### Sound Effects
-Metal Hit by Marcelo Fernandez (Combat Enter Sound)
-Stressed Out SFX From OMORI
-Heal SFX From Undertale
-Lancer Splat and Explosion From Deltarune
-lolurio's Free Cozy Game UI SFX Pack
+- Metal Hit by Marcelo Fernandez (Combat Enter Sound)
+- Stressed Out SFX From OMORI
+- Heal SFX From Undertale
+- Lancer Splat and Explosion From Deltarune
+- lolurio's Free Cozy Game UI SFX Pack
 
 ## Tools
 Made in Godot Game Engine
 
 ### Plugins
-DialogueManager by Nathan Hoad
-SoundManager by Nathan Hoad
-CommandTerminal by 20ml
-Maaack's Scene Loader by Maaack
-Maaack's Credit Scene by Maaack
-Shaker by Eneskp
+- DialogueManager by Nathan Hoad
+- SoundManager by Nathan Hoad
+- CommandTerminal by 20ml
+- Maaack's Scene Loader by Maaack
+- Maaack's Credit Scene by Maaack
+- Shaker by Eneskp
 
 ## Dedicated To
 My lovely patient friends and families who supported me through the hardest of times
