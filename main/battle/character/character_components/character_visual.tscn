@@ -219,6 +219,7 @@ render_priority = 1
 
 [node name="ImpactShake" type="Node3D" parent="Sprite" unique_id=1769464129]
 script = ExtResource("1_vff47")
+ignore_screen_shake = true
 intensity = 0.5
 duration = 0.5
 fade_in = 1e-05

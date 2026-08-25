@@ -9,7 +9,7 @@
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.50399995, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_83rhi"]
+[sub_resource type="CurveTexture" id="CurveTexture_s8vlg"]
 curve = SubResource("Curve_s8vlg")
 
 [sub_resource type="Curve" id="Curve_tfdrb"]
@@ -17,7 +17,7 @@ _limits = [0.0, 2.0, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 1.7683465, 0, 0, Vector2(1, 2), 2.130522, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_b068y"]
+[sub_resource type="CurveTexture" id="CurveTexture_tfdrb"]
 curve = SubResource("Curve_tfdrb")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_we0n1"]
@@ -27,12 +27,12 @@ initial_velocity_max = 400.0
 gravity = Vector3(0, 9, 0)
 scale_min = 200.0
 scale_max = 400.0
-alpha_curve = SubResource("CurveTexture_83rhi")
+alpha_curve = SubResource("CurveTexture_s8vlg")
 hue_variation_min = -2.2351742e-08
 hue_variation_max = 0.99999994
-hue_variation_curve = SubResource("CurveTexture_b068y")
+hue_variation_curve = SubResource("CurveTexture_tfdrb")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mje7m"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_we0n1"]
 render_priority = -1
 transparency = 1
 shading_mode = 0
@@ -45,7 +45,7 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="QuadMesh" id="QuadMesh_dp5po"]
-material = SubResource("StandardMaterial3D_mje7m")
+material = SubResource("StandardMaterial3D_we0n1")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t38xw"]
 emission_enabled = true

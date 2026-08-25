@@ -36,8 +36,8 @@ func _log_version() -> void:
 		sav.last_version_opened = current_version
 
 func _load_current_save() -> bool:
-	sav = SaveGame.new()
-	return false
+	#sav = SaveGame.new()
+	#return false
 	
 	if FileAccess.file_exists(SAVE_STATE_PATH):
 		sav = ResourceLoader.load(SAVE_STATE_PATH, "", ResourceLoader.CACHE_MODE_IGNORE)
@@ -54,8 +54,6 @@ func save() -> void:
 		ResourceSaver.save(sav, SAVE_STATE_PATH)
 	else:
 		printerr("Attempting to save when no save file is present")
-
-signal size_updated
 
 #General tracker variables, used during gameplay, but are not needed to save.
 var destination_area_id : StringName

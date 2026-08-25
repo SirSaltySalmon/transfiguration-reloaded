@@ -21,7 +21,7 @@ func use(user: BattleCharacter, target):
 	main.ui.display_move("Eternal Pyre's Embrace")
 	main.ui.flavor_text.hide()
 	center.cine_anim.play("epe/epe", -1, Methods.anim_speed)
-	
+	play()
 	await center.cine_anim.animation_finished
 	stop()
 	

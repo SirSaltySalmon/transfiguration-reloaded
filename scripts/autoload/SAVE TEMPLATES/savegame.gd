@@ -1,4 +1,4 @@
-class_name SaveGame1
+class_name SaveGame
 extends Resource
 
 @export var first_version_opened : String
@@ -57,9 +57,9 @@ extends Resource
 #Story flags
 @export var cutscene_1 = false
 @export var rat_talk_1 := false
-@export var just_size_2 := false
 @export var rat_talk_2 := false
 @export var tutorial_fight_complete := false
+@export var rat_suggests_roaming := false
 @export var golem_talk_1 := false
 @export var golem_talk_2 := false
 @export var gob_rejection := false
@@ -73,7 +73,8 @@ extends Resource
 @export var angel_talk_1 := false
 @export var rat_comments_on_posters := false
 @export var angel_talk_2 := false
-@export var jori_intro := true
+@export var jori_intro := false
+@export var size_7_intro_fight_complete := false
 
 @export var money_at_jori := 0
 
@@ -92,7 +93,7 @@ extends Resource
 }
 
 #Battle stats data
-@export var bt_party := ["rat", "slime", "angel"]
+@export var bt_party := ["rat", "slime"]
 
 #Storing these here rather than in the node because values might be modified throughout the game
 @export var skills_data = {

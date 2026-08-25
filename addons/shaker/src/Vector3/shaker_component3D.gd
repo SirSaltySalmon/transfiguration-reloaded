@@ -28,6 +28,8 @@ enum ShakeAddMode {
 
 @export var AutoPlay:bool = false
 
+@export var ignore_screen_shake := false
+
 # Private variables
 var _last_position_shake: Array[Vector3] = [Vector3.ZERO]
 var _last_scale_shake: Array[Vector3] = [Vector3.ZERO]
@@ -184,6 +186,8 @@ func force_stop_shake() -> void:
 
 # Starts the shake effect
 func play_shake() -> void:
+	if Global.sav.disable_screen_shake and not ignore_screen_shake:
+		return
 	_initalize_target()
 	randomize_shake()
 	is_playing = !is_playing if Engine.is_editor_hint() else true

@@ -3,6 +3,7 @@ extends Character
 @export var title := "shadow_1"
 @export var blood : Sprite2D
 
+
 func normal_init():
 	super()
 	if Global.sav.get(title):
@@ -21,7 +22,7 @@ func interact():
 	Methods.flags_changed.emit()
 
 func death():
-	Methods.current_scene.vfx.play("devour")
+	Methods.play_fx_overworld("devour")
 	if blood:
 		blood.show()
 	queue_free()

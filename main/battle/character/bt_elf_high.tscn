@@ -7,18 +7,25 @@
 [ext_resource type="PackedScene" uid="uid://bs2xq80dv1ueu" path="res://main/battle/character/character_components/turn_component.tscn" id="5_24a7h"]
 [ext_resource type="PackedScene" uid="uid://r2yku07du05q" path="res://main/battle/character/character_components/skill_component.tscn" id="6_swtvr"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ctcq0"]
-viewport_path = NodePath("SubViewport")
+[sub_resource type="SphereShape3D" id="SphereShape3D_swtvr"]
+radius = 3.5
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_swtvr"]
 viewport_path = NodePath("SubViewport")
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_8bwdi"]
+viewport_path = NodePath("SubViewport")
+
 [node name="Elf" type="StaticBody3D" unique_id=36953412 node_paths=PackedStringArray("skill_component")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+collision_layer = 2
 script = ExtResource("1_swtvr")
 battle_id = "elf_high"
 skill_component = NodePath("SkillComponent")
 basic_attack_chance = 0.25
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=869610418]
+shape = SubResource("SphereShape3D_swtvr")
 
 [node name="CharacterVisual" parent="." unique_id=598858165 instance=ExtResource("2_swtvr")]
 
@@ -27,11 +34,11 @@ texture = ExtResource("3_ctcq0")
 
 [node name="HealthComponent" parent="." unique_id=313391265 instance=ExtResource("4_nhoa2")]
 transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, -3.60041e-07, 0, 4.07077)
-texture = SubResource("ViewportTexture_ctcq0")
+texture = SubResource("ViewportTexture_swtvr")
 
 [node name="TurnComponent" parent="." unique_id=471687455 instance=ExtResource("5_24a7h")]
 transform = Transform3D(1.5, 0, 0, 0, -6.55671e-08, 1.5, 0, -1.5, -6.55671e-08, -2.04019e-07, 0, 4.66742)
-texture = SubResource("ViewportTexture_swtvr")
+texture = SubResource("ViewportTexture_8bwdi")
 
 [node name="SkillComponent" parent="." unique_id=1953853332 instance=ExtResource("6_swtvr")]
 skill_1 = "Toxic Bite"

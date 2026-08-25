@@ -17,10 +17,9 @@ area_id = "sewers"
 
 [node name="Background" type="Sprite3D" parent="." unique_id=1115190439]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
-transparent = false
 shaded = true
 double_sided = false
-alpha_cut = 1
+alpha_cut = 2
 texture = ExtResource("2_4bhns")
 
 [node name="ArrowManager" parent="." unique_id=271098037 instance=ExtResource("5_s2ut8")]
@@ -64,5 +63,6 @@ texture = ExtResource("9_sb2dm")
 
 [node name="Hannes" parent="." unique_id=1737641011 groups=["cutscene_3"] instance=ExtResource("10_s2ut8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.96516156, -7)
+visible = false
 
 [editable path="ArrowManager"]

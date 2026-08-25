@@ -7,18 +7,25 @@
 [ext_resource type="PackedScene" uid="uid://ccuw8vpu5w10y" path="res://main/battle/character/character_components/health_component.tscn" id="4_1tbn0"]
 [ext_resource type="PackedScene" uid="uid://r2yku07du05q" path="res://main/battle/character/character_components/skill_component.tscn" id="6_14e27"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_14e27"]
-viewport_path = NodePath("SubViewport")
+[sub_resource type="SphereShape3D" id="SphereShape3D_14e27"]
+radius = 3.5
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_fj0th"]
 viewport_path = NodePath("SubViewport")
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_wlrn3"]
+viewport_path = NodePath("SubViewport")
+
 [node name="Slime" type="StaticBody3D" unique_id=636409269 node_paths=PackedStringArray("vertical_sprite")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+collision_layer = 2
 script = ExtResource("1_14e27")
 vertical_sprite = NodePath("CharacterVisual/VerticalSprite")
 battle_id = "slime"
 ally = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1621420875]
+shape = SubResource("SphereShape3D_14e27")
 
 [node name="CharacterVisual" parent="." unique_id=1756654164 instance=ExtResource("2_r418q")]
 
@@ -35,12 +42,12 @@ alpha_scissor_threshold = 1.0
 texture = ExtResource("3_14e27")
 
 [node name="HealthComponent" parent="." unique_id=1601348784 instance=ExtResource("4_1tbn0")]
-transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, -6.6878286e-08, 0, 1.5299963)
-texture = SubResource("ViewportTexture_14e27")
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, -1.01171636e-07, 0, 2.3145366)
+texture = SubResource("ViewportTexture_fj0th")
 
 [node name="TurnComponent" parent="." unique_id=362249694 instance=ExtResource("2_1uqte")]
-transform = Transform3D(1.5, 0, 0, 0, -6.55671e-08, 1.5, 0, -1.5, -6.55671e-08, -9.217158e-08, 0, 2.1086464)
-texture = SubResource("ViewportTexture_fj0th")
+transform = Transform3D(1.5, 0, 0, 0, -6.55671e-08, 1.5, 0, -1.5, -6.55671e-08, -1.2646494e-07, 0, 2.8931866)
+texture = SubResource("ViewportTexture_wlrn3")
 
 [node name="SkillComponent" parent="." unique_id=134321989 instance=ExtResource("6_14e27")]
 

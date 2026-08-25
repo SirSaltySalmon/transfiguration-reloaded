@@ -2285,9 +2285,8 @@ main = NodePath("../..")
 
 [node name="Control" type="Control" parent="WinScreen/Stats" unique_id=1717368332]
 anchors_preset = 0
-offset_top = -800.0
 offset_right = 40.0
-offset_bottom = -760.0
+offset_bottom = 40.0
 
 [node name="EnemiesDevoured" type="Label" parent="WinScreen/Stats/Control" unique_id=15270478]
 layout_mode = 0
@@ -2320,9 +2319,8 @@ show_percentage = false
 
 [node name="Control2" type="Control" parent="WinScreen/Stats" unique_id=1662858367]
 anchors_preset = 0
-offset_top = -700.0
 offset_right = 40.0
-offset_bottom = -660.0
+offset_bottom = 40.0
 
 [node name="Kills" type="Label" parent="WinScreen/Stats/Control2" unique_id=72353456]
 layout_mode = 0
@@ -2345,9 +2343,9 @@ text = "Money Earned: 0"
 [node name="WinBonus" type="Label" parent="WinScreen/Stats" unique_id=1395689867]
 layout_mode = 0
 offset_left = 24.0
-offset_top = -600.0
+offset_top = 336.0
 offset_right = 434.0
-offset_bottom = -535.0
+offset_bottom = 401.0
 theme_override_fonts/font = ExtResource("39_uytlp")
 theme_override_font_sizes/font_size = 48
 text = "Win Bonus:"
@@ -2369,9 +2367,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -608.0
-offset_top = -860.0
+offset_top = 88.0
 offset_right = -247.99893
-offset_bottom = -740.0
+offset_bottom = 208.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 0
@@ -2388,10 +2386,6 @@ offset_bottom = 40.0
 [node name="PauseMenu" parent="." unique_id=1323170117 instance=ExtResource("34_3lovp")]
 visible = false
 
-[node name="TargetSelection" type="Node" parent="." unique_id=228789731 node_paths=PackedStringArray("main")]
-script = ExtResource("24_314eb")
-main = NodePath("..")
-
 [node name="CineAnim" type="AnimationPlayer" parent="." unique_id=1060797251]
 libraries/ = SubResource("AnimationLibrary_8qows")
 
@@ -2401,13 +2395,14 @@ bus = &"SFX"
 [node name="MainAnim" type="AnimationPlayer" parent="." unique_id=1602434553]
 libraries/ = SubResource("AnimationLibrary_bplng")
 
-[node name="BattleCam" type="Node3D" parent="." unique_id=1810964477 node_paths=PackedStringArray("main", "handheld_shake", "impact_shake", "big_impact_shake")]
+[node name="BattleCam" type="Node3D" parent="." unique_id=1810964477 node_paths=PackedStringArray("main", "handheld_shake", "impact_shake", "big_impact_shake", "cam")]
 transform = Transform3D(-4.371139e-08, -0.98480725, 0.17364813, 0, 0.17364813, 0.98480725, -1, 4.304729e-08, -7.590401e-09, 10, 70, 0)
 script = ExtResource("2_g1d0u")
 main = NodePath("..")
 handheld_shake = NodePath("BattleCam/HandheldShake")
 impact_shake = NodePath("BattleCam/ImpactShake")
 big_impact_shake = NodePath("BattleCam/BigImpactShake")
+cam = NodePath("BattleCam")
 
 [node name="BattleCam" type="Camera3D" parent="BattleCam" unique_id=1394033273]
 transform = Transform3D(0.99999994, -4.9829515e-07, 1.3208958e-07, 4.982952e-07, 1.0000002, -1.7007105e-06, -1.3208869e-07, 1.7007106e-06, 1.0000002, 4.890738e-07, -2.9572436e-07, -7.571084e-07)
@@ -2450,6 +2445,10 @@ fade_in = 1.7410997
 fade_out = 8.337636e-05
 shakerPreset = SubResource("Resource_mk36a")
 metadata/_custom_type_script = "uid://dbdifjem6wnue"
+
+[node name="TargetSelection" type="Node" parent="." unique_id=228789731 node_paths=PackedStringArray("main")]
+script = ExtResource("24_314eb")
+main = NodePath("..")
 
 [node name="Holders" type="Node3D" parent="." unique_id=1393188613]
 

@@ -7,9 +7,9 @@ func normal_init():
 		queue_free()
 
 func interact():
-	if not Global.golem_talk_2:
+	if not Global.sav.golem_talk_2:
 		await dialogue("golem_talk")
-		Global.golem_talk_2 = true
+		Global.sav.golem_talk_2 = true
 	elif not Global.sav.shadow_wizards_defeated:
 		await dialogue("golem_remember")
 	elif Global.sav.shadow_wizards_defeated:

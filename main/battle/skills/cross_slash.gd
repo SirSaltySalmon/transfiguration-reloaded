@@ -9,7 +9,7 @@ func use(user: BattleCharacter, target):
 	for targ in target:
 		var effect = set_effect(targ)
 		targ.health.take_damage(value, user)
-		effect.play("Cross Slash")
+		effect.play("cross_slash")
 	SoundManager.play_sound(SWORD_UNSHEATHE)
 	main.cam.shake()
 	await Methods.wait(1.0 / Methods.anim_speed)

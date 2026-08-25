@@ -57,8 +57,12 @@ func move_to_area(area_id : String, resource : String, direction : String):
 		finalize_move_to_area()
 
 func manage_battles():
-	if Global.sav.just_size_2 and Global.sav.current_area_id == "prison":
+	if not Global.sav.tutorial_fight_complete and Global.sav.current_area_id == "prison":
 		Global.battle_type = 2
+		return true
+	if Global.sav.size == 7 and not Global.sav.size_7_intro_fight_complete:
+		Global.battle_type = 1
+		Global.sav.repellant_active = true # Automatically switches on repellant
 		return true
 	
 	# No shadow wizards code here, handle separately
@@ -73,7 +77,7 @@ func manage_battles():
 			Global.battle_type = 1
 			return true
 	elif Global.sav.size >= 2:
-		if not Global.sav.repellant_active and randi_range(1, 4) == 1:
+		if randi_range(1, 4) == 1:
 			Global.battle_type = 0
 			return true
 	
@@ -120,7 +124,7 @@ func enter_area():
 func get_sky_and_light():
 	if Global.sav.size == 7:
 		env.environment = load("res://assets/overworld/effects/sky/size_7_sky.tres")
-		light.light_color = Color("e4a2a0")
+		light.light_color = Color("de6662")
 		light.light_energy = 16.0
 		return
 	

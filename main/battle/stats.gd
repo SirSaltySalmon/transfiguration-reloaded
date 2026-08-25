@@ -74,6 +74,7 @@ func summarize_stats():
 			SoundManager.play_sound(POSITIVE)
 			await Methods.wait(0.1)
 	
+	Global.sav.money += money_earned_count
 	if not skipping:
 		await next_stat
 	

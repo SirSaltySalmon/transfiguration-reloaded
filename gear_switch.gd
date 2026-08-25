@@ -15,7 +15,7 @@ func use(user: BattleCharacter, _target):
 	await main.dialogue_check() # Called manually!!
 	
 	main.env.environment = COLD_NIGHT_SKY
-	main.%DirectionalLight3D.show()
+	main.dir_light.show()
 	main.play_entrance_sound()
 	user.gearswitched = true
 	center.cine_anim.play("gearswitch/play", -1, Methods.anim_speed)

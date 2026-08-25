@@ -12,9 +12,9 @@ PROTECTOR OF THE ETERNAL PYRE, DESTROYER OF HOMES, AND SELF-MADE BILLIONAIRE!!!
 do! Methods.current_scene.jori_emo("smug")
 Now, what do I owe the pleasure...
 Of having an invader in my home?
-Trespassing in my domain isn't a good loop for you...
+Trespassing in my domain isn't a good look for you...
 [i]Our worst fear have come true. The terrifying presence before us is Jori, the tyrranical ruler of the dungeon.[/i]
-[i]As expected of a Great Dragon, she is savage and ruthless.[/i]
+[i]As expected of a Great Dragon, she is known to be savage and ruthless.[/i]
 [i]After wiping out the band of thieves that hid here, she ursurped their riches and rose to the throne.[/i]
 [i]Oh dear. It's the end of us all. We're going to be her dinner.[/i]
 - RUN
@@ -73,6 +73,7 @@ How about... some headpats?
 	do! Methods.current_scene.play_grass_cracking_sound()
 	...Oh.
 	Okay, then. That's alright. Um...
+	do! Methods.current_scene.continue_music()
 do! Methods.current_scene.jori_emo("neutral")
 Well, let's get to eating these before they start to rot.
 [i]With utmost ease, she snaps a bonfire into existence.[/i]
@@ -144,7 +145,8 @@ Take my hand.
 Let's fly away from this place.
 - [color=red]DEVOUR[/color]
 - [color=red]DEVOUR[/color]
-What are you
+do! Methods.current_scene.skip_text_at_end()
+What are you doi
 do! Methods.current_scene.devour_jori()
 => END
 

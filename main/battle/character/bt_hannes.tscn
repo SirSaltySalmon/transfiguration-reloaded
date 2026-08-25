@@ -8,6 +8,9 @@
 [ext_resource type="Script" uid="uid://bsnt4ybuug6jf" path="res://main/battle/character/character_components/hannes_health_component.gd" id="5_e4vm5"]
 [ext_resource type="PackedScene" uid="uid://r2yku07du05q" path="res://main/battle/character/character_components/skill_component.tscn" id="6_qcvok"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_e4vm5"]
+radius = 3.5
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_e4vm5"]
 viewport_path = NodePath("SubViewport")
 
@@ -16,10 +19,14 @@ viewport_path = NodePath("SubViewport")
 
 [node name="Hannes" type="StaticBody3D" unique_id=36953412 node_paths=PackedStringArray("skill_component")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+collision_layer = 2
 script = ExtResource("1_rkmuk")
 battle_id = "hannes"
 skill_component = NodePath("SkillComponent")
 basic_attack_chance = 0.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1037389669]
+shape = SubResource("SphereShape3D_e4vm5")
 
 [node name="CharacterVisual" parent="." unique_id=598858165 instance=ExtResource("2_jk0q2")]
 

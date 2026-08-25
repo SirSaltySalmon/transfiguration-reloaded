@@ -7,17 +7,24 @@
 [ext_resource type="PackedScene" uid="uid://ccuw8vpu5w10y" path="res://main/battle/character/character_components/health_component.tscn" id="4_m2eyk"]
 [ext_resource type="PackedScene" uid="uid://bs2xq80dv1ueu" path="res://main/battle/character/character_components/turn_component.tscn" id="5_qrcf8"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_m2eyk"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_v2gol"]
+radius = 3.5
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_v2gol"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_qrcf8"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_mi1bt"]
 viewport_path = NodePath("SubViewport")
 
 [node name="Wizard" type="StaticBody3D" unique_id=36953412]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+collision_layer = 2
 script = ExtResource("1_gqtr1")
 battle_id = "wizard_low"
 basic_attack_sound = ExtResource("2_mi1bt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=586032435]
+shape = SubResource("SphereShape3D_v2gol")
 
 [node name="CharacterVisual" parent="." unique_id=598858165 instance=ExtResource("2_v2gol")]
 
@@ -26,10 +33,10 @@ texture = ExtResource("3_gqtr1")
 
 [node name="HealthComponent" parent="." unique_id=313391265 instance=ExtResource("4_m2eyk")]
 transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, -3.60041e-07, 0, 4.07077)
-texture = SubResource("ViewportTexture_m2eyk")
+texture = SubResource("ViewportTexture_v2gol")
 
 [node name="TurnComponent" parent="." unique_id=471687455 instance=ExtResource("5_qrcf8")]
 transform = Transform3D(1.5, 0, 0, 0, -6.55671e-08, 1.5, 0, -1.5, -6.55671e-08, -2.04019e-07, 0, 4.66742)
-texture = SubResource("ViewportTexture_qrcf8")
+texture = SubResource("ViewportTexture_mi1bt")
 
 [editable path="CharacterVisual"]

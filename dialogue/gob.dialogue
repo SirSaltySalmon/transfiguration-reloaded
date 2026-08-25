@@ -26,7 +26,6 @@ Gob: So you want the grimoire, right?
 		Gob: Wha-you're broke?
 		Gob: Just get the hell out of my sight already.
 	else:
-		#do SoundManager play coin sound effect or something
 		do! Methods.buy_grimoire()
 		Gob: Pleasure doing business with ya.
 		Gob: From now on, you're welcome to check out the rest of my shop.

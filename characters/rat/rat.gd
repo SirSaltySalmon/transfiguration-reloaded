@@ -42,11 +42,12 @@ func interact():
 	elif Global.sav.size == 1 and not Global.sav.rat_talk_1:
 		await dialogue("rat_talk_1")
 		Global.sav.rat_talk_1 = true
-	elif Global.sav.just_size_2 and not Global.sav.rat_talk_2:
+	elif Global.sav.size == 2 and not Global.sav.rat_talk_2:
 		await dialogue("rat_talk_2")
 		Global.sav.rat_talk_2 = true
-	elif Global.sav.size <= 2 and Global.sav.tutorial_fight_complete:
+	elif Global.sav.size <= 2 and Global.sav.tutorial_fight_complete and not Global.sav.rat_suggests_roaming:
 		await dialogue("rat_suggests_roaming")
+		Global.sav.rat_suggests_roaming = true
 	elif Global.sav.gob_sells_grimoire and Global.sav.current_area_id != "library" and not Global.sav.rat_comments_on_grimoire:
 		await dialogue("rat_comments_on_grimoire")
 		Global.sav.rat_comments_on_grimoire = true

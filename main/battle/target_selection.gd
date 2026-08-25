@@ -10,6 +10,7 @@ var current_index: int = 0
 var available_targets: Array[BattleCharacter]
 var is_selecting_one: bool = false
 var is_active: bool = false
+var just_chose_target_with_mouse := false
 
 #region Public API
 func random_target(characters: Array[BattleCharacter]) -> BattleCharacter:
@@ -36,6 +37,7 @@ func select_one_target(characters: Array[BattleCharacter]) -> BattleCharacter:
 	
 	await confirmed_selection
 	
+	is_selecting_one = false
 	is_active = false
 	if current_target:
 		current_target.visual.hide_indicator()
@@ -51,6 +53,7 @@ func select_all_targets(characters: Array[BattleCharacter]) -> Array[BattleChara
 	
 	await confirmed_selection
 	
+	is_selecting_one = false
 	is_active = false
 	if available_targets != []:
 		for target in available_targets:
@@ -63,7 +66,9 @@ func _input(event: InputEvent) -> void:
 	if not is_active:
 		return
 	
-	if event.is_action_pressed("ui_accept"):
+	if (
+		event.is_action_pressed("combat_accept") or
+		(not is_selecting_one and event.is_action_pressed("left_click"))):
 		_confirm_selection()
 	elif event.is_action_pressed("ui_cancel"):
 		_cancel_selection()
@@ -89,6 +94,21 @@ func _handle_navigation_input(event: InputEvent) -> void:
 	
 	if direction != 0:
 		_move_selection(direction)
+
+func _handle_mouse_target_input(target: BattleCharacter):
+	current_index = available_targets.find(target)
+	if current_index == -1:
+		return
+	var new_target = available_targets[current_index]
+	if target == current_target:
+		_confirm_selection()
+		return
+	current_target = new_target
+	
+	_focus_on_target(current_target)
+	_indicate_target(current_target)
+	
+	
 
 func _move_selection(direction: int) -> void:
 	

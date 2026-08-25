@@ -1,15 +1,65 @@
 [gd_scene format=3 uid="uid://csxveqpk5meop"]
 
-[ext_resource type="Script" uid="uid://bqqlg4rpb6esw" path="res://characters/character.gd" id="1_6814b"]
+[ext_resource type="Script" uid="uid://c5y4b3x3vyxlk" path="res://characters/hannes/hannes.gd" id="1_6tmy7"]
 [ext_resource type="Resource" uid="uid://cfe8pvdku4aj1" path="res://dialogue/hannes.dialogue" id="2_6tmy7"]
 [ext_resource type="Texture2D" uid="uid://dys15poxfg2wm" path="res://characters/hannes/hannes_sheet.png" id="2_inuja"]
+[ext_resource type="Texture2D" uid="uid://btni88sihihw6" path="res://assets/assetpacks/brackeys-vfx/brackeys_particle_bundle/particles/alpha/star_07_a.png" id="3_6tmy7"]
+
+[sub_resource type="Curve" id="Curve_pomui"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.50399995, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_83rhi"]
+curve = SubResource("Curve_pomui")
+
+[sub_resource type="Curve" id="Curve_86gyv"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.7683465, 0, 0, Vector2(1, 2), 2.130522, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_b068y"]
+curve = SubResource("Curve_86gyv")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cm06g"]
+spread = 180.0
+initial_velocity_min = 4.0
+initial_velocity_max = 8.0
+gravity = Vector3(0, 0, 0)
+scale_max = 2.0
+alpha_curve = SubResource("CurveTexture_83rhi")
+hue_variation_min = -2.2351742e-08
+hue_variation_max = 0.99999994
+hue_variation_curve = SubResource("CurveTexture_b068y")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mje7m"]
+render_priority = 1
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_6tmy7")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_p5hog"]
+material = SubResource("StandardMaterial3D_mje7m")
 
 [node name="Hannes" type="StaticBody3D" unique_id=1737641011]
-script = ExtResource("1_6814b")
+script = ExtResource("1_6tmy7")
 interactible = false
 dialogue_res = ExtResource("2_6tmy7")
 zoom = -4
 metadata/_custom_type_script = "uid://bqqlg4rpb6esw"
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="." unique_id=791769873]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1655119, 0.54462993, 0)
+emitting = false
+amount = 40
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_cm06g")
+draw_pass_1 = SubResource("QuadMesh_p5hog")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=1800386935]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)

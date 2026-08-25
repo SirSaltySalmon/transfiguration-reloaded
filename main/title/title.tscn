@@ -1,14 +1,24 @@
 [gd_scene format=3 uid="uid://2l0nutefih78"]
 
-[ext_resource type="Shader" uid="uid://b1c0hhwxaqcl0" path="res://assets/battle/scroll.gdshader" id="1_e4aly"]
+[ext_resource type="Texture2D" uid="uid://dpj11no4mue2b" path="res://cover_slime_sprite.png" id="1_7a3wd"]
 [ext_resource type="Script" uid="uid://dkqcmyoeejsiy" path="res://main/title/new_game.gd" id="1_sxv3h"]
 [ext_resource type="Texture2D" uid="uid://b4nhunq55532w" path="res://addons/maaacks_credits_scene/examples/assets/game_logo/transfiguration.png" id="1_xsqwm"]
-[ext_resource type="Texture2D" uid="uid://cq1xxo1lvvfbt" path="res://assets/battle/stars.jpg" id="2_7a3wd"]
+[ext_resource type="Script" uid="uid://cholnpgqix3g1" path="res://addons/shaker/src/Vector2/shaker_component2D.gd" id="2_5t4mb"]
 [ext_resource type="Script" uid="uid://dkv78r4jn7n8q" path="res://main/title/continue.gd" id="2_gpeyd"]
+[ext_resource type="Script" uid="uid://bhg7a5126bhme" path="res://addons/shaker/data/Vector2/BaseShakerType2D.gd" id="3_ouoes"]
+[ext_resource type="Script" uid="uid://4ofvm0siifij" path="res://addons/shaker/data/Vector2/ShakerTypeSineWave2D.gd" id="4_43s1t"]
+[ext_resource type="Script" uid="uid://bilaf3dl6e4hr" path="res://addons/shaker/data/Single/BaseShakerType1D.gd" id="5_82guk"]
+[ext_resource type="Script" uid="uid://nf5yrlo4r2c4" path="res://addons/shaker/data/Vector2/ShakerPreset2D.gd" id="6_vu1pt"]
+[ext_resource type="Texture2D" uid="uid://betfq4hyr0kdx" path="res://cover_vignette.png" id="7_ouoes"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_d2gyv"]
-shader = ExtResource("1_e4aly")
-shader_parameter/speed = 0.1
+[sub_resource type="Resource" id="Resource_jyudj"]
+script = ExtResource("4_43s1t")
+metadata/_custom_type_script = "uid://4ofvm0siifij"
+
+[sub_resource type="Resource" id="Resource_b068y"]
+script = ExtResource("6_vu1pt")
+PositionShake = Array[ExtResource("3_ouoes")]([SubResource("Resource_jyudj")])
+metadata/_custom_type_script = "uid://nf5yrlo4r2c4"
 
 [node name="Title" type="Node2D" unique_id=520548200]
 
@@ -20,16 +30,27 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+color = Color(0.13, 0.13, 0.13, 1)
 
-[node name="Stars" type="TextureRect" parent="CanvasLayer" unique_id=813714987]
-modulate = Color(1, 1, 1, 0.19607843)
-texture_repeat = 2
-material = SubResource("ShaderMaterial_d2gyv")
-offset_right = 1920.0
-offset_bottom = 1880.0
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ColorRect" unique_id=168272730]
+modulate = Color(1, 1, 1, 0.39215687)
+position = Vector2(642.88715, 373.53275)
 scale = Vector2(0.67, 0.67)
-texture = ExtResource("2_7a3wd")
+texture = ExtResource("1_7a3wd")
+
+[node name="ShakerComponent2D" type="Node2D" parent="CanvasLayer/ColorRect/Sprite2D" unique_id=994526520]
+script = ExtResource("2_5t4mb")
+AutoPlay = true
+intensity = 3.0
+shake_speed = 0.5
+shakerPreset = SubResource("Resource_b068y")
+metadata/_custom_type_script = "uid://cholnpgqix3g1"
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=72770836]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.67, 0.67)
+texture = ExtResource("7_ouoes")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=867878378]
 custom_minimum_size = Vector2(600, 0)

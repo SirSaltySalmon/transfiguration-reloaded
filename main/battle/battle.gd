@@ -123,7 +123,6 @@ func initialize_allies():
 	var ally_holders = get_node("%AllyHolders" + size)
 	ally_holders.show()
 	
-	
 	await load_chars(ally_holders, Global.sav.bt_party)
 	
 	return
@@ -188,7 +187,8 @@ func action():
 	all_chars = []
 	all_chars.append_array(get_alive_allies())
 	all_chars.append_array(get_alive_enemies())
-	await dialogue_check() #This can be called manually in a skill to trigger it in between
+	if await dialogue_check(): #This can be called manually in a skill to trigger it in between
+		await cam.return_to_idle()
 	await wait_for_turn_ready()
 	var died_from_effect = await current_char.health.trigger_all_effects()
 	if died_from_effect:
@@ -218,7 +218,7 @@ func _on_action_over():
 		return
 	#else, next turn
 	ui.hide_move()
-	cam.return_to_idle()
+	await cam.return_to_idle()
 	action()
 
 func lose():
@@ -269,12 +269,13 @@ func queue_dialogue(code: String):
 
 func dialogue_check():
 	if dialogue_queue.is_empty():
-		return
+		return false
 	var title = dialogue_queue.pop_back()
 	
 	DialogueManager.show_dialogue_balloon_scene(combat_balloon, dialogue, title)
 	
 	await DialogueManager.dialogue_ended
+	return true
 
 func flavor_text_add():
 	if Global.battle_type == 2:

@@ -31,6 +31,7 @@ offset = 2
 [node name="Sprite" type="Sprite3D" parent="." unique_id=1887729240]
 shaded = true
 double_sided = false
+alpha_cut = 1
 render_priority = 1
 texture = SubResource("ViewportTexture_icia6")
 

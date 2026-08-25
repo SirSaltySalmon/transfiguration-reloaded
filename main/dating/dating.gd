@@ -1,6 +1,9 @@
 class_name DatingSim
 extends Node2D
 
+const DATING = preload("uid://ds73q7xqpmjj0")
+const SPOTLIGHT = preload("uid://ivr65xk0jxhm")
+
 const LARGE_IMPACT = preload("uid://cgv60uv5ol5oi")
 const GLASS = preload("uid://b6dgqijm875t5")
 const CHEERY_TUNE = preload("uid://nqveqbqrc5fs")
@@ -41,6 +44,8 @@ func _ready():
 	else:
 		balloon = DialogueManager.show_dialogue_balloon_scene(balloon_scene, dialogue_res, "jori_branch")
 	
+	SoundManager.play_music(DATING)
+	
 	%Auto.enable()
 	%Skip.enable()
 
@@ -61,7 +66,11 @@ func exit_headpat():
 	effects_player.play("headpat_hide")
 
 func play_grass_cracking_sound():
+	SoundManager.pause_music(DATING)
 	SoundManager.play_sound(GLASS)
+
+func continue_music():
+	SoundManager.resume_music_with_fade(DATING, 1.0)
 
 func show_campfire(code: String):
 	campfire_emo(code)
@@ -71,10 +80,12 @@ func campfire_emo(code: String):
 	jori_campfire.frame = campfire_dict[code]
 
 func show_flame():
+	SoundManager.stop_music()
 	%FakeTimeSys.hide()
 	%Cover.show()
 	%Cover.color = Color.BLACK
 	await Methods.wait(2.0)
+	SoundManager.play_sound(SPOTLIGHT)
 	%Flame.show()
 	%Cover.hide()
 
@@ -84,8 +95,13 @@ func stop_auto_and_skip():
 	%Auto.disable()
 	%Skip.disable()
 
+func skip_text_at_end():
+	await balloon.dialogue_label.finished_typing
+	balloon.force_input()
+
 func date_death():
 	# No flags triggered
+	SoundManager.stop_music(1.0)
 	stop_auto_and_skip()
 	DialogueManager.is_active = false
 	effects_player.stop()
@@ -95,6 +111,7 @@ func date_death():
 	Methods.return_to_overworld(false)
 
 func exit_date():
+	SoundManager.stop_music(1.0)
 	stop_auto_and_skip()
 	Global.sav.jori_intro = true # Got out peacefully
 	DialogueManager.is_active = false
@@ -106,6 +123,7 @@ func exit_date():
 func devour_jori():
 	stop_auto_and_skip()
 	Global.sav.size = 7
+	Global.sav.bt_slime_skills[2] = "Eternal Pyre's Embrace"
 	DialogueManager.is_active = false
 	SoundManager.play_sound(CHEERY_TUNE)
 	%Video.show()
@@ -121,6 +139,9 @@ func devour_jori():
 
 func date_bad_end():
 	stop_auto_and_skip()
-	# Chop audio
-	# Show evil screen, unskippable for 5 seconds
+	SoundManager.pause_music(DATING)
+	for i in range(25):
+		SoundManager.play_music_from_position(DATING, 0.0)
+		await Methods.wait(0.2)
+	SoundManager.stop_music()
 	date_death()

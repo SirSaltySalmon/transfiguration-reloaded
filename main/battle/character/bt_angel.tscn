@@ -8,18 +8,25 @@
 [ext_resource type="PackedScene" uid="uid://bs2xq80dv1ueu" path="res://main/battle/character/character_components/turn_component.tscn" id="5_lctrx"]
 [ext_resource type="PackedScene" uid="uid://r2yku07du05q" path="res://main/battle/character/character_components/skill_component.tscn" id="6_0xh1c"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_0vsdi"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_mucbh"]
+radius = 3.5
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ucxdn"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_lctrx"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_0vsdi"]
 viewport_path = NodePath("SubViewport")
 
 [node name="Angel" type="StaticBody3D" unique_id=2118402185]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+collision_layer = 2
 script = ExtResource("1_iwaoo")
 battle_id = "angel"
 ally = true
 basic_attack_sound = ExtResource("2_ucxdn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1528605636]
+shape = SubResource("SphereShape3D_mucbh")
 
 [node name="CharacterVisual" parent="." unique_id=1362029954 instance=ExtResource("2_mucbh")]
 
@@ -28,11 +35,11 @@ texture = ExtResource("3_iwaoo")
 
 [node name="HealthComponent" parent="." unique_id=458302248 instance=ExtResource("4_0vsdi")]
 transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, -8.28578e-08, 0, 1.89556)
-texture = SubResource("ViewportTexture_0vsdi")
+texture = SubResource("ViewportTexture_ucxdn")
 
 [node name="TurnComponent" parent="." unique_id=1893024029 instance=ExtResource("5_lctrx")]
 transform = Transform3D(1.5, 0, 0, 0, -6.55671e-08, 1.5, 0, -1.5, -6.55671e-08, -1.08151e-07, 0, 2.47421)
-texture = SubResource("ViewportTexture_lctrx")
+texture = SubResource("ViewportTexture_0vsdi")
 
 [node name="SkillComponent" parent="." unique_id=32111930 instance=ExtResource("6_0xh1c")]
 

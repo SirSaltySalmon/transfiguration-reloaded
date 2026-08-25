@@ -6,6 +6,7 @@ class_name BattleCam extends Node3D
 #use play_shake() and stop_shake()
 @export var impact_shake: ShakerComponent3D
 @export var big_impact_shake: ShakerComponent3D
+@export var cam: Camera3D
 
 var idle_position := Vector3(4.2, 18, 0)
 var idle_rot := Vector3(-80, 90, 0)
@@ -62,3 +63,46 @@ func big_shake():
 		return
 	big_impact_shake.force_stop_shake()
 	big_impact_shake.play_shake()
+
+func shoot_ray():
+	var mouse_pos = get_viewport().get_mouse_position()
+	var ray_length = 100
+	var from = cam.project_ray_origin(mouse_pos)
+	var to = from + cam.project_ray_normal(mouse_pos) * ray_length
+	var space = get_world_3d().direct_space_state
+	
+	# Create ray query and set the parameters
+	var ray_query = PhysicsRayQueryParameters3D.new()
+	ray_query.from = from
+	ray_query.to = to
+	
+	# Set the collision mask (change based on your layer setup)
+	ray_query.collision_mask = 2  # Set the mask to the layer you want to collide with
+	
+	# Perform raycast
+	var raycast_results = space.intersect_ray(ray_query)
+	
+	return raycast_results
+
+func _input(event: InputEvent) -> void:
+	if event.is_action("left_click"):
+		if main.target.is_selecting_one:
+			if main.current_char:
+				if main.current_char.ally:
+					target_selection_mouse_input()
+
+func target_selection_mouse_input():
+	var raycast = shoot_ray() 
+	
+	if raycast.is_empty():
+		return
+	
+	var collider = raycast["collider"]
+	if not is_instance_valid(collider):
+		return
+	if not collider is BattleCharacter:
+		return
+	if collider.health.dead:
+		return
+	
+	main.target._handle_mouse_target_input(collider)

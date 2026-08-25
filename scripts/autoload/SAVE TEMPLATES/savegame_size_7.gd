@@ -1,4 +1,4 @@
-class_name SaveGame
+class_name SaveGame7
 extends Resource
 
 @export var first_version_opened : String
@@ -73,7 +73,8 @@ extends Resource
 @export var angel_talk_1 := false
 @export var rat_comments_on_posters := false
 @export var angel_talk_2 := false
-@export var jori_intro := true
+@export var jori_intro := false
+@export var size_7_intro_fight_complete := false
 
 @export var money_at_jori := 100
 
@@ -98,7 +99,7 @@ extends Resource
 @export var skills_data = {
 	"Reference" : ["+Value", "Single Target?", "Enemy?", "Description", "Duration (optional)"],
 	"Devour" : [15 , true, true, "Deals [color=red]VALUE TRUE Damage[/color] to an enemy, and [color=cyan]devours[/color] the enemy if they have [color=orange]20% health or less[/color], giving a bonus turn immediately."],
-	"Toxic Bite": [20, true, true, "Deals [color=red]VALUE Damage[/color] to an enemy, [color=green]Poisoning[/color] them for DURATION turns.", 3],
+	"Toxic Bite": [200, true, true, "Deals [color=red]VALUE Damage[/color] to an enemy, [color=green]Poisoning[/color] them for DURATION turns.", 3],
 	"Goop": [0, true, true, "Apply [color=cyan]Goop[/color] to an enemy, [color=lightblue]slowing their speed by 30%[/color] for DURATION turns.", 5],
 	"Dap Up": [0, true, false, "Add [color=#1f93ff]action value[/color] equal to half your speed to an ally."],
 	"Judgment": [20, false, true, "Deals [color=red]VALUE Damage[/color] to 3 random enemy targets."],

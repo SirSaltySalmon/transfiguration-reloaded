@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://1y70ua123d1o"]
 
-[ext_resource type="Script" path="res://assets/battle/effects/trigger_particles.gd" id="1_e4bu5"]
+[ext_resource type="Script" uid="uid://bw86aun2u7jid" path="res://assets/battle/effects/trigger_particles.gd" id="1_e4bu5"]
 [ext_resource type="Texture2D" uid="uid://d07vjsw78goli" path="res://assets/assetpacks/brackeys-vfx/brackeys_particle_bundle/flipbooks/wispy_smoke_02_8x8.tga" id="2_c1hyi"]
 [ext_resource type="Texture2D" uid="uid://dc5pg6wfmtss2" path="res://assets/assetpacks/brackeys-vfx/brackeys_particle_bundle/flipbooks/wispy_smoke_01_8x8.tga" id="3_i4560"]
 [ext_resource type="Texture2D" uid="uid://djkoi1qy46ydk" path="res://assets/assetpacks/brackeys-vfx/brackeys_particle_bundle/particles/alpha/smoke_07_a.png" id="4_npwuq"]

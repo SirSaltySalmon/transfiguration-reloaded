@@ -78,7 +78,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.495, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
 shaded = true
 double_sided = false
-alpha_cut = 1
+alpha_cut = 2
 texture = ExtResource("2_ovq1p")
 
 [node name="InsideShop" type="Sprite3D" parent="Background" unique_id=1135019589]
@@ -97,7 +97,7 @@ texture = SubResource("ViewportTexture_htc4s")
 material = SubResource("ShaderMaterial_7ri7k")
 
 [node name="Tips" parent="." unique_id=1538832114 instance=ExtResource("6_8evj3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.618131, -0.053430915, -8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.618131, -0.053430915, -7.9558225)
 
 [node name="Sprite" parent="Tips" index="0" unique_id=1887729240]
 texture = SubResource("ViewportTexture_3w0op")

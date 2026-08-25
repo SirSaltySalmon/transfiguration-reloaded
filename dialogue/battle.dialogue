@@ -28,6 +28,23 @@ Slime: blob
 ShadowWizardA: It's bout time we [color=cyan]slime[/color] you out, kiddo!!
 => END
 
+~ shadow_wizards_a_died
+do Methods.current_scene.cam.shake()
+ShadowWizardB: NOOOOOOOOOOOOOO!!!! [color=#6986c2]BLUEBERRY[/color]!!!
+ShadowWizardB: DAMMIT. I COULDA NEVER TOLD YOU THIS WHEN YOU WERE ALIVE, BECAUSE YOU KINDA [color=red]HOMOPHOBIC[/color]...
+do Methods.current_scene.cam.shake()
+ShadowWizardB: BUT I'VE ALWAYS BEEN IN LOVE WITH YOU!!!
+ShadowWizardB: I'LL MAKE THEM PAY.
+=> END
+
+~ shadow_wizards_b_died
+ShadowWizardA: Gah! [color=#aa5448]Hotdog[/color]!
+ShadowWizardA: These monsters are lowkey built different...
+ShadowWizardA: Maybe it's better that I didn't die first. He woulda totally forgot that he could revive me after...
+ShadowWizardA: ...That is, if they aren't finna to eat him and digest him...?
+ShadowWizardA: ...Oh, shiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii...
+=> END
+
 ~ relentless_ridicule
 % {{Global.custom_talker}}: Thy intimate life's as barren as thy farmland.
 % {{Global.custom_talker}}: The king seeks a jester, and I've been told thy daftness caught his eye!

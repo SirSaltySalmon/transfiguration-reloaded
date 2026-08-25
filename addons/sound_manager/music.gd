@@ -60,6 +60,16 @@ func resume(resource: AudioStream = null) -> void:
 		for player in busy_players:
 			player.stream_paused = false
 
+func resume_with_fade(resource: AudioStream = null, fade_duration := 0.0) -> void:
+	if resource != null:
+		var player = get_busy_player_with_resource(resource)
+		if is_instance_valid(player):
+			fade_volume(player, -80.0, player.volume_db, fade_duration)
+			player.stream_paused = false
+	else:
+		for player in busy_players:
+			player.stream_paused = false
+
 
 func is_track_playing(resource_path: String) -> bool:
 	for player in busy_players:

@@ -5,8 +5,6 @@ func normal_init():
 		queue_free()
 
 func interact():
-	## eat
-	Global.sav.just_size_2 = true
 	Global.sav.size = 2
 	Methods.play_fx_overworld("devour")
 	queue_free()

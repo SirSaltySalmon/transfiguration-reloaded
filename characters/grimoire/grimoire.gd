@@ -13,7 +13,7 @@ func interact():
 	await glow()
 	await dialogue("grimoire_summoning")
 	Global.battle_type = 3
-	Global.sav.bt_party[2] = "angel"
+	Global.sav.bt_party.append("angel")
 	Methods.enter_battle()
 
 func glow():

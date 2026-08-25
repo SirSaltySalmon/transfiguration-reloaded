@@ -20,7 +20,7 @@ Rat: Like, I've got pup support to pay, man! You feel me?
 Rat: ...Didn't know slimes can eat corpses like that. Impressive...
 Rat: Did you get a bit bigger as well? [i]Must have been nutritious.[/i]
 	You look quite a bit [color=yellow]stronger[/color] than before...
-Rat: Hey, wait a minute. I've got a [color=green]brilliant[/color] idea.
+Rat: Hey, wait a minute. I've got an idea.
 Rat: You and I, if we work together... we might be able to take down a few raiders.
 Rat: Then, you can [color=red]devour[/color] their corpses.
 	Eventually, [color=orange]you'll become fearsome enough to chase them away![/color]
@@ -28,8 +28,7 @@ Rat: Come on, let me join you! Let's take back our home!
 => END
 
 ~ rat_suggests_roaming
-Rat: Look at you, big guy! Does human taste good?
-Rat: [color=yellow]Running around between areas[/color] will surely get us in contact with more.
+Rat: [color=yellow]Running around between areas[/color] will surely get us in contact with raiders.
 	Not as easy to hide when you're [color=cyan]bigger[/color]...
 Rat: So, we better be careful from now on.
 	...Unless that's what you want...

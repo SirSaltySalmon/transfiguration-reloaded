@@ -4,6 +4,7 @@ const OVERWORLD_PATH = "res://main/overworld/overworld_3d_main.tscn"
 const BATTLE_PATH = "res://main/battle/battle.tscn"
 const TITLE_PATH = "res://main/title/title.tscn"
 const DATING_PATH = "res://main/dating/dating.tscn"
+const CHA_CHING = preload("uid://bx7u4n8qshaql")
 
 var current_scene
 
@@ -105,6 +106,7 @@ func tween_to_normal(tween_time: float):
 		return
 	
 	if current_scene is BattleScene:
+		previous_talker = ""
 		if current_scene.current_char == null:
 			current_scene.cam.return_to_idle()
 		return
@@ -126,6 +128,7 @@ func tween_to_normal(tween_time: float):
 func buy_grimoire():
 	Global.sav.money -= 5
 	Global.sav.gob_sells_grimoire = true
+	SoundManager.play_sound(CHA_CHING)
 
 func log_money():
 	Global.sav.money += 100

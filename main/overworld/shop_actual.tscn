@@ -547,7 +547,7 @@ mouse_filter = 1
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "Health Upgrade
-10 Moneys"
+7 Moneys"
 fit_content = true
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="Control/ScrollContainer/VBoxContainer/HealthUpgrade/ItemDescription/MarginContainer/VBoxContainer" unique_id=1398557650]
@@ -579,7 +579,7 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 64
 text = "BUY"
 script = ExtResource("9_xinv6")
-cost = 10
+cost = 7
 stock_id = "Health Upgrade"
 description_label = NodePath("../../ItemDescription/MarginContainer/VBoxContainer/RichTextLabel")
 in_stock_label = NodePath("../../ItemDescription/MarginContainer/VBoxContainer/RichTextLabel2")
@@ -629,7 +629,7 @@ mouse_filter = 1
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "Relentless Ridicule
-15 Moneys"
+10 Moneys"
 fit_content = true
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="Control/ScrollContainer/VBoxContainer/RelentlessRidicule/ItemDescription/MarginContainer/VBoxContainer" unique_id=112742336]
@@ -661,7 +661,7 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 64
 text = "BUY"
 script = ExtResource("10_ppn3x")
-cost = 15
+cost = 10
 stock_id = "Relentless Ridicule"
 description_label = NodePath("../../ItemDescription/MarginContainer/VBoxContainer/RichTextLabel")
 in_stock_label = NodePath("../../ItemDescription/MarginContainer/VBoxContainer/RichTextLabel2")
@@ -711,7 +711,7 @@ mouse_filter = 1
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "Benevolence
-15 Moneys"
+10 Moneys"
 fit_content = true
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="Control/ScrollContainer/VBoxContainer/Benevolence/ItemDescription/MarginContainer/VBoxContainer" unique_id=1235749142]
@@ -743,7 +743,7 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 64
 text = "BUY"
 script = ExtResource("11_yo1ir")
-cost = 15
+cost = 10
 stock_id = "Benevolence"
 description_label = NodePath("../../ItemDescription/MarginContainer/VBoxContainer/RichTextLabel")
 in_stock_label = NodePath("../../ItemDescription/MarginContainer/VBoxContainer/RichTextLabel2")

@@ -567,10 +567,11 @@ dialogue_res = ExtResource("2_oogvt")
 balloon_scene = ExtResource("3_u7imq")
 
 [node name="Background" type="TextureRect" parent="." unique_id=336062243]
-offset_left = -176.0
-offset_right = 2224.0
-offset_bottom = 1080.0
-scale = Vector2(0.68, 0.68)
+offset_left = -200.0
+offset_top = -15.999999
+offset_right = 2200.0
+offset_bottom = 1064.0
+scale = Vector2(0.7, 0.7)
 texture = ExtResource("4_vn0aj")
 
 [node name="Background" type="ColorRect" parent="Background" unique_id=1712627761]

@@ -193,6 +193,9 @@ func pause_music(resource: AudioStream = null) -> void:
 func resume_music(resource: AudioStream = null) -> void:
 	music.resume(resource)
 
+func resume_music_with_fade(resource: AudioStream = null, fade_duration := 0.0) -> void:
+	music.resume_with_fade(resource, fade_duration)
+
 
 func stop_music(fade_out_duration: float = 0.0) -> void:
 	music.stop(fade_out_duration)

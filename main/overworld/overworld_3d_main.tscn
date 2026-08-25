@@ -3,12 +3,15 @@
 [ext_resource type="PackedScene" uid="uid://cs6sa16vx7mf7" path="res://ui/overworld/overworld_ui.tscn" id="1_gon5r"]
 [ext_resource type="Script" uid="uid://but1vaoxh587q" path="res://main/overworld/overworld_main.gd" id="1_vn6as"]
 [ext_resource type="AudioStream" uid="uid://cg38l83s0tb2i" path="res://sfx/footsteps.mp3" id="2_qg76s"]
+[ext_resource type="PackedScene" uid="uid://cl01ltrrx020y" path="res://assets/battle/3d/weathered_round_table__metal_top__wooden_legs.glb" id="2_t4ucy"]
 [ext_resource type="FontFile" uid="uid://cmmltma2gsu3a" path="res://addons/command-terminal/ast/windows_command_prompt.ttf" id="3_c6k2t"]
 [ext_resource type="AudioStream" uid="uid://sld6ljkwpx4k" path="res://sfx/rat_fall.mp3" id="3_kglt5"]
 [ext_resource type="Script" uid="uid://dmieq82eqdhx3" path="res://main/overworld/camera_3d.gd" id="3_l7jqc"]
 [ext_resource type="PackedScene" uid="uid://b724oh1cswaws" path="res://main/pause_menu/pause_menu.tscn" id="4_bm6iy"]
 [ext_resource type="AudioStream" uid="uid://beccvygfvvss5" path="res://sfx/creak_in.mp3" id="4_t4ucy"]
-[ext_resource type="Environment" uid="uid://btl4ptewvgyxp" path="res://assets/overworld/effects/sky/sewers_sky.tres" id="9_kglt5"]
+[ext_resource type="Environment" uid="uid://dcp5vw5h61s1g" path="res://assets/overworld/effects/sky/shop_sky.tres" id="10_5c72w"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_swwlx"]
 
 [sub_resource type="Animation" id="Animation_qg76s"]
 length = 0.001
@@ -46,7 +49,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(3, -2, -4)]
+"values": [Vector3(0, 0, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -107,6 +110,30 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0, 0, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("DiningHall/Hannes:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.96516156, -7)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("DiningHall/Hannes/GPUParticles3D2:emitting")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_bm6iy"]
@@ -431,10 +458,10 @@ tracks/0/path = NodePath("Camera:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.1, 3, 4, 6, 7, 8),
-"transitions": PackedFloat32Array(0.25, 0.25, 0.25, 0.25, 1, 0.25, 0.25),
+"times": PackedFloat32Array(0, 1.1, 2, 3, 4, 5, 6, 7, 8),
+"transitions": PackedFloat32Array(0.25, 4, 0.25, 0.25, 4, 0.25, 1, 0.25, 0.25),
 "update": 0,
-"values": [Vector3(0, 1, -4), Vector3(0, 1, -4), Vector3(-3.5899773, 1.0941191, -2.979622), Vector3(-3.5899773, 1.0941191, -2.979622), Vector3(6.9871063, 0.7505057, -1.6381378), Vector3(6.9871063, 0.7505057, -1.6381378), Vector3(0, 1, -3)]
+"values": [Vector3(0, 1, -4), Vector3(0, 1, -4), Vector3(-1.7005153, 1.0445827, -3.516663), Vector3(-3.5899773, 1.0941191, -2.979622), Vector3(-3.5899773, 1.0941191, -2.979622), Vector3(1.6985631, 0.92231244, -2.30888), Vector3(6.9871063, 0.7505057, -1.6381378), Vector3(6.9871063, 0.7505057, -1.6381378), Vector3(0, 1, -3)]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -443,9 +470,12 @@ tracks/1/path = NodePath("AnimationPlayer")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1, 8),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.39999998, 0.8, 8),
+"transitions": PackedFloat32Array(1, 1, 1),
 "values": [{
+"args": [],
+"method": &"pause"
+}, {
 "args": [],
 "method": &"pause"
 }, {
@@ -500,13 +530,16 @@ tracks/5/path = NodePath("DiningHall/Hannes")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(1, 8),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.39999998, 0.8000002, 8),
+"transitions": PackedFloat32Array(1, 1, 1),
 "values": [{
 "args": [&"hannes_1"],
 "method": &"trigger_dialogue"
 }, {
 "args": [&"hannes_2"],
+"method": &"trigger_dialogue"
+}, {
+"args": [&"hannes_3"],
 "method": &"trigger_dialogue"
 }]
 }
@@ -517,10 +550,34 @@ tracks/6/path = NodePath("Camera:rotation")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 1.1, 3, 4, 6, 7, 8),
-"transitions": PackedFloat32Array(1, 0.25, 0.25, 0.25, 1, 0.25, 1),
+"times": PackedFloat32Array(0, 1.1, 2, 3, 4, 5, 6, 7, 8),
+"transitions": PackedFloat32Array(1, 4, 0.25, 0.25, 4, 0.25, 1, 0.25, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(-0.09599312, 0.60213864, 0), Vector3(-0.09599312, 0.60213864, 0), Vector3(-0.08290315, -0.37088236, 0), Vector3(-0.08290315, -0.37088236, 0), Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(-0.04850177, 0.17637007, 0), Vector3(-0.09599311, 0.34906584, 0), Vector3(-0.09599311, 0.34906584, 0), Vector3(-0.089011796, 0.043633282, 0), Vector3(-0.082030475, -0.2617994, 0), Vector3(-0.082030475, -0.2617994, 0), Vector3(0, 0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("DiningHall/Hannes:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.4, 0.8, 6.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-5.7819624, 0.96516156, -7), Vector3(5.5793686, 0.96516156, -7), Vector3(0, 0.96516156, -7)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("DiningHall/Hannes/GPUParticles3D2:emitting")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(7.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qg76s"]
@@ -789,6 +846,22 @@ orientation = 2
 script = ExtResource("1_vn6as")
 anim = NodePath("AnimationPlayer")
 
+[node name="Table" type="StaticBody3D" parent="." unique_id=526294462]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.3813605, 0)
+physics_material_override = SubResource("PhysicsMaterial_swwlx")
+
+[node name="TableModel" parent="Table" unique_id=463293113 instance=ExtResource("2_t4ucy")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, -35, 0)
+
+[node name="Table_LP_Solid_0" parent="Table/TableModel/Sketchfab_model/e53ba48d9801468988483daf272c6e25_fbx/RootNode/Table_LP/Object_4" parent_id_path=PackedInt32Array(463293113, 670210424) index="0" unique_id=90152932]
+sorting_use_aabb_center = false
+visibility_range_begin = 20.0
+visibility_range_begin_margin = 1.5
+visibility_range_fade_mode = 1
+
+[node name="Table_LP_Glass_0" parent="Table/TableModel/Sketchfab_model/e53ba48d9801468988483daf272c6e25_fbx/RootNode/Table_LP/Object_4" parent_id_path=PackedInt32Array(463293113, 670210424) index="1" unique_id=1211111492]
+visible = false
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=443344323]
 libraries/ = SubResource("AnimationLibrary_qg76s")
 
@@ -861,21 +934,20 @@ text = "Skip Cutscene"
 visible = false
 
 [node name="Camera" type="Camera3D" parent="." unique_id=190514770 node_paths=PackedStringArray("main")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -2, -4)
 current = true
 script = ExtResource("3_l7jqc")
 main = NodePath("..")
 
 [node name="OmniLight3D" type="SpotLight3D" parent="Camera" unique_id=1023211415]
 transform = Transform3D(1, 0, 0, 0, 0.9848077, 0.17364818, 0, -0.17364818, 0.9848077, 0, 0.5, -0.5)
-light_color = Color(0.4104, 0.526933, 0.76, 1)
+light_color = Color(0.4117647, 0.5254902, 0.7607843, 1)
 light_energy = 16.0
 shadow_enabled = true
 spot_range = 30.0
 spot_angle = 60.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1948573418]
-environment = ExtResource("9_kglt5")
+environment = ExtResource("10_5c72w")
 
 [node name="DustParticles" type="GPUParticles3D" parent="." unique_id=1557810043]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.42168)
@@ -890,5 +962,6 @@ draw_pass_1 = SubResource("PlaneMesh_lu5pe")
 [connection signal="mouse_exited" from="OverworldUI/Right" to="Camera" method="_on_right_mouse_exited"]
 [connection signal="pressed" from="SkipButton/SkipCutscene" to="." method="end_cutscene"]
 
+[editable path="Table/TableModel"]
 [editable path="OverworldUI"]
 [editable path="OverworldUI/Terminal/__guts__"]
